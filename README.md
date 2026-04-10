@@ -57,7 +57,7 @@ python 05b_debug_single.py --idx 0   # prints full model output for both passes
 |---|---|
 | `evaluation.csv` | Final aggregate metrics (required) |
 | `runs/` | 123 RunTrace JSON files, one per test contract |
-| `runs_combined.json` | All 123 RunTraces combined as a single JSON array |
+| `RunTrace.json` | All 123 RunTraces combined as a single JSON array |
 | `playbook.yaml` | Deterministic rule layer used in evaluation |
 | `training_notebook.ipynb` | Annotated training notebook |
 | `01_preprocess.py` | Builds SFT dataset from ContractNLI JSON |
@@ -86,7 +86,7 @@ submission/
 │   ├── runtrace_doc_000.json
 │   ├── runtrace_doc_001.json
 │   └── ... (runtrace_doc_122.json)
-├── runs_combined.json        # All 123 RunTraces as a single JSON array
+├── RunTrace.json        # All 123 RunTraces as a single JSON array
 ├── CONTRIBUTIONS.md          # Group member contributions
 └── README.md                 # This file
 ```
