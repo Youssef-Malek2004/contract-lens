@@ -1,0 +1,4978 @@
+{
+  "schema_version": "1.0-ms1",
+  "run": {
+    "run_id": "bca1cef2ba6c_032",
+    "started_at": "2026-04-08T22:23:21.924+00:00",
+    "ended_at": "2026-04-08T22:24:36.439+00:00",
+    "framework": "single_model_pipeline",
+    "deterministic": true,
+    "parameters": {
+      "base_model": "unsloth/Qwen3-1.7B-bnb-4bit",
+      "quantization": "4bit",
+      "adapter_method": "qlora",
+      "seed": 42,
+      "learning_rate": 0.0002,
+      "batch_size": 1,
+      "gradient_accumulation_steps": 1,
+      "max_steps": 1269,
+      "max_seq_length": 8192,
+      "temperature": 0.0
+    }
+  },
+  "contract": {
+    "contract_id": "58",
+    "source_type": "txt",
+    "source_name": "appendix-g-nda-form.pdf",
+    "language": "en",
+    "hash_sha256": "a4862f5ef8abdb3ae1f806947412a809317688bba87269e6bd4162c3c27363e9",
+    "chunks": [
+      {
+        "chunk_id": "chunk_000",
+        "text": "NON-DISCLOSURE AGREEMENT",
+        "span": {
+          "char_start": 0,
+          "char_end": 24
+        }
+      },
+      {
+        "chunk_id": "chunk_001",
+        "text": "This Non-Disclosure Agreement (\u201cNon-Disclosure Agreement\u201d) dated as of _____ __, 20__ (the \u201cEffective Date\u201d), between",
+        "span": {
+          "char_start": 25,
+          "char_end": 143
+        }
+      },
+      {
+        "chunk_id": "chunk_002",
+        "text": "[_____________] (\u201cContractor\u201d), a [_______________] [corporation] [limited liability company] [limited liability partnership] having offices at [_____________] and [insert legal National Grid entity] d/b/a National Grid (\u201cNational Grid\u201d), a [____________] [corporation] [limited liability company][limited liability partnership], having offices at [_____________] (each, individually, a \u201cParty\u201d and, collectively, the \u201cParties\u201d).",
+        "span": {
+          "char_start": 143,
+          "char_end": 572
+        }
+      },
+      {
+        "chunk_id": "chunk_003",
+        "text": "RECITALS",
+        "span": {
+          "char_start": 573,
+          "char_end": 581
+        }
+      },
+      {
+        "chunk_id": "chunk_004",
+        "text": "WHEREAS, the Parties and their respective Affiliates (as such term is defined below) possess certain confidential and proprietary Information (as such term is defined below); and",
+        "span": {
+          "char_start": 582,
+          "char_end": 760
+        }
+      },
+      {
+        "chunk_id": "chunk_005",
+        "text": "WHEREAS, each Party may elect, in its sole discretion, to disclose Information to the other Party or its Representatives (as such term is defined below) in connection with [Fill In Purpose] (the \u201cPurpose\u201d), subject to the terms and conditions of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 761,
+          "char_end": 1037
+        }
+      },
+      {
+        "chunk_id": "chunk_006",
+        "text": "NOW, THEREFORE, in consideration of the mutual covenants contained herein and for other good and valuable consideration, the sufficiency and receipt of which are hereby acknowledged, the Parties agree as follows:",
+        "span": {
+          "char_start": 1038,
+          "char_end": 1250
+        }
+      },
+      {
+        "chunk_id": "chunk_007",
+        "text": "\u00a71.",
+        "span": {
+          "char_start": 1251,
+          "char_end": 1255
+        }
+      },
+      {
+        "chunk_id": "chunk_008",
+        "text": "Certain Definitions.",
+        "span": {
+          "char_start": 1255,
+          "char_end": 1275
+        }
+      },
+      {
+        "chunk_id": "chunk_009",
+        "text": "(a) The term \u201cInformation\u201d means",
+        "span": {
+          "char_start": 1276,
+          "char_end": 1308
+        }
+      },
+      {
+        "chunk_id": "chunk_010",
+        "text": "(i) all financial, technical and other non-public or proprietary information which is furnished or disclosed orally, in writing, electronically or in other form or media by Disclosing Party and/or its Representatives to Recipient and/or its Representatives in connection with the Purpose and that is described or identified (at the time of disclosure) as being non-public, confidential or proprietary, or the non-public or proprietary nature of which is apparent from the context of the disclosure or the contents or nature of the information disclosed;",
+        "span": {
+          "char_start": 1309,
+          "char_end": 1862
+        }
+      },
+      {
+        "chunk_id": "chunk_011",
+        "text": "(ii) all memoranda, notes, reports, files, copies, extracts, inventions, discoveries, improvements or any other thing prepared or derived from the information described in",
+        "span": {
+          "char_start": 1863,
+          "char_end": 2034
+        }
+      },
+      {
+        "chunk_id": "chunk_012",
+        "text": "\u00a71(a)(i), above;",
+        "span": {
+          "char_start": 2035,
+          "char_end": 2051
+        }
+      },
+      {
+        "chunk_id": "chunk_013",
+        "text": "(iii) all CEII (as such term is defined below and only if CEII is exchanged under this Non-Disclosure Agreement);",
+        "span": {
+          "char_start": 2052,
+          "char_end": 2165
+        }
+      },
+      {
+        "chunk_id": "chunk_014",
+        "text": "(iv) all Personal Information (as defined in the ISA Exhibit and only if Personal Information is exchanged under this Non-Disclosure Agreement); and",
+        "span": {
+          "char_start": 2166,
+          "char_end": 2314
+        }
+      },
+      {
+        "chunk_id": "chunk_015",
+        "text": "(v) all Customer Information (as such term in is defined below and only if Customer Information is exchanged under this Non-Disclosure Agreement).",
+        "span": {
+          "char_start": 2315,
+          "char_end": 2461
+        }
+      },
+      {
+        "chunk_id": "chunk_016",
+        "text": "(b) The term \u201cRecipient\u201d means a Party to whom the other Party or its Representatives discloses Information.",
+        "span": {
+          "char_start": 2462,
+          "char_end": 2570
+        }
+      },
+      {
+        "chunk_id": "chunk_017",
+        "text": "(c) The term \u201cDisclosing Party\u201d means the Party disclosing Information in its possession, or on whose behalf Information is disclosed, to a Recipient.",
+        "span": {
+          "char_start": 2571,
+          "char_end": 2721
+        }
+      },
+      {
+        "chunk_id": "chunk_018",
+        "text": "(d) The term \u201cRepresentative(s)\u201d means the Affiliates of a Party and the officers, directors, members, managers, employees, contractors, legal advisors, financial advisors and representatives of such Party and its Affiliates.",
+        "span": {
+          "char_start": 2722,
+          "char_end": 2947
+        }
+      },
+      {
+        "chunk_id": "chunk_019",
+        "text": "(e) The term \u201cAffiliate\u201d means any Person controlling, controlled by, or under common control with, any other Person; \u201ccontrol\u201d shall mean the ownership of, with right to vote, 50% or more of the outstanding voting securities, equity, membership interests, or equivalent, of such Person.",
+        "span": {
+          "char_start": 2948,
+          "char_end": 3235
+        }
+      },
+      {
+        "chunk_id": "chunk_020",
+        "text": "(f) The term \u201cCustomer Information\u201d includes, but is not limited to, one or more National Grid customers\u2019 names, addresses, account numbers, billing information, load information, and usage information.",
+        "span": {
+          "char_start": 3236,
+          "char_end": 3438
+        }
+      },
+      {
+        "chunk_id": "chunk_021",
+        "text": "(g) The term \u201cPerson\u201d includes any natural person, individual, firm, corporation, company, partnership (general or limited), limited liability company, business trust, joint venture, consortium, government or political subdivision, or any agency, instrumentality, or authority of any government or political subdivision, or other entity or association.",
+        "span": {
+          "char_start": 3439,
+          "char_end": 3791
+        }
+      },
+      {
+        "chunk_id": "chunk_022",
+        "text": "\u00a72.",
+        "span": {
+          "char_start": 3792,
+          "char_end": 3796
+        }
+      },
+      {
+        "chunk_id": "chunk_023",
+        "text": "Permitted Disclosure, Personal Information and Critical Energy/Electric Infrastructure Information.",
+        "span": {
+          "char_start": 3796,
+          "char_end": 3895
+        }
+      },
+      {
+        "chunk_id": "chunk_024",
+        "text": "(a) Recipient shall receive all Information in strict confidence, shall exercise reasonable care to maintain the confidentiality and secrecy of the Information, and, except to the extent expressly permitted by this Non-Disclosure Agreement, shall not divulge Information to any third party without the prior written consent of Disclosing Party.",
+        "span": {
+          "char_start": 3896,
+          "char_end": 4241
+        }
+      },
+      {
+        "chunk_id": "chunk_025",
+        "text": "The foregoing notwithstanding, Recipient may disclose Information to its Representatives to the extent each such Representative has a need to know such Information for the Purpose contemplated by this Non-Disclosure Agreement and agrees to observe and comply with the obligations of Recipient under this Non-Disclosure Agreement with regard to such Information.",
+        "span": {
+          "char_start": 4241,
+          "char_end": 4603
+        }
+      },
+      {
+        "chunk_id": "chunk_026",
+        "text": "Recipient shall immediately notify Disclosing Party regarding, and shall be responsible hereunder for, any breach of the terms of this Non-Disclosure Agreement to the extent caused by its Representatives.",
+        "span": {
+          "char_start": 4603,
+          "char_end": 4807
+        }
+      },
+      {
+        "chunk_id": "chunk_027",
+        "text": "(b) The Parties acknowledge that Information and/or data disclosed under this Non-Disclosure Agreement may include Personal Information (as such term is defined in the ISA Exhibit attached hereto).",
+        "span": {
+          "char_start": 4808,
+          "char_end": 5006
+        }
+      },
+      {
+        "chunk_id": "chunk_028",
+        "text": "To the extent Personal Information is disclosed under this Non-Disclosure Agreement, the Parties obligations shall be governed by the Information Security Addendum (attached hereto as the ISA Exhibit) which is hereby incorporated by reference and explicitly made a part of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 5006,
+          "char_end": 5309
+        }
+      },
+      {
+        "chunk_id": "chunk_029",
+        "text": "(c) The Parties acknowledge that Information and/or data disclosed under this Non-Disclosure Agreement may include \u201cCritical Energy / Electric Infrastructure Information\u201d (\u201cCEII\u201d) as defined and designated by Disclosing Party, consistent with applicable Federal Energy Regulatory Commission (\u201cFERC\u201d) and North American Electric Reliability Corporation (\u201cNERC\u201d) regulations.",
+        "span": {
+          "char_start": 5310,
+          "char_end": 5684
+        }
+      },
+      {
+        "chunk_id": "chunk_030",
+        "text": "Only if such Information contains CEII, Recipient shall, and shall cause its Representatives to, strictly comply with any and all laws, rules and regulations (including, without limitation, FERC and NERC rules, regulations, orders and policies) applicable to any such CEII that is disclosed by or on behalf of Disclosing Party or that relates to any of Disclosing Party\u2019s or Disclosing Party\u2019s Affiliates\u2019 facilities.",
+        "span": {
+          "char_start": 5684,
+          "char_end": 6102
+        }
+      },
+      {
+        "chunk_id": "chunk_031",
+        "text": "Recipient shall not divulge, and shall cause its Representatives not to divulge, any such CEII to any Person or entity, directly or indirectly, unless permitted to do so by applicable law and unless Recipient has first obtained, in each case, the express specific written consent of Disclosing Party and any affected Affiliate of Disclosing Party.",
+        "span": {
+          "char_start": 6102,
+          "char_end": 6450
+        }
+      },
+      {
+        "chunk_id": "chunk_032",
+        "text": "In any event, to the extent that Recipient or any of its Representatives seeks or is ordered to submit any such CEII to FERC, a state regulatory agency, a court or other governmental body, whether in connection with the Purpose or otherwise, Recipient shall (and, to the extent applicable, shall cause its Representatives to), in addition to obtaining Disclosing Party\u2019s and its Affiliate\u2019s (as applicable) prior written consent, seek a protective order or other procedural protections to ensure that such information is accorded CEII protected status and is otherwise treated as confidential.",
+        "span": {
+          "char_start": 6450,
+          "char_end": 7044
+        }
+      },
+      {
+        "chunk_id": "chunk_033",
+        "text": "With respect to CEII, in the event of any conflict or inconsistency between this Section and any other term or provision of this Non-Disclosure Agreement, this Section shall govern in connection with such CEII.",
+        "span": {
+          "char_start": 7044,
+          "char_end": 7254
+        }
+      },
+      {
+        "chunk_id": "chunk_034",
+        "text": "(d) Recipient shall",
+        "span": {
+          "char_start": 7255,
+          "char_end": 7275
+        }
+      },
+      {
+        "chunk_id": "chunk_035",
+        "text": "(i) identify any and all Representatives of Recipient who are authorized to receive, or have access to, CEII on the List of Representatives Authorized to Receive CEII attached hereto as the CEII Exhibit which may from time to time be amended by mutual agreement of the Parties.",
+        "span": {
+          "char_start": 7275,
+          "char_end": 7553
+        }
+      },
+      {
+        "chunk_id": "chunk_036",
+        "text": "Each Representative named in the CEII Exhibit shall not be granted access to CEII until such individual submits to Recipient an executed Certificate of Non-Disclosure (set forth in Schedule A to the CEII Exhibit).",
+        "span": {
+          "char_start": 7553,
+          "char_end": 7767
+        }
+      },
+      {
+        "chunk_id": "chunk_037",
+        "text": "This Section shall survive any termination, expiration or cancellation of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 7767,
+          "char_end": 7872
+        }
+      },
+      {
+        "chunk_id": "chunk_038",
+        "text": "The Parties shall, and shall cause their respective Representatives to, continue to comply with this Section notwithstanding expiration of the Term (as such term is defined below) or any earlier termination of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 7872,
+          "char_end": 8112
+        }
+      },
+      {
+        "chunk_id": "chunk_039",
+        "text": "\u00a73.",
+        "span": {
+          "char_start": 8113,
+          "char_end": 8117
+        }
+      },
+      {
+        "chunk_id": "chunk_040",
+        "text": "Exclusions from Application.",
+        "span": {
+          "char_start": 8117,
+          "char_end": 8145
+        }
+      },
+      {
+        "chunk_id": "chunk_041",
+        "text": "(a) This Non-Disclosure",
+        "span": {
+          "char_start": 8146,
+          "char_end": 8170
+        }
+      },
+      {
+        "chunk_id": "chunk_042",
+        "text": "Agreement shall not apply to Information that,",
+        "span": {
+          "char_start": 8170,
+          "char_end": 8216
+        }
+      },
+      {
+        "chunk_id": "chunk_043",
+        "text": "(i) at the time of disclosure by or on behalf of Disclosing Party hereunder, is in the public domain, or thereafter enters the public domain without any breach of this Non-Disclosure Agreement by Recipient or any of its Representatives,",
+        "span": {
+          "char_start": 8217,
+          "char_end": 8453
+        }
+      },
+      {
+        "chunk_id": "chunk_044",
+        "text": "(ii) is rightfully in the possession or knowledge of Recipient or its Representatives prior to its disclosure by or on behalf of Disclosing Party hereunder,",
+        "span": {
+          "char_start": 8454,
+          "char_end": 8610
+        }
+      },
+      {
+        "chunk_id": "chunk_045",
+        "text": "(iii) is rightfully acquired by Recipient or its Representative(s) from a third party who is not under any obligation of confidence with respect to such Information, or",
+        "span": {
+          "char_start": 8611,
+          "char_end": 8779
+        }
+      },
+      {
+        "chunk_id": "chunk_046",
+        "text": "(iv) is developed by Recipient or its Representatives independently of the Information disclosed hereunder by or on behalf of Disclosing Party (as evidenced by written documentation).",
+        "span": {
+          "char_start": 8780,
+          "char_end": 8963
+        }
+      },
+      {
+        "chunk_id": "chunk_047",
+        "text": "(b) Recipient is hereby notified that, as set forth in 18 U.S.C. \u00a71833(b), individuals do not have criminal or civil liability under U.S. trade secret law for the following disclosures of a trade secret:",
+        "span": {
+          "char_start": 8964,
+          "char_end": 9167
+        }
+      },
+      {
+        "chunk_id": "chunk_048",
+        "text": "(i) disclosure in confidence to a federal, state or local government official, either directly or indirectly, or to an attorney, provided the disclosure is for the sole purpose of reporting or investigating a suspected violation of law;",
+        "span": {
+          "char_start": 9168,
+          "char_end": 9404
+        }
+      },
+      {
+        "chunk_id": "chunk_049",
+        "text": "(ii) disclosure in a complaint or other document filed in a lawsuit or other proceeding if such filing is made under seal; and/or",
+        "span": {
+          "char_start": 9405,
+          "char_end": 9534
+        }
+      },
+      {
+        "chunk_id": "chunk_050",
+        "text": "(iii) under those circumstances where Recipient files a lawsuit for retaliation against Disclosing Party for reporting a suspected violation of law, Recipient may disclose Disclosing Party\u2019s trade secret information to its attorney and may use the trade secret information in the court proceeding if Recipient files any document containing the trade secret under seal and does not disclose the trade secret, except pursuant to court order.",
+        "span": {
+          "char_start": 9535,
+          "char_end": 9974
+        }
+      },
+      {
+        "chunk_id": "chunk_051",
+        "text": "(c) Nothing herein or in any other agreement between the Parties is intended to conflict with 18 U.S.C. \u00a7 1833(b) or create any liability for disclosures of trade secrets that are expressly allowed by such section.",
+        "span": {
+          "char_start": 9975,
+          "char_end": 10189
+        }
+      },
+      {
+        "chunk_id": "chunk_052",
+        "text": "\u00a74.",
+        "span": {
+          "char_start": 10190,
+          "char_end": 10194
+        }
+      },
+      {
+        "chunk_id": "chunk_053",
+        "text": "Production of Information.",
+        "span": {
+          "char_start": 10194,
+          "char_end": 10221
+        }
+      },
+      {
+        "chunk_id": "chunk_054",
+        "text": "Recipient agrees that if it or any of its Representatives are required by law, by a court or by other governmental or regulatory authorities (including, without limitation, by oral question, interrogatory, request for information or documents, subpoena, civil or criminal investigative demand or other process) to disclose any of Disclosing Party\u2019s Information, Recipient shall provide Disclosing Party with prompt notice of any such request or requirement, to the extent permitted to do so by applicable law, so that Disclosing Party may seek an appropriate protective order or waive compliance with the provisions of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 10221,
+          "char_end": 10871
+        }
+      },
+      {
+        "chunk_id": "chunk_055",
+        "text": "If, failing the entry of a protective order or the receipt of a waiver hereunder, Recipient (or any Representative of Recipient) is, in the opinion of its counsel, legally compelled to disclose such Information, Recipient may disclose, and may permit such Representative to disclose, such portion of the Information that its counsel advises must be disclosed and such disclosure shall not be deemed a breach of any term of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 10871,
+          "char_end": 11325
+        }
+      },
+      {
+        "chunk_id": "chunk_056",
+        "text": "In any event, Recipient shall use (and, to the extent applicable, shall cause its Representatives to use) reasonable efforts to seek confidential treatment for Information so disclosed if requested to do so by Disclosing Party, and shall not oppose any action by, and shall reasonably cooperate with, Disclosing Party to obtain an appropriate protective order or other reliable assurance that confidential treatment will be accorded the Information.",
+        "span": {
+          "char_start": 11325,
+          "char_end": 11774
+        }
+      },
+      {
+        "chunk_id": "chunk_057",
+        "text": "\u00a75.",
+        "span": {
+          "char_start": 11775,
+          "char_end": 11779
+        }
+      },
+      {
+        "chunk_id": "chunk_058",
+        "text": "Scope of Use. Recipient and each of its Representatives shall use Information disclosed by or on behalf of Disclosing Party solely in connection with the Purpose and shall not use, directly or indirectly, any Information for any other purpose without Disclosing Party\u2019s prior written consent.",
+        "span": {
+          "char_start": 11779,
+          "char_end": 12071
+        }
+      },
+      {
+        "chunk_id": "chunk_059",
+        "text": "\u00a76.",
+        "span": {
+          "char_start": 12072,
+          "char_end": 12076
+        }
+      },
+      {
+        "chunk_id": "chunk_060",
+        "text": "No Representations; No Rights Conferred.",
+        "span": {
+          "char_start": 12076,
+          "char_end": 12117
+        }
+      },
+      {
+        "chunk_id": "chunk_061",
+        "text": "Disclosing Party makes no representations or warranties, express or implied, with respect to any Information disclosed hereunder, including, without limitation, any representations or warranties as to the quality, accuracy, completeness or reliability of any such Information; all such representations and warranties are hereby expressly disclaimed.",
+        "span": {
+          "char_start": 12117,
+          "char_end": 12467
+        }
+      },
+      {
+        "chunk_id": "chunk_062",
+        "text": "Neither Disclosing Party nor its Representatives shall have any liability whatsoever with respect to the use of, or reliance upon, the Information by Recipient or its Representatives.",
+        "span": {
+          "char_start": 12467,
+          "char_end": 12651
+        }
+      },
+      {
+        "chunk_id": "chunk_063",
+        "text": "Neither Recipient nor its Representatives shall acquire any rights in Information by virtue of its disclosure hereunder.",
+        "span": {
+          "char_start": 12651,
+          "char_end": 12772
+        }
+      },
+      {
+        "chunk_id": "chunk_064",
+        "text": "No license to Recipient or its Representatives, under any trademark, patent, or other intellectual property right, is either granted or implied by the disclosure of Information under this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 12772,
+          "char_end": 12985
+        }
+      },
+      {
+        "chunk_id": "chunk_065",
+        "text": "\u00a77.",
+        "span": {
+          "char_start": 12986,
+          "char_end": 12990
+        }
+      },
+      {
+        "chunk_id": "chunk_066",
+        "text": "Return or Destruction of Information.",
+        "span": {
+          "char_start": 12990,
+          "char_end": 13028
+        }
+      },
+      {
+        "chunk_id": "chunk_067",
+        "text": "Recipient shall return and deliver, or cause to be returned and delivered, to Disclosing Party, or destroy or cause to be destroyed (with certification of destruction delivered to Disclosing Party), all tangible Information, including copies and abstracts thereof, within thirty (30) days of a written request by Disclosing Party (a \u201cRequest\u201d).",
+        "span": {
+          "char_start": 13028,
+          "char_end": 13373
+        }
+      },
+      {
+        "chunk_id": "chunk_068",
+        "text": "The foregoing notwithstanding, Recipient may retain one (1) copy of such Information for archival purposes only and subject to compliance with the terms of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 13373,
+          "char_end": 13560
+        }
+      },
+      {
+        "chunk_id": "chunk_069",
+        "text": "Notwithstanding the foregoing, each Party agrees that Recipient shall not be required to return to Disclosing Party, or destroy, copies of Disclosing Party\u2019s Information that",
+        "span": {
+          "char_start": 13560,
+          "char_end": 13735
+        }
+      },
+      {
+        "chunk_id": "chunk_070",
+        "text": "(A) reside on Recipient\u2019s or its Representatives\u2019 backup, disaster recovery or business continuity systems, or",
+        "span": {
+          "char_start": 13735,
+          "char_end": 13846
+        }
+      },
+      {
+        "chunk_id": "chunk_071",
+        "text": "(B) that Recipient or its Representatives are obligated by applicable law and/or governmental regulations to retain.",
+        "span": {
+          "char_start": 13846,
+          "char_end": 13963
+        }
+      },
+      {
+        "chunk_id": "chunk_072",
+        "text": "Recipient agrees that, following its receipt of the Request, it shall neither retrieve nor use Disclosing Party\u2019s Information for any purpose other than that specified in clause",
+        "span": {
+          "char_start": 13963,
+          "char_end": 14141
+        }
+      },
+      {
+        "chunk_id": "chunk_073",
+        "text": "(B) above.",
+        "span": {
+          "char_start": 14141,
+          "char_end": 14151
+        }
+      },
+      {
+        "chunk_id": "chunk_074",
+        "text": "- 5 -",
+        "span": {
+          "char_start": 14152,
+          "char_end": 14157
+        }
+      },
+      {
+        "chunk_id": "chunk_075",
+        "text": "\u00a78.",
+        "span": {
+          "char_start": 14158,
+          "char_end": 14162
+        }
+      },
+      {
+        "chunk_id": "chunk_076",
+        "text": "No Partnership, Etc.",
+        "span": {
+          "char_start": 14162,
+          "char_end": 14183
+        }
+      },
+      {
+        "chunk_id": "chunk_077",
+        "text": "Nothing contained herein shall bind, require, or otherwise commit a Party (or any Affiliate thereof) to proceed with any project, sale, acquisition, or other transaction of or with the other Party or any other entity.",
+        "span": {
+          "char_start": 14183,
+          "char_end": 14401
+        }
+      },
+      {
+        "chunk_id": "chunk_078",
+        "text": "No agency, partnership, joint venture, or other joint relationship is created by this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 14401,
+          "char_end": 14513
+        }
+      },
+      {
+        "chunk_id": "chunk_079",
+        "text": "Neither this Non-Disclosure Agreement nor any discussions or disclosures hereunder shall prevent either Party from conducting similar discussions with other parties or performing work, so long as such discussions or work do not result in the disclosure or use of Information in violation of the terms of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 14513,
+          "char_end": 14848
+        }
+      },
+      {
+        "chunk_id": "chunk_080",
+        "text": "The terms of this Non-Disclosure Agreement shall not be construed to limit either Party\u2019s right to independently engage in any transaction, or independently develop any information, without use of the other Party\u2019s Information.",
+        "span": {
+          "char_start": 14848,
+          "char_end": 15075
+        }
+      },
+      {
+        "chunk_id": "chunk_081",
+        "text": "\u00a79.",
+        "span": {
+          "char_start": 15076,
+          "char_end": 15080
+        }
+      },
+      {
+        "chunk_id": "chunk_082",
+        "text": "Term and Termination.",
+        "span": {
+          "char_start": 15080,
+          "char_end": 15102
+        }
+      },
+      {
+        "chunk_id": "chunk_083",
+        "text": "Except with respect to any Information that is Customer Information, CEII or Personal Information, Recipient\u2019s obligations and duties under this Non-Disclosure Agreement shall have a term of [ ] [()] years from the Effective Date (the \u201cTerm\u201d), but in no event will the confidentiality obligations herein terminate less than one (1) year from the date of the last disclosure.",
+        "span": {
+          "char_start": 15102,
+          "char_end": 15477
+        }
+      },
+      {
+        "chunk_id": "chunk_084",
+        "text": "In the case of any Information that is Customer Information, CEII or Personal Information, Recipient\u2019s obligations and duties under this Non-Disclosure Agreement shall survive for",
+        "span": {
+          "char_start": 15477,
+          "char_end": 15657
+        }
+      },
+      {
+        "chunk_id": "chunk_085",
+        "text": "(i) the Term, or",
+        "span": {
+          "char_start": 15657,
+          "char_end": 15674
+        }
+      },
+      {
+        "chunk_id": "chunk_086",
+        "text": "(ii) so long as such Customer Information, CEII or Personal Information, as applicable, is required to be kept confidential under applicable law, whichever period is longer (the \u201cSpecial Information Term\u201d).",
+        "span": {
+          "char_start": 15674,
+          "char_end": 15881
+        }
+      },
+      {
+        "chunk_id": "chunk_087",
+        "text": "Either Party may terminate this Non-Disclosure Agreement by written notice to the other Party.",
+        "span": {
+          "char_start": 15881,
+          "char_end": 15976
+        }
+      },
+      {
+        "chunk_id": "chunk_088",
+        "text": "Notwithstanding any such termination, all rights and obligations hereunder shall survive",
+        "span": {
+          "char_start": 15976,
+          "char_end": 16065
+        }
+      },
+      {
+        "chunk_id": "chunk_089",
+        "text": "(i) for the Special Information Term for all Customer Information, CEII or Personal Information disclosed prior to such termination, and",
+        "span": {
+          "char_start": 16065,
+          "char_end": 16202
+        }
+      },
+      {
+        "chunk_id": "chunk_090",
+        "text": "(ii) for the Term for all other Information disclosed prior to such termination.",
+        "span": {
+          "char_start": 16202,
+          "char_end": 16282
+        }
+      },
+      {
+        "chunk_id": "chunk_091",
+        "text": "\u00a710.",
+        "span": {
+          "char_start": 16283,
+          "char_end": 16288
+        }
+      },
+      {
+        "chunk_id": "chunk_092",
+        "text": "Injunctive Relief.",
+        "span": {
+          "char_start": 16288,
+          "char_end": 16307
+        }
+      },
+      {
+        "chunk_id": "chunk_093",
+        "text": "The Parties acknowledge that a breach of this Non-Disclosure Agreement by Recipient may cause irreparable harm to Disclosing Party for which money damages would be inadequate and would entitle Disclosing Party to injunctive relief and to such other remedies as may be provided by law.",
+        "span": {
+          "char_start": 16307,
+          "char_end": 16591
+        }
+      },
+      {
+        "chunk_id": "chunk_094",
+        "text": "\u00a711.",
+        "span": {
+          "char_start": 16592,
+          "char_end": 16597
+        }
+      },
+      {
+        "chunk_id": "chunk_095",
+        "text": "Governing Law; Consent to Jurisdiction.",
+        "span": {
+          "char_start": 16597,
+          "char_end": 16637
+        }
+      },
+      {
+        "chunk_id": "chunk_096",
+        "text": "This Non-Disclosure Agreement shall be governed and construed in accordance with the laws of the [Commonwealth of Massachusetts][State of New York][State of Rhode Island] without regard to the principles of the conflict of laws contained therein.",
+        "span": {
+          "char_start": 16637,
+          "char_end": 16884
+        }
+      },
+      {
+        "chunk_id": "chunk_097",
+        "text": "Each Party hereby submits to the personal and subject matter jurisdiction of the courts of the [Commonwealth of Massachusetts][State of New York][State of Rhode Island] for the purpose of interpretation and enforcement of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 16884,
+          "char_end": 17136
+        }
+      },
+      {
+        "chunk_id": "chunk_098",
+        "text": "\u00a712.",
+        "span": {
+          "char_start": 17137,
+          "char_end": 17142
+        }
+      },
+      {
+        "chunk_id": "chunk_099",
+        "text": "Amendments.",
+        "span": {
+          "char_start": 17142,
+          "char_end": 17154
+        }
+      },
+      {
+        "chunk_id": "chunk_100",
+        "text": "This Non-Disclosure",
+        "span": {
+          "char_start": 17154,
+          "char_end": 17174
+        }
+      },
+      {
+        "chunk_id": "chunk_101",
+        "text": "Agreement may be amended or modified only by an instrument in writing signed by authorized representatives of all Parties.",
+        "span": {
+          "char_start": 17174,
+          "char_end": 17296
+        }
+      },
+      {
+        "chunk_id": "chunk_102",
+        "text": "\u00a713.",
+        "span": {
+          "char_start": 17297,
+          "char_end": 17302
+        }
+      },
+      {
+        "chunk_id": "chunk_103",
+        "text": "Assignment.",
+        "span": {
+          "char_start": 17302,
+          "char_end": 17314
+        }
+      },
+      {
+        "chunk_id": "chunk_104",
+        "text": "This Non-Disclosure Agreement may not be assigned without the express written consent of all Parties hereto; provided, however, that any Party may assign this Non-Disclosure Agreement to an Affiliate of such Party without the consent of any other Party.",
+        "span": {
+          "char_start": 17314,
+          "char_end": 17567
+        }
+      },
+      {
+        "chunk_id": "chunk_105",
+        "text": "\u00a714.",
+        "span": {
+          "char_start": 17568,
+          "char_end": 17573
+        }
+      },
+      {
+        "chunk_id": "chunk_106",
+        "text": "Severability.",
+        "span": {
+          "char_start": 17573,
+          "char_end": 17587
+        }
+      },
+      {
+        "chunk_id": "chunk_107",
+        "text": "Whenever possible, each provision of this Non-Disclosure Agreement shall be interpreted in such manner as to be effective and valid under applicable law, but if any provision hereof shall be prohibited by, or determined to be invalid under, applicable law, such provision shall be ineffective to the extent of such prohibition or invalidity, without invalidating the remainder of such provision or the remaining provisions of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 17587,
+          "char_end": 18044
+        }
+      },
+      {
+        "chunk_id": "chunk_108",
+        "text": "All obligations and rights of the Parties expressed herein shall be in addition to, and not in limitation of, those provided by applicable law.",
+        "span": {
+          "char_start": 18044,
+          "char_end": 18187
+        }
+      },
+      {
+        "chunk_id": "chunk_109",
+        "text": "\u00a715.",
+        "span": {
+          "char_start": 18188,
+          "char_end": 18193
+        }
+      },
+      {
+        "chunk_id": "chunk_110",
+        "text": "Entire Agreement.",
+        "span": {
+          "char_start": 18193,
+          "char_end": 18211
+        }
+      },
+      {
+        "chunk_id": "chunk_111",
+        "text": "This Non-Disclosure Agreement constitutes the entire agreement between the Parties with respect to the subject matter hereof, and any and all previous representations or agreements with respect to such subject matter, either oral or written, are hereby annulled and superseded.",
+        "span": {
+          "char_start": 18211,
+          "char_end": 18488
+        }
+      },
+      {
+        "chunk_id": "chunk_112",
+        "text": "\u00a716.",
+        "span": {
+          "char_start": 18489,
+          "char_end": 18494
+        }
+      },
+      {
+        "chunk_id": "chunk_113",
+        "text": "Consents and Waivers.",
+        "span": {
+          "char_start": 18494,
+          "char_end": 18516
+        }
+      },
+      {
+        "chunk_id": "chunk_114",
+        "text": "Any consent or waiver of compliance with any provision of this Non-Disclosure Agreement shall be effective only if in writing and signed by an authorized representative of the Party purported to be bound thereby, and then such consent or waiver shall be effective only in the specific instance and for the specific purpose for which it is given.",
+        "span": {
+          "char_start": 18516,
+          "char_end": 18862
+        }
+      },
+      {
+        "chunk_id": "chunk_115",
+        "text": "No failure or delay by any Party in exercising any right, power or privilege under this Non-Disclosure Agreement shall operate as a waiver thereof, nor shall any single or partial waiver thereof preclude any other exercise of any other right, power or privilege hereunder.",
+        "span": {
+          "char_start": 18862,
+          "char_end": 19134
+        }
+      },
+      {
+        "chunk_id": "chunk_116",
+        "text": "\u00a717.",
+        "span": {
+          "char_start": 19135,
+          "char_end": 19140
+        }
+      },
+      {
+        "chunk_id": "chunk_117",
+        "text": "No Publicity.",
+        "span": {
+          "char_start": 19140,
+          "char_end": 19154
+        }
+      },
+      {
+        "chunk_id": "chunk_118",
+        "text": "[No Party shall issue any press release or make any other public announcement regarding the existence of this Non-Disclosure Agreement or any discussions among the Parties regarding the Purpose without the prior written consent of all Parties.]",
+        "span": {
+          "char_start": 19154,
+          "char_end": 19398
+        }
+      },
+      {
+        "chunk_id": "chunk_119",
+        "text": "\u00a718 Notices.",
+        "span": {
+          "char_start": 19399,
+          "char_end": 19412
+        }
+      },
+      {
+        "chunk_id": "chunk_120",
+        "text": "Where written notice is required by this Non-Disclosure Agreement, such notice shall be deemed to be given when delivered personally, mailed by certified mail, postage prepaid and return receipt requested, or by facsimile or electronic mail, as follows:",
+        "span": {
+          "char_start": 19412,
+          "char_end": 19665
+        }
+      },
+      {
+        "chunk_id": "chunk_121",
+        "text": "To National Grid:",
+        "span": {
+          "char_start": 19666,
+          "char_end": 19684
+        }
+      },
+      {
+        "chunk_id": "chunk_122",
+        "text": "[_____________]",
+        "span": {
+          "char_start": 19684,
+          "char_end": 19699
+        }
+      },
+      {
+        "chunk_id": "chunk_123",
+        "text": "Attn:",
+        "span": {
+          "char_start": 19700,
+          "char_end": 19706
+        }
+      },
+      {
+        "chunk_id": "chunk_124",
+        "text": "__________________________",
+        "span": {
+          "char_start": 19706,
+          "char_end": 19733
+        }
+      },
+      {
+        "chunk_id": "chunk_125",
+        "text": "_______________",
+        "span": {
+          "char_start": 19733,
+          "char_end": 19749
+        }
+      },
+      {
+        "chunk_id": "chunk_126",
+        "text": "_______________",
+        "span": {
+          "char_start": 19749,
+          "char_end": 19764
+        }
+      },
+      {
+        "chunk_id": "chunk_127",
+        "text": "To",
+        "span": {
+          "char_start": 19765,
+          "char_end": 19768
+        }
+      },
+      {
+        "chunk_id": "chunk_128",
+        "text": "[_____________]:",
+        "span": {
+          "char_start": 19768,
+          "char_end": 19785
+        }
+      },
+      {
+        "chunk_id": "chunk_129",
+        "text": "[_____________]",
+        "span": {
+          "char_start": 19785,
+          "char_end": 19801
+        }
+      },
+      {
+        "chunk_id": "chunk_130",
+        "text": "Attn:",
+        "span": {
+          "char_start": 19801,
+          "char_end": 19807
+        }
+      },
+      {
+        "chunk_id": "chunk_131",
+        "text": "__________________________",
+        "span": {
+          "char_start": 19807,
+          "char_end": 19834
+        }
+      },
+      {
+        "chunk_id": "chunk_132",
+        "text": "_______________",
+        "span": {
+          "char_start": 19834,
+          "char_end": 19850
+        }
+      },
+      {
+        "chunk_id": "chunk_133",
+        "text": "_______________",
+        "span": {
+          "char_start": 19850,
+          "char_end": 19865
+        }
+      },
+      {
+        "chunk_id": "chunk_134",
+        "text": "\u00a719 Counterparts.",
+        "span": {
+          "char_start": 19866,
+          "char_end": 19884
+        }
+      },
+      {
+        "chunk_id": "chunk_135",
+        "text": "This Non-Disclosure Agreement may be executed in one or more counterparts, each of which will be deemed to be an original copy of this Non-Disclosure Agreement and all of which, when taken together, will be deemed to constitute one and the same agreement.",
+        "span": {
+          "char_start": 19884,
+          "char_end": 20140
+        }
+      },
+      {
+        "chunk_id": "chunk_136",
+        "text": "The exchange of copies of this Non-Disclosure Agreement and of signature pages by facsimile or in electronic form (\u201c.pdf\u201d or \u201c.tif\u201d) shall constitute effective execution and delivery of this Non-Disclosure Agreement as to the Parties and may be used in lieu of the original Non-Disclosure Agreement for all purposes.",
+        "span": {
+          "char_start": 20140,
+          "char_end": 20457
+        }
+      },
+      {
+        "chunk_id": "chunk_137",
+        "text": "Signatures of the Parties transmitted by facsimile or in electronic format shall be deemed to be their original signatures for all purposes.",
+        "span": {
+          "char_start": 20457,
+          "char_end": 20598
+        }
+      },
+      {
+        "chunk_id": "chunk_138",
+        "text": "In proving this Non-Disclosure Agreement it shall not be necessary to produce or account for more than one such counterpart signed by the Party against whom enforcement is sought.",
+        "span": {
+          "char_start": 20598,
+          "char_end": 20777
+        }
+      },
+      {
+        "chunk_id": "chunk_139",
+        "text": "IN WITNESS WHEREOF, this Non-Disclosure Agreement has been executed by duly authorized representatives of the Parties as of the date first above written.",
+        "span": {
+          "char_start": 20778,
+          "char_end": 20931
+        }
+      },
+      {
+        "chunk_id": "chunk_140",
+        "text": "[insert legal National Grid entity]",
+        "span": {
+          "char_start": 20932,
+          "char_end": 20968
+        }
+      },
+      {
+        "chunk_id": "chunk_141",
+        "text": "[_insert legal name of Contractor]",
+        "span": {
+          "char_start": 20968,
+          "char_end": 21002
+        }
+      },
+      {
+        "chunk_id": "chunk_142",
+        "text": "By:_________________________________",
+        "span": {
+          "char_start": 21003,
+          "char_end": 21040
+        }
+      },
+      {
+        "chunk_id": "chunk_143",
+        "text": "By:_________________________________",
+        "span": {
+          "char_start": 21040,
+          "char_end": 21076
+        }
+      },
+      {
+        "chunk_id": "chunk_144",
+        "text": "Name: Name:",
+        "span": {
+          "char_start": 21077,
+          "char_end": 21088
+        }
+      },
+      {
+        "chunk_id": "chunk_145",
+        "text": "Title: Title:",
+        "span": {
+          "char_start": 21089,
+          "char_end": 21102
+        }
+      },
+      {
+        "chunk_id": "chunk_146",
+        "text": "ISA Exhibit",
+        "span": {
+          "char_start": 21103,
+          "char_end": 21114
+        }
+      },
+      {
+        "chunk_id": "chunk_147",
+        "text": "Information Security Addendum",
+        "span": {
+          "char_start": 21115,
+          "char_end": 21144
+        }
+      },
+      {
+        "chunk_id": "chunk_148",
+        "text": "The following terms and conditions shall apply with regard to Personal Information as defined in this Information Security Addendum (\u201cAddendum\u201d).",
+        "span": {
+          "char_start": 21145,
+          "char_end": 21291
+        }
+      },
+      {
+        "chunk_id": "chunk_149",
+        "text": "In the case of any inconsistency, conflict, or any other difference with respect to Personal Information between the Non-Disclosure Agreement and any of the terms in this Addendum, the terms of this Addendum shall in all cases be controlling.",
+        "span": {
+          "char_start": 21291,
+          "char_end": 21534
+        }
+      },
+      {
+        "chunk_id": "chunk_150",
+        "text": "To the extent any capitalized terms are not defined in this Addendum, such shall have the same definition as have been provided in the preceding Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 21534,
+          "char_end": 21705
+        }
+      },
+      {
+        "chunk_id": "chunk_151",
+        "text": "The obligations of Contractor under this Addendum shall be deemed to apply to and bind Contractor\u2019s Representative to the extent such Representative or Affiliate receives or has access to any Personal Information; provided, however, that Contractor shall remain solely liable for any noncompliance with the terms of this Addendum caused by its Representatives.",
+        "span": {
+          "char_start": 21705,
+          "char_end": 22065
+        }
+      },
+      {
+        "chunk_id": "chunk_152",
+        "text": "1.0 DEFINITIONS",
+        "span": {
+          "char_start": 22066,
+          "char_end": 22081
+        }
+      },
+      {
+        "chunk_id": "chunk_153",
+        "text": "1.1 \u201cPersonal Information\u201d \u2013 means information defined as \u201cpersonal information or \u201cpersonal data\u201d under applicable Law.",
+        "span": {
+          "char_start": 22082,
+          "char_end": 22203
+        }
+      },
+      {
+        "chunk_id": "chunk_154",
+        "text": "Without limiting the foregoing, Personal Information includes information that identifies or could be used to re-identify a specific person, including but not limited to first name and last name or first initial and last name in combination with any one or more of the following data elements: addresses; residential and/or mobile telephone numbers; e-mail addresses; social security numbers; medical insurance numbers; state issued identification card number (including tribal identification numbers); driver\u2019s license numbers or other driver identification data; personnel records; financial account information; credit related information, including any information relating to credit checks or background checks; credit or debit card numbers and personal identification numbers such as access codes, security codes or passwords that would permit access to an individual\u2019s financial account; and medical or health information.",
+        "span": {
+          "char_start": 22203,
+          "char_end": 23133
+        }
+      },
+      {
+        "chunk_id": "chunk_155",
+        "text": "Without limiting the foregoing, Personal Information includes all private data of National Grid and its affiliates\u2019 employees, officers, directors, subcontractors, agents, and customers, that Contractor receives from National Grid, and as may be defined by applicable state and/or federal statutes and regulations.",
+        "span": {
+          "char_start": 23133,
+          "char_end": 23448
+        }
+      },
+      {
+        "chunk_id": "chunk_156",
+        "text": "Personal Information shall not include publicly available information, lawfully made available to the general public in federal, state, or local government records.",
+        "span": {
+          "char_start": 23448,
+          "char_end": 23612
+        }
+      },
+      {
+        "chunk_id": "chunk_157",
+        "text": "1.2 \u201cLaw\u201d \u2013 means, with respect to this Addendum, any foreign, federal, state or local law or regulation, promulgated or amended from time to time during the term of this Non-Disclosure Agreement, applicable to Personal Information received by Contractor from National Grid, including, but not limited to, the Protection of Personal Information of Residents of the Commonwealth of Massachusetts, 201 CMR 17.00 (the \u201cMA Security Regs\u201d), the Rhode Island Identity Theft Protection Act, RIGL \u00a7 11-49.3-1 (the \u201cRI Security Regs\u201d) and the California data security regulations, Cal. Civ. Code \u00a7 1798.81.5, (the \u201cCA Security Regs\u201d).",
+        "span": {
+          "char_start": 23613,
+          "char_end": 24238
+        }
+      },
+      {
+        "chunk_id": "chunk_158",
+        "text": "2.0 SECURITY",
+        "span": {
+          "char_start": 24239,
+          "char_end": 24251
+        }
+      },
+      {
+        "chunk_id": "chunk_159",
+        "text": "2.1 Contractor hereby agrees to comply with all Laws it receives from National Grid during the term of the Non-Disclosure Agreement and ensure that all subcontractors or vendors who have access to National Grid\u2019s Personal Information comply with all Laws.",
+        "span": {
+          "char_start": 24252,
+          "char_end": 24507
+        }
+      },
+      {
+        "chunk_id": "chunk_160",
+        "text": "2.2 Contractor agrees to, and agrees to ensure that its subcontractors and/or vendors who have access to National Grid\u2019s Personal Information will, implement and maintain appropriate physical, technical and administrative security measures for the protection of Personal Information as required by any Law or as required by National Grid; including, but not limited to:",
+        "span": {
+          "char_start": 24508,
+          "char_end": 24878
+        }
+      },
+      {
+        "chunk_id": "chunk_161",
+        "text": "(i) encrypting all transmitted records and files containing Personal Information that will travel across public networks, and encryption of all data containing Personal Information to be transmitted wirelessly;",
+        "span": {
+          "char_start": 24878,
+          "char_end": 25089
+        }
+      },
+      {
+        "chunk_id": "chunk_162",
+        "text": "(ii) prohibiting the transfer of Personal Information to any portable device unless such transfer has been approved in advance;",
+        "span": {
+          "char_start": 25089,
+          "char_end": 25217
+        }
+      },
+      {
+        "chunk_id": "chunk_163",
+        "text": "(iii) retaining Personal Information for a period no longer than is reasonably required to provide the services requested, to meet the purpose for which it was collected, or in accordance with a written retention policy or as may be required by Law; and",
+        "span": {
+          "char_start": 25217,
+          "char_end": 25471
+        }
+      },
+      {
+        "chunk_id": "chunk_164",
+        "text": "(iv) encrypting any Personal Information to be transferred to a portable device.",
+        "span": {
+          "char_start": 25471,
+          "char_end": 25551
+        }
+      },
+      {
+        "chunk_id": "chunk_165",
+        "text": "2.3 Contractor shall develop, document and implement quality assurance measures and internal controls, including implementing tools and methodologies, so that the Services outlined in the any agreements between the Parties are performed in an accurate and timely manner, in accordance with such agreement and applicable Law.",
+        "span": {
+          "char_start": 25552,
+          "char_end": 25876
+        }
+      },
+      {
+        "chunk_id": "chunk_166",
+        "text": "2.4 Contractor shall:",
+        "span": {
+          "char_start": 25877,
+          "char_end": 25899
+        }
+      },
+      {
+        "chunk_id": "chunk_167",
+        "text": "(i) maintain a strong control environment in day-to-day operations;",
+        "span": {
+          "char_start": 25899,
+          "char_end": 25967
+        }
+      },
+      {
+        "chunk_id": "chunk_168",
+        "text": "(ii) document the processes and procedures for quality assurance and internal controls;",
+        "span": {
+          "char_start": 25967,
+          "char_end": 26055
+        }
+      },
+      {
+        "chunk_id": "chunk_169",
+        "text": "(iii) develop and execute a process to ensure regular internal control self-assessments are performed with respect to the Services; and",
+        "span": {
+          "char_start": 26055,
+          "char_end": 26191
+        }
+      },
+      {
+        "chunk_id": "chunk_170",
+        "text": "(iv) maintain an internal audit function sufficient to monitor the processes and systems used to provide the Services.",
+        "span": {
+          "char_start": 26191,
+          "char_end": 26309
+        }
+      },
+      {
+        "chunk_id": "chunk_171",
+        "text": "2.5 Contractor shall not, directly or indirectly, divulge, disclose or communicate any Personal Information it receives from National Grid to any Person, firm, or corporation, except with the written permission of National Grid.",
+        "span": {
+          "char_start": 26310,
+          "char_end": 26538
+        }
+      },
+      {
+        "chunk_id": "chunk_172",
+        "text": "2.6",
+        "span": {
+          "char_start": 26539,
+          "char_end": 26543
+        }
+      },
+      {
+        "chunk_id": "chunk_173",
+        "text": "All records pertaining to Personal Information received from National Grid, whether developed by National Grid or others, are and shall remain the property of National Grid.",
+        "span": {
+          "char_start": 26543,
+          "char_end": 26716
+        }
+      },
+      {
+        "chunk_id": "chunk_174",
+        "text": "2.7",
+        "span": {
+          "char_start": 26717,
+          "char_end": 26721
+        }
+      },
+      {
+        "chunk_id": "chunk_175",
+        "text": "In addition to the above requirements, Contractor shall adopt, implement and maintain security procedures sufficient to protect Personal Information from improper access, disclosure, use, or premature destruction.",
+        "span": {
+          "char_start": 26721,
+          "char_end": 26935
+        }
+      },
+      {
+        "chunk_id": "chunk_176",
+        "text": "Such security procedures shall be reasonably acceptable to National Grid and in compliance with all applicable Laws as they are promulgated or amended.",
+        "span": {
+          "char_start": 26935,
+          "char_end": 27087
+        }
+      },
+      {
+        "chunk_id": "chunk_177",
+        "text": "Contractor shall maintain or adopt a written information security program (\u201cWISP\u201d) or its equivalent consistent with the MA Security Regs and the RI Security Regs, and any other applicable Laws that govern the protection of Personal Information received from National Grid or maintained on behalf of National Grid.",
+        "span": {
+          "char_start": 27087,
+          "char_end": 27402
+        }
+      },
+      {
+        "chunk_id": "chunk_178",
+        "text": "Contractor agrees to apply the standards and requirements of the MA Security Regs and RI Security Regs to all such Personal Information, regardless of the jurisdiction in which the subject of Personal Information resides.",
+        "span": {
+          "char_start": 27402,
+          "char_end": 27624
+        }
+      },
+      {
+        "chunk_id": "chunk_179",
+        "text": "During the term of the Non-Disclosure Agreement and for a period of seven (7) years thereafter, Contractor shall maintain, and provide for National Grid\u2019s review, at National Grid\u2019s request,",
+        "span": {
+          "char_start": 27624,
+          "char_end": 27815
+        }
+      },
+      {
+        "chunk_id": "chunk_180",
+        "text": "(a) Contractor\u2019s WISP; and",
+        "span": {
+          "char_start": 27815,
+          "char_end": 27842
+        }
+      },
+      {
+        "chunk_id": "chunk_181",
+        "text": "(b) other applicable security program documents, including summaries of its incident response policies, encryption standards and/or other computer security protection policies or procedures, that constitute compliance with applicable Laws.",
+        "span": {
+          "char_start": 27842,
+          "char_end": 28082
+        }
+      },
+      {
+        "chunk_id": "chunk_182",
+        "text": "Contractor shall provide National Grid with notice of any amendments to its WISP and such policies or programs, and any new policies or programs related to information privacy and security as may be adopted by Contractor from time to time, within thirty (30) days after the adoption of any such amendment, policy or program or changes in applicable Law.",
+        "span": {
+          "char_start": 28082,
+          "char_end": 28435
+        }
+      },
+      {
+        "chunk_id": "chunk_183",
+        "text": "2.8 Contractor agrees to notify National Grid promptly, but in no event later than 24 hours, after discovery of a security vulnerability, including, but not limited to, an exploitation of security vulnerabilities by third parties that have resulted in corruption, unauthorized modification, sale, rental, and/or otherwise damages to or materially alters the integrity of National Grid\u2019s Information, and shall work with National Grid to mitigate such vulnerabilities.",
+        "span": {
+          "char_start": 28436,
+          "char_end": 28903
+        }
+      },
+      {
+        "chunk_id": "chunk_184",
+        "text": "2.9",
+        "span": {
+          "char_start": 28904,
+          "char_end": 28908
+        }
+      },
+      {
+        "chunk_id": "chunk_185",
+        "text": "Contractor shall have a process for managing both minor and major security incidents.",
+        "span": {
+          "char_start": 28908,
+          "char_end": 28994
+        }
+      },
+      {
+        "chunk_id": "chunk_186",
+        "text": "Contractor shall notify National Grid promptly, and in no event later than five (5) days after discovery, in writing, of any unauthorized access, possession, use, destruction or disclosure of Personal Information (a \u201cSecurity Breach\u201d).",
+        "span": {
+          "char_start": 28994,
+          "char_end": 29230
+        }
+      },
+      {
+        "chunk_id": "chunk_187",
+        "text": "Contractor shall promptly and in writing provide National Grid with full details of the Security Breach, and shall use reasonable efforts to mitigate such Security Breach and prevent a recurrence thereof.",
+        "span": {
+          "char_start": 29230,
+          "char_end": 29435
+        }
+      },
+      {
+        "chunk_id": "chunk_188",
+        "text": "Security Breaches include, but are not limited to, a virus or worm outbreak, cyber security intrusions into systems directly responsible for supporting National Grid data and services, physical security breaches into facilities directly responsible for supporting National Grid data and services, and other directed attacks on systems directly responsible for supporting National Grid data and services.",
+        "span": {
+          "char_start": 29435,
+          "char_end": 29839
+        }
+      },
+      {
+        "chunk_id": "chunk_189",
+        "text": "Contractor shall not be required to provide a written report of attempted security incidents.",
+        "span": {
+          "char_start": 29839,
+          "char_end": 29933
+        }
+      },
+      {
+        "chunk_id": "chunk_190",
+        "text": "\u201cAttempted Security Incidents\u201d means, without limitation, pings and other broadcast attacks on firewall, port scans, unsuccessful log-on attempts, common denial of service attacks, and any combination of the above, so long as no such incident results in unauthorized access, use or disclosure of Personal Information or other serious vulnerability to National Grid\u2019s data.",
+        "span": {
+          "char_start": 29933,
+          "char_end": 30306
+        }
+      },
+      {
+        "chunk_id": "chunk_191",
+        "text": "In the event of a Security Breach, the parties shall cooperate to",
+        "span": {
+          "char_start": 30306,
+          "char_end": 30372
+        }
+      },
+      {
+        "chunk_id": "chunk_192",
+        "text": "(a) mitigate and resolve any data privacy or security issues involving Personal Information, and",
+        "span": {
+          "char_start": 30372,
+          "char_end": 30469
+        }
+      },
+      {
+        "chunk_id": "chunk_193",
+        "text": "(b) make any notifications to individuals affected by the Security Breach, and/or governmental/administrative entities as required by Law.",
+        "span": {
+          "char_start": 30469,
+          "char_end": 30608
+        }
+      },
+      {
+        "chunk_id": "chunk_194",
+        "text": "Contractor\u2019s failure to comply with this Article 2.9 shall be considered a material breach of the Non-Disclosure Agreement, for which no cure period shall apply.",
+        "span": {
+          "char_start": 30608,
+          "char_end": 30769
+        }
+      },
+      {
+        "chunk_id": "chunk_195",
+        "text": "2.10 Following a Security Breach, National Grid, or its designated agent, shall have the right, upon reasonable notice to Contractor, to complete a review of Contractor\u2019s security measures and ensure that unauthorized access to Personal Information has been eliminated.",
+        "span": {
+          "char_start": 30770,
+          "char_end": 31039
+        }
+      },
+      {
+        "chunk_id": "chunk_196",
+        "text": "2.11 Contractor agrees to ensure that any subcontractor or vendor to which it provides National Grid\u2019s Information, including Personal Information received from National Grid, or to which it provides National Grid\u2019s Information and/or Personal Information created or received by Contractor on behalf of National Grid, agrees to the same restrictions and conditions set forth herein through a written contractual agreement.",
+        "span": {
+          "char_start": 31040,
+          "char_end": 31462
+        }
+      },
+      {
+        "chunk_id": "chunk_197",
+        "text": "2.12 Contractor agrees that National Grid\u2019s data, including Personal Information, may not be maintained, stored, or transmitted outside of the United States of America, except for entities that are legally affiliated with Contractor or are wholly owned subsidiaries of Contractor.",
+        "span": {
+          "char_start": 31463,
+          "char_end": 31743
+        }
+      },
+      {
+        "chunk_id": "chunk_198",
+        "text": "2.13 Contractor agrees that it shall be responsible for any and all acts of any subcontractors or vendors to which it allows access to National Grid Information and/or Personal Information.",
+        "span": {
+          "char_start": 31744,
+          "char_end": 31933
+        }
+      },
+      {
+        "chunk_id": "chunk_199",
+        "text": "2.14 Contractor shall provide National Grid with a list of all subcontractors and vendors that will have access to National Grid\u2019s Confidential and/or Personal Information.",
+        "span": {
+          "char_start": 31934,
+          "char_end": 32106
+        }
+      },
+      {
+        "chunk_id": "chunk_200",
+        "text": "2.15 Contractor understands the extremely sensitive nature of the Information, including Personal Information it receives from National Grid, and acknowledges that National Grid would suffer irreparable harm, for which damages would not be an adequate remedy, if National Grid\u2019s Personal Information were improperly disclosed.",
+        "span": {
+          "char_start": 32107,
+          "char_end": 32434
+        }
+      },
+      {
+        "chunk_id": "chunk_201",
+        "text": "Contractor therefore agrees that National Grid shall be entitled to seek and obtain equitable relief in addition to all other remedies at law to protect its Personal Information.",
+        "span": {
+          "char_start": 32434,
+          "char_end": 32612
+        }
+      },
+      {
+        "chunk_id": "chunk_202",
+        "text": "2.16 Contractor agrees that, to the fullest extent permitted by law, it shall be and remain strictly liable for the security of all Personal Information when in Contractor\u2019s possession and when being transmitted from Contractor or received by Contractor.",
+        "span": {
+          "char_start": 32613,
+          "char_end": 32868
+        }
+      },
+      {
+        "chunk_id": "chunk_203",
+        "text": "Without limiting any other obligations under any agreement entered into between the Parties, Contractor agrees that it shall defend, indemnify and hold harmless National Grid and its Affiliates and their officers, directors, employees, agents, servants, successors and assigns, from and against any and all claims, losses, demands, liabilities, costs and other expenses (including but not limited to, reasonable attorneys\u2019 fees and costs, administrative penalties and fines, costs expended to notify individuals and/or to prevent or remedy possible identity theft, financial harm or any other claims of harm related to a breach) incurred as a result of, or arising directly out of or in connection with any acts or omissions of Contractor or any party under its control, including, but not limited to, negligent or intentional acts or omissions, resulting from a Security Breach or encryption failure in the transmission of such Personal Information, except to the extent such act or omission is caused by the sole negligence of National Grid.",
+        "span": {
+          "char_start": 32868,
+          "char_end": 33912
+        }
+      },
+      {
+        "chunk_id": "chunk_204",
+        "text": "This provision shall survive termination of this Addendum, the Non-Disclosure Agreement and any other agreement between the Parties relevant to the Purpose.",
+        "span": {
+          "char_start": 33912,
+          "char_end": 34068
+        }
+      },
+      {
+        "chunk_id": "chunk_205",
+        "text": "2.17",
+        "span": {
+          "char_start": 34069,
+          "char_end": 34074
+        }
+      },
+      {
+        "chunk_id": "chunk_206",
+        "text": "Contractor shall maintain or cause to be maintained sufficient insurance coverage as shall be necessary to insure Contractor and its employees, agents, Representatives and subcontractors against any and all claims or claims for damages arising under this Addendum and the Non-Disclosure Agreement and such insurance coverage shall apply to all services provided by Contractor or its Representatives, agents or subcontractors.",
+        "span": {
+          "char_start": 34074,
+          "char_end": 34499
+        }
+      },
+      {
+        "chunk_id": "chunk_207",
+        "text": "2.18",
+        "span": {
+          "char_start": 34500,
+          "char_end": 34505
+        }
+      },
+      {
+        "chunk_id": "chunk_208",
+        "text": "When required by law, by a court or by other governmental or regulatory authorities (including, without limitation, an employment tribunal), Contractor shall provide, and formally document, a method that ensures that it can secure, preserve, and transfer digital evidence and artifacts to National Grid in a format that shall comply with such law or be admissible by such court or authority.",
+        "span": {
+          "char_start": 34505,
+          "char_end": 34897
+        }
+      },
+      {
+        "chunk_id": "chunk_209",
+        "text": "Deviations from the documented method, either ad-hoc or permanent (e.g. due to new case law or technological advancements), must be agreed upon by the Parties in advance and must still adhere to the aforementioned format and documentation requirements.",
+        "span": {
+          "char_start": 34897,
+          "char_end": 35149
+        }
+      },
+      {
+        "chunk_id": "chunk_210",
+        "text": "2.19",
+        "span": {
+          "char_start": 35150,
+          "char_end": 35155
+        }
+      },
+      {
+        "chunk_id": "chunk_211",
+        "text": "In the event that Contractor fails to fulfill the above obligations or in the event that such failure appears to be an imminent possibility, National Grid shall be entitled to all legal and equitable remedies afforded it by law as a result thereof and may, in addition to any and all other forms of relief, recover from the undersigned all reasonable costs and attorneys\u2019 fees encountered by it in seeking any such remedy.",
+        "span": {
+          "char_start": 35155,
+          "char_end": 35577
+        }
+      },
+      {
+        "chunk_id": "chunk_212",
+        "text": "3.0 DATA SCRUBBING VERIFICATION",
+        "span": {
+          "char_start": 35578,
+          "char_end": 35609
+        }
+      },
+      {
+        "chunk_id": "chunk_213",
+        "text": "3.1",
+        "span": {
+          "char_start": 35610,
+          "char_end": 35614
+        }
+      },
+      {
+        "chunk_id": "chunk_214",
+        "text": "Upon termination of all agreements between the Parties relevant to and in connection with the Purpose, Contractor shall return to National Grid all Personal Information or destroy such Personal Information beyond recovery and certify such destruction in writing to National Grid.",
+        "span": {
+          "char_start": 35614,
+          "char_end": 35894
+        }
+      },
+      {
+        "chunk_id": "chunk_215",
+        "text": "Without limiting the foregoing, upon termination of all agreements between the Parties relevant to and in connection with the Purpose, Contractor shall use the best possible means to scrub, or otherwise destroy beyond recovery all electronic Personal Information in its possession, certifying such destruction in writing to National Grid\u2019s procurement agent, and providing National Grid with a written explanation of the method used for data disposal/destruction, along with a written certification that such method meets or exceeds the National Grid\u2019s data handling standards and industry best practices for the disposal/destruction of sensitive data.",
+        "span": {
+          "char_start": 35894,
+          "char_end": 36547
+        }
+      },
+      {
+        "chunk_id": "chunk_216",
+        "text": "If such return or destruction is not feasible, Contractor shall provide to National Grid notification of the conditions that make return or destruction infeasible.",
+        "span": {
+          "char_start": 36547,
+          "char_end": 36711
+        }
+      },
+      {
+        "chunk_id": "chunk_217",
+        "text": "Upon National Grid\u2019s written agreement that return or destruction of Personal Information is infeasible, Contractor shall extend the protections of this Addendum to such Personal Information and limit further uses and disclosures of such Personal Information to those purposes that make the return or destruction infeasible, for so long as Contractor maintains such Personal Information.",
+        "span": {
+          "char_start": 36711,
+          "char_end": 37098
+        }
+      },
+      {
+        "chunk_id": "chunk_218",
+        "text": "4.0 AUDIT",
+        "span": {
+          "char_start": 37099,
+          "char_end": 37108
+        }
+      },
+      {
+        "chunk_id": "chunk_219",
+        "text": "4.1 Contractor shall, from time to time during the term of the Non-Disclosure Agreement and for a period of seven (7) years thereafter, during regular business hours and upon reasonable notice, permit National Grid or its representatives to perform audits of Contractor\u2019s facilities, equipment, books and records (electronic or otherwise), operational systems and such other audits as may be necessary to ensure:",
+        "span": {
+          "char_start": 37109,
+          "char_end": 37522
+        }
+      },
+      {
+        "chunk_id": "chunk_220",
+        "text": "(a) Contractor\u2019s compliance with this Addendum,",
+        "span": {
+          "char_start": 37522,
+          "char_end": 37570
+        }
+      },
+      {
+        "chunk_id": "chunk_221",
+        "text": "(b) Contractor\u2019s compliance with all applicable Law, and",
+        "span": {
+          "char_start": 37570,
+          "char_end": 37627
+        }
+      },
+      {
+        "chunk_id": "chunk_222",
+        "text": "(c) Contractor\u2019s financial and operational viability, including but not limited to Contractor\u2019s internal controls, security policies, business resumption, continuity, recovery, and contingency plans.",
+        "span": {
+          "char_start": 37627,
+          "char_end": 37826
+        }
+      },
+      {
+        "chunk_id": "chunk_223",
+        "text": "4.2 National Grid requires an annual written self-certification from Contractor based on an independent third party audit that scrutinizes and confirms the effectiveness of controls.",
+        "span": {
+          "char_start": 37827,
+          "char_end": 38010
+        }
+      },
+      {
+        "chunk_id": "chunk_224",
+        "text": "If Contractor fails to perform its audit obligations hereunder, National Grid (or an independent third party auditor on its behalf that is subject to confidentiality obligations) may audit Contractor and subservice providers control environments and security practices relevant to services provided once in any twelve (12)-month period, with reasonable prior written notice (at least seven (7) days\u2019 notice) and under reasonable time, place and manner conditions.",
+        "span": {
+          "char_start": 38010,
+          "char_end": 38473
+        }
+      },
+      {
+        "chunk_id": "chunk_225",
+        "text": "4.3",
+        "span": {
+          "char_start": 38474,
+          "char_end": 38478
+        }
+      },
+      {
+        "chunk_id": "chunk_226",
+        "text": "In addition to the above, National Grid may also request Contractor to participate in an audit and information disclosure in the event",
+        "span": {
+          "char_start": 38478,
+          "char_end": 38613
+        }
+      },
+      {
+        "chunk_id": "chunk_227",
+        "text": "(a) National Grid receives any audit requests from a governmental or regulated agency, and/or",
+        "span": {
+          "char_start": 38613,
+          "char_end": 38707
+        }
+      },
+      {
+        "chunk_id": "chunk_228",
+        "text": "(b) within 24 hours if Contractor suffers a Security Breach.",
+        "span": {
+          "char_start": 38707,
+          "char_end": 38767
+        }
+      },
+      {
+        "chunk_id": "chunk_229",
+        "text": "5.0 MISCELLANEOUS",
+        "span": {
+          "char_start": 38768,
+          "char_end": 38785
+        }
+      },
+      {
+        "chunk_id": "chunk_230",
+        "text": "5.1",
+        "span": {
+          "char_start": 38786,
+          "char_end": 38790
+        }
+      },
+      {
+        "chunk_id": "chunk_231",
+        "text": "Where applicable, if, and only with National Grid\u2019s prior consent, Contractor processes Personal Information received from National Grid from the \u201cEuropean Economic Area\u201d or \u201cEEA\u201d (as defined below) in a jurisdiction that is not an approved jurisdiction under the EEA, Contractor shall ensure that it has a legally approved mechanism in place to allow for the international data transfer prior to the transfer of any such Personal Information and Contractor will abide by the obligations under Regulation (EU) 2016/679, the General Data Protection Regulation, fair and lawful use requirements, together with any additional implementing legislation, rules or regulations that are issued by applicable supervisory authorities with respect to such Personal Information.",
+        "span": {
+          "char_start": 38790,
+          "char_end": 39557
+        }
+      },
+      {
+        "chunk_id": "chunk_232",
+        "text": "The \u201cEEA\u201d means those countries that are members of European Free Trade Association (EFTA), and the then-current, post-accession member states of the European Union.",
+        "span": {
+          "char_start": 39557,
+          "char_end": 39722
+        }
+      },
+      {
+        "chunk_id": "chunk_233",
+        "text": "5.2 Contractor agrees to cooperate fully with National Grid and to execute such further instruments, documents and agreements, and to give such further written assurances as may be reasonably requested by the other Party, to better evidence and reflect the transactions described in and contemplated by this Addendum, and to carry into effect the intents and purposes of this Addendum.",
+        "span": {
+          "char_start": 39723,
+          "char_end": 40108
+        }
+      },
+      {
+        "chunk_id": "chunk_234",
+        "text": "5.3",
+        "span": {
+          "char_start": 40109,
+          "char_end": 40113
+        }
+      },
+      {
+        "chunk_id": "chunk_235",
+        "text": "The terms of this Addendum shall survive the termination of all agreements between the Parties related to or in connection with the Purpose for any reason.",
+        "span": {
+          "char_start": 40113,
+          "char_end": 40268
+        }
+      },
+      {
+        "chunk_id": "chunk_236",
+        "text": "CEII Exhibit",
+        "span": {
+          "char_start": 40269,
+          "char_end": 40281
+        }
+      },
+      {
+        "chunk_id": "chunk_237",
+        "text": "List of Contractor Representatives Authorized to Receive CEII",
+        "span": {
+          "char_start": 40282,
+          "char_end": 40343
+        }
+      },
+      {
+        "chunk_id": "chunk_238",
+        "text": "Schedule A",
+        "span": {
+          "char_start": 40344,
+          "char_end": 40354
+        }
+      },
+      {
+        "chunk_id": "chunk_239",
+        "text": "CERTIFICATE OF NON-DISCLOSURE",
+        "span": {
+          "char_start": 40355,
+          "char_end": 40384
+        }
+      },
+      {
+        "chunk_id": "chunk_240",
+        "text": "I, the undersigned, hereby certify my understanding that the Information which includes critical energy/electric infrastructure information (\u201cCEII\u201d) is being provided to me pursuant to the terms and restrictions of the Non-Disclosure Agreement by and between National Grid and ____________ dated _________, ___ 20__ (\u201cNon-Disclosure Agreement\u201d).",
+        "span": {
+          "char_start": 40385,
+          "char_end": 40731
+        }
+      },
+      {
+        "chunk_id": "chunk_241",
+        "text": "I also certify that I have been given a copy of that Non-Disclosure Agreement, have read its terms and conditions, and agree to be bound by, and comply with, such terms of conditions.",
+        "span": {
+          "char_start": 40731,
+          "char_end": 40915
+        }
+      },
+      {
+        "chunk_id": "chunk_242",
+        "text": "I understand that the contents of the Information and any notes, memoranda, computer software, software documentation or any other forms of information regarding or derived from the Information shall not be disclosed to anyone other than in accordance with the Non-Disclosure Agreement and shall be used only for the Purpose as defined in the Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 40915,
+          "char_end": 41284
+        }
+      },
+      {
+        "chunk_id": "chunk_243",
+        "text": "I further certify that I will retain an executed copy of this executed Schedule A for seven (7) years from the expiration of the Non-Disclosure Agreement and will forward a signed copy of the same to my National Grid contact.",
+        "span": {
+          "char_start": 41284,
+          "char_end": 41509
+        }
+      },
+      {
+        "chunk_id": "chunk_244",
+        "text": "I further acknowledge and agree that, in the event that I cease to be engaged in the Purpose, I shall continue to be bound by the terms and conditions of this Non-Disclosure Agreement.",
+        "span": {
+          "char_start": 41510,
+          "char_end": 41694
+        }
+      },
+      {
+        "chunk_id": "chunk_245",
+        "text": "Signature:",
+        "span": {
+          "char_start": 41695,
+          "char_end": 41706
+        }
+      },
+      {
+        "chunk_id": "chunk_246",
+        "text": "______________________________",
+        "span": {
+          "char_start": 41706,
+          "char_end": 41736
+        }
+      },
+      {
+        "chunk_id": "chunk_247",
+        "text": "Print Name:",
+        "span": {
+          "char_start": 41737,
+          "char_end": 41749
+        }
+      },
+      {
+        "chunk_id": "chunk_248",
+        "text": "_____________________________",
+        "span": {
+          "char_start": 41749,
+          "char_end": 41778
+        }
+      }
+    ]
+  },
+  "playbook": {
+    "playbook_id": "contractnli_nda_minimal",
+    "version": "1.1",
+    "ruleset_hash": "522434a49314eebf038a96bdf24de823eb9f62ab090c1265528bb71cde3af51f"
+  },
+  "hypothesis_traces": [
+    {
+      "hypothesis_id": "H01",
+      "dataset_hypothesis_key": "nda-1",
+      "hypothesis_text": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+      "gold_label": "NOT_MENTIONED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H01_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H01"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "All Confidential Information shall be expressly identified by the Disclosing Party."
+          }
+        },
+        {
+          "step_id": "H01_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H01"
+          },
+          "outputs": {
+            "label": "CONTRADICTED",
+            "raw_evidence_spans": [
+              9,
+              10
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H01_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              9,
+              10
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H01_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H01",
+            "label": "CONTRADICTED"
+          },
+          "outputs": {
+            "severity": "HIGH",
+            "action": "ESCALATE",
+            "rationale": "Explicit identification: The NDA appears to take the opposite position (i.e., not all Confidential Information must be expressly identified). Severity HIGH; action ESCALATE."
+          }
+        },
+        {
+          "step_id": "H01_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "CONTRADICTED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H01_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "CONTRADICTED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "conflict",
+            "rationale": "Explicit identification: The NDA appears to take the opposite position (i.e., not all Confidential Information must be expressly identified). Severity HIGH; action ESCALATE."
+          }
+        }
+      ],
+      "decision": {
+        "label": "CONTRADICTED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_009",
+              "quote": "(a) The term \u201cInformation\u201d means",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 1276,
+                "char_end": 1308
+              }
+            },
+            {
+              "chunk_id": "chunk_010",
+              "quote": "(i) all financial, technical and other non-public or proprietary information which is furnished or disclosed orally, in writing, electronically or in other form or media by Disclosing Party and/or its Representatives to Recipient and/or its Representatives in connection with the Purpose and that is described or identified (at the time of disclosure) as being non-public, confidential or proprietary, or the non-public or proprietary nature of which is apparent from the context of the disclosure or the contents or nature of the information disclosed;",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 1309,
+                "char_end": 1862
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+          "inference": "Predicted CONTRADICTED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "HIGH",
+          "criticality": "P2",
+          "playbook_rule_ids": [
+            "H01"
+          ],
+          "recommended_action": "ESCALATE"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H01"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H01"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H02",
+      "dataset_hypothesis_key": "nda-2",
+      "hypothesis_text": "Confidential Information shall only include technical information.",
+      "gold_label": "CONTRADICTED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": true,
+      "steps": [
+        {
+          "step_id": "H02_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H02"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Confidential Information shall only include technical information."
+          }
+        },
+        {
+          "step_id": "H02_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H02"
+          },
+          "outputs": {
+            "label": "CONTRADICTED",
+            "raw_evidence_spans": [
+              9,
+              10
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H02_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              9,
+              10
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H02_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H02",
+            "label": "CONTRADICTED"
+          },
+          "outputs": {
+            "severity": "HIGH",
+            "action": "ESCALATE",
+            "rationale": "Technical-only scope: The NDA does not limit Confidential Information to technical information only (it appears broader). Severity HIGH; action ESCALATE."
+          }
+        },
+        {
+          "step_id": "H02_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "CONTRADICTED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H02_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "CONTRADICTED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "conflict",
+            "rationale": "Technical-only scope: The NDA does not limit Confidential Information to technical information only (it appears broader). Severity HIGH; action ESCALATE."
+          }
+        }
+      ],
+      "decision": {
+        "label": "CONTRADICTED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_009",
+              "quote": "(a) The term \u201cInformation\u201d means",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 1276,
+                "char_end": 1308
+              }
+            },
+            {
+              "chunk_id": "chunk_010",
+              "quote": "(i) all financial, technical and other non-public or proprietary information which is furnished or disclosed orally, in writing, electronically or in other form or media by Disclosing Party and/or its Representatives to Recipient and/or its Representatives in connection with the Purpose and that is described or identified (at the time of disclosure) as being non-public, confidential or proprietary, or the non-public or proprietary nature of which is apparent from the context of the disclosure or the contents or nature of the information disclosed;",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 1309,
+                "char_end": 1862
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Confidential Information shall only include technical information.",
+          "inference": "Predicted CONTRADICTED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "HIGH",
+          "criticality": "P2",
+          "playbook_rule_ids": [
+            "H02"
+          ],
+          "recommended_action": "ESCALATE"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H02"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "PASS",
+          "message": "All cited spans are valid canonical text segments.",
+          "related_hypothesis_id": "H02"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H03",
+      "dataset_hypothesis_key": "nda-3",
+      "hypothesis_text": "Confidential Information may include verbally conveyed information.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H03_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H03"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Confidential Information may include verbally conveyed information."
+          }
+        },
+        {
+          "step_id": "H03_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H03"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              9,
+              10
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H03_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              9,
+              10
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H03_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H03",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Verbal information included: The NDA permits Confidential Information to include oral/verbal disclosures (typically subject to conditions). Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H03_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H03_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Verbal information included: The NDA permits Confidential Information to include oral/verbal disclosures (typically subject to conditions). Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_009",
+              "quote": "(a) The term \u201cInformation\u201d means",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 1276,
+                "char_end": 1308
+              }
+            },
+            {
+              "chunk_id": "chunk_010",
+              "quote": "(i) all financial, technical and other non-public or proprietary information which is furnished or disclosed orally, in writing, electronically or in other form or media by Disclosing Party and/or its Representatives to Recipient and/or its Representatives in connection with the Purpose and that is described or identified (at the time of disclosure) as being non-public, confidential or proprietary, or the non-public or proprietary nature of which is apparent from the context of the disclosure or the contents or nature of the information disclosed;",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 1309,
+                "char_end": 1862
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Confidential Information may include verbally conveyed information.",
+          "inference": "Predicted ENTAILED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P2",
+          "playbook_rule_ids": [
+            "H03"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H03"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H03"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H04",
+      "dataset_hypothesis_key": "nda-4",
+      "hypothesis_text": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H04_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H04"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+          }
+        },
+        {
+          "step_id": "H04_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H04"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              58
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H04_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              58
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 1,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H04_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H04",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Purpose limitation: The NDA restricts use of Confidential Information to the stated purpose(s) only. Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H04_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 1
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H04_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 1
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Purpose limitation: The NDA restricts use of Confidential Information to the stated purpose(s) only. Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_058",
+              "quote": "Scope of Use. Recipient and each of its Representatives shall use Information disclosed by or on behalf of Disclosing Party solely in connection with the Purpose and shall not use, directly or indirectly, any Information for any other purpose without Disclosing Party\u2019s prior written consent.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 11779,
+                "char_end": 12071
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+          "inference": "Predicted ENTAILED supported by 1 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P0",
+          "playbook_rule_ids": [
+            "H04"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H04"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H04"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H05",
+      "dataset_hypothesis_key": "nda-5",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some of Receiving Party's employees.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H05_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H05"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party may share some Confidential Information with some of Receiving Party's employees."
+          }
+        },
+        {
+          "step_id": "H05_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H05"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              18,
+              25
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H05_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              18,
+              25
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H05_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H05",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Disclosure to employees: The NDA permits sharing Confidential Information with employees (typically on a need-to-know basis). Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H05_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H05_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Disclosure to employees: The NDA permits sharing Confidential Information with employees (typically on a need-to-know basis). Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_018",
+              "quote": "(d) The term \u201cRepresentative(s)\u201d means the Affiliates of a Party and the officers, directors, members, managers, employees, contractors, legal advisors, financial advisors and representatives of such Party and its Affiliates.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 2722,
+                "char_end": 2947
+              }
+            },
+            {
+              "chunk_id": "chunk_025",
+              "quote": "The foregoing notwithstanding, Recipient may disclose Information to its Representatives to the extent each such Representative has a need to know such Information for the Purpose contemplated by this Non-Disclosure Agreement and agrees to observe and comply with the obligations of Recipient under this Non-Disclosure Agreement with regard to such Information.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 4241,
+                "char_end": 4603
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party may share some Confidential Information with some of Receiving Party's employees.",
+          "inference": "Predicted ENTAILED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P1",
+          "playbook_rule_ids": [
+            "H05"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H05"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H05"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H06",
+      "dataset_hypothesis_key": "nda-7",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "gold_label": "CONTRADICTED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H06_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H06"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+          }
+        },
+        {
+          "step_id": "H06_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H06"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              18,
+              25
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H06_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              18,
+              25
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H06_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H06",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Disclosure to third parties / representatives: The NDA permits disclosure to third parties such as consultants/advisors (typically under confidentiality obligations). Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H06_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H06_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Disclosure to third parties / representatives: The NDA permits disclosure to third parties such as consultants/advisors (typically under confidentiality obligations). Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_018",
+              "quote": "(d) The term \u201cRepresentative(s)\u201d means the Affiliates of a Party and the officers, directors, members, managers, employees, contractors, legal advisors, financial advisors and representatives of such Party and its Affiliates.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 2722,
+                "char_end": 2947
+              }
+            },
+            {
+              "chunk_id": "chunk_025",
+              "quote": "The foregoing notwithstanding, Recipient may disclose Information to its Representatives to the extent each such Representative has a need to know such Information for the Purpose contemplated by this Non-Disclosure Agreement and agrees to observe and comply with the obligations of Recipient under this Non-Disclosure Agreement with regard to such Information.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 4241,
+                "char_end": 4603
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+          "inference": "Predicted ENTAILED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P0",
+          "playbook_rule_ids": [
+            "H06"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H06"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H06"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H07",
+      "dataset_hypothesis_key": "nda-8",
+      "hypothesis_text": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H07_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H07"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information."
+          }
+        },
+        {
+          "step_id": "H07_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H07"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              54
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H07_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              54
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 1,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H07_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H07",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Notice for compelled disclosure: The NDA requires notice to the Disclosing Party before/when compelled disclosure occurs (subject to legal constraints). Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H07_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 1
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H07_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 1
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Notice for compelled disclosure: The NDA requires notice to the Disclosing Party before/when compelled disclosure occurs (subject to legal constraints). Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_054",
+              "quote": "Recipient agrees that if it or any of its Representatives are required by law, by a court or by other governmental or regulatory authorities (including, without limitation, by oral question, interrogatory, request for information or documents, subpoena, civil or criminal investigative demand or other process) to disclose any of Disclosing Party\u2019s Information, Recipient shall provide Disclosing Party with prompt notice of any such request or requirement, to the extent permitted to do so by applicable law, so that Disclosing Party may seek an appropriate protective order or waive compliance with the provisions of this Non-Disclosure Agreement.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 10221,
+                "char_end": 10871
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+          "inference": "Predicted ENTAILED supported by 1 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P1",
+          "playbook_rule_ids": [
+            "H07"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H07"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H07"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H08",
+      "dataset_hypothesis_key": "nda-10",
+      "hypothesis_text": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+      "gold_label": "NOT_MENTIONED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": true,
+      "steps": [
+        {
+          "step_id": "H08_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H08"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+          }
+        },
+        {
+          "step_id": "H08_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H08"
+          },
+          "outputs": {
+            "label": "NOT_MENTIONED",
+            "raw_evidence_spans": [],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H08_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": []
+          },
+          "outputs": {
+            "evidence_items_count": 0,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H08_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H08",
+            "label": "NOT_MENTIONED"
+          },
+          "outputs": {
+            "severity": "MEDIUM",
+            "action": "CLARIFY",
+            "rationale": "Confidentiality of the agreement/existence: The NDA does not clearly address confidentiality of the agreement\u2019s existence or negotiation. Severity MEDIUM; action CLARIFY."
+          }
+        },
+        {
+          "step_id": "H08_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H08_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "status": "missing",
+            "rationale": "Confidentiality of the agreement/existence: The NDA does not clearly address confidentiality of the agreement\u2019s existence or negotiation. Severity MEDIUM; action CLARIFY."
+          }
+        }
+      ],
+      "decision": {
+        "label": "NOT_MENTIONED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+          "inference": "Predicted NOT_MENTIONED; no evidence spans cited.",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "MEDIUM",
+          "criticality": "P2",
+          "playbook_rule_ids": [
+            "H08"
+          ],
+          "recommended_action": "CLARIFY"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "NOT_MENTIONED \u2014 evidence not required.",
+          "related_hypothesis_id": "H08"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "PASS",
+          "message": "All cited spans are valid canonical text segments.",
+          "related_hypothesis_id": "H08"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H09",
+      "dataset_hypothesis_key": "nda-11",
+      "hypothesis_text": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.",
+      "gold_label": "NOT_MENTIONED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": true,
+      "steps": [
+        {
+          "step_id": "H09_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H09"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information."
+          }
+        },
+        {
+          "step_id": "H09_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H09"
+          },
+          "outputs": {
+            "label": "NOT_MENTIONED",
+            "raw_evidence_spans": [],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H09_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": []
+          },
+          "outputs": {
+            "evidence_items_count": 0,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H09_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H09",
+            "label": "NOT_MENTIONED"
+          },
+          "outputs": {
+            "severity": "MEDIUM",
+            "action": "CLARIFY",
+            "rationale": "No reverse engineering: The NDA does not clearly address reverse engineering restrictions. Severity MEDIUM; action CLARIFY."
+          }
+        },
+        {
+          "step_id": "H09_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H09_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "status": "missing",
+            "rationale": "No reverse engineering: The NDA does not clearly address reverse engineering restrictions. Severity MEDIUM; action CLARIFY."
+          }
+        }
+      ],
+      "decision": {
+        "label": "NOT_MENTIONED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.",
+          "inference": "Predicted NOT_MENTIONED; no evidence spans cited.",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "MEDIUM",
+          "criticality": "P2",
+          "playbook_rule_ids": [
+            "H09"
+          ],
+          "recommended_action": "CLARIFY"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "NOT_MENTIONED \u2014 evidence not required.",
+          "related_hypothesis_id": "H09"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "PASS",
+          "message": "All cited spans are valid canonical text segments.",
+          "related_hypothesis_id": "H09"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H10",
+      "dataset_hypothesis_key": "nda-12",
+      "hypothesis_text": "Receiving Party may independently develop information similar to Confidential Information.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H10_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H10"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party may independently develop information similar to Confidential Information."
+          }
+        },
+        {
+          "step_id": "H10_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H10"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              41,
+              46
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H10_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              41,
+              46
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H10_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H10",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "MEDIUM",
+            "action": "NEGOTIATE",
+            "rationale": "Independent development permitted: The NDA permits independent development of similar information; this may be acceptable but often requires careful scoping. Severity MEDIUM; action NEGOTIATE."
+          }
+        },
+        {
+          "step_id": "H10_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H10_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Independent development permitted: The NDA permits independent development of similar information; this may be acceptable but often requires careful scoping. Severity MEDIUM; action NEGOTIATE."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_041",
+              "quote": "(a) This Non-Disclosure",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 8146,
+                "char_end": 8170
+              }
+            },
+            {
+              "chunk_id": "chunk_046",
+              "quote": "(iv) is developed by Recipient or its Representatives independently of the Information disclosed hereunder by or on behalf of Disclosing Party (as evidenced by written documentation).",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 8780,
+                "char_end": 8963
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party may independently develop information similar to Confidential Information.",
+          "inference": "Predicted ENTAILED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "MEDIUM",
+          "criticality": "P1",
+          "playbook_rule_ids": [
+            "H10"
+          ],
+          "recommended_action": "NEGOTIATE"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H10"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H10"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H11",
+      "dataset_hypothesis_key": "nda-13",
+      "hypothesis_text": "Receiving Party may acquire information similar to Confidential Information from a third party.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H11_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H11"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party may acquire information similar to Confidential Information from a third party."
+          }
+        },
+        {
+          "step_id": "H11_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H11"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              41,
+              45
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H11_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              41,
+              45
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H11_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H11",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Third-party acquisition permitted: The NDA permits acquiring similar information from third parties (subject to not breaching confidentiality obligations). Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H11_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H11_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Third-party acquisition permitted: The NDA permits acquiring similar information from third parties (subject to not breaching confidentiality obligations). Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_041",
+              "quote": "(a) This Non-Disclosure",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 8146,
+                "char_end": 8170
+              }
+            },
+            {
+              "chunk_id": "chunk_045",
+              "quote": "(iii) is rightfully acquired by Recipient or its Representative(s) from a third party who is not under any obligation of confidence with respect to such Information, or",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 8611,
+                "char_end": 8779
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party may acquire information similar to Confidential Information from a third party.",
+          "inference": "Predicted ENTAILED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P1",
+          "playbook_rule_ids": [
+            "H11"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H11"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H11"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H12",
+      "dataset_hypothesis_key": "nda-15",
+      "hypothesis_text": "Agreement shall not grant Receiving Party any right to Confidential Information.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H12_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H12"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Agreement shall not grant Receiving Party any right to Confidential Information."
+          }
+        },
+        {
+          "step_id": "H12_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H12"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              63,
+              64
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H12_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              63,
+              64
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 2,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H12_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H12",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "No rights / no license: The NDA includes a no-rights/no-license position regarding Confidential Information. Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H12_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H12_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 2
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "No rights / no license: The NDA includes a no-rights/no-license position regarding Confidential Information. Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_063",
+              "quote": "Neither Recipient nor its Representatives shall acquire any rights in Information by virtue of its disclosure hereunder.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 12651,
+                "char_end": 12772
+              }
+            },
+            {
+              "chunk_id": "chunk_064",
+              "quote": "No license to Recipient or its Representatives, under any trademark, patent, or other intellectual property right, is either granted or implied by the disclosure of Information under this Non-Disclosure Agreement.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 12772,
+                "char_end": 12985
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Agreement shall not grant Receiving Party any right to Confidential Information.",
+          "inference": "Predicted ENTAILED supported by 2 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P0",
+          "playbook_rule_ids": [
+            "H12"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H12"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H12"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H13",
+      "dataset_hypothesis_key": "nda-16",
+      "hypothesis_text": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+      "gold_label": "NOT_MENTIONED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": true,
+      "steps": [
+        {
+          "step_id": "H13_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H13"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement."
+          }
+        },
+        {
+          "step_id": "H13_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H13"
+          },
+          "outputs": {
+            "label": "NOT_MENTIONED",
+            "raw_evidence_spans": [],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H13_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": []
+          },
+          "outputs": {
+            "evidence_items_count": 0,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H13_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H13",
+            "label": "NOT_MENTIONED"
+          },
+          "outputs": {
+            "severity": "HIGH",
+            "action": "CLARIFY",
+            "rationale": "Return or destruction on termination: The NDA does not clearly require return or destruction of Confidential Information upon termination. Severity HIGH; action CLARIFY."
+          }
+        },
+        {
+          "step_id": "H13_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H13_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "status": "missing",
+            "rationale": "Return or destruction on termination: The NDA does not clearly require return or destruction of Confidential Information upon termination. Severity HIGH; action CLARIFY."
+          }
+        }
+      ],
+      "decision": {
+        "label": "NOT_MENTIONED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+          "inference": "Predicted NOT_MENTIONED; no evidence spans cited.",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "HIGH",
+          "criticality": "P0",
+          "playbook_rule_ids": [
+            "H13"
+          ],
+          "recommended_action": "CLARIFY"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "NOT_MENTIONED \u2014 evidence not required.",
+          "related_hypothesis_id": "H13"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "PASS",
+          "message": "All cited spans are valid canonical text segments.",
+          "related_hypothesis_id": "H13"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H14",
+      "dataset_hypothesis_key": "nda-17",
+      "hypothesis_text": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+      "gold_label": "NOT_MENTIONED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": true,
+      "steps": [
+        {
+          "step_id": "H14_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H14"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+          }
+        },
+        {
+          "step_id": "H14_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H14"
+          },
+          "outputs": {
+            "label": "NOT_MENTIONED",
+            "raw_evidence_spans": [],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H14_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": []
+          },
+          "outputs": {
+            "evidence_items_count": 0,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H14_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H14",
+            "label": "NOT_MENTIONED"
+          },
+          "outputs": {
+            "severity": "MEDIUM",
+            "action": "CLARIFY",
+            "rationale": "Copying permitted in some circumstances: The NDA does not clearly address whether copying Confidential Information is permitted under controlled circumstances. Severity MEDIUM; action CLARIFY."
+          }
+        },
+        {
+          "step_id": "H14_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H14_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "status": "missing",
+            "rationale": "Copying permitted in some circumstances: The NDA does not clearly address whether copying Confidential Information is permitted under controlled circumstances. Severity MEDIUM; action CLARIFY."
+          }
+        }
+      ],
+      "decision": {
+        "label": "NOT_MENTIONED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+          "inference": "Predicted NOT_MENTIONED; no evidence spans cited.",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "MEDIUM",
+          "criticality": "P1",
+          "playbook_rule_ids": [
+            "H14"
+          ],
+          "recommended_action": "CLARIFY"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "NOT_MENTIONED \u2014 evidence not required.",
+          "related_hypothesis_id": "H14"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "PASS",
+          "message": "All cited spans are valid canonical text segments.",
+          "related_hypothesis_id": "H14"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H15",
+      "dataset_hypothesis_key": "nda-18",
+      "hypothesis_text": "Receiving Party shall not solicit some of Disclosing Party's representatives.",
+      "gold_label": "NOT_MENTIONED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": true,
+      "steps": [
+        {
+          "step_id": "H15_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H15"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party shall not solicit some of Disclosing Party's representatives."
+          }
+        },
+        {
+          "step_id": "H15_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H15"
+          },
+          "outputs": {
+            "label": "NOT_MENTIONED",
+            "raw_evidence_spans": [],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H15_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": []
+          },
+          "outputs": {
+            "evidence_items_count": 0,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H15_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H15",
+            "label": "NOT_MENTIONED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Non-solicitation: The NDA does not include a clear non-solicitation restriction; this is often optional depending on the engagement. Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H15_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H15_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "NOT_MENTIONED",
+            "evidence_count": 0
+          },
+          "outputs": {
+            "status": "missing",
+            "rationale": "Non-solicitation: The NDA does not include a clear non-solicitation restriction; this is often optional depending on the engagement. Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "NOT_MENTIONED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party shall not solicit some of Disclosing Party's representatives.",
+          "inference": "Predicted NOT_MENTIONED; no evidence spans cited.",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P2",
+          "playbook_rule_ids": [
+            "H15"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "NOT_MENTIONED \u2014 evidence not required.",
+          "related_hypothesis_id": "H15"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "PASS",
+          "message": "All cited spans are valid canonical text segments.",
+          "related_hypothesis_id": "H15"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H16",
+      "dataset_hypothesis_key": "nda-19",
+      "hypothesis_text": "Some obligations of Agreement may survive termination of Agreement.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": true,
+      "steps": [
+        {
+          "step_id": "H16_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H16"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Some obligations of Agreement may survive termination of Agreement."
+          }
+        },
+        {
+          "step_id": "H16_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H16"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H16_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 7,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H16_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H16",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "LOW",
+            "action": "ACCEPT",
+            "rationale": "Survival of obligations: The NDA indicates that certain obligations survive termination (commonly confidentiality and related duties). Severity LOW; action ACCEPT."
+          }
+        },
+        {
+          "step_id": "H16_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 7
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": true
+          }
+        },
+        {
+          "step_id": "H16_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 7
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Survival of obligations: The NDA indicates that certain obligations survive termination (commonly confidentiality and related duties). Severity LOW; action ACCEPT."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_084",
+              "quote": "In the case of any Information that is Customer Information, CEII or Personal Information, Recipient\u2019s obligations and duties under this Non-Disclosure Agreement shall survive for",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 15477,
+                "char_end": 15657
+              }
+            },
+            {
+              "chunk_id": "chunk_085",
+              "quote": "(i) the Term, or",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 15657,
+                "char_end": 15674
+              }
+            },
+            {
+              "chunk_id": "chunk_086",
+              "quote": "(ii) so long as such Customer Information, CEII or Personal Information, as applicable, is required to be kept confidential under applicable law, whichever period is longer (the \u201cSpecial Information Term\u201d).",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 15674,
+                "char_end": 15881
+              }
+            },
+            {
+              "chunk_id": "chunk_087",
+              "quote": "Either Party may terminate this Non-Disclosure Agreement by written notice to the other Party.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 15881,
+                "char_end": 15976
+              }
+            },
+            {
+              "chunk_id": "chunk_088",
+              "quote": "Notwithstanding any such termination, all rights and obligations hereunder shall survive",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 15976,
+                "char_end": 16065
+              }
+            },
+            {
+              "chunk_id": "chunk_089",
+              "quote": "(i) for the Special Information Term for all Customer Information, CEII or Personal Information disclosed prior to such termination, and",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 16065,
+                "char_end": 16202
+              }
+            },
+            {
+              "chunk_id": "chunk_090",
+              "quote": "(ii) for the Term for all other Information disclosed prior to such termination.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 16202,
+                "char_end": 16282
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Some obligations of Agreement may survive termination of Agreement.",
+          "inference": "Predicted ENTAILED supported by 7 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "LOW",
+          "criticality": "P1",
+          "playbook_rule_ids": [
+            "H16"
+          ],
+          "recommended_action": "ACCEPT"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H16"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "PASS",
+          "message": "All cited spans are valid canonical text segments.",
+          "related_hypothesis_id": "H16"
+        }
+      ]
+    },
+    {
+      "hypothesis_id": "H17",
+      "dataset_hypothesis_key": "nda-20",
+      "hypothesis_text": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+      "gold_label": "ENTAILED",
+      "latency_ms": 1460.968424429131,
+      "compliant_evidence_required": true,
+      "quote_integrity_pass": false,
+      "steps": [
+        {
+          "step_id": "H17_load_inputs",
+          "step_type": "load_inputs",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:23:21.924+00:00",
+          "inputs": {
+            "contract_id": "58",
+            "hypothesis_id": "H17"
+          },
+          "outputs": {
+            "spans_count": 249,
+            "hypothesis_text": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+          }
+        },
+        {
+          "step_id": "H17_nli_infer",
+          "step_type": "nli_infer",
+          "producer": {
+            "component": "model",
+            "component_id": "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
+          },
+          "started_at": "2026-04-08T22:23:21.924+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H17"
+          },
+          "outputs": {
+            "label": "ENTAILED",
+            "raw_evidence_spans": [
+              66,
+              67,
+              69,
+              70,
+              71,
+              72,
+              73
+            ],
+            "confidence": 0.95
+          }
+        },
+        {
+          "step_id": "H17_evidence_map",
+          "step_type": "evidence_map",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "evidence_span_indices": [
+              66,
+              67,
+              69,
+              70,
+              71,
+              72,
+              73
+            ]
+          },
+          "outputs": {
+            "evidence_items_count": 7,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H17_playbook_map",
+          "step_type": "playbook_map",
+          "producer": {
+            "component": "playbook"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "hypothesis_id": "H17",
+            "label": "ENTAILED"
+          },
+          "outputs": {
+            "severity": "MEDIUM",
+            "action": "NEGOTIATE",
+            "rationale": "Retention after return/destruction: The NDA permits retention of some Confidential Information after return/destruction, which typically requires narrow exceptions and safeguards. Severity MEDIUM; action NEGOTIATE."
+          }
+        },
+        {
+          "step_id": "H17_consistency_check",
+          "step_type": "consistency_check",
+          "producer": {
+            "component": "validator"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 7
+          },
+          "outputs": {
+            "compliant": true,
+            "quote_integrity_pass": false
+          }
+        },
+        {
+          "step_id": "H17_format_response",
+          "step_type": "format_response",
+          "producer": {
+            "component": "pipeline"
+          },
+          "started_at": "2026-04-08T22:24:36.434+00:00",
+          "ended_at": "2026-04-08T22:24:36.434+00:00",
+          "inputs": {
+            "label": "ENTAILED",
+            "evidence_count": 7
+          },
+          "outputs": {
+            "status": "satisfied",
+            "rationale": "Retention after return/destruction: The NDA permits retention of some Confidential Information after return/destruction, which typically requires narrow exceptions and safeguards. Severity MEDIUM; action NEGOTIATE."
+          }
+        }
+      ],
+      "decision": {
+        "label": "ENTAILED",
+        "confidence": 0.95,
+        "evidence": {
+          "supporting": [
+            {
+              "chunk_id": "chunk_066",
+              "quote": "Return or Destruction of Information.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 12990,
+                "char_end": 13028
+              }
+            },
+            {
+              "chunk_id": "chunk_067",
+              "quote": "Recipient shall return and deliver, or cause to be returned and delivered, to Disclosing Party, or destroy or cause to be destroyed (with certification of destruction delivered to Disclosing Party), all tangible Information, including copies and abstracts thereof, within thirty (30) days of a written request by Disclosing Party (a \u201cRequest\u201d).",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 13028,
+                "char_end": 13373
+              }
+            },
+            {
+              "chunk_id": "chunk_069",
+              "quote": "Notwithstanding the foregoing, each Party agrees that Recipient shall not be required to return to Disclosing Party, or destroy, copies of Disclosing Party\u2019s Information that",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 13560,
+                "char_end": 13735
+              }
+            },
+            {
+              "chunk_id": "chunk_070",
+              "quote": "(A) reside on Recipient\u2019s or its Representatives\u2019 backup, disaster recovery or business continuity systems, or",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 13735,
+                "char_end": 13846
+              }
+            },
+            {
+              "chunk_id": "chunk_071",
+              "quote": "(B) that Recipient or its Representatives are obligated by applicable law and/or governmental regulations to retain.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 13846,
+                "char_end": 13963
+              }
+            },
+            {
+              "chunk_id": "chunk_072",
+              "quote": "Recipient agrees that, following its receipt of the Request, it shall neither retrieve nor use Disclosing Party\u2019s Information for any purpose other than that specified in clause",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 13963,
+                "char_end": 14141
+              }
+            },
+            {
+              "chunk_id": "chunk_073",
+              "quote": "(B) above.",
+              "relevance_score": 1.0,
+              "span": {
+                "char_start": 14141,
+                "char_end": 14151
+              }
+            }
+          ],
+          "counter": []
+        },
+        "justification": {
+          "claim": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+          "inference": "Predicted ENTAILED supported by 7 evidence span(s).",
+          "limitations": "Single-model QLoRA pipeline; contracts truncated to 4096 tokens where necessary. Evidence spans are verbatim extractions from canonical char offsets."
+        },
+        "risk": {
+          "severity": "MEDIUM",
+          "criticality": "P1",
+          "playbook_rule_ids": [
+            "H17"
+          ],
+          "recommended_action": "NEGOTIATE"
+        }
+      },
+      "validations": [
+        {
+          "validator_id": "groundedness_check",
+          "status": "PASS",
+          "message": "Evidence present as required.",
+          "related_hypothesis_id": "H17"
+        },
+        {
+          "validator_id": "quote_integrity_check",
+          "status": "FAIL",
+          "message": "One or more evidence span indices are out of range or empty.",
+          "related_hypothesis_id": "H17"
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "hypothesis_count": 17,
+    "correct_count": 15,
+    "compliant_count": 17,
+    "quote_integrity_count": 7,
+    "contract_accuracy": 0.8823529411764706,
+    "groundedness_rate": 1.0,
+    "quote_integrity_rate": 0.4117647058823529,
+    "contract_latency_ms": 24838.259819739807,
+    "label_counts": {
+      "ENTAILED": 10,
+      "CONTRADICTED": 2,
+      "NOT_MENTIONED": 5
+    }
+  },
+  "run_validations": [
+    {
+      "validator_id": "hypothesis_count_check",
+      "status": "PASS",
+      "message": "Expected 17 hypothesis traces, got 17."
+    },
+    {
+      "validator_id": "schema_version_check",
+      "status": "PASS",
+      "message": "Schema version 1.0-ms1."
+    }
+  ]
+}
