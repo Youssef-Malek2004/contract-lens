@@ -4,9 +4,14 @@ __pycache__/
 *.pyo
 .env
 
-# Data files (too large for repo)
+# Generated SFT training files (large, reproducible from 01_preprocess.py)
 *.jsonl
-data/
+
+# Generated RAG indexes (large, reproducible from 03_build_index.py)
+data/indexes/
+
+# Keep source data files tracked
+# data/train.json, data/test.json, data/runtrace_ms1_schema.json → committed
 
 # Model weights
 adapters/
