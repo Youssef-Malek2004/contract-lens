@@ -10,7 +10,7 @@ Quantization:     CUDA → BitsAndBytesConfig NF4 4-bit
 """
 import torch
 from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, QuantoConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 # ── Model IDs ────────────────────────────────────────────────────────────────
 ORCHESTRATOR_ID = "Qwen/Qwen3-4B"    # pure transformer, full MPS speed, thinking + tool-calling
@@ -28,11 +28,14 @@ def get_device() -> str:
 
 def _quantization_config(device: str):
     """
-    CUDA  → BitsAndBytesConfig NF4 4-bit  (~1 GB for 1.7B, ~2.5 GB for 4B)
-    MPS   → QuantoConfig int4             (~1 GB for 1.7B, ~2.5 GB for 4B)
-    CPU   → QuantoConfig int4             (slow but smaller footprint)
+    CUDA → BitsAndBytesConfig NF4 4-bit (~1 GB for 1.7B, ~2.5 GB for 4B).
+           CUDA has native int4 GEMM kernels — genuinely faster and smaller.
 
-    quanto is device-agnostic and works on MPS without any extra system packages.
+    MPS  → None (float16, ~3.5 GB for 1.7B, ~8 GB for 4B).
+           MPS has no native int4 kernels. QuantoConfig dequantizes every
+           forward pass → slower inference + 2-5 min startup cost. Not worth it.
+
+    CPU  → None (float16, fallback only).
     """
     if device == "cuda":
         return BitsAndBytesConfig(
@@ -41,8 +44,7 @@ def _quantization_config(device: str):
             bnb_4bit_use_double_quant=True,
             bnb_4bit_quant_type="nf4",
         )
-    # MPS + CPU: quanto int4 (works everywhere, no CUDA required)
-    return QuantoConfig(weights="int4")
+    return None  # MPS + CPU: float16 via dtype kwarg — fast load, fast inference
 
 
 def load_model(
@@ -72,7 +74,6 @@ def load_model(
             low_cpu_mem_usage=True,
         )
     elif quant_cfg is not None:
-        # quanto: load then move to device manually
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
             quantization_config=quant_cfg,
