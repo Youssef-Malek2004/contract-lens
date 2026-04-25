@@ -39,7 +39,7 @@ conda activate genai-ms2
 # Install dependencies
 pip install torch torchvision torchaudio
 pip install "git+https://github.com/huggingface/transformers.git"
-pip install accelerate peft optimum-quanto sentence-transformers \
+pip install accelerate peft sentence-transformers \
             faiss-cpu networkx scikit-learn numpy huggingface_hub \
             safetensors tokenizers tqdm pyyaml ipykernel
 
@@ -132,9 +132,9 @@ with model.disable_adapter():
 ```
 
 **Quantization (automatic):**
-- MPS → `QuantoConfig int4` (~1 GB for 1.7B, ~2.5 GB for 4B)
-- CUDA → `BitsAndBytesConfig NF4 4-bit`
-- CPU → `QuantoConfig int4` (fallback only)
+- MPS → `dtype=torch.float16` (~3.5 GB for 1.7B, ~8 GB for 4B)
+- CUDA → `BitsAndBytesConfig NF4 4-bit` (~1 GB for 1.7B, ~2.5 GB for 4B)
+- CPU → `dtype=torch.float16` (fallback only)
 
 **Thinking policy:**
 - `load_orchestrator()` → `enable_thinking=True`

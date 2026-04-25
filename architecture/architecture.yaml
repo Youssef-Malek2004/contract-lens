@@ -1,7 +1,7 @@
 ################################################################################
 # ContractLens — Agentic Architecture Specification
-# Version: 0.3 (MS2 — RAG blueprint + tool schemas)
-# Last updated: 2026-04-25
+# Version: 0.4 (MS2 — quantization fix, Qwen3-4B, diagram polish)
+# Last updated: 2026-04-26
 #
 # Status tags:
 #   implemented   → code exists and runs
@@ -11,7 +11,7 @@
 
 system:
   name: ContractLens
-  version: "0.3"
+  version: "0.4"
   description: >
     Modular multi-agent system for NDA review over ContractNLI contracts.
     Accepts a contract and a user prompt, routes retrieval through either
@@ -20,7 +20,7 @@ system:
   milestone_current: MS2
   dataset: ContractNLI
   corpus_split:
-    retrieval: train.json   # 381 NDAs — indexed into both RAG stores
+    retrieval: train.json   # 423 NDAs — indexed into both RAG stores
     evaluation: test.json   # 123 NDAs — contracts fed to the NLI pipeline
 
 ################################################################################
@@ -40,16 +40,15 @@ compute:
       else:                                    device = "cpu"
     quantization_by_device:
       cuda: >
-        BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16).
-        Stable, widely tested.
+        BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_use_double_quant=True, bnb_4bit_quant_type="nf4").
+        Native int4 GEMM kernels on CUDA — genuinely smaller and faster.
       mps: >
-        MetalConfig(bits=4, group_size=64) — official HuggingFace quantization
-        for Apple Silicon. Uses Metal affine quantization kernels (mlx-metal).
-        Gives true 4-bit weight storage on MPS, same footprint as CUDA path.
-        Loaded with device_map="mps".
+        dtype=torch.float16. MPS has no native int4 GEMM kernels — any int4
+        quantization library (MetalConfig, quanto) dequantizes on every forward
+        pass, adding startup cost with no inference speedup. float16 is optimal.
       cpu: >
-        dtype=torch.float16. No 4-bit on CPU — footprint is larger but
-        CPU inference is not a target; this is a fallback only.
+        dtype=torch.float16. Fallback only — CPU inference not a target.
     implementation: >
       src/model_loader.py::load_model(model_id, device) encapsulates this
       logic. All agents call one function, get the right quantization config
@@ -1041,18 +1040,23 @@ schemas:
 status_summary:
   implemented:
     - NLI Core Agent (fine-tuned Qwen3 inference, two-pass, RunTrace output)
-    - quick_infer.py (single-contract runner, 4-bit compatible)
+    - quick_infer.py (single-contract NLI runner with token streaming, MPS/CPU)
     - Adapter toggle: fine-tuned ↔ base via model.disable_adapter()
-    - Token streaming + prefill spinner (TextIteratorStreamer)
+    - src/types.py (RetrievedSpan, HypothesisTask, HypothesisTrace TypedDicts)
+    - src/model_loader.py (device detection, quantization, convenience loaders)
+    - test_model_loader.py (smoke-test all three model modes with live streaming)
+    - download_models.py (pre-download all models to HF cache)
+    - architecture/architecture.yaml (this spec)
+    - architecture/architecture.pdf (rendered diagram)
 
   ms2_targets:
-    - Vector RAG pipeline (src/rag_vector.py)         # Member 2
-    - GraphRAG pipeline (src/rag_graph.py)            # Member 3
+    - Vector RAG pipeline (src/rag_vector.py)                        # Member 2
+    - GraphRAG pipeline (src/rag_graph.py)                           # Member 3
     - 03_build_index.py (shared, Members 2+3)
-    - Conversation Agent + CLI (src/conversation_agent.py, agent.py)  # Member 4
-    - Updated playbook schema (schemas/playbook_schema.json)  # Member 5
-    - Updated RunTrace schema (schemas/runtrace_schema.json)  # Member 5
-    - This architecture spec + diagram                # Member 1
+    - Conversation Agent + CLI (src/conversation_agent.py, agent.py) # Member 4
+    - Updated playbook schema (schemas/playbook_schema.json)         # Member 5
+    - Updated RunTrace schema (schemas/runtrace_schema.json)         # Member 5
+    - Architecture report (architecture/report.pdf)                  # Member 5
 
   ms3_targets:
     - Orchestrator Agent (Qwen3-4B, JSON tool calling)
@@ -1067,27 +1071,21 @@ status_summary:
 
   resolved_decisions:
     inference_framework: >
-      transformers. Device auto-detected: MPS → CUDA → CPU.
-      4-bit: BitsAndBytesConfig on CUDA, MetalConfig on MPS, float16 on CPU.
+      transformers. Single codebase across all backends.
+      Device auto-detected: MPS → CUDA → CPU.
+      CUDA → BitsAndBytesConfig NF4 4-bit (native int4 GEMM — faster + smaller).
+      MPS  → dtype=torch.float16 (no int4 — MPS lacks native int4 GEMM kernels).
+      CPU  → dtype=torch.float16 (fallback only).
       Encapsulated in src/model_loader.py::load_model().
     faiss_index_type: >
-      IndexFlatIP. 32k vectors — exact search <10ms, zero approximation error,
-      no training step. IVF not needed until corpus exceeds ~500k vectors.
+      IndexFlatIP. 32k vectors × 384 dims — exact search <10ms, zero
+      approximation error, no training step. IVF not needed until corpus
+      exceeds ~500k vectors.
     graph_concept_vocabulary: >
       19 ConceptNodes defined with full synonym lists covering all 17 hypotheses.
-      Implemented via substring matching (lowercase). No NLP/NER dependency.
-      Vocabulary in architecture.yaml graph_rag.graph_schema.node_types.ConceptNode.
-
-  resolved_decisions:
-    inference_framework: >
-      transformers (not mlx-lm). Single codebase across all backends.
-      Device auto-detected: MPS → CUDA → CPU.
-      4-bit quantization on all GPU backends:
-        CUDA → BitsAndBytesConfig(load_in_4bit=True)
-        MPS  → dtype=torch.float16 (MetalConfig requires kernels pkg — dropped)
-        CPU  → float16 fallback only
-      Encapsulated in src/model_loader.py::load_model().
-    faiss_index_type: >
-      IndexFlatIP. Corpus is 32k vectors — exact search is <10ms, no
-      approximation error, no training step required. IVF not needed
-      until corpus exceeds ~500k vectors.
+      Substring matching (lowercase). No NLP/NER dependency.
+      Full vocabulary in graph_rag.graph_schema.node_types.ConceptNode.vocabulary.
+    orchestrator_model: >
+      Qwen/Qwen3-4B. Pure transformer — full MPS speed, thinking + tool-calling.
+      Qwen3-4B dropped: hybrid SSM architecture requires CUDA-only fast-path
+      libraries (flash-linear-attention, causal-conv1d) not available on MPS.

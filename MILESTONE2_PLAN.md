@@ -8,32 +8,35 @@
 
 ## Deliverables Checklist
 
-| # | Deliverable | File(s) |
-|---|---|---|
-| a | Agentic architecture diagram | `architecture/architecture.pdf` + `architecture/architecture.yaml` |
-| b | Architecture report | `architecture/report.pdf` |
-| c | Source code — Vector RAG, GraphRAG, Conversation Agent | `src/rag_vector.py`, `src/rag_graph.py`, `src/conversation_agent.py`, `agent.py` |
-| d | Updated playbook | `schemas/playbook_schema.json` |
-| e | Updated RunTrace schema | `schemas/runtrace_schema.json` |
-| f | All work on `ms-2` branch | GitHub |
+| #   | Deliverable                                            | File(s)                                                                          |
+| --- | ------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| a   | Agentic architecture diagram                           | `architecture/architecture.pdf` + `architecture/architecture.yaml`               |
+| b   | Architecture report                                    | `architecture/report.pdf`                                                        |
+| c   | Source code — Vector RAG, GraphRAG, Conversation Agent | `src/rag_vector.py`, `src/rag_graph.py`, `src/conversation_agent.py`, `agent.py` |
+| d   | Updated playbook                                       | `schemas/playbook_schema.json`                                                   |
+| e   | Updated RunTrace schema                                | `schemas/runtrace_schema.json`                                                   |
+| f   | All work on `ms-2` branch                              | GitHub                                                                           |
 
 ---
 
 ## Shared Foundations (read before starting)
 
 ### Data
+
 - `data/train.json` — 423 NDAs, **32,359 spans total** (avg 76.5 per doc). RAG index source.
 - `data/test.json` — 123 NDAs. Evaluation only. Never index this.
 - `data/runtrace_ms1_schema.json` — MS1 schema for reference.
 
 ### Models
-| Object | Model | Thinking | Quantization |
-|---|---|---|---|
-| Orchestrator + Conversation Agent | `Qwen/Qwen3.5-4B` | ON | 4-bit (MetalConfig on MPS, BitsAndBytesConfig on CUDA, float16 on CPU) |
-| NLI Core (fine-tuned, adapter ON) | `Youssef-Malek/contractnli-vast-ai-qwen3-1.7b` | OFF | same |
-| Hypothesis agents (adapter OFF) | same object as NLI Core | ON | same |
+
+| Object                            | Model                                          | Thinking | Quantization                                        |
+| --------------------------------- | ---------------------------------------------- | -------- | --------------------------------------------------- |
+| Orchestrator + Conversation Agent | `Qwen/Qwen3-4B`                                | ON       | BitsAndBytesConfig NF4 on CUDA · float16 on MPS/CPU |
+| NLI Core (fine-tuned, adapter ON) | `Youssef-Malek/contractnli-vast-ai-qwen3-1.7b` | OFF      | same                                                |
+| Hypothesis agents (adapter OFF)   | same object as NLI Core                        | ON       | same                                                |
 
 ### Shared Types (implement in `src/types.py` first)
+
 ```python
 class RetrievedSpan(TypedDict):
     text: str                            # verbatim span text
@@ -62,35 +65,44 @@ class HypothesisTrace(TypedDict):
     agent_metadata: dict                 # {agent_id, rag_query, rag_hits, rag_mode}
 ```
 
-### Device / Quantization (implement in `src/model_loader.py`)
+### Device / Quantization (`src/model_loader.py` — already implemented ✓)
+
 ```python
-def load_model(model_id: str, device: str) -> ...:
-    # CUDA  → BitsAndBytesConfig(load_in_4bit=True)
-    # MPS   → MetalConfig(bits=4, group_size=64)
-    # CPU   → dtype=torch.float16
+from src.model_loader import get_device, load_orchestrator, load_nli_model
+
+device = get_device()                    # "mps" | "cuda" | "cpu" — auto-detected
+model, tokenizer = load_orchestrator()   # Qwen3-4B, thinking=ON
+model, tokenizer = load_nli_model()      # Qwen3-1.7B + LoRA, thinking=OFF
+
+# CUDA  → BitsAndBytesConfig NF4 4-bit (native int4 kernels)
+# MPS   → dtype=torch.float16 (no quantization — MPS has no native int4 GEMM)
+# CPU   → dtype=torch.float16 (fallback only)
 ```
-Device selection: MPS → CUDA → CPU (auto-detected).
 
 ---
 
 ## Member 1 — Architecture Design + Diagram
-**Deliverables:** (a)
-**Status:** In progress
 
-**Files to create / maintain:**
+**Deliverables:** (a)
+**Status:** ✓ Complete
+
+**Files delivered:**
+
 ```
 architecture/
-├── architecture.yaml   ✓ done — living spec, keep updating
-└── architecture.pdf    ← render from the YAML for submission
+├── architecture.yaml   ✓ living spec — update as decisions change
+├── architecture.pdf    ✓ rendered diagram (regenerate: python architecture/generate_diagram.py)
+└── generate_diagram.py ✓
 src/
-├── types.py            ← define RetrievedSpan, HypothesisTask, HypothesisTrace
-└── model_loader.py     ← device detection + quantization config
+├── types.py            ✓ RetrievedSpan, HypothesisTask, HypothesisTrace
+└── model_loader.py     ✓ get_device(), load_orchestrator(), load_nli_model()
 ```
 
 **Scope:**
+
 - `architecture.yaml` is the primary deliverable — already contains the full multi-agent design, RAG blueprints, tool schemas, type definitions. Keep it updated as decisions are made.
 - Render `architecture.pdf` from the YAML (draw.io, Mermaid, or any diagram tool) showing:
-  - Orchestrator (Qwen3.5-4B) → tool calls → NLI Core, Dispatcher, Hypothesis Pool, Aggregator
+  - Orchestrator (Qwen3-4B) → tool calls → NLI Core, Dispatcher, Hypothesis Pool, Aggregator
   - Conversation Agent alongside the NLI pipeline (not inside it)
   - Vector RAG branch and GraphRAG branch, both feeding Dispatcher + Conversation Agent
   - Training corpus vs analyzed contract clearly visually distinct
@@ -103,9 +115,11 @@ src/
 ---
 
 ## Member 2 — Vector RAG Pipeline
+
 **Deliverables:** part of (c)
 
 **Files to create:**
+
 ```
 src/rag_vector.py
 03_build_index.py          ← shared with Member 3, agree on structure first
@@ -113,6 +127,7 @@ data/indexes/vector/       ← gitignored, built locally
 ```
 
 **Exact retrieve() interface to implement:**
+
 ```python
 def retrieve(
     query: str,
@@ -123,6 +138,7 @@ def retrieve(
 ```
 
 **Indexing — what to build:**
+
 - Load `data/train.json` → `build_chunks()` (reuse `src/preprocessor.py`) for each doc
 - For each span, also read gold annotations to populate `hypothesis_annotations`
 - Embed each span with `sentence-transformers/all-MiniLM-L6-v2` (384 dims, CPU is fine)
@@ -130,6 +146,7 @@ def retrieve(
 - FAISS `IndexFlatIP` — exact search, no training step, ~47MB for 32k vectors
 
 **Index files to produce:**
+
 ```
 data/indexes/vector/spans.jsonl    # one line per span: text, doc_id, span_idx,
                                    # char_start, char_end, hypothesis_annotations
@@ -139,6 +156,7 @@ data/indexes/vector/metadata.json  # {embedding_model, index_size, build_timesta
 ```
 
 **Query logic:**
+
 1. Embed query → L2-normalise → `faiss_index.search(vec, top_k * 3)`
 2. Load metadata rows from `spans.jsonl`
 3. If `hypothesis_id` given: re-rank to prefer spans where `hypothesis_annotations[hypothesis_id] == label_filter`
@@ -152,9 +170,11 @@ data/indexes/vector/metadata.json  # {embedding_model, index_size, build_timesta
 ---
 
 ## Member 3 — GraphRAG Pipeline
+
 **Deliverables:** part of (c)
 
 **Files to create:**
+
 ```
 src/rag_graph.py
 03_build_index.py          ← shared with Member 2, coordinate first
@@ -162,6 +182,7 @@ data/indexes/graph/        ← gitignored, built locally
 ```
 
 **Exact retrieve() interface — identical signature to Member 2:**
+
 ```python
 def retrieve(
     query: str,
@@ -186,11 +207,13 @@ SpanNode ──CITED_FOR──────────────────�
 - **HypothesisNode** — 17 nodes, from `HYPOTHESES` constant in `src/constants.py`.
 
 **Edge creation:**
+
 - `CONTAINS` (SpanNode → ConceptNode): scan each span's lowercased text for synonym matches. Simple `substring in text` check. No NLP/NER.
 - `CITED_FOR` (SpanNode → HypothesisNode, attr: label): read gold annotations from `train.json`. If `span_idx` appears in `annotations[nda_key]["spans"]`, add edge with `label=LABEL_MAP[choice]`.
 - `INVOLVES` (HypothesisNode → ConceptNode): scan each hypothesis text for synonym matches.
 
 **Index files to produce:**
+
 ```
 data/indexes/graph/graph.pkl              # serialised networkx.DiGraph
 data/indexes/graph/hypothesis_index.json # {hypothesis_id: {label: [span_node_ids]}}
@@ -202,13 +225,15 @@ data/indexes/graph/metadata.json         # node/edge counts, build_timestamp
 
 **Two query paths:**
 
-*Hypothesis-targeted* (hypothesis_id provided):
+_Hypothesis-targeted_ (hypothesis_id provided):
+
 ```
 hypothesis_index[hypothesis_id][label_filter] → span_ids → load attrs → return top_k
 Score by: citation frequency (how many training docs cite this span for this hypothesis+label)
 ```
 
-*Free-text* (no hypothesis_id):
+_Free-text_ (no hypothesis_id):
+
 ```
 1. Lowercase query → match against synonym lists → matched ConceptNodes
 2. concept_index[canonical_name] → span_ids for each match
@@ -227,15 +252,18 @@ Score by: citation frequency (how many training docs cite this span for this hyp
 ---
 
 ## Member 4 — Conversation Agent + CLI
+
 **Deliverables:** part of (c)
 
 **Files to create:**
+
 ```
 src/conversation_agent.py
 agent.py                         ← CLI entry point
 ```
 
 **CLI interface:**
+
 ```bash
 python agent.py --contract data/test.json --idx 0 \
                 --retrieval vector \
@@ -246,10 +274,11 @@ python agent.py --contract data/test.json --idx 0 \
                 --prompt "What are the termination obligations?"
 ```
 
-**Model:** `Qwen/Qwen3.5-4B` (orchestrator_model) with `enable_thinking=True`.
+**Model:** `Qwen/Qwen3-4B` (orchestrator_model) with `enable_thinking=True`.
 Use `src/model_loader.py` from Member 1 for loading. Strip `<think>` blocks before printing response.
 
 **Message structure:**
+
 ```
 system: [conversation agent system prompt — explains external memory vs contract evidence]
 
@@ -273,6 +302,7 @@ assistant turn 2: [response]
 ```
 
 **History persistence:**
+
 - Load history from `conversation_history.json` at start (empty list if file absent)
 - Append `{role, content, timestamp}` after each turn
 - Write back to `conversation_history.json`
@@ -281,6 +311,7 @@ assistant turn 2: [response]
 **Critical constraint:** Retrieved spans from RAG are labeled `[RETRIEVAL CONTEXT]` in the prompt. They inform reasoning only. The model must never present them as evidence for the analyzed contract. The system prompt must make this explicit.
 
 **Retrieve call:**
+
 ```python
 from src.rag_vector import retrieve as vector_retrieve
 from src.rag_graph  import retrieve as graph_retrieve
@@ -294,9 +325,11 @@ rag_context: list[RetrievedSpan] = retrieve_fn(query=args.prompt, top_k=5)
 ---
 
 ## Member 5 — Updated Schemas + Architecture Report
+
 **Deliverables:** (b), (d), (e)
 
 **Files to create:**
+
 ```
 schemas/
 ├── playbook_schema.json
@@ -306,7 +339,9 @@ architecture/
 ```
 
 ### Updated Playbook (`schemas/playbook_schema.json`)
+
 Start from `playbook.yaml`. Convert to JSON and add:
+
 - `schema_version: "2.0-ms2"`
 - `retrieval_mode: "vector" | "graph"` — which branch was used
 - Per-check additions:
@@ -315,7 +350,9 @@ Start from `playbook.yaml`. Convert to JSON and add:
 - Keep all 17 hypothesis checks, criticality tiers, override rules unchanged
 
 ### Updated RunTrace Schema (`schemas/runtrace_schema.json`)
+
 Start from `data/runtrace_ms1_schema.json`. Add:
+
 - `schema_version: "2.0-ms2"`
 - `retrieval_mode: "vector" | "graph"`
 - `conversation_history: [{role, content, timestamp}]`
@@ -323,9 +360,11 @@ Start from `data/runtrace_ms1_schema.json`. Add:
 - Per hypothesis_trace, add `agent_metadata: {agent_id, rag_query, rag_hits, rag_mode}`
 
 ### Architecture Report (`architecture/report.pdf`)
+
 Cover these sections (source all details from `architecture/architecture.yaml`):
+
 1. System overview and design rationale — why multi-agent, why broadcast→fan-out
-2. Orchestrator (Qwen3.5-4B) — tool-calling design, JSON function call schema
+2. Orchestrator (Qwen3-4B) — tool-calling design, JSON function call schema
 3. NLI Core — why it runs once, why thinking is OFF, what it produces
 4. Vector RAG — embedding, FAISS IndexFlatIP, both query modes
 5. GraphRAG — 3-node/3-edge structure, ConceptNode vocabulary, two query paths, why no NLP dependency
@@ -341,10 +380,10 @@ Cover these sections (source all details from `architecture/architecture.yaml`):
 ## Dependency Graph
 
 ```
-April 25–26
-└── Member 1: architecture.yaml ✓, src/types.py, src/model_loader.py, architecture.pdf
+April 25–26  ✓ DONE
+└── Member 1: architecture.yaml ✓, src/types.py ✓, src/model_loader.py ✓, architecture.pdf ✓
         │
-        ├── April 26–28 (parallel)
+        ├── April 26–28 (parallel) ← YOU ARE HERE
         │   ├── Member 2: Vector RAG (src/rag_vector.py, 03_build_index.py --mode vector)
         │   ├── Member 3: GraphRAG  (src/rag_graph.py,  03_build_index.py --mode graph)
         │   └── Member 5: playbook_schema.json + runtrace_schema.json
@@ -356,20 +395,20 @@ April 25–26
             └── Member 5: Architecture report (finalises last)
 ```
 
-**Critical path:** Member 1 → Member 4. Conversation agent needs `retrieve()` interface stable.
+**Critical path:** Members 2 + 3 → Member 4. Conversation agent needs `retrieve()` stable.
 **Deadline:** 30 April 2026.
 
 ---
 
 ## Shared Files — Coordination Required
 
-| File | Owners | Notes |
-|---|---|---|
-| `03_build_index.py` | Members 2 + 3 | Agree on `--mode vector\|graph` arg structure before writing |
-| `src/types.py` | Member 1 (writes), all (import) | Define first — everyone codes against these types |
-| `src/model_loader.py` | Member 1 (writes), all (import) | Single source of truth for device/quantization |
-| `src/__init__.py` | Members 2, 3, 4 | Add new module exports as created |
-| `requirements.txt` | All | Add deps as needed; no version pinning unless conflict |
+| File                  | Owners                          | Notes                                                        |
+| --------------------- | ------------------------------- | ------------------------------------------------------------ |
+| `03_build_index.py`   | Members 2 + 3                   | Agree on `--mode vector\|graph` arg structure before writing |
+| `src/types.py`        | Member 1 (writes), all (import) | Define first — everyone codes against these types            |
+| `src/model_loader.py` | Member 1 (writes), all (import) | Single source of truth for device/quantization               |
+| `src/__init__.py`     | Members 2, 3, 4                 | Add new module exports as created                            |
+| `requirements.txt`    | All                             | Add deps as needed; no version pinning unless conflict       |
 
 ---
 
@@ -412,13 +451,13 @@ contract-lens/
 
 ## Hard Constraints (from milestone spec)
 
-| Constraint | Detail |
-|---|---|
-| Same model family | Qwen3 only — orchestrator is Qwen3.5-4B, NLI core is Qwen3-1.7B fine-tuned |
-| Thinking policy | Fine-tuned NLI core: `enable_thinking=False`. All others: `enable_thinking=True` |
-| Evidence grounding | RAG context = reasoning aid only. Hypothesis evidence must come from analyzed contract |
-| Retrieval corpus | `data/train.json` only — never index or query `data/test.json` |
-| Test contracts | Same 123 NDAs from MS1 evaluation split |
-| One retrieval branch per run | `--retrieval vector` OR `--retrieval graph`, not both |
-| History must persist | `conversation_history.json` survives between runs for follow-up turns |
-| Quantization | 4-bit on CUDA (BitsAndBytes), float16 on MPS/CPU |
+| Constraint                   | Detail                                                                                 |
+| ---------------------------- | -------------------------------------------------------------------------------------- |
+| Same model family            | Qwen3 only — orchestrator is Qwen3-4B, NLI core is Qwen3-1.7B fine-tuned               |
+| Thinking policy              | Fine-tuned NLI core: `enable_thinking=False`. All others: `enable_thinking=True`       |
+| Evidence grounding           | RAG context = reasoning aid only. Hypothesis evidence must come from analyzed contract |
+| Retrieval corpus             | `data/train.json` only — never index or query `data/test.json`                         |
+| Test contracts               | Same 123 NDAs from MS1 evaluation split                                                |
+| One retrieval branch per run | `--retrieval vector` OR `--retrieval graph`, not both                                  |
+| History must persist         | `conversation_history.json` survives between runs for follow-up turns                  |
+| Quantization                 | BitsAndBytesConfig NF4 4-bit on CUDA · float16 on MPS/CPU                              |

@@ -115,7 +115,7 @@ if __name__ == "__main__":
     device = get_device()
     print(f"Device: {BOLD}{device}{RESET}")
 
-    # ── Test 1: Orchestrator (Qwen3.5-4B, thinking ON) ───────────────────────
+    # ── Test 1: Orchestrator (Qwen3-4B, thinking ON) ───────────────────────
     banner("Test 1 — Orchestrator  (Qwen3-4B · thinking=ON)")
     print("Loading...", flush=True)
     t0 = time.time()

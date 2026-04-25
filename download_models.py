@@ -17,7 +17,7 @@ MODELS = [
         "size":    "~3.5 GB",
     },
     {
-        "repo_id": "Qwen/Qwen3.5-4B",
+        "repo_id": "Qwen/Qwen3-4B",
         "desc":    "Orchestrator + Conversation Agent",
         "size":    "~8.0 GB",
     },

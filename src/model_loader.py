@@ -5,8 +5,8 @@ All agents call load_model() or load_peft_model() — never handle device/quant 
 
 Device priority:  MPS (Apple Silicon) → CUDA (Nvidia) → CPU
 Quantization:     CUDA → BitsAndBytesConfig NF4 4-bit
-                  MPS  → QuantoConfig int4  (optimum-quanto, device-agnostic)
-                  CPU  → QuantoConfig int4  (slow, fallback only)
+                  MPS  → dtype=torch.float16
+                  CPU  → dtype=torch.float16 (fallback only)
 """
 import torch
 from peft import PeftModel
@@ -32,8 +32,8 @@ def _quantization_config(device: str):
            CUDA has native int4 GEMM kernels — genuinely faster and smaller.
 
     MPS  → None (float16, ~3.5 GB for 1.7B, ~8 GB for 4B).
-           MPS has no native int4 kernels. QuantoConfig dequantizes every
-           forward pass → slower inference + 2-5 min startup cost. Not worth it.
+           MPS has no native int4 kernels — quantization adds startup cost
+           with no inference speedup. float16 is the right choice on MPS.
 
     CPU  → None (float16, fallback only).
     """

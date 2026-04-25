@@ -83,14 +83,14 @@ inp(dot, "input",
 
 # Orchestrator
 llm(dot, "orch",
-    "Orchestrator\nQwen3.5-4B · 4-bit\nthinking=ON · tool-calling")
+    "Orchestrator\nQwen3-4B\nthinking=ON · tool-calling")
 
 # Two parallel paths
 llm(dot, "conv",
-    "Conversation Agent\nQwen3.5-4B · 4-bit\nthinking=ON")
+    "Conversation Agent\nQwen3-4B\nthinking=ON")
 
 llm(dot, "nli",
-    "NLI Core Agent\nQwen3-1.7B + LoRA · 4-bit\nthinking=OFF · adapter ON\n→ 17 labels + evidence spans")
+    "NLI Core Agent\nQwen3-1.7B + LoRA\nthinking=OFF · adapter ON\n→ 17 labels + evidence spans")
 
 # RAG layer (sits between the two paths and the dispatcher)
 rag(dot, "vrag",
@@ -104,7 +104,7 @@ py(dot,  "disp",
     "Dispatcher\nbuild_task_queue()\n→ 17 HypothesisTasks\n+ RAG context per task")
 
 llm(dot, "pool",
-    "Hypothesis Worker Pool\nQwen3-1.7B · 4-bit\nthinking=ON · adapter OFF\nN_PHYSICAL_AGENTS workers\n→ confidence · quote\n   groundedness · playbook")
+    "Hypothesis Worker Pool\nQwen3-1.7B\nthinking=ON · adapter OFF\nN_PHYSICAL_AGENTS workers\n→ confidence · quote\n   groundedness · playbook")
 
 py(dot,  "agg",
     "Aggregator\nvalidate schema\ncompute metrics\n→ RunTrace JSON")
@@ -161,16 +161,16 @@ e(dot, "agg",  "runtrace")
 e(dot, "conv", "convrsp")
 
 # Dispatcher ↔ RAG  (pre-fetch context per hypothesis)
-de(dot, "disp", "vrag", "retrieve(Hₙ, label)")
-de(dot, "disp", "grag", "retrieve(Hₙ, label)")
-de(dot, "vrag", "disp", "RetrievedSpan ×k")
-de(dot, "grag", "disp", "RetrievedSpan ×k")
+de(dot, "disp", "vrag", "retrieve(Hn, label)")
+de(dot, "disp", "grag", "retrieve(Hn, label)")
+de(dot, "vrag", "disp")
+de(dot, "grag", "disp")
 
 # Conv Agent ↔ RAG
 de(dot, "conv", "vrag", "retrieve(prompt)")
 de(dot, "conv", "grag", "retrieve(prompt)")
-de(dot, "vrag", "conv", "RetrievedSpan ×k")
-de(dot, "grag", "conv", "RetrievedSpan ×k")
+de(dot, "vrag", "conv")
+de(dot, "grag", "conv")
 
 # Training corpus → RAG (build time)
 dot_e(dot, "train", "vrag", "indexed")
