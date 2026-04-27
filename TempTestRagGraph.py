@@ -3,7 +3,7 @@ from src.rag_graph import retrieve
 results = retrieve(
     query="",
     top_k=5,
-    hypothesis_id="nda-7",
+    hypothesis_id="H7",
     label_filter="CONTRADICTED",
 )
 

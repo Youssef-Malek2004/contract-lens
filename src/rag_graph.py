@@ -168,13 +168,15 @@ def normalize_hypothesis_id(hypothesis_id: str | None) -> str | None:
 
     hypothesis_id = hypothesis_id.strip()
 
+    # H07 -> nda-7
     if hypothesis_id.upper().startswith("H"):
         try:
             num = int(hypothesis_id[1:])
             return f"nda-{num}"
         except ValueError:
             return hypothesis_id
-        
+
+    # nda07 -> nda-7
     if hypothesis_id.lower().startswith("nda") and "-" not in hypothesis_id:
         try:
             num = int(hypothesis_id[3:])
@@ -377,7 +379,9 @@ def build_index(train_path: str = "data/train.json") -> None:
         hyp_id_map: dict[int, str] = {}
         hyp_text_map: dict[str, str] = {}
         for i, h in enumerate(hypotheses_list):
-            hid = h.get("id", f"H{i+1:02d}")
+            raw_hid = h.get("id", f"nda-{i+1}")
+            hid = normalize_hypothesis_id(raw_hid)
+
             hyp_id_map[i] = hid
             hyp_text_map[hid] = h.get("text", h.get("hypothesis", ""))
     else:
@@ -397,17 +401,39 @@ def build_index(train_path: str = "data/train.json") -> None:
     # ------------------------------------------------------------------
     # 1. Create HypothesisNodes
     # ------------------------------------------------------------------
-    all_hypothesis_ids: list[str] = []
-    if hyp_text_map:
-        for hid, htext in hyp_text_map.items():
-            node_id = f"hyp:{hid}"
-            G.add_node(node_id, node_type="HypothesisNode", hypothesis_id=hid, text=htext)
-            all_hypothesis_ids.append(hid)
-    else:
-        for i in range(17):
-            hid = f"nda{i+1:02d}"
-            G.add_node(f"hyp:{hid}", node_type="HypothesisNode", hypothesis_id=hid, text="")
-            all_hypothesis_ids.append(hid)
+    # ------------------------------------------------------------------
+# 1. Create HypothesisNodes
+# ------------------------------------------------------------------
+
+    # Safest source of truth: annotation keys from train.json.
+    # Example keys: nda-1, nda-7, nda-20, etc.
+    annotation_hyp_ids = set()
+
+    for doc in documents:
+        for ann_set in doc.get("annotation_sets", []):
+            annotations = ann_set.get("annotations", {})
+            for raw_key in annotations.keys():
+                normalized = normalize_hypothesis_id(raw_key)
+                if normalized is not None:
+                    annotation_hyp_ids.add(normalized)
+
+    def _sort_nda_key(x: str) -> int:
+        try:
+            return int(x.split("-")[1])
+        except Exception:
+            return 9999
+
+    all_hypothesis_ids: list[str] = sorted(annotation_hyp_ids, key=_sort_nda_key)
+
+    for hid in all_hypothesis_ids:
+        # Optional: try to get text from hyp_text_map, but do not use hyp_text_map IDs as keys
+        htext = hyp_text_map.get(hid, "")
+        G.add_node(
+            f"hyp:{hid}",
+            node_type="HypothesisNode",
+            hypothesis_id=hid,
+            text=htext,
+        )
 
     # ------------------------------------------------------------------
     # 2. Create ConceptNodes + INVOLVES edges (HypothesisNode -> ConceptNode)
@@ -461,10 +487,16 @@ def build_index(train_path: str = "data/train.json") -> None:
                 label = LABEL_MAP.get(choice, choice)
                 cited_spans = ann_data.get("spans", [])
                 try:
-                    hyp_idx = int(nda_key.split("-")[1]) - 1
+                    if "-" in nda_key:
+                        hyp_idx = int(nda_key.split("-")[1]) - 1
+                    else:
+                        hyp_idx = int(nda_key.replace("nda", "")) - 1
+
                     hyp_id = hyp_id_map.get(hyp_idx, nda_key)
                 except (IndexError, ValueError):
                     hyp_id = nda_key
+
+                hyp_id = normalize_hypothesis_id(hyp_id)
 
                 for s_idx in cited_spans:
                     if s_idx not in merged_annotations:
