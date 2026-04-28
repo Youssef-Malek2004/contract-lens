@@ -16,6 +16,7 @@ from typing import Optional
 
 import networkx as nx
 
+from src.constants import H_TO_NDA, HYPOTHESES
 from src.types import RetrievedSpan
 
 # ---------------------------------------------------------------------------
@@ -116,14 +117,10 @@ CONCEPT_SYNONYMS: dict[str, list[str]] = {
 # ---------------------------------------------------------------------------
 
 def _load_hypotheses() -> dict[str, str]:
-    """Return {hypothesis_id: hypothesis_text}."""
+    """Return {nda_id: hypothesis_text} keyed by nda-keys (e.g. "nda-7")."""
     try:
-        from src.constants import HYPOTHESES  # type: ignore
-        if isinstance(HYPOTHESES, list):
-            return {h["id"]: h["text"] for h in HYPOTHESES}
-        return HYPOTHESES  # already a dict
-    except (ImportError, KeyError):
-        # Fallback: will be populated during build from train.json
+        return {H_TO_NDA[hid]: text for hid, text in HYPOTHESES.items() if hid in H_TO_NDA}
+    except Exception:
         return {}
 
 
@@ -167,14 +164,20 @@ def normalize_hypothesis_id(hypothesis_id: str | None) -> str | None:
         return None
 
     hypothesis_id = hypothesis_id.strip()
+    hid_upper = hypothesis_id.upper()
 
-    # H07 -> nda-7
-    if hypothesis_id.upper().startswith("H"):
+    # H06 / H6 -> nda-7  (use canonical mapping to handle NDA numbering gaps)
+    if hid_upper.startswith("H"):
+        if hid_upper in H_TO_NDA:
+            return H_TO_NDA[hid_upper]
         try:
-            num = int(hypothesis_id[1:])
-            return f"nda-{num}"
+            num = int(hid_upper[1:])
+            padded = f"H{num:02d}"
+            if padded in H_TO_NDA:
+                return H_TO_NDA[padded]
         except ValueError:
-            return hypothesis_id
+            pass
+        return hypothesis_id
 
     # nda07 -> nda-7
     if hypothesis_id.lower().startswith("nda") and "-" not in hypothesis_id:
@@ -182,7 +185,7 @@ def normalize_hypothesis_id(hypothesis_id: str | None) -> str | None:
             num = int(hypothesis_id[3:])
             return f"nda-{num}"
         except ValueError:
-            return hypothesis_id
+            pass
 
     # nda-07 -> nda-7
     if hypothesis_id.lower().startswith("nda-"):
@@ -190,7 +193,7 @@ def normalize_hypothesis_id(hypothesis_id: str | None) -> str | None:
             num = int(hypothesis_id.split("-")[1])
             return f"nda-{num}"
         except ValueError:
-            return hypothesis_id
+            pass
 
     return hypothesis_id
 
@@ -373,22 +376,15 @@ def build_index(train_path: str = "data/train.json") -> None:
     # ------------------------------------------------------------------
     # Parse structure
     # ------------------------------------------------------------------
+    hyp_text_map: dict[str, str] = _load_hypotheses()
     if isinstance(train_data, dict):
         documents = train_data.get("documents", [])
-        hypotheses_list = train_data.get("hypotheses", [])
-        hyp_id_map: dict[int, str] = {}
-        hyp_text_map: dict[str, str] = {}
-        for i, h in enumerate(hypotheses_list):
-            raw_hid = h.get("id", f"nda-{i+1}")
-            hid = normalize_hypothesis_id(raw_hid)
-
-            hyp_id_map[i] = hid
-            hyp_text_map[hid] = h.get("text", h.get("hypothesis", ""))
+        for h in train_data.get("hypotheses", []):
+            hid = normalize_hypothesis_id(h.get("id", ""))
+            if hid:
+                hyp_text_map[hid] = h.get("text", h.get("hypothesis", ""))
     else:
         documents = train_data
-        hypotheses_list = []
-        hyp_id_map = {}
-        hyp_text_map = _load_hypotheses()
 
     LABEL_MAP = {
         "Entailment": "ENTAILED",
@@ -401,9 +397,6 @@ def build_index(train_path: str = "data/train.json") -> None:
     # ------------------------------------------------------------------
     # 1. Create HypothesisNodes
     # ------------------------------------------------------------------
-    # ------------------------------------------------------------------
-# 1. Create HypothesisNodes
-# ------------------------------------------------------------------
 
     # Safest source of truth: annotation keys from train.json.
     # Example keys: nda-1, nda-7, nda-20, etc.
@@ -486,18 +479,7 @@ def build_index(train_path: str = "data/train.json") -> None:
                 choice = ann_data.get("choice", "")
                 label = LABEL_MAP.get(choice, choice)
                 cited_spans = ann_data.get("spans", [])
-                try:
-                    if "-" in nda_key:
-                        hyp_idx = int(nda_key.split("-")[1]) - 1
-                    else:
-                        hyp_idx = int(nda_key.replace("nda", "")) - 1
-
-                    hyp_id = hyp_id_map.get(hyp_idx, nda_key)
-                except (IndexError, ValueError):
-                    hyp_id = nda_key
-
-                hyp_id = normalize_hypothesis_id(hyp_id)
-
+                hyp_id = normalize_hypothesis_id(nda_key)
                 for s_idx in cited_spans:
                     if s_idx not in merged_annotations:
                         merged_annotations[s_idx] = {}
@@ -552,10 +534,11 @@ def build_index(train_path: str = "data/train.json") -> None:
                         edge_type="CITED_FOR",
                         label=label,
                     )
-                    # Update hypothesis_index
+                    # Update hypothesis_index (deduplicated)
                     if label not in hypothesis_index.get(hyp_id, {}):
                         hypothesis_index.setdefault(hyp_id, {})[label] = []
-                    hypothesis_index[hyp_id][label].append(span_node_id)
+                    if span_node_id not in hypothesis_index[hyp_id][label]:
+                        hypothesis_index[hyp_id][label].append(span_node_id)
 
     print(f"[graph] Built graph: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
     print(f"[graph]   SpanNodes: {span_count}")

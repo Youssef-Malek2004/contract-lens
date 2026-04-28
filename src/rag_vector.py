@@ -15,6 +15,7 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
+from src.constants import H_TO_NDA
 from src.types import RetrievedSpan
 
 # ---------------------------------------------------------------------------
@@ -74,14 +75,36 @@ def normalize_hypothesis_id(hypothesis_id: str | None) -> str | None:
         return None
 
     hypothesis_id = hypothesis_id.strip()
+    hid_upper = hypothesis_id.upper()
 
-    # H07 -> nda-7
-    if hypothesis_id.upper().startswith("H"):
+    # H06 / H6 -> nda-7  (use canonical mapping to handle NDA numbering gaps)
+    if hid_upper.startswith("H"):
+        if hid_upper in H_TO_NDA:
+            return H_TO_NDA[hid_upper]
         try:
-            num = int(hypothesis_id[1:])
+            num = int(hid_upper[1:])
+            padded = f"H{num:02d}"
+            if padded in H_TO_NDA:
+                return H_TO_NDA[padded]
+        except ValueError:
+            pass
+        return hypothesis_id
+
+    # nda07 -> nda-7
+    if hypothesis_id.lower().startswith("nda") and "-" not in hypothesis_id:
+        try:
+            num = int(hypothesis_id[3:])
             return f"nda-{num}"
         except ValueError:
-            return hypothesis_id
+            pass
+
+    # nda-07 -> nda-7
+    if hypothesis_id.lower().startswith("nda-"):
+        try:
+            num = int(hypothesis_id.split("-")[1])
+            return f"nda-{num}"
+        except ValueError:
+            pass
 
     return hypothesis_id
 
@@ -119,31 +142,36 @@ def retrieve(
         span_meta = spans[idx]
         candidates.append((float(score), span_meta))
 
-    # 3. Re-rank if hypothesis filter provided
+    # 3. Re-rank if hypothesis filter provided; replace cosine score with boosted score
     hypothesis_id = normalize_hypothesis_id(hypothesis_id)
     if hypothesis_id is not None:
-        def _rerank_score(item: tuple[float, dict]) -> float:
-            cosine_score, meta = item
+        def _rerank_score(cosine_score: float, meta: dict) -> float:
             annotations = meta.get("hypothesis_annotations", {})
             ann = annotations.get(hypothesis_id)
             bonus = 0.0
             if ann is not None:
-                bonus += 0.3  # span is annotated for this hypothesis
+                bonus += 0.3
                 if label_filter and ann == label_filter:
-                    bonus += 0.5  # exact label match
+                    bonus += 0.5
             return cosine_score + bonus
 
-        candidates.sort(key=_rerank_score, reverse=True)
+        scored = sorted(
+            ((_rerank_score(s, m), m) for s, m in candidates),
+            key=lambda x: x[0],
+            reverse=True,
+        )
+    else:
+        scored = candidates
 
     # 4. Build RetrievedSpan list
     results: list[RetrievedSpan] = []
-    for score, meta in candidates[:top_k]:
+    for final_score, meta in scored[:top_k]:
         results.append(
             RetrievedSpan(
                 text=meta["text"],
                 doc_id=meta["doc_id"],
                 span_idx=meta["span_idx"],
-                score=round(score, 4),
+                score=round(final_score, 4),
                 hypothesis_annotations=meta.get("hypothesis_annotations", {}),
             )
         )
@@ -176,20 +204,10 @@ def build_index(train_path: str = "data/train.json") -> None:
     #   { "documents": [...], "labels": {...}, "hypotheses": [...] }
     # Each document has "spans" (list of str) and "annotation_sets"
     # ------------------------------------------------------------------
-    documents = train_data.get("documents", train_data if isinstance(train_data, list) else [])
-
-    # Handle both top-level list and dict-with-documents formats
     if isinstance(train_data, dict):
         documents = train_data.get("documents", [])
-        hypotheses_list = train_data.get("hypotheses", [])
-        # Build hypothesis id map: index -> "Hxx"
-        hyp_id_map = {}
-        for i, h in enumerate(hypotheses_list):
-            hyp_id_map[i] = h.get("id", f"H{i+1:02d}")
     else:
         documents = train_data
-        hypotheses_list = []
-        hyp_id_map = {}
 
     LABEL_MAP = {
         "Entailment": "ENTAILED",
@@ -201,11 +219,10 @@ def build_index(train_path: str = "data/train.json") -> None:
 
     for doc in documents:
         doc_id = doc.get("id", doc.get("doc_id", "unknown"))
-        spans_text = doc.get("spans", [])
         annotation_sets = doc.get("annotation_sets", [])
 
         # Merge all annotation sets for this doc
-        merged_annotations: dict[int, dict[str, str]] = {}  # span_idx -> {hyp_id: label}
+        merged_annotations: dict[int, dict[str, str]] = {}  # span_idx -> {nda_key: label}
 
         for ann_set in annotation_sets:
             annotations = ann_set.get("annotations", {})
@@ -216,31 +233,17 @@ def build_index(train_path: str = "data/train.json") -> None:
                 for s_idx in cited_spans:
                     if s_idx not in merged_annotations:
                         merged_annotations[s_idx] = {}
-                    # Map nda_key to hypothesis id
-                    # nda_key is like "nda-1" -> index 0 -> "H01"
-                    try:
-                        hyp_idx = int(nda_key.split("-")[1]) - 1
-                        hyp_id = hyp_id_map.get(hyp_idx, nda_key)
-                    except (IndexError, ValueError):
-                        hyp_id = nda_key
-                    merged_annotations[s_idx][hyp_id] = label
+                    merged_annotations[s_idx][nda_key] = label
 
-        contract_text = doc.get("text", "")
-
-        for span_idx, span in enumerate(spans_text):
-            if isinstance(span, list) and len(span) == 2:
-                char_start, char_end = span
-                span_text = contract_text[char_start:char_end]
-            else:
-                char_start, char_end = None, None
-                span_text = str(span)
-
+        from src.preprocessor import build_chunks
+        for chunk in build_chunks(doc):
+            span_idx = chunk["original_index"]
             all_spans.append({
-                "text": span_text.strip(),
+                "text": chunk["text"],
                 "doc_id": str(doc_id),
                 "span_idx": span_idx,
-                "char_start": char_start,
-                "char_end": char_end,
+                "char_start": chunk["span"]["char_start"],
+                "char_end": chunk["span"]["char_end"],
                 "hypothesis_annotations": merged_annotations.get(span_idx, {}),
             })
 
