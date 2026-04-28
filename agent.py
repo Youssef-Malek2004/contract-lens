@@ -66,6 +66,17 @@ def build_parser() -> argparse.ArgumentParser:
         metavar="QUESTION",
         help="Natural language question about the contract",
     )
+    parser.add_argument(
+        "--remote",
+        action="store_true",
+        help=(
+            "Use the vllm-mlx server at http://localhost:8001/v1 instead of "
+            "loading Qwen3-4B locally. Requires the server to be running and "
+            "serving 'mlx-community/Qwen3-4b-4bit' "
+            "(see ../serving-local-models/serve-qwen3.sh). NLI/PEFT path is "
+            "unaffected — adapters can't be served this way."
+        ),
+    )
     return parser
 
 
@@ -78,11 +89,12 @@ def main() -> None:
     print("=" * 60)
     print(f"  Contract : {args.contract}  (idx={args.idx})")
     print(f"  Retrieval: {args.retrieval}")
+    print(f"  Backend  : {'remote (vllm-mlx)' if args.remote else 'local'}")
     print(f"  Question : {args.prompt}")
     print("=" * 60)
 
     try:
-        agent = ConversationAgent(retrieval_mode=args.retrieval)
+        agent = ConversationAgent(retrieval_mode=args.retrieval, remote=args.remote)
     except Exception as exc:
         print(f"[ERROR] Failed to load model: {exc}", file=sys.stderr)
         sys.exit(1)
