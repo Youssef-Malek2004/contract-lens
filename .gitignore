@@ -4,14 +4,9 @@ __pycache__/
 *.pyo
 .env
 
-# Generated SFT training files (large, reproducible from 01_preprocess.py)
+# Data files (too large for repo)
 *.jsonl
-
-# Generated RAG indexes (large, reproducible from 03_build_index.py)
-data/indexes/
-
-# Keep source data files tracked
-# data/train.json, data/test.json, data/runtrace_ms1_schema.json → committed
+data/
 
 # Model weights
 adapters/
@@ -28,17 +23,3 @@ adapters/
 # Virtual environments
 .venv/
 venv/
-
-# Conversation history (runtime artifact)
-conversation_history.json
-
-# Server process tracking
-.server_pids
-
-# Server logs
-logs/
-
-# Merged / quantized model artifacts (large, reproduced via merge_adapter.py / setup_models.sh)
-merged-*/
-mlx-*/
-
