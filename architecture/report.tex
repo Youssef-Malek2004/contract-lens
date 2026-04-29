@@ -168,8 +168,8 @@ This decomposition improves traceability (per-hypothesis provenance and metadata
 \midrule
 Orchestrator & \texttt{Qwen3-4B} & Session-level routing, tool-calling, path selection between conversation and analytical flow. & Architectural / MS3-target \\
 NLI Core & Fine-tuned \texttt{Qwen3-1.7B} & Single-pass evaluation of all 17 hypotheses with structured outputs and evidence spans. & Present \\
-Vector RAG & Embedding + FAISS & Semantic retrieval from \texttt{data/train.json} for reasoning support. & Architectural / pending \\
-GraphRAG & Concept graph retrieval & Concept- and hypothesis-targeted retrieval over graph schema. & Architectural / pending \\
+Vector RAG & Embedding + FAISS & Semantic retrieval from \texttt{data/train.json} for reasoning support. & Present (\texttt{src/rag\_vector.py}) \\
+GraphRAG & Concept graph retrieval & Concept- and hypothesis-targeted retrieval over graph schema. & Present (\texttt{src/rag\_graph.py}) \\
 Conversation Agent & \texttt{Qwen3-4B} + history & User-facing Q\&A, context injection, conversation continuity. & Present (\texttt{src/conversation\_agent.py}, \texttt{agent.py}) \\
 Playbook & Schema-governed ruleset & Policy mapping from hypothesis outcomes to severity/action/rationale. & Present (schema updated) \\
 \texttt{RunTrace 2.0} & Schema-governed trace model & Auditable run output with retrieval/evidence separation and agent metadata. & Present (schema updated) \\
@@ -177,16 +177,12 @@ Playbook & Schema-governed ruleset & Policy mapping from hypothesis outcomes to 
 \end{tabularx}
 \end{table}
 
-\IfFileExists{architecture/architecture.pdf}{
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.9\textwidth]{architecture/architecture.pdf}
+  \includegraphics[width=0.9\textwidth]{architecture.pdf}
   \caption{ContractLens Milestone 2 architecture overview}
   \label{fig:arch-overview}
 \end{figure}
-}{
-\noindent\textit{Architecture figure omitted: \texttt{architecture/architecture.pdf} not found.}
-}
 
 As shown in Figure~\ref{fig:arch-overview}, orchestration and retrieval are separated from evidence-grounding logic, reducing the risk of retrieval leakage into final legal assertions.
 
@@ -273,7 +269,40 @@ And three edge types:
   \item \texttt{CITED\_FOR}
 \end{itemize}
 
-The design uses hardcoded legal concept vocabularies and synonyms, intentionally avoiding external NLP/NER dependencies. Retrieval supports concept-based free-text graph traversal and hypothesis-targeted lookup paths.
+The design uses hardcoded legal concept vocabularies and synonyms, intentionally avoiding external NLP/NER dependencies. Retrieval supports concept-based free-text graph traversal and hypothesis-targeted lookup paths. The full \texttt{ConceptNode} vocabulary consists of 19 canonical legal terms, each matched via simple substring search against lowercased span text — no spaCy, no transformer-based NER required beyond what the rest of the pipeline already loads.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lll}
+\hline
+\textbf{Canonical Name} & \textbf{Display} & \textbf{Example Synonyms} \\
+\hline
+\texttt{receiving\_party}       & Receiving Party            & receiving party, recipient, receiver \\
+\texttt{disclosing\_party}      & Disclosing Party           & disclosing party, discloser, provider \\
+\texttt{confidential\_information} & Confidential Information & proprietary information, trade secret, know-how \\
+\texttt{employees}              & Employees                  & personnel, staff, representatives, officers \\
+\texttt{third\_party}           & Third Party                & consultant, advisor, agent, contractor, vendor \\
+\texttt{non\_disclosure}        & Non-Disclosure Obligation  & shall not disclose, keep confidential, not reveal \\
+\texttt{notice\_obligation}     & Notice Obligation          & shall notify, give notice, written notice \\
+\texttt{return\_or\_destroy}    & Return or Destroy          & return, destroy, destruction, delete, erase \\
+\texttt{purpose\_limitation}    & Purpose Limitation         & solely for, only for, permitted purpose \\
+\texttt{no\_license}            & No License Grant           & no license, no right, does not grant, no ownership \\
+\texttt{reverse\_engineering}   & Reverse Engineering        & reverse engineer, decompile, disassemble \\
+\texttt{copying}                & Copying                    & copy, copies, reproduce, duplicate \\
+\texttt{independent\_development} & Independent Development  & independently develop, without reference to \\
+\texttt{third\_party\_acquisition} & Third-Party Acquisition & received from, lawfully received, publicly available \\
+\texttt{identification}         & Identification / Marking   & marked, labeled, marked confidential, stamped \\
+\texttt{survival}               & Survival                   & survive, shall survive, notwithstanding termination \\
+\texttt{retention}              & Retention                  & retain, keep, archival copy \\
+\texttt{termination}            & Termination                & termination, expiration, end of agreement \\
+\texttt{legal\_compulsion}      & Legal / Judicial Compulsion & required by law, court order, subpoena \\
+\texttt{solicitation}           & Solicitation               & solicit, hire, recruit, induce, poach \\
+\hline
+\end{tabular}
+\caption{GraphRAG \texttt{ConceptNode} vocabulary — 20 canonical legal concepts matched by substring against span text.}
+\label{tab:conceptnodes}
+\end{table}
 
 With retrieval context prepared, the conversation layer can answer user queries while enforcing grounding and provenance constraints.
 
@@ -295,9 +324,8 @@ The schema updates in Milestone 2 formalize these runtime requirements into expl
 Milestone 2 updates the playbook schema while preserving Milestone 1 legal logic:
 \begin{itemize}
   \item Added \texttt{schema\_version: "2.0-ms2"}
-  \item Added run-level \texttt{retrieval\_mode} (\texttt{vector} or \texttt{graph})
-  \item Added per-check \texttt{agent\_id}
-  \item Added per-check \texttt{conversation\_turn} (nullable integer)
+  \item Added per-check \texttt{agent\_id} (which hypothesis agent H01--H17 produced the result)
+  \item Added per-check \texttt{conversation\_turn} (nullable integer — null for batch pipeline, non-null if triggered via conversation agent)
 \end{itemize}
 
 These additions provide the metadata needed for agentic execution and traceability without changing the underlying legal risk semantics from Milestone 1.
@@ -306,16 +334,20 @@ Illustrative MS2 playbook shape:
 \begin{lstlisting}[language=json]
 {
   "schema_version": "2.0-ms2",
-  "retrieval_mode": "vector",
-  "checks": {
-    "H06": {
+  "checks": [
+    {
+      "hypothesis_id": "H06",
       "agent_id": "H06",
       "conversation_turn": null,
-      "criticality": "HIGH"
+      "criticality": "P0",
+      "overrides": { "NOT_MENTIONED": { "severity": "HIGH", "action": "CLARIFY" } },
+      "rationale_templates": { "satisfied": "...", "conflict": "...", "missing": "..." }
     }
-  }
+  ]
 }
 \end{lstlisting}
+
+Note: \texttt{retrieval\_mode} is a runtime parameter recorded in the \texttt{RunTrace}, not in the playbook. The playbook is a static policy file whose legal risk rules do not change between runs.
 
 Unchanged elements:
 \begin{itemize}
@@ -432,15 +464,15 @@ The implementation split below keeps status statements file-truthful while disti
 \texttt{src/types.py} & Present & Shared Milestone 2 TypedDict contracts. \\
 \texttt{src/model\_loader.py} & Present & Device and model-loading logic. \\
 \texttt{src/conversation\_agent.py}, \texttt{agent.py} & Present & Conversation flow and CLI entry point available. \\
-\texttt{src/rag\_vector.py} & Not present & Architectural/pending (Member 2 deliverable). \\
-\texttt{src/rag\_graph.py} & Not present & Architectural/pending (Member 3 deliverable). \\
-\texttt{03\_build\_index.py} & Not present & Architectural/pending shared indexing entry point. \\
+\texttt{src/rag\_vector.py} & Present & Vector RAG pipeline with FAISS index and re-ranking. \\
+\texttt{src/rag\_graph.py} & Present & GraphRAG pipeline with concept/hypothesis-targeted retrieval. \\
+\texttt{pipeline/03\_build\_index.py} & Present & Shared indexing entry point (\texttt{-{}-mode vector|graph|all}). \\
 Dispatcher / worker pool / aggregator modules & Not present & Architectural/MS3-target orchestration components. \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-As reflected in Table~\ref{tab:impl-status}, Vector RAG and GraphRAG are architecturally specified and expected as Member 2/3 deliverables, while full dispatcher/worker/aggregator orchestration remains MS3-target unless later added.
+As reflected in Table~\ref{tab:impl-status}, Vector RAG, GraphRAG, and the shared indexing entry point are fully implemented, while full dispatcher/worker/aggregator orchestration remains MS3-target.
 
 \section{Conclusion}
 Milestone 2 transforms ContractLens from a batch legal-NLI evaluator into an agentic, conversational NDA review system that combines a \texttt{Qwen3-4B} orchestrator, a fine-tuned \texttt{Qwen3-1.7B} NLI core, vector retrieval, graph retrieval, hypothesis-level decomposition, an updated playbook, and \texttt{RunTrace 2.0} auditability.

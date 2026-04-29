@@ -673,57 +673,6 @@
         }
       }
     },
-    "EvidenceItem": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "chunk_id",
-        "quote",
-        "relevance_score",
-        "evidence_source"
-      ],
-      "properties": {
-        "chunk_id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "quote": {
-          "type": "string",
-          "minLength": 1
-        },
-        "relevance_score": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "evidence_source": {
-          "type": "string",
-          "const": "contract",
-          "description": "Final evidence must be grounded in the analyzed contract."
-        },
-        "span": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "char_start": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "char_end": {
-              "type": "integer",
-              "minimum": 0
-            }
-          }
-        },
-        "page": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "section_path": {
-          "type": "string"
-        }
-      }
-    },
     "ValidationResult": {
       "type": "object",
       "additionalProperties": false,
