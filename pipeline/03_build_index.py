@@ -3,9 +3,9 @@
 03_build_index.py — Shared index builder for Vector RAG and GraphRAG.
 
 Usage:
-    python 03_build_index.py --mode vector          # build FAISS index only
-    python 03_build_index.py --mode graph           # build graph index only
-    python 03_build_index.py --mode all             # build both
+    python pipeline/03_build_index.py --mode vector   # build FAISS index only
+    python pipeline/03_build_index.py --mode graph    # build graph index only
+    python pipeline/03_build_index.py --mode all      # build both
 
 Options:
     --train-path PATH   Path to training data (default: data/train.json)
@@ -16,6 +16,9 @@ from __future__ import annotations
 import argparse
 import sys
 import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 def main() -> None:

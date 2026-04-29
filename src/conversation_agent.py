@@ -21,9 +21,7 @@ import warnings
 from datetime import datetime, timezone
 from typing import Callable, List
 
-from transformers import TextIteratorStreamer
-
-from src.model_loader import RemoteOrchestrator, get_device, load_orchestrator
+from src.loaders import ModelHandle, get_device, get_loader
 from src.types import RetrievedSpan
 
 # ── Constants ─────────────────────────────────────────────────────────────────
@@ -264,13 +262,13 @@ class ConversationAgent:
 
     def __init__(self, retrieval_mode: str = "vector", remote: bool = False) -> None:
         self.device = get_device()
-        self.remote = remote
+        mode = "vllm" if remote else "local"
         if remote:
             print("[ConversationAgent] Mode: remote (vllm-mlx @ localhost:8001)")
         else:
             print(f"[ConversationAgent] Device: {self.device}")
         print("[ConversationAgent] Loading Qwen3-4B (orchestrator)…")
-        self.model, self.tokenizer = load_orchestrator(self.device, remote=remote)
+        self._model: ModelHandle = get_loader(mode, device=self.device).load_orchestrator()
         self.retrieve_fn = _load_rag_fn(retrieval_mode)
         self.retrieval_mode = retrieval_mode
         self.history_path = HISTORY_FILE
@@ -290,7 +288,7 @@ class ConversationAgent:
         """
         # 1. Load contract
         contract_text, doc_id = _load_contract(contract_path, idx)
-        contract_text = _truncate_contract(contract_text, MAX_CONTRACT_TOKENS, self.tokenizer)
+        contract_text = _truncate_contract(contract_text, MAX_CONTRACT_TOKENS, self._model.tokenizer)
         print(f"[ConversationAgent] Contract: {doc_id}  ({len(contract_text)} chars)")
 
         # 2. Load and rotate history
@@ -343,80 +341,23 @@ class ConversationAgent:
 
     def _generate(self, messages: list) -> str:
         """
-        Stream a response from Qwen3-4B with enable_thinking=True.
-        Strips <think>...</think> blocks before returning.
+        Stream a response via the model handle (local or vllm — same code path).
+        Computes token budget locally, drives the spinner until the first chunk
+        arrives, then streams the rest to stdout. Returns think-stripped text.
         """
-        if isinstance(self.model, RemoteOrchestrator):
-            return self._generate_remote(messages)
-
-        text = self.tokenizer.apply_chat_template(
+        tokenizer = self._model.tokenizer
+        text = tokenizer.apply_chat_template(
             messages,
             tokenize=False,
             add_generation_prompt=True,
-            enable_thinking=True,   # Qwen3-4B unmodified checkpoint — must be True
+            enable_thinking=True,
         )
-        inputs = self.tokenizer(text, return_tensors="pt").to(self.device)
-        input_len = inputs["input_ids"].shape[1]
-
-        streamer = TextIteratorStreamer(
-            self.tokenizer,
-            skip_prompt=True,
-            skip_special_tokens=True,
-            timeout=300.0,
-        )
-
+        input_len = len(tokenizer.encode(text))
         max_new = _compute_max_new_tokens(input_len)
-        gen_kwargs = dict(
-            **inputs,
-            max_new_tokens=max_new,
-            do_sample=False,
-            temperature=None,
-            top_p=None,
-            pad_token_id=self.tokenizer.eos_token_id,
-            streamer=streamer,
-        )
 
-        gen_thread = threading.Thread(target=lambda: self.model.generate(**gen_kwargs))
-        gen_thread.start()
+        stream = self._model.stream(messages, max_new, enable_thinking=True)
 
-        # Spinner during prefill (blocks until first token arrives)
         with _Spinner(f"Reading {input_len} input tokens (budget {max_new} out)…"):
-            first_chunk = next(iter(streamer))
-
-        # Stream tokens to stdout in real time
-        print("Answer ▶ ", end="", flush=True)
-        output = first_chunk
-        print(first_chunk, end="", flush=True)
-        for chunk in streamer:
-            print(chunk, end="", flush=True)
-            output += chunk
-        print()
-
-        gen_thread.join()
-        return _strip_think(output.strip())
-
-    def _generate_remote(self, messages: list) -> str:
-        """
-        Stream from a vllm-mlx server. The Qwen3 reasoning parser strips
-        <think> blocks server-side, so we only receive answer tokens.
-        Token count is computed locally just to drive the prefill spinner.
-        """
-        text = self.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-            enable_thinking=True,
-        )
-        input_len = len(self.tokenizer.encode(text))
-        max_new = _compute_max_new_tokens(input_len)
-
-        stream = self.model.chat_stream(
-            messages,
-            max_new_tokens=max_new,
-            enable_thinking=True,
-        )
-
-        with _Spinner(f"Reading {input_len} input tokens (remote, budget {max_new} out)…"):
             try:
                 first_chunk = next(stream)
             except StopIteration:

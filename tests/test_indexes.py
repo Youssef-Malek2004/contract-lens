@@ -3,11 +3,13 @@
 Index correctness tests for MS2 RAG pipelines.
 
 Run from project root:
-    python test_indexes.py
+    python tests/test_indexes.py
 """
 import json
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 PASS = "\033[92mPASS\033[0m"
 FAIL = "\033[91mFAIL\033[0m"
