@@ -21,17 +21,29 @@ import warnings
 from datetime import datetime, timezone
 from typing import Callable, List
 
-from transformers import TextIteratorStreamer
-
-from src.model_loader import get_device, load_orchestrator
+from src.loaders import ModelHandle, get_device, get_loader
 from src.types import RetrievedSpan
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
 HISTORY_FILE = "conversation_history.json"
-MAX_CONTRACT_TOKENS = 8000   # leaves ~20k headroom in Qwen3-4B's 32k context
-MAX_NEW_TOKENS = 1024
-MAX_HISTORY_TURNS = 5        # trim oldest pairs if session grows long
+CONTEXT_WINDOW       = 20_000   # total budget (input + output) we let the orchestrator use
+MAX_CONTRACT_TOKENS  = 14_000   # ceiling on the contract block alone — system + RAG + history + question + 1k output still fit in CONTEXT_WINDOW
+MIN_NEW_TOKENS       = 256      # floor: refuse to generate if the prompt leaves less than this
+SAFETY_MARGIN        = 256      # slack for chat-template tokens & client/server tokenizer drift
+MAX_HISTORY_TURNS    = 5        # trim oldest pairs if session grows long
+
+
+def _compute_max_new_tokens(input_len: int) -> int:
+    """Output is whatever's left after the prompt — fills CONTEXT_WINDOW."""
+    budget = CONTEXT_WINDOW - input_len - SAFETY_MARGIN
+    if budget < MIN_NEW_TOKENS:
+        raise ValueError(
+            f"Prompt is too large: {input_len} input tokens leaves only {budget} "
+            f"for output (need ≥ {MIN_NEW_TOKENS}). Lower MAX_CONTRACT_TOKENS or "
+            f"raise CONTEXT_WINDOW."
+        )
+    return budget
 
 CONVERSATION_SYSTEM_PROMPT = (
     "You are a contract analysis assistant for NDA review.\n\n"
@@ -248,11 +260,15 @@ class ConversationAgent:
       5. Persists the exchange to conversation_history.json
     """
 
-    def __init__(self, retrieval_mode: str = "vector") -> None:
+    def __init__(self, retrieval_mode: str = "vector", remote: bool = False) -> None:
         self.device = get_device()
-        print(f"[ConversationAgent] Device: {self.device}")
+        mode = "vllm" if remote else "local"
+        if remote:
+            print("[ConversationAgent] Mode: remote (vllm-mlx @ localhost:8001)")
+        else:
+            print(f"[ConversationAgent] Device: {self.device}")
         print("[ConversationAgent] Loading Qwen3-4B (orchestrator)…")
-        self.model, self.tokenizer = load_orchestrator(self.device)
+        self._model: ModelHandle = get_loader(mode, device=self.device).load_orchestrator()
         self.retrieve_fn = _load_rag_fn(retrieval_mode)
         self.retrieval_mode = retrieval_mode
         self.history_path = HISTORY_FILE
@@ -272,7 +288,7 @@ class ConversationAgent:
         """
         # 1. Load contract
         contract_text, doc_id = _load_contract(contract_path, idx)
-        contract_text = _truncate_contract(contract_text, MAX_CONTRACT_TOKENS, self.tokenizer)
+        contract_text = _truncate_contract(contract_text, MAX_CONTRACT_TOKENS, self._model.tokenizer)
         print(f"[ConversationAgent] Contract: {doc_id}  ({len(contract_text)} chars)")
 
         # 2. Load and rotate history
@@ -285,6 +301,14 @@ class ConversationAgent:
         rag_block = _format_rag_context(rag_spans)
         if rag_spans:
             print(f"[ConversationAgent] RAG: {len(rag_spans)} spans retrieved ({self.retrieval_mode})")
+            for i, span in enumerate(rag_spans, 1):
+                ann = span.get("hypothesis_annotations", {}) or {}
+                ann_str = ", ".join(f"{h}={lbl}" for h, lbl in ann.items()) or "no-annotations"
+                preview = span["text"].replace("\n", " ")
+                if len(preview) > 140:
+                    preview = preview[:140] + "…"
+                print(f"  [{i}] doc={span['doc_id']} span={span['span_idx']} score={span.get('score')} | {ann_str}")
+                print(f"      \"{preview}\"")
         else:
             print(f"[ConversationAgent] RAG: no context (index not built or stub active)")
 
@@ -317,50 +341,35 @@ class ConversationAgent:
 
     def _generate(self, messages: list) -> str:
         """
-        Stream a response from Qwen3-4B with enable_thinking=True.
-        Strips <think>...</think> blocks before returning.
+        Stream a response via the model handle (local or vllm — same code path).
+        Computes token budget locally, drives the spinner until the first chunk
+        arrives, then streams the rest to stdout. Returns think-stripped text.
         """
-        text = self.tokenizer.apply_chat_template(
+        tokenizer = self._model.tokenizer
+        text = tokenizer.apply_chat_template(
             messages,
             tokenize=False,
             add_generation_prompt=True,
-            enable_thinking=True,   # Qwen3-4B unmodified checkpoint — must be True
+            enable_thinking=True,
         )
-        inputs = self.tokenizer(text, return_tensors="pt").to(self.device)
-        input_len = inputs["input_ids"].shape[1]
+        input_len = len(tokenizer.encode(text))
+        max_new = _compute_max_new_tokens(input_len)
 
-        streamer = TextIteratorStreamer(
-            self.tokenizer,
-            skip_prompt=True,
-            skip_special_tokens=True,
-            timeout=300.0,
-        )
+        stream = self._model.stream(messages, max_new, enable_thinking=True)
 
-        gen_kwargs = dict(
-            **inputs,
-            max_new_tokens=MAX_NEW_TOKENS,
-            do_sample=False,
-            temperature=None,
-            top_p=None,
-            pad_token_id=self.tokenizer.eos_token_id,
-            streamer=streamer,
-        )
+        with _Spinner(f"Reading {input_len} input tokens (budget {max_new} out)…"):
+            try:
+                first_chunk = next(stream)
+            except StopIteration:
+                first_chunk = ""
 
-        gen_thread = threading.Thread(target=lambda: self.model.generate(**gen_kwargs))
-        gen_thread.start()
-
-        # Spinner during prefill (blocks until first token arrives)
-        with _Spinner(f"Reading {input_len} input tokens…"):
-            first_chunk = next(iter(streamer))
-
-        # Stream tokens to stdout in real time
         print("Answer ▶ ", end="", flush=True)
         output = first_chunk
-        print(first_chunk, end="", flush=True)
-        for chunk in streamer:
+        if first_chunk:
+            print(first_chunk, end="", flush=True)
+        for chunk in stream:
             print(chunk, end="", flush=True)
             output += chunk
         print()
 
-        gen_thread.join()
         return _strip_think(output.strip())
