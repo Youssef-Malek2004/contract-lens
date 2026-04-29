@@ -1,0 +1,1983 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/contractlens-ms2-playbook.schema.json",
+  "title": "ContractLens MS2 Playbook Schema",
+  "description": "Milestone 2 playbook schema for ContractLens. Extends playbook.yaml with schema_version, retrieval_mode, and per-hypothesis agent metadata while preserving the full 17-hypothesis legal risk logic.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "playbook_id",
+    "version",
+    "source",
+    "retrieval_mode",
+    "global_defaults",
+    "criticality_tiers",
+    "template_slots",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "2.0-ms2"
+    },
+    "playbook_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retrieval_mode": {
+      "type": "string",
+      "enum": [
+        "vector",
+        "graph"
+      ]
+    },
+    "global_defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_required_for",
+        "label_to_status",
+        "label_to_default_decision"
+      ],
+      "properties": {
+        "evidence_required_for": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ENTAILED",
+              "CONTRADICTED",
+              "NOT_MENTIONED"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "label_to_status": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ENTAILED",
+            "CONTRADICTED",
+            "NOT_MENTIONED"
+          ],
+          "properties": {
+            "ENTAILED": {
+              "type": "string",
+              "minLength": 1
+            },
+            "CONTRADICTED": {
+              "type": "string",
+              "minLength": 1
+            },
+            "NOT_MENTIONED": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "label_to_default_decision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ENTAILED",
+            "CONTRADICTED",
+            "NOT_MENTIONED"
+          ],
+          "properties": {
+            "ENTAILED": {
+              "$ref": "#/$defs/Decision"
+            },
+            "CONTRADICTED": {
+              "$ref": "#/$defs/Decision"
+            },
+            "NOT_MENTIONED": {
+              "$ref": "#/$defs/Decision"
+            }
+          }
+        }
+      }
+    },
+    "criticality_tiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "P0",
+        "P1",
+        "P2"
+      ],
+      "properties": {
+        "P0": {
+          "type": "string",
+          "minLength": 1
+        },
+        "P1": {
+          "type": "string",
+          "minLength": 1
+        },
+        "P2": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "template_slots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "optional"
+      ],
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 17,
+      "maxItems": 17,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H01"
+            },
+            "agent_id": {
+              "const": "H01"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H02"
+            },
+            "agent_id": {
+              "const": "H02"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H03"
+            },
+            "agent_id": {
+              "const": "H03"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H04"
+            },
+            "agent_id": {
+              "const": "H04"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H05"
+            },
+            "agent_id": {
+              "const": "H05"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H06"
+            },
+            "agent_id": {
+              "const": "H06"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H07"
+            },
+            "agent_id": {
+              "const": "H07"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H08"
+            },
+            "agent_id": {
+              "const": "H08"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H09"
+            },
+            "agent_id": {
+              "const": "H09"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H10"
+            },
+            "agent_id": {
+              "const": "H10"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H11"
+            },
+            "agent_id": {
+              "const": "H11"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H12"
+            },
+            "agent_id": {
+              "const": "H12"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H13"
+            },
+            "agent_id": {
+              "const": "H13"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H14"
+            },
+            "agent_id": {
+              "const": "H14"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H15"
+            },
+            "agent_id": {
+              "const": "H15"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H16"
+            },
+            "agent_id": {
+              "const": "H16"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "hypothesis_id",
+            "agent_id",
+            "conversation_turn",
+            "title",
+            "hypothesis_text",
+            "criticality",
+            "rationale_templates"
+          ],
+          "properties": {
+            "hypothesis_id": {
+              "const": "H17"
+            },
+            "agent_id": {
+              "const": "H17"
+            },
+            "conversation_turn": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hypothesis_text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "criticality": {
+              "type": "string",
+              "enum": [
+                "P0",
+                "P1",
+                "P2"
+              ]
+            },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": false,
+              "propertyNames": {
+                "enum": [
+                  "ENTAILED",
+                  "CONTRADICTED",
+                  "NOT_MENTIONED"
+                ]
+              },
+              "patternProperties": {
+                "^(ENTAILED|CONTRADICTED|NOT_MENTIONED)$": {
+                  "$ref": "#/$defs/Decision"
+                }
+              }
+            },
+            "rationale_templates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "satisfied",
+                "conflict",
+                "missing"
+              ],
+              "properties": {
+                "satisfied": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conflict": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "missing": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      ],
+      "items": false
+    }
+  },
+  "$defs": {
+    "Label": {
+      "type": "string",
+      "enum": [
+        "ENTAILED",
+        "CONTRADICTED",
+        "NOT_MENTIONED"
+      ]
+    },
+    "Severity": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ]
+    },
+    "Action": {
+      "type": "string",
+      "enum": [
+        "ACCEPT",
+        "CLARIFY",
+        "ESCALATE",
+        "NEGOTIATE"
+      ]
+    },
+    "Decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "severity",
+        "action"
+      ],
+      "properties": {
+        "severity": {
+          "$ref": "#/$defs/Severity"
+        },
+        "action": {
+          "$ref": "#/$defs/Action"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "2.0-ms2",
+      "playbook_id": "contractnli_nda_minimal",
+      "version": "1.1",
+      "source": "ContractNLI fixed hypothesis set (17 items)",
+      "retrieval_mode": "vector",
+      "global_defaults": {
+        "evidence_required_for": [
+          "ENTAILED",
+          "CONTRADICTED"
+        ],
+        "label_to_status": {
+          "ENTAILED": "satisfied",
+          "CONTRADICTED": "conflict",
+          "NOT_MENTIONED": "missing"
+        },
+        "label_to_default_decision": {
+          "ENTAILED": {
+            "severity": "LOW",
+            "action": "ACCEPT"
+          },
+          "CONTRADICTED": {
+            "severity": "HIGH",
+            "action": "ESCALATE"
+          },
+          "NOT_MENTIONED": {
+            "severity": "MEDIUM",
+            "action": "CLARIFY"
+          }
+        }
+      },
+      "criticality_tiers": {
+        "P0": "Deal-critical / baseline NDA hygiene",
+        "P1": "Important / commonly negotiated",
+        "P2": "Optional or context-dependent"
+      },
+      "template_slots": {
+        "required": [
+          "HYPOTHESIS_TITLE",
+          "SEVERITY",
+          "ACTION"
+        ],
+        "optional": [
+          "EVIDENCE_SUMMARY",
+          "TOP_CITATION",
+          "CONFIDENCE"
+        ]
+      },
+      "checks": [
+        {
+          "hypothesis_id": "H01",
+          "title": "Explicit identification",
+          "hypothesis_text": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+          "criticality": "P2",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "LOW",
+              "action": "ACCEPT"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA appears to require express identification/marking of Confidential Information. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to take the opposite position (i.e., not all Confidential Information must be expressly identified). Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly impose an express identification/marking requirement. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H01",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H02",
+          "title": "Technical-only scope",
+          "hypothesis_text": "Confidential Information shall only include technical information.",
+          "criticality": "P2",
+          "overrides": {
+            "ENTAILED": {
+              "severity": "MEDIUM",
+              "action": "NEGOTIATE"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA limits Confidential Information to technical information only. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA does not limit Confidential Information to technical information only (it appears broader). Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly state that Confidential Information is limited to technical information only. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H02",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H03",
+          "title": "Verbal information included",
+          "hypothesis_text": "Confidential Information may include verbally conveyed information.",
+          "criticality": "P2",
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA permits Confidential Information to include oral/verbal disclosures (typically subject to conditions). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to exclude orally conveyed information from the Confidential Information definition. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address whether orally conveyed information is treated as Confidential Information. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H03",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H04",
+          "title": "Purpose limitation",
+          "hypothesis_text": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+          "criticality": "P0",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "HIGH",
+              "action": "CLARIFY"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA restricts use of Confidential Information to the stated purpose(s) only. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to allow use of Confidential Information beyond the stated purpose(s), which is a policy conflict. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly restrict use of Confidential Information to the stated purpose(s). Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H04",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H05",
+          "title": "Disclosure to employees",
+          "hypothesis_text": "Receiving Party may share some Confidential Information with some of Receiving Party’s employees.",
+          "criticality": "P1",
+          "overrides": {
+            "CONTRADICTED": {
+              "severity": "MEDIUM",
+              "action": "NEGOTIATE"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA permits sharing Confidential Information with employees (typically on a need-to-know basis). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to prohibit sharing Confidential Information with employees, which may be operationally impractical. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address whether employees may receive Confidential Information. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H05",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H06",
+          "title": "Disclosure to third parties / representatives",
+          "hypothesis_text": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+          "criticality": "P0",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "HIGH",
+              "action": "CLARIFY"
+            },
+            "CONTRADICTED": {
+              "severity": "HIGH",
+              "action": "NEGOTIATE"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA permits disclosure to third parties such as consultants/advisors (typically under confidentiality obligations). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to prohibit disclosure to third parties/representatives, which is typically addressed via a controlled 'representatives' carve-out. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address whether disclosure to third parties/representatives is permitted. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H06",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H07",
+          "title": "Notice for compelled disclosure",
+          "hypothesis_text": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+          "criticality": "P1",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "MEDIUM",
+              "action": "CLARIFY"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA requires notice to the Disclosing Party before/when compelled disclosure occurs (subject to legal constraints). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears not to require notice for compelled disclosure, which may reduce the Disclosing Party’s ability to seek protective measures. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly require notice in the event of compelled disclosure. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H07",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H08",
+          "title": "Confidentiality of the agreement/existence",
+          "hypothesis_text": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+          "criticality": "P2",
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA treats the existence/negotiation of the agreement as confidential. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to allow disclosure of the fact of the agreement/negotiation. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address confidentiality of the agreement’s existence or negotiation. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H08",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H09",
+          "title": "No reverse engineering",
+          "hypothesis_text": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party’s Confidential Information.",
+          "criticality": "P2",
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA prohibits reverse engineering of objects embodying Confidential Information. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears not to prohibit reverse engineering (or permits it), which may require a tighter restriction depending on context. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address reverse engineering restrictions. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H09",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H10",
+          "title": "Independent development permitted",
+          "hypothesis_text": "Receiving Party may independently develop information similar to Confidential Information.",
+          "criticality": "P1",
+          "overrides": {
+            "ENTAILED": {
+              "severity": "MEDIUM",
+              "action": "NEGOTIATE"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA permits independent development of similar information; this may be acceptable but often requires careful scoping. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to restrict independent development of similar information; this may be acceptable depending on the relationship and purpose. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address independent development of similar information. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H10",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H11",
+          "title": "Third-party acquisition permitted",
+          "hypothesis_text": "Receiving Party may acquire information similar to Confidential Information from a third party.",
+          "criticality": "P1",
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA permits acquiring similar information from third parties (subject to not breaching confidentiality obligations). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to restrict acquisition of similar information from third parties; this may require negotiation depending on business needs. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address third-party acquisition of similar information. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H11",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H12",
+          "title": "No rights / no license",
+          "hypothesis_text": "Agreement shall not grant Receiving Party any right to Confidential Information.",
+          "criticality": "P0",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "HIGH",
+              "action": "CLARIFY"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA includes a no-rights/no-license position regarding Confidential Information. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to grant rights or license-like permissions regarding Confidential Information, which may be a policy conflict. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly state that no rights/licenses are granted regarding Confidential Information. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H12",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H13",
+          "title": "Return or destruction on termination",
+          "hypothesis_text": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+          "criticality": "P0",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "HIGH",
+              "action": "CLARIFY"
+            },
+            "CONTRADICTED": {
+              "severity": "HIGH",
+              "action": "NEGOTIATE"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA requires return or destruction of Confidential Information upon termination (often with limited archival exceptions). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears not to require return/destruction upon termination, which is typically unacceptable without alternative controls. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly require return or destruction of Confidential Information upon termination. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H13",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H14",
+          "title": "Copying permitted in some circumstances",
+          "hypothesis_text": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+          "criticality": "P1",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "MEDIUM",
+              "action": "CLARIFY"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA permits copying Confidential Information in certain circumstances (typically with controls). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to prohibit copying Confidential Information, which may require negotiation for operational practicality. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address whether copying Confidential Information is permitted under controlled circumstances. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H14",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H15",
+          "title": "Non-solicitation",
+          "hypothesis_text": "Receiving Party shall not solicit some of Disclosing Party’s representatives.",
+          "criticality": "P2",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "LOW",
+              "action": "ACCEPT"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA includes a non-solicitation restriction regarding the Disclosing Party’s representatives. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears not to impose non-solicitation restrictions; this is often optional and context-dependent. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not include a clear non-solicitation restriction; this is often optional depending on the engagement. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H15",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H16",
+          "title": "Survival of obligations",
+          "hypothesis_text": "Some obligations of Agreement may survive termination of Agreement.",
+          "criticality": "P1",
+          "overrides": {
+            "NOT_MENTIONED": {
+              "severity": "HIGH",
+              "action": "CLARIFY"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA indicates that certain obligations survive termination (commonly confidentiality and related duties). Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to state that obligations do not survive termination, which may conflict with typical confidentiality expectations. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly state that confidentiality or related obligations survive termination. Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H16",
+          "conversation_turn": null
+        },
+        {
+          "hypothesis_id": "H17",
+          "title": "Retention after return/destruction",
+          "hypothesis_text": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+          "criticality": "P1",
+          "overrides": {
+            "ENTAILED": {
+              "severity": "MEDIUM",
+              "action": "NEGOTIATE"
+            }
+          },
+          "rationale_templates": {
+            "satisfied": "{HYPOTHESIS_TITLE}: The NDA permits retention of some Confidential Information after return/destruction, which typically requires narrow exceptions and safeguards. Severity {SEVERITY}; action {ACTION}.",
+            "conflict": "{HYPOTHESIS_TITLE}: The NDA appears to prohibit retention after return/destruction; this may be acceptable, but confirm operational and compliance constraints. Severity {SEVERITY}; action {ACTION}.",
+            "missing": "{HYPOTHESIS_TITLE}: The NDA does not clearly address whether any retention is permitted after return/destruction (e.g., backups or legal compliance). Severity {SEVERITY}; action {ACTION}."
+          },
+          "agent_id": "H17",
+          "conversation_turn": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1091 @@
+################################################################################
+# ContractLens — Agentic Architecture Specification
+# Version: 0.4 (MS2 — quantization fix, Qwen3-4B, diagram polish)
+# Last updated: 2026-04-26
+#
+# Status tags:
+#   implemented   → code exists and runs
+#   architectural → designed, not yet coded (target: MS3)
+#   partial       → interface defined, full logic pending
+################################################################################
+
+system:
+  name: ContractLens
+  version: "0.4"
+  description: >
+    Modular multi-agent system for NDA review over ContractNLI contracts.
+    Accepts a contract and a user prompt, routes retrieval through either
+    a vector RAG or GraphRAG branch, and produces hypothesis-level NLI
+    decisions, playbook-driven risk assessments, and a schema-valid RunTrace.
+  milestone_current: MS2
+  dataset: ContractNLI
+  corpus_split:
+    retrieval: train.json   # 423 NDAs — indexed into both RAG stores
+    evaluation: test.json   # 123 NDAs — contracts fed to the NLI pipeline
+
+################################################################################
+# COMPUTE CONSTRAINTS
+################################################################################
+
+compute:
+  description: >
+    System targets consumer hardware. Uses transformers for all inference —
+    single codebase runs on MPS (Apple Silicon), CUDA (Nvidia), or CPU.
+    Quantization strategy differs by backend (see inference_backend below).
+
+  inference_backend:
+    device_selection: |
+      if torch.backends.mps.is_available():   device = "mps"    # Apple Silicon
+      elif torch.cuda.is_available():          device = "cuda"   # Nvidia GPU
+      else:                                    device = "cpu"
+    quantization_by_device:
+      cuda: >
+        BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_use_double_quant=True, bnb_4bit_quant_type="nf4").
+        Native int4 GEMM kernels on CUDA — genuinely smaller and faster.
+      mps: >
+        dtype=torch.float16. MPS has no native int4 GEMM kernels — any int4
+        quantization library (MetalConfig, quanto) dequantizes on every forward
+        pass, adding startup cost with no inference speedup. float16 is optimal.
+      cpu: >
+        dtype=torch.float16. Fallback only — CPU inference not a target.
+    implementation: >
+      src/model_loader.py::load_model(model_id, device) encapsulates this
+      logic. All agents call one function, get the right quantization config
+      automatically. No per-agent device handling.
+
+  memory_budget:
+    cuda_4bit:
+      orchestrator_model: "~2.5 GB  (Qwen3-4B at 4-bit)"
+      nli_core_plus_base: "~1.0 GB  (Qwen3-1.7B at 4-bit, adapter toggle)"
+      rag_indexes:        "~0.5 GB  (FAISS + graph in RAM)"
+      total:              "~4.0 GB"
+    mps_float16:
+      orchestrator_model: "~8.0 GB  (Qwen3-4B at float16)"
+      nli_core_plus_base: "~3.5 GB  (Qwen3-1.7B at float16)"
+      rag_indexes:        "~0.5 GB"
+      total:              "~12.0 GB — fits 18 GB+ unified memory"
+
+  concurrency_model:
+    env_var: N_PHYSICAL_AGENTS    # controls worker pool size
+    default: 2
+    description: >
+      17 logical hypothesis agents share a pool of N_PHYSICAL_AGENTS worker
+      threads. Each worker re-prompts the same loaded Qwen3-1.7B object —
+      no weight loading or unloading between tasks. Orchestrator (Qwen3-4B)
+      stays loaded throughout the entire session.
+    execution_note: >
+      GPU/NPU is single-stream; workers are logically concurrent but physically
+      serialised on the accelerator. ThreadPoolExecutor manages the queue.
+
+################################################################################
+# MODELS
+################################################################################
+
+  # ── Thinking policy ────────────────────────────────────────────────────────
+  # Qwen3 models support an internal chain-of-thought (<think>…</think>) block
+  # controlled by enable_thinking in apply_chat_template().
+  #
+  # nli_core (fine-tuned) → enable_thinking: false
+  #   The model was SFT-trained with enable_thinking=False. Turning thinking ON
+  #   would inject <think> tokens the model never saw during training, breaking
+  #   the output format and likely producing garbage JSON.
+  #
+  # orchestrator_model + base → enable_thinking: true
+  #   These are unmodified Qwen3 checkpoints. Thinking gives the orchestrator
+  #   better tool-call planning and the hypothesis agents better confidence
+  #   calibration and quote extraction. <think> blocks are stripped before
+  #   parsing structured output.
+  # ───────────────────────────────────────────────────────────────────────────
+
+models:
+  orchestrator_model:
+    id: Qwen/Qwen3-4B
+    quantization: "4-bit on CUDA (BitsAndBytesConfig) | float16 on MPS | float16 on CPU"
+    type: causal_lm
+    enable_thinking: true         # unmodified checkpoint — thinking ON
+    role: >
+      Primary reasoning model. Handles user-facing conversation, intent
+      classification, routing decisions, and tool invocation. Calls all
+      downstream pipeline steps as structured JSON tool calls. Stays loaded
+      for the full session. Also drives the conversation_agent response
+      generation — same model, same loaded instance.
+    tool_calling: true
+    always_loaded: true
+
+  nli_core:
+    id: Youssef-Malek/contractnli-vast-ai-qwen3-1.7b
+    type: peft_lora_adapter
+    base: Qwen/Qwen3-1.7B
+    quantization: "4-bit on CUDA (BitsAndBytesConfig) | float16 on MPS | float16 on CPU"
+    adapter_rank: 4
+    enable_thinking: false        # SFT-trained without thinking — must stay OFF
+    trained_on: train split (381 NDAs), SFT with enable_thinking=False
+    role: >
+      Single-pass NLI classifier. Receives full contract as numbered spans
+      plus all 17 hypotheses. Returns JSON array of {hypothesis_id, label,
+      evidence_spans} for all 17 in one forward pass. Adapters ON.
+    shared_object: qwen3_1.7b    # same Python PeftModel object as base
+
+  base:
+    id: Qwen/Qwen3-1.7B
+    quantization: "4-bit on CUDA (BitsAndBytesConfig) | float16 on MPS | float16 on CPU"
+    type: causal_lm
+    enable_thinking: true         # unmodified checkpoint — thinking ON
+    role: >
+      Used by hypothesis enrichment agents. Same PeftModel object as nli_core
+      with adapters toggled OFF via model.disable_adapter(). No reload needed.
+      Shared across all N_PHYSICAL_AGENTS worker threads — workers queue
+      sequentially against this single object. <think> blocks stripped before
+      parsing confidence/quote JSON output.
+    shared_object: qwen3_1.7b
+    adapter_state: OFF
+
+################################################################################
+# SHARED TYPES
+# These are NOT imported from any library. Each is a plain Python dict with
+# a defined shape. Implement as TypedDict in src/types.py so all modules
+# share the same definition and type checkers catch mismatches early.
+################################################################################
+
+types:
+
+  RetrievedSpan:
+    description: >
+      One result returned by retrieve(). Both vector RAG and GraphRAG return
+      the exact same shape — callers never need to know which branch ran.
+    python: TypedDict  # from src/types.py
+    fields:
+      text:
+        type: str
+        description: Verbatim span text from the training contract.
+        example: '"The Receiving Party may disclose Confidential Information to its agents..."'
+      doc_id:
+        type: str
+        description: Training contract identifier (ContractNLI document id field).
+        example: '"42"'
+      span_idx:
+        type: int
+        description: >
+          Original span index within that training contract (same indexing as
+          build_chunks() original_index). Used to cross-reference annotations.
+        example: 15
+      score:
+        type: float
+        description: >
+          Relevance score. Vector RAG: cosine similarity (0.0–1.0).
+          GraphRAG: combined concept + gold_bonus score (unbounded, higher=better).
+          Do not compare scores across branches.
+        example: 0.87
+      hypothesis_annotations:
+        type: "dict[str, str]"
+        description: >
+          Gold labels for this span keyed by hypothesis ID. Only contains
+          hypotheses for which this span was cited as evidence in the training
+          annotations. Empty dict if span was never cited as evidence for any
+          hypothesis.
+        example: '{"H06": "ENTAILED", "H05": "ENTAILED"}'
+    note: >
+      score semantics differ between branches — never sort a mixed list.
+      hypothesis_annotations is the highest-signal field: a span with
+      hypothesis_annotations["H06"] = "ENTAILED" is a gold-annotated example
+      of what H06=ENTAILED evidence looks like in a real training NDA.
+
+  HypothesisTask:
+    description: >
+      One item in the task queue produced by dispatch_hypothesis_tasks.
+      Consumed by hypothesis worker pool. Self-contained — worker needs
+      nothing else to do its job.
+    python: TypedDict
+    fields:
+      hypothesis_id:   {type: str,       example: '"H06"'}
+      hypothesis_text: {type: str,       example: '"Receiving Party may share..."'}
+      label:           {type: str,       example: '"ENTAILED"',  values: [ENTAILED, CONTRADICTED, NOT_MENTIONED]}
+      evidence_spans:  {type: "list[int]", example: "[10, 23, 25]", description: Span indices from NLI Core output}
+      contract_chunks: {type: "list[dict]", description: Full analyzed contract chunks — for quote extraction}
+      rag_context:     {type: "list[RetrievedSpan]", description: Pre-fetched training examples for this hypothesis+label}
+
+  HypothesisTrace:
+    description: >
+      Output of one hypothesis worker. Becomes one entry in the RunTrace
+      hypothesis_traces array. Extends the MS1 trace with agent + RAG metadata.
+    python: TypedDict
+    fields:
+      hypothesis_id:        {type: str}
+      label:                {type: str}
+      confidence:           {type: float,  description: "0.0–1.0, produced by base model"}
+      evidence_spans:       {type: "list[int]", description: Span indices from analyzed contract}
+      verbatim_quote:       {type: "str | None", description: Exact substring of analyzed contract, null if NOT_MENTIONED}
+      groundedness_check:   {type: bool,   description: All cited span indices are valid in the analyzed contract}
+      quote_integrity_check:{type: bool,   description: verbatim_quote appears as exact substring in contract text}
+      playbook_result:
+        severity: {type: str, values: [LOW, MEDIUM, HIGH]}
+        action:   {type: str, values: [ACCEPT, CLARIFY, ESCALATE]}
+        rationale:{type: str, description: Template-filled string from playbook rule}
+      agent_metadata:
+        agent_id:  {type: str,   description: Same as hypothesis_id — which logical agent produced this}
+        rag_query: {type: str,   description: Query string sent to retrieve() for this task}
+        rag_hits:  {type: int,   description: Number of RetrievedSpans in rag_context}
+        rag_mode:  {type: str,   values: [vector, graph]}
+
+################################################################################
+# ORCHESTRATOR TOOL SCHEMAS  (JSON Function Calling)
+################################################################################
+
+orchestrator_tools:
+  description: >
+    Orchestrator emits tool calls as JSON. Each call is parsed by the
+    host Python process and dispatched to the matching handler.
+    Format follows OpenAI-style function calling — model outputs a JSON
+    block with "name" and "arguments" keys inside a special assistant turn.
+
+  call_format: |
+    {"name": "<tool_name>", "arguments": { ... }}
+
+  # ── Why three separate tools for hypothesis processing? ────────────────────
+  # dispatch_hypothesis_tasks  → PREPARE   pure Python, ~ms, no inference
+  #                              Splits NLI output into 17 task dicts,
+  #                              pre-fetches RAG context per hypothesis.
+  #
+  # run_hypothesis_workers     → INFER     LLM inference, slow, the bottleneck
+  #                              Workers re-prompt shared Qwen3-1.7B for
+  #                              confidence + quote + groundedness per task.
+  #
+  # aggregate_results          → COLLECT   pure Python, ~ms, no inference
+  #                              Merges 17 traces, validates schema, writes
+  #                              RunTrace JSON, computes metrics.
+  #
+  # Separation rationale:
+  #   1. Dispatch and aggregate are cheap — no LLM tokens wasted on them.
+  #   2. Workers are the bottleneck — isolated so N_PHYSICAL_AGENTS can be
+  #      tuned independently without touching the other steps.
+  #   3. Orchestrator can reason between steps — e.g. skip run_hypothesis_workers
+  #      entirely if the user only asked a conversational question, not a
+  #      full NLI review.
+  # ──────────────────────────────────────────────────────────────────────────
+
+  tools:
+
+    - name: run_nli_core
+      description: >
+        Run fine-tuned NLI model on the contract. Returns labels and
+        evidence span indices for all 17 hypotheses in one pass.
+      parameters:
+        type: object
+        properties:
+          contract_chunks:
+            type: array
+            items:
+              type: object
+              properties:
+                original_index: {type: integer}
+                text:           {type: string}
+                char_start:     {type: integer}
+                char_end:       {type: integer}
+            description: Output of build_chunks() — non-empty spans with indices.
+        required: [contract_chunks]
+      returns:
+        type: array
+        items:
+          type: object
+          properties:
+            hypothesis_id:  {type: string}   # "H01"…"H17"
+            label:          {type: string}   # ENTAILED | CONTRADICTED | NOT_MENTIONED
+            evidence_spans: {type: array, items: {type: integer}}
+
+    - name: retrieve
+      description: >
+        Retrieve relevant spans from the training corpus via the active
+        RAG branch (vector or graph). Used by orchestrator before calling
+        dispatch, and independently for conversation responses.
+      parameters:
+        type: object
+        properties:
+          query:
+            type: string
+            description: >
+              Natural language query. For hypothesis agents: hypothesis text
+              + predicted label. For conversation: user question.
+          mode:
+            type: string
+            enum: [vector, graph]
+          top_k:
+            type: integer
+            default: 5
+          hypothesis_id:
+            type: string
+            description: Optional. Filters/reranks results to spans annotated for this hypothesis.
+            enum: [H01,H02,H03,H04,H05,H06,H07,H08,H09,H10,H11,H12,H13,H14,H15,H16,H17]
+          label_filter:
+            type: string
+            description: Optional. Only return spans with this gold label for hypothesis_id.
+            enum: [ENTAILED, CONTRADICTED, NOT_MENTIONED]
+        required: [query, mode]
+      returns:
+        type: array
+        items:
+          type: object
+          properties:
+            text:                  {type: string}
+            doc_id:                {type: string}
+            span_idx:              {type: integer}
+            score:                 {type: number}
+            hypothesis_annotations:
+              type: object
+              description: Gold labels for this span keyed by hypothesis ID.
+              example: {"H06": "ENTAILED", "H05": "ENTAILED"}
+
+    - name: dispatch_hypothesis_tasks
+      description: >
+        Pure-Python fan-out. Parses NLI results and builds a queue of 17
+        enrichment tasks, one per hypothesis. Each task already contains
+        its retrieved RAG context (retrieve() called per hypothesis inside
+        this function). No model invocation.
+      parameters:
+        type: object
+        properties:
+          nli_results:
+            type: array
+            description: Output of run_nli_core.
+          retrieval_mode:
+            type: string
+            enum: [vector, graph]
+          top_k_per_hypothesis:
+            type: integer
+            default: 5
+        required: [nli_results, retrieval_mode]
+      returns:
+        type: array
+        description: Queue of 17 task dicts, each ready for a hypothesis worker.
+        items:
+          type: object
+          properties:
+            hypothesis_id:    {type: string}
+            hypothesis_text:  {type: string}
+            label:            {type: string}
+            evidence_spans:   {type: array}
+            contract_chunks:  {type: array}
+            rag_context:      {type: array}   # already fetched, ready to inject
+
+    - name: run_hypothesis_workers
+      description: >
+        Submit task queue to N_PHYSICAL_AGENTS worker pool. Workers process
+        all 17 tasks against shared Qwen3-1.7B (adapter OFF), returning
+        one enriched hypothesis_trace per task.
+      parameters:
+        type: object
+        properties:
+          task_queue:
+            type: array
+            description: Output of dispatch_hypothesis_tasks.
+          n_workers:
+            type: integer
+            description: Pool size. Reads N_PHYSICAL_AGENTS env var if omitted.
+        required: [task_queue]
+      returns:
+        type: array
+        description: 17 hypothesis_trace objects, order matches task_queue.
+
+    - name: aggregate_results
+      description: >
+        Pure-Python. Collects 17 hypothesis traces, validates schema,
+        computes contract-level metrics, writes RunTrace JSON file.
+      parameters:
+        type: object
+        properties:
+          hypothesis_traces:  {type: array}
+          contract_metadata:  {type: object}
+          run_metadata:       {type: object}
+        required: [hypothesis_traces, contract_metadata, run_metadata]
+      returns:
+        type: object
+        properties:
+          runtrace_path:    {type: string}
+          label_accuracy:   {type: number}
+          groundedness:     {type: number}
+          quote_integrity:  {type: number}
+
+    - name: answer_conversationally
+      description: >
+        Generate a natural language answer to the user's question using
+        the orchestrator model (Qwen3-4B). Injects retrieved RAG context
+        and conversation history into the prompt. Appends exchange to history.
+      parameters:
+        type: object
+        properties:
+          user_prompt:
+            type: string
+          rag_context:
+            type: array
+            description: Output of retrieve() for the user's question.
+          contract_text:
+            type: string
+          conversation_history:
+            type: array
+            items:
+              type: object
+              properties:
+                role:      {type: string, enum: [user, assistant]}
+                content:   {type: string}
+                timestamp: {type: string}
+        required: [user_prompt, contract_text]
+      returns:
+        type: object
+        properties:
+          response_text:             {type: string}
+          updated_history:           {type: array}
+
+################################################################################
+# RETRIEVAL — Deep Design
+################################################################################
+
+retrieval:
+
+  corpus:
+    source: train.json
+    documents: 423        # full train.json; 90/10 split applied in code at index time
+    unit: span            # indexed at span level, not document level
+    total_spans_actual: 32359   # measured: 423 docs, avg 76.5 spans, median 70, min 18, max 350
+
+  shared_interface:
+    signature: "retrieve(query, mode, top_k, hypothesis_id?, label_filter?) → list[RetrievedSpan]"
+    # RetrievedSpan defined in types section above — same shape from both branches
+    return_schema:
+      text:                  string   # verbatim span text from training contract
+      doc_id:                string   # training contract identifier
+      span_idx:              integer  # original span index within that contract
+      score:                 float    # relevance score (cosine sim or graph score)
+      hypothesis_annotations:
+        description: Gold labels for this span from ContractNLI annotations
+        type: dict            # {hypothesis_id: label} for hypotheses this span was cited for
+        example: '{"H06": "ENTAILED", "H05": "ENTAILED"}'
+
+  ################################################################################
+  # VECTOR RAG
+  ################################################################################
+
+  vector_rag:
+    status: partial           # MS2 implementation target
+    implementation: src/rag_vector.py
+
+    indexing:
+      step_1_load:
+        action: Read train.json → extract documents list
+        code: json.load("data/train.json")["documents"]
+
+      step_2_chunk:
+        action: >
+          For each document call build_chunks() (from src/preprocessor.py).
+          Produces list of {original_index, text, char_start, char_end}.
+          Empty spans are skipped. Average span ~80 tokens.
+        preserves: original span indices — critical for evidence mapping
+
+      step_3_annotate:
+        action: >
+          For each span, scan the document's gold annotations to find which
+          hypotheses cite this span index. Record as hypothesis_annotations dict.
+          A span may be cited for 0, 1 or multiple hypotheses.
+        source: doc["annotation_sets"][0]["annotations"][nda_key]["spans"]
+
+      step_4_embed:
+        model: sentence-transformers/all-MiniLM-L6-v2
+        dimensions: 384
+        normalised: true      # L2-normalised → inner product == cosine similarity
+        batch_size: 64
+        device: cpu           # embedding model is tiny, CPU is fine
+
+      step_5_index:
+        backend: faiss
+        index_type: IndexFlatIP
+        note: >
+          IndexFlatIP: brute-force exact search using inner product (= cosine
+          after L2 normalisation). Chosen because:
+            - 32k vectors × 384 dims → ~47MB index, trivial in RAM
+            - Exact search at this scale completes in <10ms on CPU
+            - Zero approximation error — every result is the true nearest neighbour
+            - No training step, no nlist/nprobe tuning
+          IVF variants (IndexIVFFlat, IndexIVFPQ) only pay off at 500k+ vectors
+          where brute-force becomes the bottleneck. Not the case here.
+
+      step_6_persist:
+        files:
+          data/indexes/vector/spans.jsonl: >
+            One JSON line per span. Stores text, doc_id, span_idx,
+            char_start, char_end, hypothesis_annotations.
+            Row i corresponds to FAISS vector i.
+          data/indexes/vector/faiss.index: FAISS binary index file
+          data/indexes/vector/metadata.json: >
+            {embedding_model, index_size, build_timestamp, total_docs, total_spans}
+
+    querying:
+      modes:
+        hypothesis_targeted:
+          when: called by hypothesis_agent or dispatcher
+          query_string: "{hypothesis_text}. Label: {predicted_label}"
+          example: "Receiving Party may share Confidential Information with third parties. Label: ENTAILED"
+          post_filter: >
+            After top-k retrieval, optionally re-rank to prefer spans whose
+            hypothesis_annotations[hypothesis_id] matches predicted_label.
+            Gives agent reference examples of same hypothesis + same label
+            from training data.
+
+        free_text:
+          when: called by answer_conversationally (conversation response)
+          query_string: verbatim user question
+          example: "Does this NDA allow sharing with consultants?"
+          post_filter: none — pure semantic similarity
+
+      steps:
+        1: Embed query with all-MiniLM-L6-v2 → 384-dim vector, L2-normalise
+        2: faiss_index.search(query_vec, top_k * 3)  # over-fetch for re-ranking
+        3: Load metadata rows from spans.jsonl by returned indices
+        4: Apply hypothesis_id / label_filter re-ranking if requested
+        5: Return top_k items as list[RetrievedSpan]  # see types section
+
+  ################################################################################
+  # GRAPH RAG
+  ################################################################################
+
+  graph_rag:
+    status: partial           # MS2 implementation target
+    implementation: src/rag_graph.py
+
+    # ── What a ConceptNode actually is ────────────────────────────────────────
+    # A ConceptNode is a canonical legal term — a short phrase that appears
+    # repeatedly across NDA clauses. Not abstract. Concrete things like
+    # "confidential information", "third party", "termination".
+    #
+    # Why they exist: SpanNodes and HypothesisNodes connected by CITED_FOR
+    # edges handle hypothesis-targeted queries perfectly (look up gold index).
+    # But for free-text queries ("can they share with consultants?") there is
+    # no embedding — we need a bridge from query words into the graph.
+    # ConceptNodes are that bridge: query → keyword match → ConceptNode →
+    # CONTAINS edges → SpanNodes → return spans.
+    #
+    # ~50 total. Hardcoded. Never changes unless hypothesis set changes.
+    # ──────────────────────────────────────────────────────────────────────────
+
+    graph_schema:
+
+      node_types:
+
+        SpanNode:
+          id_format: "{doc_id}__span_{span_idx}"
+          attributes:
+            text:       verbatim span text
+            doc_id:     training contract identifier
+            span_idx:   original index from build_chunks()
+            char_start: character offset in document
+            char_end:   character offset in document
+          count: 32359   # measured from train.json
+
+        ConceptNode:
+          id_format: "{canonical_name}"   # e.g. "third_party", "confidential_information"
+          attributes:
+            canonical_name: snake_case identifier
+            display_name:   human-readable label
+            synonyms:       list of strings matched against span/query text (lowercased)
+          count: ~50
+          # ── Full vocabulary with synonyms ──────────────────────────────────
+          vocabulary:
+
+            # Parties
+            receiving_party:
+              display: "Receiving Party"
+              synonyms: [receiving party, recipient, receiving company, receiver]
+
+            disclosing_party:
+              display: "Disclosing Party"
+              synonyms: [disclosing party, discloser, disclosing company, provider]
+
+            # Core legal objects
+            confidential_information:
+              display: "Confidential Information"
+              synonyms: [confidential information, proprietary information, trade secret,
+                         know-how, non-public information, sensitive information]
+
+            # Permitted recipients (H05, H06)
+            employees:
+              display: "Employees"
+              synonyms: [employees, personnel, staff, workers, team members,
+                         representatives, officers, directors]
+
+            third_party:
+              display: "Third Party"
+              synonyms: [third party, third-party, third parties, consultant, consultants,
+                         advisor, advisors, agent, agents, contractor, contractors,
+                         professional advisor, vendor, outside party]
+
+            # Obligations
+            non_disclosure:
+              display: "Non-Disclosure Obligation"
+              synonyms: [shall not disclose, must not disclose, not disclose,
+                         keep confidential, maintain confidentiality, not reveal,
+                         not divulge, not share, not distribute]
+
+            notice_obligation:
+              display: "Notice Obligation"
+              synonyms: [shall notify, must notify, shall inform, give notice,
+                         prompt notice, written notice, notify promptly]
+
+            return_or_destroy:
+              display: "Return or Destroy"
+              synonyms: [return, destroy, destruction, return or destroy,
+                         return or destruction, delete, erase, dispose]
+
+            purpose_limitation:
+              display: "Purpose Limitation"
+              synonyms: [purpose, solely for, only for, permitted purpose,
+                         business purpose, stated purpose, authorized purpose]
+
+            # Rights and restrictions
+            no_license:
+              display: "No License Grant"
+              synonyms: [no license, no licence, no right, does not grant,
+                         shall not grant, no ownership, no intellectual property right]
+
+            reverse_engineering:
+              display: "Reverse Engineering"
+              synonyms: [reverse engineer, reverse engineering, decompile,
+                         disassemble, decode, derive source]
+
+            copying:
+              display: "Copying"
+              synonyms: [copy, copies, reproduce, duplication, duplicate]
+
+            # Independent paths (H10, H11)
+            independent_development:
+              display: "Independent Development"
+              synonyms: [independently develop, independent development,
+                         developed independently, without reference to]
+
+            third_party_acquisition:
+              display: "Third-Party Acquisition"
+              synonyms: [received from, obtained from, acquired from,
+                         lawfully received, third party source, publicly available]
+
+            # Identification (H01)
+            identification:
+              display: "Identification / Marking"
+              synonyms: [identified, marked, labeled, designated, identified in writing,
+                         marked confidential, stamped]
+
+            # Survival (H16, H17)
+            survival:
+              display: "Survival"
+              synonyms: [survive, survives, survival, surviving, shall survive,
+                         notwithstanding termination, after termination]
+
+            retention:
+              display: "Retention"
+              synonyms: [retain, retains, keep, archival copy, retain copies]
+
+            # Events and time
+            termination:
+              display: "Termination"
+              synonyms: [termination, expiration, expiry, end of agreement,
+                         terminate, expires, upon termination]
+
+            legal_compulsion:
+              display: "Legal / Judicial Compulsion"
+              synonyms: [required by law, court order, legal process, judicial process,
+                         regulation, subpoena, compelled, required by regulation,
+                         government authority]
+
+            solicitation:
+              display: "Solicitation"
+              synonyms: [solicit, solicitation, hire, recruit, induce, employ,
+                         approach, poach]
+
+        HypothesisNode:
+          id_format: "H01"…"H17"
+          attributes:
+            hypothesis_id:   e.g. "H06"
+            hypothesis_text: full text from HYPOTHESES constant
+            criticality:     P0 | P1 | P2  (from playbook)
+          count: 17
+
+      edge_types:
+
+        CONTAINS:
+          from: SpanNode
+          to:   ConceptNode
+          creation: >
+            For each span, lowercase the text, then check each ConceptNode's
+            synonyms list. If any synonym appears as a substring, add a
+            CONTAINS edge. One span can link to many ConceptNodes.
+          example: >
+            span: "The Receiving Party may disclose to its agents and consultants..."
+              → CONTAINS receiving_party   (matched "receiving party")
+              → CONTAINS third_party       (matched "agents", "consultants")
+              → CONTAINS non_disclosure    (matched "disclose" — note: substring of "not disclose")
+          weight: number of distinct synonyms matched in this span (stored as edge attr)
+          note: >
+            Simple substring matching. No NLP, no NER, no spaCy dependency.
+            Fast, deterministic, easy to debug. Synonym list is the only
+            thing to tune.
+
+        CITED_FOR:
+          from: SpanNode
+          to:   HypothesisNode
+          attributes:
+            label: ENTAILED | CONTRADICTED | NOT_MENTIONED
+          creation: >
+            Read ContractNLI gold annotations. For each document, for each
+            hypothesis, if span_idx appears in annotations[nda_key]["spans"],
+            create CITED_FOR(span_node, hypothesis_node, label=gold_label).
+          signal: gold human annotation — highest-signal edge in the graph.
+          note: >
+            A span with CITED_FOR(H06, ENTAILED) is a human-verified example
+            of what H06=ENTAILED evidence looks like. This is the edge that
+            makes GraphRAG genuinely useful for hypothesis agents.
+
+        INVOLVES:
+          from: HypothesisNode
+          to:   ConceptNode
+          creation: >
+            For each hypothesis, lowercase its text, check synonym lists.
+            Add INVOLVES edge for each matched ConceptNode.
+          example: >
+            H06: "Receiving Party may share with third-parties (consultants, agents...)"
+              → INVOLVES receiving_party
+              → INVOLVES third_party
+          purpose: >
+            Enables two-hop traversal: query matches ConceptNode → INVOLVES
+            edges show which hypotheses are about that concept → can use
+            hypothesis_index to find gold-annotated spans.
+
+    indexing:
+      step_1:
+        action: Load train.json → build_chunks() for each doc (reuse preprocessor)
+        output: 32359 span dicts with text, doc_id, span_idx, char offsets
+
+      step_2:
+        action: >
+          Build ConceptNode set from vocabulary above. Fixed — no extraction,
+          no ML. Just instantiate one node per canonical_name.
+        output: ~50 ConceptNode objects in networkx graph
+
+      step_3:
+        action: Build 17 HypothesisNodes from HYPOTHESES constant + playbook criticality
+        output: 17 HypothesisNode objects in graph
+
+      step_4:
+        action: >
+          For each span:
+            a) Create SpanNode with attributes
+            b) Lowercase span text, check all synonym lists → CONTAINS edges
+            c) Read gold annotations → CITED_FOR edges
+        output: 32359 SpanNodes, CONTAINS edges, CITED_FOR edges
+
+      step_5:
+        action: >
+          For each hypothesis:
+            Lowercase hypothesis text, check synonym lists → INVOLVES edges
+        output: INVOLVES edges (H01–H17 → ConceptNodes)
+
+      step_6_persist:
+        files:
+          data/indexes/graph/graph.pkl: >
+            Serialised networkx.DiGraph. All nodes + edges. Load at query time
+            with pickle.load() — no rebuild needed.
+          data/indexes/graph/hypothesis_index.json: >
+            Pre-computed lookup: {hypothesis_id: {label: [span_node_ids]}}.
+            Built from all CITED_FOR edges. Used for O(1) hypothesis-targeted
+            retrieval — no graph traversal needed for this path.
+          data/indexes/graph/concept_index.json: >
+            Pre-computed lookup: {canonical_name: [span_node_ids]}.
+            Built from all CONTAINS edges. Used for O(1) concept→spans
+            lookup — no graph traversal needed for this path.
+          data/indexes/graph/metadata.json: >
+            {node_counts: {span, concept, hypothesis},
+             edge_counts: {CONTAINS, CITED_FOR, INVOLVES},
+             build_timestamp, vocab_version}
+
+    querying:
+
+      path_A_hypothesis_targeted:
+        when: hypothesis_id provided (called by dispatcher / hypothesis_agent)
+        steps:
+          1: >
+            hypothesis_index[hypothesis_id][label_filter]
+            → list of span_node_ids. Direct O(1) lookup, no traversal.
+          2: >
+            Load SpanNode attributes for each id.
+            Score by citation_count: how many training docs cite this span
+            for this hypothesis+label (stored as edge count in graph).
+          3: Return top_k as list[RetrievedSpan]
+        example: >
+          hypothesis_id="H06", label="ENTAILED"
+          → hypothesis_index["H06"]["ENTAILED"] → [span_42_15, span_17_8, ...]
+          → rank by citation frequency → return top 3
+
+      path_B_free_text:
+        when: no hypothesis_id (called by conversation agent)
+        steps:
+          1: >
+            Lowercase query. Check each ConceptNode's synonym list.
+            Collect all matched canonical_names.
+            Example: "share with consultants" → ["third_party", "non_disclosure"]
+          2: >
+            For each matched concept:
+              concept_index[canonical_name] → list of span_node_ids
+            Union all lists → candidate set.
+          3: >
+            Score each candidate:
+              base_score = matched_concept_count / total_matched_concepts
+              gold_bonus = +0.5 if span has any CITED_FOR edge (has gold annotation)
+              final_score = base_score + gold_bonus
+          4: Sort descending, return top_k as list[RetrievedSpan]
+        example: >
+          query: "can they share confidential info with outside consultants?"
+          → matched concepts: [third_party, confidential_information]
+          → concept_index["third_party"]             = [span_A, span_B, span_C, ...]
+          → concept_index["confidential_information"] = [span_A, span_D, span_E, ...]
+          → union = [span_A, span_B, span_C, span_D, span_E, ...]
+          → span_A matched 2 concepts → base_score=1.0; has CITED_FOR → +0.5 → 1.5
+          → span_B matched 1 concept  → base_score=0.5; no CITED_FOR    → 0.5
+          → return [span_A, ...] top_k
+
+  ################################################################################
+  # HOW AGENTS CONSUME RETRIEVED CONTEXT
+  ################################################################################
+
+  agent_consumption:
+
+    prompt_injection_format: |
+      [RETRIEVAL CONTEXT — external memory from training corpus]
+      [This context is for reasoning reference only. Do not cite it as evidence.]
+      [All evidence must come from the analyzed contract below.]
+
+      Example {i} | Source: {doc_id}, span {span_idx} | {hypothesis_id}={label}
+      "{span_text}"
+
+      ... (top_k examples) ...
+      [END RETRIEVAL CONTEXT]
+
+    per_agent_usage:
+
+      conversation_agent:
+        query: user natural language question (free-text mode)
+        top_k: 5
+        purpose: >
+          Gives the orchestrator model (Qwen3-4B) domain knowledge about
+          how similar clauses appear in real NDAs. Helps it answer questions
+          like "is this third-party sharing clause typical?" with reference
+          to actual training examples. Retrieved spans are framed as
+          illustrative examples, not as evidence for the analyzed contract.
+        prompt_position: injected before the analyzed contract text
+        label: "[RETRIEVAL CONTEXT]" block, clearly separated
+
+      hypothesis_agent:
+        query: "{hypothesis_text}. Label: {predicted_label}"
+        top_k: 3
+        hypothesis_id: this agent's hypothesis ID
+        label_filter: predicted_label from NLI Core output
+        purpose: >
+          Gives the base Qwen3-1.7B reference examples of what correct
+          evidence looks like for this specific hypothesis + label combination.
+          Answers: "what does a well-grounded H06=ENTAILED decision look like
+          in a real training contract?" Helps the agent:
+            1. Validate the NLI Core's label (is it plausible given examples?)
+            2. Calibrate confidence score
+            3. Understand what a good verbatim quote looks like for this case
+        prompt_position: injected before the confidence/quote elicitation task
+        label: "[REFERENCE EXAMPLES]" block
+
+      evidence_constraint: >
+        In all cases: retrieved spans from the training corpus inform reasoning
+        but MUST NOT appear in the hypothesis_trace as cited evidence.
+        The hypothesis_trace evidence field must contain only span indices
+        from the analyzed contract. This is validated by the aggregator.
+
+################################################################################
+# AGENTS
+################################################################################
+
+agents:
+
+  orchestrator:
+    status: architectural
+    model: orchestrator_model     # Qwen3-4B, 4-bit
+    description: >
+      Session-level controller. Stays loaded for entire run. Receives user
+      prompt + contract + history. Decides: trigger full NLI review, or answer
+      conversationally. Emits JSON tool calls to invoke downstream steps.
+      Synthesises final user-facing response. Also executes conversation
+      responses directly (answer_conversationally tool uses this same model).
+    tool_calls_available:
+      - run_nli_core
+      - retrieve
+      - dispatch_hypothesis_tasks
+      - run_hypothesis_workers
+      - aggregate_results
+      - answer_conversationally
+    inputs:  [contract_text, user_prompt, conversation_history, retrieval_mode]
+    outputs: [final_response, runtrace_json]
+    always_loaded: true
+
+  nli_core_agent:
+    status: implemented
+    model: nli_core               # Qwen3-1.7B + LoRA, adapter ON
+    enable_thinking: false        # model trained without thinking — must stay OFF
+    description: >
+      Wraps fine-tuned Qwen3-1.7B. Formats contract spans + 17 hypotheses
+      into SFT prompt. Single greedy-decode pass. Returns parsed JSON array.
+      apply_chat_template called with enable_thinking=False.
+    inputs:
+      - prepared_contract_chunks
+      - hypotheses_dict
+    outputs:
+      - nli_results   # [{hypothesis_id, label, evidence_spans}, ×17]
+    implementation: quick_infer.py (generate + parse_nli)
+
+  dispatcher:
+    type: python_function
+    status: architectural
+    description: >
+      Pure Python, no model. Parses NLI output, calls retrieve() per
+      hypothesis (17 retrieval calls, fast), builds 17 task dicts.
+      Orchestrator invokes via dispatch_hypothesis_tasks tool call.
+    implementation: src/dispatcher.py::build_task_queue()
+
+  hypothesis_agent:
+    status: architectural
+    model: base                   # Qwen3-1.7B adapter OFF, shared object
+    enable_thinking: true         # unmodified checkpoint — thinking ON
+    logical_instances: 17
+    physical_workers: N_PHYSICAL_AGENTS
+    description: >
+      Workers pull tasks from queue, re-prompt shared Qwen3-1.7B (adapter OFF,
+      thinking ON). Each task: validate label, score confidence, extract
+      verbatim quote, check groundedness, apply playbook rule → emit
+      hypothesis_trace. <think> block stripped before parsing JSON output.
+    inputs_per_task:
+      [hypothesis_id, hypothesis_text, label, evidence_spans,
+       contract_chunks, rag_context]
+    outputs_per_task:
+      [confidence, verbatim_quote, groundedness_check,
+       quote_integrity_check, playbook_result, hypothesis_trace]
+    constraint: evidence must come from analyzed contract only
+
+  aggregator_agent:
+    type: python_function
+    status: architectural
+    description: >
+      Pure Python. Collects 17 traces, validates schema, computes metrics,
+      writes RunTrace JSON. No model invocation.
+    inputs:  [17 × hypothesis_trace, contract_metadata, run_metadata]
+    outputs: [runtrace_json, evaluation_metrics]
+
+  conversation_agent:
+    status: partial
+    model: orchestrator_model     # Qwen3-4B — same model as orchestrator
+    enable_thinking: true         # unmodified checkpoint — thinking ON
+    description: >
+      Conversational response layer. Driven by the orchestrator model via
+      the answer_conversationally tool call. Receives contract text, user
+      question, RAG context, and conversation history. Injects retrieved
+      context as labeled external memory block. Appends exchange to history.
+      <think> block is preserved in the response or stripped depending on
+      whether the user-facing output should show reasoning.
+    adapter_state: N/A            # orchestrator_model has no adapter
+    retrieval_mode: vector | graph
+    inputs:
+      [contract_text, user_prompt, conversation_history, rag_context]
+    outputs:
+      [response_text, updated_conversation_history]
+    memory_distinction:
+      external_memory:   "[RETRIEVAL CONTEXT]" block — training corpus spans
+      contract_evidence: spans from the analyzed contract only
+    implementation: src/conversation_agent.py, agent.py (CLI)
+
+################################################################################
+# SCHEMAS
+################################################################################
+
+schemas:
+
+  playbook:
+    file: schemas/playbook_schema.json
+    version: "2.0-ms2"
+    status: partial
+    extends: playbook.yaml
+    additions_vs_ms1:
+      - retrieval_mode            # which RAG branch was used
+      - agent_id per check        # which hypothesis agent produced result
+      - conversation_turn         # which turn triggered evaluation (if any)
+
+  runtrace:
+    file: schemas/runtrace_schema.json
+    version: "2.0-ms2"
+    status: partial
+    extends: runs/runtrace_doc_000.json
+    additions_vs_ms1:
+      - schema_version: "2.0-ms2"
+      - retrieval_mode: vector | graph
+      - conversation_history: [{role, content, timestamp}]
+      - retrieval_context:
+          external_memory:    # RAG spans from training corpus
+          contract_evidence:  # spans from the analyzed contract
+      - agent_metadata per hypothesis_trace:
+          agent_id: H01…H17
+          rag_query: string   # query sent to retrieve() for this hypothesis
+          rag_hits: integer   # number of results returned
+
+################################################################################
+# IMPLEMENTATION STATUS
+################################################################################
+
+status_summary:
+  implemented:
+    - NLI Core Agent (fine-tuned Qwen3 inference, two-pass, RunTrace output)
+    - quick_infer.py (single-contract NLI runner with token streaming, MPS/CPU)
+    - Adapter toggle: fine-tuned ↔ base via model.disable_adapter()
+    - src/types.py (RetrievedSpan, HypothesisTask, HypothesisTrace TypedDicts)
+    - src/model_loader.py (device detection, quantization, convenience loaders)
+    - test_model_loader.py (smoke-test all three model modes with live streaming)
+    - download_models.py (pre-download all models to HF cache)
+    - architecture/architecture.yaml (this spec)
+    - architecture/architecture.pdf (rendered diagram)
+
+  ms2_targets:
+    - Vector RAG pipeline (src/rag_vector.py)                        # Member 2
+    - GraphRAG pipeline (src/rag_graph.py)                           # Member 3
+    - 03_build_index.py (shared, Members 2+3)
+    - Conversation Agent + CLI (src/conversation_agent.py, agent.py) # Member 4
+    - Updated playbook schema (schemas/playbook_schema.json)         # Member 5
+    - Updated RunTrace schema (schemas/runtrace_schema.json)         # Member 5
+    - Architecture report (architecture/report.pdf)                  # Member 5
+
+  ms3_targets:
+    - Orchestrator Agent (Qwen3-4B, JSON tool calling)
+    - Dispatcher Python function (src/dispatcher.py)
+    - Hypothesis worker pool (N_PHYSICAL_AGENTS env var)
+    - 17 logical hypothesis tasks with per-hypothesis RAG context
+    - Aggregator (pure Python)
+    - End-to-end orchestrated RunTrace generation
+
+  open_decisions:
+    - N_PHYSICAL_AGENTS default value (team to decide based on hardware)
+
+  resolved_decisions:
+    inference_framework: >
+      transformers. Single codebase across all backends.
+      Device auto-detected: MPS → CUDA → CPU.
+      CUDA → BitsAndBytesConfig NF4 4-bit (native int4 GEMM — faster + smaller).
+      MPS  → dtype=torch.float16 (no int4 — MPS lacks native int4 GEMM kernels).
+      CPU  → dtype=torch.float16 (fallback only).
+      Encapsulated in src/model_loader.py::load_model().
+    faiss_index_type: >
+      IndexFlatIP. 32k vectors × 384 dims — exact search <10ms, zero
+      approximation error, no training step. IVF not needed until corpus
+      exceeds ~500k vectors.
+    graph_concept_vocabulary: >
+      19 ConceptNodes defined with full synonym lists covering all 17 hypotheses.
+      Substring matching (lowercase). No NLP/NER dependency.
+      Full vocabulary in graph_rag.graph_schema.node_types.ConceptNode.vocabulary.
+    orchestrator_model: >
+      Qwen/Qwen3-4B. Pure transformer — full MPS speed, thinking + tool-calling.
+      Qwen3-4B dropped: hybrid SSM architecture requires CUDA-only fast-path
+      libraries (flash-linear-attention, causal-conv1d) not available on MPS.

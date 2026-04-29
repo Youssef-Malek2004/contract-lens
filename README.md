@@ -1,129 +1,321 @@
-# ContractNLI MS1 — Submission
+# ContractLens
 
-## Model
+Multi-agent NDA review system built on ContractNLI. Classifies all 17 ContractNLI hypotheses (H01–H17) against an input NDA, produces schema-valid RunTrace output, and provides a RAG-augmented conversation agent for free-form contract Q&A.
 
-- **Base model**: `unsloth/Qwen3-1.7B-bnb-4bit`
-- **Adapter method**: QLoRA (rank 4, all attention + MLP layers)
-- **Fine-tuned weights**: https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b
-- **Training**: 1269 steps, 8192 context, 1.28 hrs on RTX 5090
+**Dataset:** ContractNLI — 423 train NDAs (32,359 spans), 123 test NDAs  
+**Model family:** Qwen3 only — Orchestrator: Qwen3-4B, NLI Core: fine-tuned Qwen3-1.7B + LoRA  
+**Fine-tuned adapter:** [Youssef-Malek/contractnli-vast-ai-qwen3-1.7b](https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b)
 
-## Evaluation Results
+---
 
-| Metric | Value |
-|---|---|
-| Label Accuracy | 0.8513 |
-| Groundedness | 1.0000 |
+- [Milestone 2 (current)](#milestone-2)
+- [Milestone 1 results](#milestone-1)
+
+---
+
+## Milestone 2
+
+### Environment Setup
+
+> **Use the `genai-ms2` conda env.** Python 3.9 cannot install `transformers` from source — Qwen3 support requires the latest HEAD.
+
+```bash
+# Create once
+conda create -n genai-ms2 python=3.11 -y
+conda activate genai-ms2
+
+# transformers must come from source — install it first
+pip install torch torchvision torchaudio
+pip install "git+https://github.com/huggingface/transformers.git"
+pip install accelerate peft sentence-transformers \
+            faiss-cpu networkx scikit-learn numpy huggingface_hub \
+            safetensors tokenizers tqdm pyyaml ipykernel
+
+# Optional: register the Jupyter kernel
+python -m ipykernel install --user --name genai-ms2 --display-name "genai-ms2"
+```
+
+All commands below assume `conda activate genai-ms2` and working directory = repo root (`contract-lens/`).
+
+---
+
+### Download Models
+
+Run once from the terminal — **not** via `conda run` (subprocess stdout buffering hides progress bars):
+
+```bash
+python scripts/download_models.py
+```
+
+| Model                                          | Size    | Purpose                           |
+| ---------------------------------------------- | ------- | --------------------------------- |
+| `Qwen/Qwen3-4B`                                | ~8 GB   | Orchestrator + Conversation Agent |
+| `Qwen/Qwen3-1.7B`                              | ~3.5 GB | NLI Core base + Hypothesis Agents |
+| `Youssef-Malek/contractnli-vast-ai-qwen3-1.7b` | ~100 MB | Fine-tuned LoRA adapter           |
+| `sentence-transformers/all-MiniLM-L6-v2`       | ~90 MB  | Vector RAG embeddings             |
+
+All downloads go to `~/.cache/huggingface/` — every script finds them automatically.
+
+---
+
+### Verify Setup
+
+```bash
+python tests/test_model_loader.py
+```
+
+Runs three live-streaming tests: Orchestrator (Qwen3-4B, thinking ON), base model (adapter OFF, thinking ON), NLI Core (adapter ON, thinking OFF). All three must print `PASS`.
+
+---
+
+### Build RAG Indexes
+
+Required before using the conversation agent. Outputs go to `data/indexes/` (gitignored — rebuild locally from `data/train.json`).
+
+```bash
+python pipeline/03_build_index.py --mode vector    # FAISS index, ~5 min
+python pipeline/03_build_index.py --mode graph     # networkx graph, ~3 min
+python pipeline/03_build_index.py --mode all       # both at once
+```
+
+---
+
+### Run the Conversation Agent
+
+Ask free-form questions about any NDA in the test set:
+
+```bash
+# Vector RAG backend (default)
+python agent.py --contract data/test.json --idx 0 \
+                --retrieval vector \
+                --prompt "Does this NDA allow sharing with consultants?"
+
+# Graph RAG backend
+python agent.py --contract data/test.json --idx 0 \
+                --retrieval graph \
+                --prompt "What are the termination obligations?"
+
+# Remote mode — use the vllm-mlx server instead of loading Qwen3-4B locally (Apple Silicon)
+python agent.py --contract data/test.json --idx 0 \
+                --retrieval vector \
+                --prompt "What restrictions apply to sublicensing?" \
+                --remote
+```
+
+Conversation history persists in `conversation_history.json` between runs. History auto-resets when `--idx` changes.
+
+**Arguments:**
+
+| Flag          | Default          | Description                                            |
+| ------------- | ---------------- | ------------------------------------------------------ |
+| `--contract`  | `data/test.json` | Path to ContractNLI JSON file                          |
+| `--idx`       | `0`              | Zero-based document index within the file              |
+| `--retrieval` | `vector`         | RAG backend: `vector` or `graph`                       |
+| `--prompt`    | _(required)_     | Natural language question                              |
+| `--remote`    | off              | Route to vllm-mlx server at `http://localhost:8001/v1` |
+
+---
+
+### Run Single-Contract NLI Inference
+
+Two-pass inference on one contract (no unsloth required — plain transformers):
+
+```bash
+python scripts/quick_infer.py                          # first val doc
+python scripts/quick_infer.py --idx 3                  # 4th val doc
+python scripts/quick_infer.py --data data/train.json --idx 0
+```
+
+Pass 1: NLI Core (adapter ON, thinking OFF) — predicts label + evidence spans for all 17 hypotheses.  
+Pass 2: Base model (adapter OFF, thinking ON) — confidence score + verbatim quote.  
+Prints a results table against gold labels.
+
+---
+
+### vllm-mlx Remote Mode (Apple Silicon only)
+
+The `--remote` flag routes Qwen3-4B calls to a local vllm-mlx server. The NLI/PEFT path is always local (LoRA adapters cannot be toggled in a pre-quantized vllm-mlx model).
+
+```bash
+# Start the server (from ServeLM/ — serves mlx-community/Qwen3-4b-4bit, port 8001)
+../serving-local-models/serve-qwen3.sh
+
+# Test all three endpoints (requires servers on ports 8001, 8002, 8003)
+python tests/test_vllm_endpoints.py
+```
+
+To merge the NLI adapter into a standalone model for vllm-mlx serving:
+
+```bash
+python scripts/merge_adapter.py               # merge only
+python scripts/merge_adapter.py --convert     # merge + MLX 4-bit conversion
+```
+
+Outputs go to `merged-nli-1.7b/` and `mlx-nli-1.7b-4bit/` (gitignored).
+
+---
+
+### Architecture Diagram
+
+```bash
+conda install -c conda-forge graphviz python-graphviz -y
+python architecture/generate_diagram.py       # → architecture/architecture.pdf
+```
+
+LaTeX report:
+
+```bash
+cd architecture && pdflatex report.tex        # → architecture/report.pdf
+```
+
+---
+
+## Repo Structure
+
+```
+contract-lens/
+│
+├── agent.py                    ← CLI entry point for the conversation agent
+├── playbook.yaml               ← deterministic rule layer (17 hypothesis checks)
+├── requirements.txt
+│
+├── src/                        ← core library (import from here)
+│   ├── constants.py            NDA_TO_H, LABEL_MAP, HYPOTHESES, SYSTEM_PROMPT
+│   ├── preprocessor.py         build_chunks(), build_prompt(), build_answer()
+│   ├── types.py                RetrievedSpan, HypothesisTask, HypothesisTrace
+│   ├── model_loader.py         get_device(), load_orchestrator(), load_nli_model()
+│   ├── rag_vector.py           FAISS vector retrieval
+│   ├── rag_graph.py            networkx GraphRAG retrieval
+│   ├── conversation_agent.py   ConversationAgent class
+│   └── loaders/                LocalLoader, VllmLoader, RemoteOrchestrator
+│
+├── pipeline/                   ← numbered ML pipeline steps (run from repo root)
+│   ├── 01_preprocess.py        build SFT dataset from train.json → .jsonl
+│   ├── 02_finetune.sh          QLoRA fine-tuning command (wraps mlx_lm.lora)
+│   ├── 03_build_index.py       build vector + graph RAG indexes
+│   ├── 05_eval_runtrace.py     batch inference → runs/ + evaluation.csv (MS1)
+│   └── 05b_debug_single.py     single-contract debug tool (MS1)
+│
+├── scripts/                    ← operational utilities
+│   ├── download_models.py      pre-download all models to HF cache
+│   ├── merge_adapter.py        merge LoRA adapter + MLX conversion
+│   ├── quick_infer.py          single-contract two-pass NLI inference
+│   ├── setup_models.sh         server-side model setup
+│   └── stop_servers.sh         stop all vllm-mlx servers
+│
+├── tests/                      ← test suite (run from repo root)
+│   ├── test_model_loader.py    smoke-test all three models with streaming
+│   ├── test_indexes.py         RAG index correctness tests
+│   └── test_vllm_endpoints.py  unit tests for the three vllm-mlx endpoints
+│
+├── data/                       ← source data
+│   ├── train.json              423 NDAs · 32,359 spans (RAG index source only)
+│   ├── test.json               123 NDAs (evaluation only — never index this)
+│   ├── runtrace_ms1_schema.json MS1 RunTrace schema reference
+│   └── indexes/                gitignored — rebuild with pipeline/03_build_index.py
+│
+├── runs/                       ← per-contract RunTrace JSONs (123 files, MS1 output)
+├── RunTrace.json               all 123 RunTraces as a single JSON array (MS1)
+├── evaluation.csv              aggregate evaluation metrics (MS1)
+│
+├── schemas/
+│   ├── playbook_schema.json
+│   └── runtrace_schema.json
+│
+├── architecture/
+│   ├── architecture.yaml       living system spec
+│   ├── architecture.pdf        rendered diagram
+│   ├── generate_diagram.py
+│   ├── report.tex              LaTeX source
+│   └── report.pdf
+│
+├── notebooks/
+│   └── training_notebook.ipynb annotated QLoRA training notebook
+│
+└── docs/
+    ├── CONTRIBUTIONS.md        group member contributions
+    └── MILESTONE2_PLAN.md      work split + interfaces + deadlines
+```
+
+---
+
+## Hard Constraints
+
+| Constraint           | Detail                                                                       |
+| -------------------- | ---------------------------------------------------------------------------- |
+| Model family         | Qwen3 only — orchestrator Qwen3-4B, NLI core fine-tuned Qwen3-1.7B           |
+| Thinking policy      | Fine-tuned NLI Core: `enable_thinking=False`. All other calls: `True`        |
+| Evidence grounding   | RAG = reasoning aid only — evidence must come from the analyzed contract     |
+| Retrieval corpus     | `data/train.json` only — **never index `data/test.json`**                    |
+| One retrieval branch | `--retrieval vector` OR `--retrieval graph`, not both per run                |
+| History              | `conversation_history.json` persists between runs; resets on contract change |
+
+---
+
+---
+
+## Milestone 1
+
+### Model
+
+|                    |                                                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| Base model         | `unsloth/Qwen3-1.7B-bnb-4bit`                                                                                       |
+| Adapter method     | QLoRA (rank 4, all attention + MLP layers)                                                                          |
+| Fine-tuned weights | [Youssef-Malek/contractnli-vast-ai-qwen3-1.7b](https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b) |
+| Training           | 1269 steps · 8192 context · 1.28 hrs on RTX 5090                                                                    |
+
+### Evaluation Results
+
+| Metric                    | Value  |
+| ------------------------- | ------ |
+| Label Accuracy            | 0.8513 |
+| Groundedness              | 1.0000 |
 | Quote Integrity Pass Rate | 0.5768 |
-| Avg Latency (ms) | 14106 |
+| Avg Latency (ms)          | 14106  |
 
 Evaluated on the full ContractNLI test split (123 contracts, 2091 hypothesis instances).
 
-## Reproducing the Evaluation
+### Reproducing the Evaluation
 
-### 1. Environment setup
+**1. Environment**
+
 ```bash
 pip install "unsloth[cu128-torch260]" --upgrade
 pip install trl scikit-learn pyyaml
 ```
 
-### 2. Required files (place in working directory)
+**2. Required files** (place in working directory)
+
 ```
-test.jsonl        # generated by 01_preprocess.py from ContractNLI test.json
-test.json         # original ContractNLI test split
-playbook.yaml     # included in this submission
+test.jsonl        # generated by pipeline/01_preprocess.py from data/test.json
 ```
 
-### 3. Run evaluation
+**3. Run**
+
 ```bash
-python 05_eval_runtrace.py
+python pipeline/05_eval_runtrace.py
 ```
 
-This runs two inference passes per contract:
-- **Pass 1**: NLI classification — predicts label + evidence span indices for all 17 hypotheses
-- **Pass 2**: Verbal confidence + quote elicitation — model states confidence and copies a verbatim excerpt
+Two inference passes per contract:
 
-Outputs:
-- `runs/runtrace_doc_NNN.json` — one schema-valid RunTrace per contract
-- `evaluation.csv` — aggregate metrics
+- **Pass 1** — NLI classification (label + evidence span indices for all 17 hypotheses)
+- **Pass 2** — Confidence + verbatim quote elicitation
 
-### 4. Debug a single contract
+Outputs: `runs/runtrace_doc_NNN.json` per contract + `evaluation.csv`
+
+**4. Debug a single contract**
+
 ```bash
-python 05b_debug_single.py --idx 0   # prints full model output for both passes
+python pipeline/05b_debug_single.py --idx 0    # full model output, both passes
 ```
 
-## Submission Contents
+### Results Analysis
 
-| File | Description |
-|---|---|
-| `evaluation.csv` | Final aggregate metrics (required) |
-| `runs/` | 123 RunTrace JSON files, one per test contract |
-| `RunTrace.json` | All 123 RunTraces combined as a single JSON array |
-| `playbook.yaml` | Deterministic rule layer used in evaluation |
-| `training_notebook.ipynb` | Annotated training notebook |
-| `01_preprocess.py` | Builds SFT dataset from ContractNLI JSON |
-| `02_finetune.sh` | Training command wrapping mlx_lm.lora |
-| `05_eval_runtrace.py` | Evaluation + RunTrace generation script |
-| `05b_debug_single.py` | Single-contract debug tool |
-| `src/constants.py` | NDA_TO_H mapping, LABEL_MAP, hypothesis definitions |
-| `src/preprocessor.py` | Prompt and answer builders for SFT format |
-| `CONTRIBUTIONS.md` | Group member contributions |
+**Label accuracy 85.1%** on 2,091 hypothesis instances is a strong baseline for a 1.7B model trained on 381 examples.
 
-## Directory Structure
+**Groundedness 1.000**: The model always cites valid evidence spans for ENTAILED/CONTRADICTED predictions — all cited span indices are within range.
 
-```
-submission/
-├── 01_preprocess.py          # Step 1 — build train.jsonl + valid.jsonl from ContractNLI
-├── 02_finetune.sh            # Step 2 — QLoRA fine-tuning command
-├── 05_eval_runtrace.py       # Step 3 — inference + RunTrace generation + metrics
-├── 05b_debug_single.py       # Optional — print full model output for one contract
-├── src/
-│   ├── constants.py          # NDA_TO_H, LABEL_MAP, LABEL_TO_STATUS, HYPOTHESES
-│   └── preprocessor.py       # build_prompt(), build_answer(), build_chunks()
-├── training_notebook.ipynb   # Annotated notebook from vast.ai training run
-├── playbook.yaml             # Deterministic rule layer (17 hypothesis checks)
-├── evaluation.csv            # Final aggregate metrics
-├── runs/                     # 123 individual RunTrace JSON files
-│   ├── runtrace_doc_000.json
-│   ├── runtrace_doc_001.json
-│   └── ... (runtrace_doc_122.json)
-├── RunTrace.json        # All 123 RunTraces as a single JSON array
-├── CONTRIBUTIONS.md          # Group member contributions
-└── README.md                 # This file
-```
+**Quote integrity 0.577**: In Pass 2 the model tends to reproduce hypothesis text rather than copy a verbatim contract excerpt. This is a direct consequence of `enable_thinking=False` training — the model lacks a reasoning phase to ground its outputs in specific contract language.
 
-## Architecture Notes
-
-**Quote integrity (0.577)**: The pipeline performs a two-pass inference. In pass 2, the model is asked to output a verbatim quote from the contract. Quote integrity checks whether that quote is a substring of the canonical contract text. The 1.7B model, trained with thinking disabled, tends to output hypothesis text rather than contract text — these correctly fail the integrity check.
-
-**Groundedness (1.000)**: The model learned from SFT training data to always cite evidence spans for ENTAILED/CONTRADICTED predictions. All cited span indices are valid (within range of the document's span array).
-
-**Confidence**: Set to a heuristic (0.9 for ENTAILED/CONTRADICTED, 0.7 for NOT_MENTIONED). The 1.7B model was trained with `enable_thinking=False` and cannot self-calibrate confidence reliably.
-
-## Results Analysis and Limitations
-
-### What we achieved
-The pipeline is fully end-to-end: preprocessing → QLoRA fine-tuning → two-pass inference → playbook application → schema-valid RunTrace generation. All 123 test contracts were evaluated and every RunTrace passes schema validation. Label accuracy of **85.1%** on 2,091 hypothesis instances is a strong baseline for a 1.7B parameter model trained on only 381 examples.
-
-### Why results are not higher
-
-**1. Model size and training data volume**
-Qwen3-1.7B is a small model trained on 381 NDA examples. Legal NLI is a demanding task — contracts are long (averaging ~4,000 tokens of spans), hypotheses are subtle, and the distinction between CONTRADICTED and NOT_MENTIONED requires careful cross-referencing of multiple clauses. A 1.7B model without reasoning capability is working at the edge of what is achievable at this scale.
-
-**2. Training without thinking traces (`enable_thinking=False`)**
-The model was trained using standard SFT with `enable_thinking=False` — the assistant turn is a direct JSON array with no intermediate reasoning. This means the model pattern-matches from contract spans to labels in a single forward pass with no chain-of-thought. For straightforward hypotheses this works well, but for ambiguous cases that require multi-step reasoning across several contract clauses, the model lacks the mechanism to work through the evidence systematically before committing to a label.
-
-**3. What thinking traces would have done**
-We identified this limitation and began generating reasoning traces using knowledge distillation: a larger reasoning model (Groq `qwen3-32b`) was used to generate step-by-step `<think>` blocks for each training document, anchored to the ContractNLI gold labels. The approach produces traces like:
-
-> *"H01 says all Confidential Information must be expressly identified. Span 14 defines Confidential Information as anything designated as confidential at the time of disclosure — this is an explicit identification requirement. Therefore H01 is ENTAILED by span 14."*
-
-Training the 1.7B model on these traces with `enable_thinking=True` would teach it to reason through the evidence before producing a label, directly addressing the failure mode on ambiguous contracts. We expect this would push label accuracy above 90% and significantly improve quote integrity, since a reasoning model is more likely to cite actual contract text rather than paraphrase the hypothesis.
-
-**4. Quote integrity (0.577)**
-The 0.577 quote integrity rate reflects the model's tendency in Pass 2 to reproduce hypothesis text rather than copy a verbatim excerpt from the contract. This is a direct consequence of training without thinking — the model has not learned to ground its outputs in specific contract language. A thinking-enabled model that cites span text during its reasoning phase would produce much more faithful verbatim quotes.
-
-### Next iteration
-The trace generation pipeline (`06_generate_traces.py`) is already implemented and running. The planned next step is:
-1. Complete Groq-generated thinking traces for all 381 training documents
-2. Retrain Qwen3-1.7B with `enable_thinking=True` and LoRA rank 8
-3. Re-evaluate on the same test split for a direct comparison
+**Next iteration**: A knowledge-distillation pipeline (`06_generate_traces.py`) generates step-by-step `<think>` blocks from `qwen3-32b` for all training documents. Retraining with `enable_thinking=True` and LoRA rank 8 is expected to push label accuracy above 90% and significantly improve quote integrity.
