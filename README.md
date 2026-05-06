@@ -11,7 +11,7 @@ Multi-agent NDA review system built on ContractNLI. Classifies all 17 ContractNL
 - [Milestone 2 (current)](#milestone-2)
 - [Milestone 1 results](#milestone-1)
 
----
+--- 
 
 ## Milestone 2
 
