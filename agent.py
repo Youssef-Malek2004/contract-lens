@@ -67,15 +67,23 @@ def build_parser() -> argparse.ArgumentParser:
         help="Natural language question about the contract",
     )
     parser.add_argument(
+        "--backend",
+        type=str,
+        choices=["local", "vllm", "openrouter"],
+        default="local",
+        metavar="MODE",
+        help=(
+            "Orchestrator backend (default: local).\n"
+            "  local      — load Qwen3-4B weights in-process (MPS/CUDA/CPU)\n"
+            "  vllm       — vllm-mlx server at http://localhost:8001/v1 serving "
+            "'mlx-community/Qwen3-4b-4bit' (see ../serving-local-models/serve-qwen3.sh)\n"
+            "  openrouter — OpenRouter API; requires OPENROUTER_API_KEY in .env"
+        ),
+    )
+    parser.add_argument(
         "--remote",
         action="store_true",
-        help=(
-            "Use the vllm-mlx server at http://localhost:8001/v1 instead of "
-            "loading Qwen3-4B locally. Requires the server to be running and "
-            "serving 'mlx-community/Qwen3-4b-4bit' "
-            "(see ../serving-local-models/serve-qwen3.sh). NLI/PEFT path is "
-            "unaffected — adapters can't be served this way."
-        ),
+        help="Deprecated alias for --backend vllm.",
     )
     return parser
 
@@ -84,17 +92,19 @@ def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
 
+    backend = "vllm" if args.remote else args.backend
+
     print("=" * 60)
     print("ContractLens — Conversation Agent")
     print("=" * 60)
     print(f"  Contract : {args.contract}  (idx={args.idx})")
     print(f"  Retrieval: {args.retrieval}")
-    print(f"  Backend  : {'remote (vllm-mlx)' if args.remote else 'local'}")
+    print(f"  Backend  : {backend}")
     print(f"  Question : {args.prompt}")
     print("=" * 60)
 
     try:
-        agent = ConversationAgent(retrieval_mode=args.retrieval, remote=args.remote)
+        agent = ConversationAgent(retrieval_mode=args.retrieval, backend=backend)
     except Exception as exc:
         print(f"[ERROR] Failed to load model: {exc}", file=sys.stderr)
         sys.exit(1)

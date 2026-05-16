@@ -13,3 +13,9 @@ BASE_VLLM_ID         = "mlx-community/Qwen3-1.7b-4bit"
 ORCHESTRATOR_VLLM_URL = "http://localhost:8001/v1"
 NLI_VLLM_URL          = "http://localhost:8002/v1"
 BASE_VLLM_URL         = "http://localhost:8003/v1"
+
+# OpenRouter defaults — override via OpenRouterConfig or env vars.
+# NLI has no OpenRouter equivalent (the contractnli adapter is local-only).
+OPENROUTER_BASE_URL          = "https://openrouter.ai/api/v1"
+OPENROUTER_ORCHESTRATOR_ID   = "qwen/qwen3.5-9b"
+OPENROUTER_BASE_MODEL_ID     = "qwen/qwen3.5-9b"

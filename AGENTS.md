@@ -25,7 +25,7 @@ pip install torch torchvision torchaudio
 pip install "git+https://github.com/huggingface/transformers.git"
 pip install accelerate peft sentence-transformers \
             faiss-cpu networkx scikit-learn numpy huggingface_hub \
-            safetensors tokenizers tqdm pyyaml ipykernel
+            safetensors tokenizers tqdm pyyaml ipykernel python-dotenv
 ```
 
 All commands below assume `conda activate genai-ms2` and `cd contract-lens/` (repo root).
@@ -132,7 +132,12 @@ python agent.py --contract data/test.json --idx 0 \
 # Use a vllm-mlx server instead of loading locally (Apple Silicon):
 python agent.py --contract data/test.json --idx 0 \
                 --retrieval vector \
-                --prompt "..." --remote
+                --prompt "..." --backend vllm
+
+# Route orchestrator through OpenRouter (requires OPENROUTER_API_KEY in .env):
+python agent.py --contract data/test.json --idx 0 \
+                --retrieval vector \
+                --prompt "..." --backend openrouter
 ```
 
 Conversation history persists in `conversation_history.json`. History auto-rotates when `--idx` changes.
@@ -263,13 +268,22 @@ This is an in-place toggle — no weight reloading. `scripts/quick_infer.py` swi
 
 **Tokenizer source:** Load the tokenizer from the adapter repo (`Youssef-Malek/contractnli-vast-ai-qwen3-1.7b`), not from `Qwen/Qwen3-1.7B`. The adapter repo has a patched chat template set during Unsloth training.
 
-**Remote mode (vllm-mlx server on Apple Silicon):**
+**Backend selection (loader factory):**
 
 ```python
-model, tokenizer = load_orchestrator(remote=True)
+from src.loaders import get_loader
+
+get_loader("local").load_orchestrator()      # in-process weights (MPS/CUDA/CPU)
+get_loader("vllm").load_orchestrator()       # vllm-mlx @ http://localhost:8001/v1
+get_loader("openrouter").load_orchestrator() # OpenRouter API
 ```
 
-Returns a `RemoteOrchestrator` that talks to `http://localhost:8001/v1`. Server must be running `mlx-community/Qwen3-4b-4bit` (lowercase `b` — case-sensitive). Start via `../serving-local-models/serve-qwen3.sh`. NLI/PEFT cannot be served this way.
+`get_loader` dispatches by mode (`local` | `vllm` | `openrouter`). All three return a `ModelHandle` with the same `.stream()` / `.generate()` shape, so callers don't branch on backend.
+
+- **vllm** — server must be running `mlx-community/Qwen3-4b-4bit` (lowercase `b` — case-sensitive). Start via `../serving-local-models/serve-qwen3.sh`. NLI/PEFT cannot be served this way.
+- **openrouter** — reads `OPENROUTER_API_KEY` from `.env` (auto-loaded if `python-dotenv` is installed) or env. Defaults to `qwen/qwen3-4b` / `qwen/qwen3-1.7b` (override via `OpenRouterConfig` or kwargs to `get_loader`). `load_nli_model()` raises `NotImplementedError` — the contractnli adapter is local-only; use `LocalLoader` for NLI.
+
+Legacy shim: `src/model_loader.py::load_orchestrator(remote=True)` still works and is equivalent to `get_loader("vllm")`.
 
 **Token streaming pattern (used everywhere):**
 

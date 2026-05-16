@@ -2,7 +2,7 @@
 src/conversation_agent.py
 
 Conversation Agent for ContractLens.
-Drives Qwen3-4B (orchestrator model) with RAG context injection and
+Drives (orchestrator model) with RAG context injection and
 persistent multi-turn conversation history.
 
 Architecture spec: architecture/architecture.yaml — agents.conversation_agent
@@ -250,7 +250,7 @@ def _build_messages(
 
 class ConversationAgent:
     """
-    Conversational response layer driven by Qwen3-4B (orchestrator model).
+    Conversational response layer driven by (orchestrator model).
 
     Loads the model once on __init__. Each call to run_turn():
       1. Loads the requested contract
@@ -260,15 +260,21 @@ class ConversationAgent:
       5. Persists the exchange to conversation_history.json
     """
 
-    def __init__(self, retrieval_mode: str = "vector", remote: bool = False) -> None:
+    def __init__(self, retrieval_mode: str = "vector", backend: str = "local") -> None:
+        if backend not in ("local", "vllm", "openrouter"):
+            raise ValueError(
+                f"Unknown backend '{backend}'. Choose 'local', 'vllm', or 'openrouter'."
+            )
         self.device = get_device()
-        mode = "vllm" if remote else "local"
-        if remote:
-            print("[ConversationAgent] Mode: remote (vllm-mlx @ localhost:8001)")
+        self.backend = backend
+        if backend == "vllm":
+            print("[ConversationAgent] Mode: vllm-mlx @ localhost:8001")
+        elif backend == "openrouter":
+            print("[ConversationAgent] Mode: openrouter (https://openrouter.ai/api/v1)")
         else:
             print(f"[ConversationAgent] Device: {self.device}")
-        print("[ConversationAgent] Loading Qwen3-4B (orchestrator)…")
-        self._model: ModelHandle = get_loader(mode, device=self.device).load_orchestrator()
+        print("[ConversationAgent] Loading (orchestrator)…")
+        self._model: ModelHandle = get_loader(backend, device=self.device).load_orchestrator()
         self.retrieve_fn = _load_rag_fn(retrieval_mode)
         self.retrieval_mode = retrieval_mode
         self.history_path = HISTORY_FILE

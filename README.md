@@ -29,7 +29,7 @@ pip install torch torchvision torchaudio
 pip install "git+https://github.com/huggingface/transformers.git"
 pip install accelerate peft sentence-transformers \
             faiss-cpu networkx scikit-learn numpy huggingface_hub \
-            safetensors tokenizers tqdm pyyaml ipykernel
+            safetensors tokenizers tqdm pyyaml ipykernel python-dotenv
 
 # Optional: register the Jupyter kernel
 python -m ipykernel install --user --name genai-ms2 --display-name "genai-ms2"
@@ -85,7 +85,7 @@ python pipeline/03_build_index.py --mode all       # both at once
 Ask free-form questions about any NDA in the test set:
 
 ```bash
-# Vector RAG backend (default)
+# Vector RAG backend (default — local Qwen3-4B)
 python agent.py --contract data/test.json --idx 0 \
                 --retrieval vector \
                 --prompt "Does this NDA allow sharing with consultants?"
@@ -95,24 +95,49 @@ python agent.py --contract data/test.json --idx 0 \
                 --retrieval graph \
                 --prompt "What are the termination obligations?"
 
-# Remote mode — use the vllm-mlx server instead of loading Qwen3-4B locally (Apple Silicon)
+# vllm-mlx backend — local server instead of in-process weights (Apple Silicon)
 python agent.py --contract data/test.json --idx 0 \
                 --retrieval vector \
                 --prompt "What restrictions apply to sublicensing?" \
-                --remote
+                --backend vllm
+
+# OpenRouter backend — hosted inference; requires OPENROUTER_API_KEY in .env
+python agent.py --contract data/test.json --idx 0 \
+                --retrieval vector \
+                --prompt "What restrictions apply to sublicensing?" \
+                --backend openrouter
 ```
 
 Conversation history persists in `conversation_history.json` between runs. History auto-resets when `--idx` changes.
 
 **Arguments:**
 
-| Flag          | Default          | Description                                            |
-| ------------- | ---------------- | ------------------------------------------------------ |
-| `--contract`  | `data/test.json` | Path to ContractNLI JSON file                          |
-| `--idx`       | `0`              | Zero-based document index within the file              |
-| `--retrieval` | `vector`         | RAG backend: `vector` or `graph`                       |
-| `--prompt`    | _(required)_     | Natural language question                              |
-| `--remote`    | off              | Route to vllm-mlx server at `http://localhost:8001/v1` |
+| Flag          | Default          | Description                                                              |
+| ------------- | ---------------- | ------------------------------------------------------------------------ |
+| `--contract`  | `data/test.json` | Path to ContractNLI JSON file                                            |
+| `--idx`       | `0`              | Zero-based document index within the file                                |
+| `--retrieval` | `vector`         | RAG backend: `vector` or `graph`                                         |
+| `--prompt`    | _(required)_     | Natural language question                                                |
+| `--backend`   | `local`          | Orchestrator backend: `local`, `vllm`, or `openrouter`                   |
+| `--remote`    | off              | Deprecated alias for `--backend vllm`                                    |
+
+### OpenRouter backend
+
+`--backend openrouter` routes orchestrator inference to OpenRouter's OpenAI-compatible API. RAG retrieval still runs locally. NLI is **not** available on this backend — the fine-tuned contractnli adapter is local-only.
+
+Copy `.env.example` to `.env` and add your key:
+
+```bash
+cp .env.example .env
+# then edit .env and set OPENROUTER_API_KEY=sk-or-v1-...
+```
+
+Defaults for orchestrator / base model IDs live in `src/loaders/_constants.py` (`OPENROUTER_ORCHESTRATOR_ID`, `OPENROUTER_BASE_MODEL_ID`). Override per-call:
+
+```python
+from src.loaders import get_loader
+m = get_loader("openrouter", orchestrator_model_id="qwen/qwen3-32b").load_orchestrator()
+```
 
 ---
 
@@ -187,7 +212,7 @@ contract-lens/
 │   ├── rag_vector.py           FAISS vector retrieval
 │   ├── rag_graph.py            networkx GraphRAG retrieval
 │   ├── conversation_agent.py   ConversationAgent class
-│   └── loaders/                LocalLoader, VllmLoader, RemoteOrchestrator
+│   └── loaders/                LocalLoader, VllmLoader, OpenRouterLoader
 │
 ├── pipeline/                   ← numbered ML pipeline steps (run from repo root)
 │   ├── 01_preprocess.py        build SFT dataset from train.json → .jsonl
