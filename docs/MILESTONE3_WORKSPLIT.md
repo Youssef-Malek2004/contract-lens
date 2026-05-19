@@ -33,6 +33,156 @@ Everyone else imports `RetrievedSpan`, `HypothesisTask`, `HypothesisTrace`, `Too
 
 ---
 
+## Integration Cheatsheet (M1 foundations landed)
+
+The four foundation files are live on `ms-3`. Use them like this — no other patterns are supported.
+
+### What landed
+
+| File | What it gives you |
+| --- | --- |
+| `src/loaders/_constants.py` | `OPENROUTER_ORCHESTRATOR_ID = "qwen/qwen3.5-27b"`, `OPENROUTER_BASE_MODEL_ID = "qwen/qwen3.5-9b"`, `N_PARALLEL_AGENTS = 5` |
+| `src/types.py` | `ToolCallRecord`, `ApprovalEvent`, `RetrievalModeSwitchEvent`, `ValidationFailure`, `ConversationTurn`, `ContractAnalysisRunTrace`, `ConversationSessionRunTrace`; `HypothesisTrace` has v3 optional fields (`validation_failures`, `tool_calls`, `latency_ms`, `started_at`, `ended_at`) |
+| `src/runtrace_recorder.py` | `RunTraceRecorder`, `record_tool_call(...)` ctx, `@recorded_tool(...)` decorator (sync + async), `set_active_recorder(...)` / `use_recorder(...)` (ContextVar-backed) |
+| `src/runtrace.py` | `build_contract_runtrace(...)`, `build_session_runtrace(...)`, `write_contract_runtrace(...)`, `write_session_runtrace(...)`, `make_session_id(contract_id)`, `utc_now_iso()` |
+| `schemas/runtrace_schema.json` | v3.0-ms3 — `oneOf` discriminator on `runtrace_type` between `contract_analysis` and `conversation_session` |
+
+### Recorder — every tool call must go through this
+
+**Context-manager form** (when you call a tool inline):
+
+```python
+from src.runtrace_recorder import record_tool_call
+
+with record_tool_call("retrieve",
+                     {"query": q, "mode": mode, "top_k": 5},
+                     agent_id="H06") as call:
+    result = rag_vector.retrieve(q, mode=mode, top_k=5)
+    call.set_output(result)
+```
+
+**Decorator form** (when you own the tool handler):
+
+```python
+from src.runtrace_recorder import recorded_tool
+
+@recorded_tool("get_span")
+def get_span(idx: int, *, agent_id: str = "orchestrator", contract):
+    return contract["chunks"][idx]["text"]
+```
+
+- `agent_id` is `"orchestrator"` for M1/M4 calls, `"H01"`…`"H17"` for M2's hypothesis-worker calls.
+- The decorator reads `agent_id` from a kwarg of the same name by default — pass it through in workers.
+- Works on `async def` callables too — concurrent workers each see the recorder via `ContextVar`.
+
+### Recorder lifecycle (M4 owns this)
+
+```python
+from src.runtrace_recorder import RunTraceRecorder, set_active_recorder
+
+# At REPL boot (agent.py):
+recorder = RunTraceRecorder()
+set_active_recorder(recorder)
+# …all tool calls in any module now flow into `recorder`…
+events = recorder.snapshot()   # used to assemble the session RunTrace
+```
+
+If no recorder is active (e.g. unit tests), `record_tool_call` is a no-op — calls still run normally.
+
+### `ToolCallRecord` shape (what gets written)
+
+```json
+{
+  "agent_id": "H06",
+  "name": "retrieve",
+  "arguments": {"query": "consultants third-party", "mode": "vector", "top_k": 5},
+  "output":    {"hits": 5, "top_score": 0.87},
+  "count": 1,
+  "started_at": "2026-05-20T12:34:56.789Z",
+  "duration_ms": 142.301
+}
+```
+
+`count` is the per-`(agent_id, name)` ordinal — the recorder assigns it; you don't.
+
+### Writers — no one opens RunTrace files directly
+
+**M3's aggregator** (per `run_full_analysis` invocation):
+
+```python
+from src.runtrace import build_contract_runtrace, write_contract_runtrace, utc_now_iso
+
+rt = build_contract_runtrace(
+    run_id=f"run_{contract['contract_id']}",
+    contract=contract,
+    retrieval_mode=mode,
+    playbook=playbook_meta,
+    hypothesis_traces=validated_traces,   # 17 of them
+    metrics=metrics,
+    tool_calls=recorder.snapshot(),
+    approval_events=approval_events,
+    started_at=started_iso,
+    ended_at=utc_now_iso(),
+    session_id=session_id,                # optional back-ref
+)
+path = write_contract_runtrace(rt)        # → runs_ms3/runtrace_doc_<contract_id>.json
+```
+
+**M4's TUI** (on every turn + on `/exit`):
+
+```python
+from src.runtrace import build_session_runtrace, write_session_runtrace, make_session_id
+
+session_id = make_session_id(contract_id)   # "<contract_id>_<ISO8601>"
+rt = build_session_runtrace(
+    session_id=session_id,
+    contract_id=contract_id,
+    retrieval_mode=session.active_mode,
+    started_at=session.started_at,
+    conversation_history=session.history,
+    tool_calls=recorder.snapshot(),
+    approval_events=session.approval_events,
+    retrieval_mode_switches=session.mode_switches,
+    referenced_contract_runtraces=session.contract_runtraces,
+)
+write_session_runtrace(rt)                  # → runs_ms3/session_<session_id>.json
+```
+
+Both writers are atomic (tempfile + `os.replace`) — safe to call every turn.
+
+### Pipeline entry signature (M2 must expose)
+
+```python
+# src/run_full_analysis.py
+async def run_full_analysis(contract_id: str, retrieval_mode: str) -> dict:
+    """Returns a summary dict the orchestrator surfaces back to the user."""
+```
+
+M1's `tools.py` will `await` this from the `run_full_analysis` tool handler.
+
+### Approval-gate event contract (M1 ↔ M4, day 5)
+
+M1 emits an `ApprovalEvent` payload; M4's TUI renders the prompt, blocks on Y/N, returns the result. M1 records it; M4 also appends it to the session RunTrace via `approval_events=...` on `build_session_runtrace`.
+
+```json
+{
+  "tool": "run_full_analysis",
+  "arguments": {"contract_id": "doc_001", "retrieval_mode": "vector"},
+  "approved": true,
+  "approved_by": "user",
+  "timestamp": "2026-05-20T12:34:56.789Z"
+}
+```
+
+### Don'ts
+
+- ✗ Don't add fields to `HypothesisTrace` / `ToolCallRecord` without M1 sign-off — the schema validator will reject them.
+- ✗ Don't `open()` / `json.dump` into `runs_ms3/` directly — go through `write_*_runtrace`.
+- ✗ Don't log tool calls by hand — `record_tool_call` / `@recorded_tool` is the only audit path.
+- ✗ Don't re-instantiate `OpenRouterLoader` ad-hoc with hardcoded model IDs — read from `src/loaders/_constants.py`.
+
+---
+
 ## Member 1 — Orchestrator + Tools + Audit Infrastructure
 
 **Slice:** the brain + everything tool-related + the audit data contract.

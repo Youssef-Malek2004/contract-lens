@@ -17,5 +17,8 @@ BASE_VLLM_URL         = "http://localhost:8003/v1"
 # OpenRouter defaults — override via OpenRouterConfig or env vars.
 # NLI has no OpenRouter equivalent (the contractnli adapter is local-only).
 OPENROUTER_BASE_URL          = "https://openrouter.ai/api/v1"
-OPENROUTER_ORCHESTRATOR_ID   = "qwen/qwen3.5-9b"
+OPENROUTER_ORCHESTRATOR_ID   = "qwen/qwen3.5-27b"
 OPENROUTER_BASE_MODEL_ID     = "qwen/qwen3.5-9b"
+
+# MS3 concurrency cap for hypothesis-agent fan-out (resolved decision §6.1).
+N_PARALLEL_AGENTS = 5
