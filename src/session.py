@@ -9,22 +9,27 @@ through the entire conversation loop. It is the single source of truth for:
   - developer-mode flag
   - conversation history (persisted into the session RunTrace)
   - approval events, RAG-mode switches, and contract-runtrace back-references
-  - the cached run_full_analysis result (so M1's lookup_hypothesis tool can
+  - the cached run_full_analysis results (so M1's lookup_hypothesis tool can
     read prior analysis without re-running the 17 agents)
 
-M1's lookup_hypothesis tool reads `session.cached_analysis`.
+Satisfies the `SessionLike` protocol defined in src/tools.py:
+  - `retrieval_mode: str`
+  - `cached_traces: Dict[str, HypothesisTrace]`
+  - `approval_events: List[ApprovalEvent]`
+
 M4's agent.py owns the lifecycle (create → mutate → write RunTrace).
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from src.runtrace import make_session_id, utc_now_iso
 from src.types import (
     ApprovalEvent,
     ConversationTurn,
+    HypothesisTrace,
     RetrievalModeSwitchEvent,
 )
 
@@ -38,15 +43,16 @@ class SessionState:
     session_id: str
     started_at: str
 
-    active_mode: str = "vector"
+    # SessionLike protocol fields (read by src/tools.py handlers)
+    retrieval_mode: str = "vector"
+    cached_traces: Dict[str, HypothesisTrace] = field(default_factory=dict)
+
     dev_mode: bool = False
 
     conversation_history: List[ConversationTurn] = field(default_factory=list)
     approval_events: List[ApprovalEvent] = field(default_factory=list)
     mode_switches: List[RetrievalModeSwitchEvent] = field(default_factory=list)
     contract_runtraces: List[str] = field(default_factory=list)
-
-    cached_analysis: Optional[Dict[str, Any]] = None
 
     # ── Factory ──────────────────────────────────────────────────────────────
 
@@ -85,15 +91,15 @@ class SessionState:
 
     def switch_rag_mode(self, to_mode: str) -> None:
         """Record a /vector-rag or /graph-rag switch event."""
-        if to_mode == self.active_mode:
+        if to_mode == self.retrieval_mode:
             return
         event: RetrievalModeSwitchEvent = {
-            "from_mode": self.active_mode,
+            "from_mode": self.retrieval_mode,
             "to_mode": to_mode,
             "timestamp": utc_now_iso(),
         }
         self.mode_switches.append(event)
-        self.active_mode = to_mode
+        self.retrieval_mode = to_mode
 
     def record_approval(self, event: ApprovalEvent) -> None:
         self.approval_events.append(event)

@@ -8,6 +8,7 @@ Usage:
     python agent.py --contract data/test.json --idx 0 \\
                     --prompt "Who are the parties?"              # one-shot, no REPL
     python agent.py --eval                                       # headless batch (M5)
+    python agent.py --contract data/test.json --idx 0 --no-rag  # skip FAISS (stub retrievers)
 
 Environment:
     OPENROUTER_API_KEY — required for live inference (set in .env)
@@ -19,7 +20,7 @@ import asyncio
 import json
 import sys
 from pathlib import Path
-from typing import Any, AsyncIterator, Optional
+from typing import List, Optional
 
 try:
     from dotenv import load_dotenv
@@ -27,111 +28,69 @@ try:
 except ImportError:
     pass
 
+from src.approval import ApprovalGate, auto_approve_prompt
+from src.bootstrap import setup_runtime
+from src.orchestrator import Orchestrator
 from src.runtrace import (
     build_session_runtrace,
     utc_now_iso,
     write_session_runtrace,
 )
-from src.runtrace_recorder import RunTraceRecorder, set_active_recorder
 from src.session import SessionState
 from src.tui import TUI
-from src.types import ApprovalEvent
 
 
-# ── Orchestrator import with stub fallback ────────────────────────────────────
-#
-# M1's src/orchestrator.py lands on integration day. Until then the stub below
-# keeps the REPL fully functional for testing session/TUI/RunTrace machinery.
+# ── Contract loading ──────────────────────────────────────────────────────────
 
-try:
-    from src.orchestrator import (  # type: ignore[import]
-        ApprovalRequestEvent,
-        Orchestrator,
-        StatusEvent,
-        ThinkEvent,
-        TokenEvent,
-        ToolCallEvent,
-        TurnCompleteEvent,
-    )
-    _ORCHESTRATOR_AVAILABLE = True
-except ImportError:
-    _ORCHESTRATOR_AVAILABLE = False
+_MAX_CONTRACT_CHARS = 12_000
 
 
-# ── Stub orchestrator (active until M1 lands) ─────────────────────────────────
-
-class _StubTokenEvent:
-    def __init__(self, text: str) -> None:
-        self.text = text
-        self.is_thinking = False
-
-
-class _StubTurnCompleteEvent:
-    def __init__(self) -> None:
-        self.citations: dict = {"contract": [], "external": []}
-
-
-class _StubOrchestrator:
+def _load_contract(path: str, idx: int) -> tuple:
     """
-    Echo-back stub so the REPL can be exercised before M1's orchestrator lands.
-    Yields a single token event containing a placeholder answer.
+    Returns (doc_dict, contract_id, contract_text).
+
+    contract_text is truncated to _MAX_CONTRACT_CHARS to fit the context
+    window — mirrors demo_m1.py's behaviour.
     """
-
-    def __init__(self, session: SessionState) -> None:  # noqa: ARG002
-        self.session = session
-
-    async def run_turn(
-        self,
-        user_message: str,
-        approval_callback=None,
-    ) -> AsyncIterator[Any]:
-        yield _StubTokenEvent(
-            f"[stub] Orchestrator not yet available. "
-            f"You asked: "{user_message}". "
-            f"Active RAG mode: {self.session.active_mode}."
-        )
-        yield _StubTurnCompleteEvent()
-
-
-def _build_orchestrator(session: SessionState) -> Any:
-    if _ORCHESTRATOR_AVAILABLE:
-        return Orchestrator(session=session)
-    return _StubOrchestrator(session=session)
-
-
-# ── Contract loading ─────────────────────────────────────────────────────────
-
-
-def _load_contract(path: str, idx: int) -> dict:
-    """Return the contract dict at position `idx` inside a ContractNLI JSON file."""
     fpath = Path(path)
     if not fpath.exists():
         print(f"[ERROR] Contract file not found: {path}", file=sys.stderr)
         sys.exit(1)
     with fpath.open(encoding="utf-8") as fh:
         data = json.load(fh)
-    docs = data.get("documents") or data  # handle both wrapped and bare arrays
-    if isinstance(docs, dict):
-        docs = list(docs.values())
-    if not isinstance(docs, list) or idx >= len(docs):
-        print(
-            f"[ERROR] Index {idx} out of range — file has {len(docs) if isinstance(docs, list) else '?'} documents.",
-            file=sys.stderr,
-        )
+
+    docs = data["documents"] if isinstance(data, dict) else data
+    if not isinstance(docs, list) or idx < 0 or idx >= len(docs):
+        count = len(docs) if isinstance(docs, list) else "?"
+        print(f"[ERROR] Index {idx} out of range — file has {count} documents.", file=sys.stderr)
         sys.exit(1)
-    return docs[idx]
+
+    doc = docs[idx]
+    contract_id = f"doc_{doc.get('id', idx)}"
+    text: str = doc.get("text", "")
+    if len(text) > _MAX_CONTRACT_CHARS:
+        text = text[:_MAX_CONTRACT_CHARS] + f"\n\n[... contract truncated at {_MAX_CONTRACT_CHARS:,} chars ...]"
+    return doc, contract_id, text
 
 
-# ── RunTrace persistence helpers ──────────────────────────────────────────────
+# ── History helpers ───────────────────────────────────────────────────────────
 
 
-def _persist_session(session: SessionState, recorder: RunTraceRecorder) -> Optional[Path]:
-    """Write (or overwrite) the session RunTrace. Returns the path."""
+def _to_orchestrator_history(turns: list) -> List[dict]:
+    """Strip timestamps/citations — return plain {role, content} for the model."""
+    return [{"role": t["role"], "content": t["content"]} for t in turns]
+
+
+# ── RunTrace persistence ──────────────────────────────────────────────────────
+
+
+def _persist_session(session: SessionState, recorder, ended: bool = False) -> Path:
     rt = build_session_runtrace(
         session_id=session.session_id,
         contract_id=session.contract_id,
-        retrieval_mode=session.active_mode,
+        retrieval_mode=session.retrieval_mode,
         started_at=session.started_at,
+        ended_at=utc_now_iso() if ended else None,
         conversation_history=session.conversation_history,
         tool_calls=recorder.snapshot(),
         approval_events=session.approval_events,
@@ -141,126 +100,100 @@ def _persist_session(session: SessionState, recorder: RunTraceRecorder) -> Optio
     return write_session_runtrace(rt)
 
 
-def _finalise_session(
-    session: SessionState,
-    recorder: RunTraceRecorder,
-    tui: TUI,
-) -> None:
-    rt = build_session_runtrace(
-        session_id=session.session_id,
-        contract_id=session.contract_id,
-        retrieval_mode=session.active_mode,
-        started_at=session.started_at,
-        ended_at=utc_now_iso(),
-        conversation_history=session.conversation_history,
-        tool_calls=recorder.snapshot(),
-        approval_events=session.approval_events,
-        retrieval_mode_switches=session.mode_switches,
-        referenced_contract_runtraces=session.contract_runtraces,
-    )
-    path = write_session_runtrace(rt)
-    tui.print_goodbye(str(path))
+# ── One turn ─────────────────────────────────────────────────────────────────
 
 
-# ── Orchestrator turn runner ──────────────────────────────────────────────────
-
-
-async def _run_orchestrator_turn(
-    orch: Any,
+async def _one_turn(
+    orch: Orchestrator,
     user_message: str,
-    tui: TUI,
     session: SessionState,
-    recorder: RunTraceRecorder,
-) -> tuple[str, Optional[str]]:
+    tui: TUI,
+) -> str:
     """
-    Drive one round-trip with the orchestrator.
-
-    Handles:
-      TokenEvent / ThinkEvent  → streamed to TUI
-      StatusEvent              → status line in TUI
-      ToolCallEvent            → tool-call JSON in dev mode
-      ApprovalRequestEvent     → approval prompt; records ApprovalEvent
-      TurnCompleteEvent        → citation block
+    Drive one round-trip with the orchestrator and render events to the TUI.
+    Returns the assistant's answer text.
     """
-    answer_tokens: list[str] = []
-    think_tokens: list[str] = []
-    citations: dict = {"contract": [], "external": []}
-    answer_started = False
+    _IS_TTY = sys.stdout.isatty()
 
-    # Wrap the orchestrator's async generator as a sync token iterator
-    # for tui.stream_response, or handle events directly.
-    async for event in orch.run_turn(
-        user_message,
-        approval_callback=lambda tool, args, est=None: _handle_approval(
-            tui, session, tool, args, est
-        ),
-    ):
-        cls_name = type(event).__name__
+    def _c(text: str, code: str) -> str:
+        return f"{code}{text}\033[0m" if _IS_TTY else text
 
-        # Token / think (stub and real paths both handled here)
-        if cls_name in ("TokenEvent", "_StubTokenEvent"):
-            if not answer_started:
-                tui.render_answer_header()
-                answer_started = True
-            text: str = event.text
-            if getattr(event, "is_thinking", False):
-                think_tokens.append(text)
+    # Pass history up to (but not including) the new user message.
+    history = _to_orchestrator_history(session.conversation_history)
+
+    answer_parts: list[str] = []
+    content_started = False
+    reasoning_active = False
+
+    try:
+        async for ev in orch.run_turn(
+            user_message=user_message,
+            history=history,
+            contract_block=None,  # contract already in history as system message
+        ):
+            if ev.kind == "think" and ev.text:
                 if session.dev_mode:
-                    import sys as _sys
-                    print(f"\033[2m{text}\033[0m" if _sys.stdout.isatty() else text, end="", flush=True)
-            else:
-                answer_tokens.append(text)
-                print(text, end="", flush=True)
+                    if not reasoning_active:
+                        sys.stdout.write(_c("\n  <think> ", "\033[2;37m"))
+                        reasoning_active = True
+                    sys.stdout.write(_c(ev.text, "\033[2;37m"))
+                    sys.stdout.flush()
+                else:
+                    if not reasoning_active:
+                        sys.stdout.write(_c("  reasoning…", "\033[2m"))
+                        sys.stdout.flush()
+                        reasoning_active = True
 
-        elif cls_name == "ThinkEvent":
-            think_tokens.append(event.text)
-            if session.dev_mode:
-                import sys as _sys
-                print(f"\033[2m{event.text}\033[0m" if _sys.stdout.isatty() else event.text, end="", flush=True)
+            elif ev.kind == "content" and ev.text:
+                if reasoning_active:
+                    if session.dev_mode:
+                        sys.stdout.write(_c(" </think>\n\n", "\033[2;37m"))
+                    else:
+                        sys.stdout.write("\r" + " " * 20 + "\r")
+                    reasoning_active = False
+                if not content_started:
+                    tui.render_answer_header()
+                    content_started = True
+                sys.stdout.write(ev.text)
+                sys.stdout.flush()
+                answer_parts.append(ev.text)
 
-        elif cls_name == "StatusEvent":
-            tui.render_status(event.message)
+            elif ev.kind == "tool_call":
+                if reasoning_active:
+                    sys.stdout.write("\n")
+                    reasoning_active = False
+                args_repr = json.dumps(ev.tool_arguments or {}, ensure_ascii=False)
+                if len(args_repr) > 120:
+                    args_repr = args_repr[:117] + "..."
+                sys.stdout.write("\n" + _c(f"  ⤷ tool   {ev.tool_name}({args_repr})", "\033[36m") + "\n")
+                sys.stdout.flush()
 
-        elif cls_name == "ToolCallEvent":
-            tui.render_tool_call_json(
-                event.name,
-                getattr(event, "arguments", {}),
-                getattr(event, "output", None),
-                getattr(event, "duration_ms", 0.0),
-            )
+            elif ev.kind == "tool_result":
+                summary = _summarize(ev.tool_output)
+                sys.stdout.write(_c(f"  ⤶ result {ev.tool_name} → {summary}", "\033[2;36m") + "\n")
+                sys.stdout.flush()
 
-        elif cls_name in ("TurnCompleteEvent", "_StubTurnCompleteEvent"):
-            cites = getattr(event, "citations", {})
-            citations = cites if isinstance(cites, dict) else {}
+            elif ev.kind == "turn_complete":
+                if reasoning_active and session.dev_mode:
+                    sys.stdout.write(_c(" </think>", "\033[2;37m"))
+                sys.stdout.write("\n")
+                sys.stdout.flush()
 
-    if answer_started:
-        print()  # newline after streamed answer
+    except Exception as exc:
+        print(_c(f"\n  orchestrator error: {exc!r}", "\033[31m"))
 
-    tui.render_citations(
-        citations.get("contract", []),
-        citations.get("external", []),
-    )
-
-    return "".join(answer_tokens), ("".join(think_tokens) or None)
+    return "".join(answer_parts)
 
 
-def _handle_approval(
-    tui: TUI,
-    session: SessionState,
-    tool: str,
-    args: dict,
-    estimated_s: Optional[float],
-) -> bool:
-    approved = tui.render_approval_prompt(tool, args, estimated_s)
-    event: ApprovalEvent = {
-        "tool": tool,
-        "arguments": args,
-        "approved": approved,
-        "approved_by": "user",
-        "timestamp": utc_now_iso(),
-    }
-    session.record_approval(event)
-    return approved
+def _summarize(output) -> str:
+    if output is None:
+        return "None"
+    if isinstance(output, list):
+        return f"list[{len(output)}]"
+    if isinstance(output, dict):
+        keys = ", ".join(list(output.keys())[:4])
+        return f"{{{keys}}} ({len(json.dumps(output, default=str))} chars)"
+    return repr(output)[:100]
 
 
 # ── REPL loop ─────────────────────────────────────────────────────────────────
@@ -269,15 +202,23 @@ def _handle_approval(
 async def _repl(
     args: argparse.Namespace,
     session: SessionState,
-    recorder: RunTraceRecorder,
+    recorder,
     tui: TUI,
 ) -> None:
-    orch = _build_orchestrator(session)
-    _persist_session(session, recorder)  # write initial snapshot
+    try:
+        orch = Orchestrator()
+    except RuntimeError as exc:
+        print(f"[ERROR] {exc}", file=sys.stderr)
+        sys.exit(1)
+
+    _persist_session(session, recorder)  # initial snapshot
+
+    _IS_TTY = sys.stdout.isatty()
+    prompt = f"\033[32m\n> \033[0m" if _IS_TTY else "\n> "
 
     while True:
         try:
-            raw = input("\n> ").strip()
+            raw = input(prompt).strip()
         except (EOFError, KeyboardInterrupt):
             print()
             break
@@ -286,22 +227,35 @@ async def _repl(
             continue
 
         if raw.startswith("/"):
-            result = tui.handle_slash_command(raw)
+            result = tui.handle_slash_command(raw, recorder=recorder)
             if result == "exit":
                 break
             if result == "analyze":
-                # Synthesise a request that the orchestrator routes to run_full_analysis
-                raw = f"Please run the full 17-hypothesis analysis on contract {session.contract_id}."
+                raw = "Please run the full 17-hypothesis analysis on this contract."
             else:
                 _persist_session(session, recorder)
                 continue
 
         session.add_turn("user", raw)
-        answer, _ = await _run_orchestrator_turn(orch, raw, tui, session, recorder)
+        answer = await _one_turn(orch, raw, session, tui)
         session.add_turn("assistant", answer)
         _persist_session(session, recorder)
 
-    _finalise_session(session, recorder, tui)
+    path = _persist_session(session, recorder, ended=True)
+    tui.print_goodbye(str(path))
+    _print_summary(session, recorder)
+
+
+def _print_summary(session: SessionState, recorder) -> None:
+    _IS_TTY = sys.stdout.isatty()
+    dim = "\033[2m" if _IS_TTY else ""
+    reset = "\033[0m" if _IS_TTY else ""
+    calls = recorder.snapshot()
+    print(
+        f"{dim}  recorded: {len(calls)} tool calls, "
+        f"{len(session.approval_events)} approval events, "
+        f"{len(session.mode_switches)} mode switches{reset}"
+    )
 
 
 # ── One-shot mode ─────────────────────────────────────────────────────────────
@@ -310,14 +264,20 @@ async def _repl(
 async def _one_shot(
     args: argparse.Namespace,
     session: SessionState,
-    recorder: RunTraceRecorder,
+    recorder,
     tui: TUI,
 ) -> None:
-    orch = _build_orchestrator(session)
+    try:
+        orch = Orchestrator()
+    except RuntimeError as exc:
+        print(f"[ERROR] {exc}", file=sys.stderr)
+        sys.exit(1)
+
     session.add_turn("user", args.prompt)
-    answer, _ = await _run_orchestrator_turn(orch, args.prompt, tui, session, recorder)
+    answer = await _one_turn(orch, args.prompt, session, tui)
     session.add_turn("assistant", answer)
-    _finalise_session(session, recorder, tui)
+    path = _persist_session(session, recorder, ended=True)
+    tui.print_goodbye(str(path))
 
 
 # ── Eval mode ─────────────────────────────────────────────────────────────────
@@ -353,35 +313,20 @@ def _build_parser() -> argparse.ArgumentParser:
             "  python agent.py --eval"
         ),
     )
-    parser.add_argument(
-        "--contract",
-        default="data/test.json",
-        metavar="PATH",
-        help="Path to ContractNLI JSON file (default: data/test.json)",
-    )
-    parser.add_argument(
-        "--idx",
-        type=int,
-        default=0,
-        metavar="N",
-        help="Zero-based document index within the file (default: 0)",
-    )
-    parser.add_argument(
-        "--dev", "--verbose",
-        dest="dev",
-        action="store_true",
-        help="Boot in developer mode (shows <think> blocks and raw tool-call JSON)",
-    )
-    parser.add_argument(
-        "--prompt",
-        metavar="TEXT",
-        help="One-shot question — answer and exit without entering the REPL",
-    )
-    parser.add_argument(
-        "--eval",
-        action="store_true",
-        help="Headless batch evaluation over all 123 test NDAs (M5's runner)",
-    )
+    parser.add_argument("--contract", default="data/test.json", metavar="PATH",
+                        help="Path to ContractNLI JSON file (default: data/test.json)")
+    parser.add_argument("--idx", type=int, default=0, metavar="N",
+                        help="Zero-based document index within the file (default: 0)")
+    parser.add_argument("--dev", "--verbose", dest="dev", action="store_true",
+                        help="Boot in developer mode (stream <think> reasoning + raw tool JSON)")
+    parser.add_argument("--prompt", metavar="TEXT",
+                        help="One-shot question — answer and exit without entering the REPL")
+    parser.add_argument("--eval", action="store_true",
+                        help="Headless batch evaluation over all 123 test NDAs (M5's runner)")
+    parser.add_argument("--no-rag", dest="no_rag", action="store_true",
+                        help="Use stub retrievers (skip FAISS / networkx — useful when indexes not built)")
+    parser.add_argument("--auto-approve", dest="auto_approve", action="store_true",
+                        help="Skip run_full_analysis approval prompt (for scripted / eval use)")
     return parser
 
 
@@ -396,19 +341,39 @@ def main() -> None:
         _run_eval()
         return
 
-    contract = _load_contract(args.contract, args.idx)
-    contract_id: str = contract.get("contract_id") or f"doc_{args.idx:03d}"
+    doc, contract_id, contract_text = _load_contract(args.contract, args.idx)
 
     session = SessionState.create(
         contract_id=contract_id,
-        contract=contract,
+        contract=doc,
         dev_mode=args.dev,
     )
 
-    recorder = RunTraceRecorder()
-    set_active_recorder(recorder)
+    # Inject the contract text as the first conversation entry so every
+    # orchestrator turn has it in its context (same pattern as demo_m1.py).
+    session.conversation_history.append({
+        "role": "system",
+        "content": f"[CONTRACT id={contract_id}]\n{contract_text}\n[/CONTRACT]",
+        "timestamp": session.started_at,
+    })
+
+    # Approval gate — TUI prompt unless --auto-approve is set.
+    gate = ApprovalGate(auto_approve=args.auto_approve)
+
+    # Wire tool context + recorder via bootstrap helper.
+    recorder = setup_runtime(
+        session=session,
+        pipeline=None,           # M2's run_full_analysis — wired once M2 lands
+        approval_gate=gate.request,
+        use_real_rag=not args.no_rag,
+    )
 
     tui = TUI(session)
+
+    # Point the gate at the TUI's async approval renderer (after tui is built).
+    if not args.auto_approve:
+        gate.prompt_fn = tui.render_approval_prompt
+
     tui.print_banner(args.contract, args.idx)
 
     if args.prompt:

@@ -15,6 +15,7 @@ when stdout is not a TTY.
 """
 from __future__ import annotations
 
+import asyncio
 import json
 import sys
 from typing import Any, Iterator, Optional, Tuple
@@ -119,6 +120,7 @@ _SLASH_COMMANDS = [
     ("/graph-rag",     "Use networkx GraphRAG"),
     ("/analyze",       "Force-trigger run_full_analysis (approval required)"),
     ("/reset",         "Clear conversation history for this contract"),
+    ("/audit",         "Print all recorded tool calls so far"),
     ("/exit",          "Quit and save session RunTrace"),
     ("/help",          "Show this help"),
 ]
@@ -139,7 +141,7 @@ class TUI:
         print(f"  Contract  : {contract_path}  (idx={idx})")
         print(f"  ID        : {self.session.contract_id}")
         print(f"  Session   : {self.session.session_id}")
-        print(f"  RAG mode  : {self.session.active_mode}")
+        print(f"  RAG mode  : {self.session.retrieval_mode}")
         print(f"  Display   : {'developer' if self.session.dev_mode else 'user'}")
         print(_DIVIDER)
         print(_dim("Type a question or /help for commands."))
@@ -274,26 +276,27 @@ class TUI:
 
     # ── Approval prompt ───────────────────────────────────────────────────────
 
-    def render_approval_prompt(
+    async def render_approval_prompt(
         self,
         tool: str,
         args: dict,
-        estimated_s: Optional[float] = None,
     ) -> bool:
         """
-        Render a Claude-Code-style approval gate and block on Y/N.
-        Returns True if the user approves, False otherwise.
+        Async approval gate matching src/approval.py PromptFn signature.
+        Renders a Claude-Code-style prompt and blocks on Y/N via executor.
         Always visible in both user and dev mode.
         """
-        time_hint = f" (~{estimated_s:.0f}s total)" if estimated_s else ""
         args_str = ", ".join(f"{k}={v!r}" for k, v in args.items())
         print()
         print(f"  {_yellow('⚠')}  Orchestrator wants to run: {_bold(tool)}({args_str})")
         if tool == "run_full_analysis":
-            print(f"     This will perform 17 LLM calls{time_hint} and write a RunTrace.")
-        print(f"     Proceed? [Y/n] ", end="", flush=True)
+            print("     This will perform 17 LLM calls and write a RunTrace.")
+        print("     Proceed? [Y/n] ", end="", flush=True)
+
+        loop = asyncio.get_running_loop()
         try:
-            answer = input().strip().lower()
+            line = await loop.run_in_executor(None, sys.stdin.readline)
+            answer = (line or "").strip().lower()
         except (EOFError, KeyboardInterrupt):
             print()
             return False
@@ -303,9 +306,26 @@ class TUI:
         print()
         return approved
 
+    def render_audit(self, tool_calls: list) -> None:
+        """Print all recorded tool calls — /audit command."""
+        if not tool_calls:
+            print(_dim("  No tool calls recorded yet."))
+            return
+        print()
+        for e in tool_calls:
+            args_str = json.dumps(e.get("arguments") or {}, default=str, ensure_ascii=False)
+            if len(args_str) > 80:
+                args_str = args_str[:77] + "..."
+            print(_dim(
+                f"  • {e.get('agent_id', '?'):13} {e.get('name', '?'):18} "
+                f"count={e.get('count', '?')} dur={e.get('duration_ms', 0):.0f}ms "
+                f"args={args_str}"
+            ))
+        print()
+
     # ── Slash command handler ─────────────────────────────────────────────────
 
-    def handle_slash_command(self, raw: str) -> Optional[str]:
+    def handle_slash_command(self, raw: str, recorder=None) -> Optional[str]:
         """
         Process a slash command.
 
@@ -328,26 +348,32 @@ class TUI:
 
         if cmd == "/vector-rag":
             self.session.switch_rag_mode("vector")
-            print(_dim(f"  RAG mode → vector (FAISS)."))
+            print(_dim("  RAG mode → vector (FAISS)."))
             return None
 
         if cmd == "/graph-rag":
             self.session.switch_rag_mode("graph")
-            print(_dim(f"  RAG mode → graph (networkx)."))
+            print(_dim("  RAG mode → graph (networkx)."))
             return None
 
         if cmd == "/analyze":
             return "analyze"
 
         if cmd == "/reset":
-            self.session.reset_history()
-            print(_dim("  Conversation history cleared."))
+            # Keep the first system message (contract); drop conversation turns.
+            contract_turns = [t for t in self.session.conversation_history if t.get("role") == "system"]
+            self.session.conversation_history[:] = contract_turns
+            print(_dim("  Conversation history cleared (contract context retained)."))
+            return None
+
+        if cmd == "/audit":
+            self.render_audit(recorder.snapshot() if recorder else [])
             return None
 
         if cmd == "/exit":
             return "exit"
 
-        if cmd == "/help":
+        if cmd in ("/help", "/?"):
             self.print_help()
             return None
 
