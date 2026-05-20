@@ -97,7 +97,26 @@ def _persist_session(session: SessionState, recorder, ended: bool = False) -> Pa
         retrieval_mode_switches=session.mode_switches,
         referenced_contract_runtraces=session.contract_runtraces,
     )
+    # Backward-compat with MS2: mirror conversation history to a flat JSON file.
+    _write_conversation_history(session)
     return write_session_runtrace(rt)
+
+
+def _write_conversation_history(session: SessionState) -> None:
+    path = Path("conversation_history.json")
+    turns = [{"role": t["role"], "content": t["content"]} for t in session.conversation_history]
+    import tempfile, os
+    fd, tmp = tempfile.mkstemp(prefix="conv_hist.", dir=".")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(turns, fh, indent=2, ensure_ascii=False)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except FileNotFoundError:
+            pass
+        raise
 
 
 # ── One turn ─────────────────────────────────────────────────────────────────
@@ -172,6 +191,11 @@ async def _one_turn(
                 summary = _summarize(ev.tool_output)
                 sys.stdout.write(_c(f"  ⤶ result {ev.tool_name} → {summary}", "\033[2;36m") + "\n")
                 sys.stdout.flush()
+                # Track the contract RunTrace produced by run_full_analysis.
+                if ev.tool_name == "run_full_analysis" and isinstance(ev.tool_output, dict):
+                    runtrace_path = ev.tool_output.get("runtrace_path")
+                    if runtrace_path:
+                        session.add_contract_runtrace_ref(str(runtrace_path))
 
             elif ev.kind == "turn_complete":
                 if reasoning_active and session.dev_mode:
