@@ -2,14 +2,143 @@
 
 Multi-agent NDA review system built on ContractNLI. Classifies all 17 ContractNLI hypotheses (H01–H17) against an input NDA, produces schema-valid RunTrace output, and provides a RAG-augmented conversation agent for free-form contract Q&A.
 
-**Dataset:** ContractNLI — 423 train NDAs (32,359 spans), 123 test NDAs  
-**Model family:** Qwen3 only — Orchestrator: Qwen3-4B, NLI Core: fine-tuned Qwen3-1.7B + LoRA  
-**Fine-tuned adapter:** [Youssef-Malek/contractnli-vast-ai-qwen3-1.7b](https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b)
+**Dataset:** ContractNLI — 423 train NDAs (32,359 spans), 123 test NDAs
+**Model family:** Qwen only
+**MS1/MS2:** Orchestrator = Qwen3-4B (local / vllm-mlx / OpenRouter), NLI Core = fine-tuned Qwen3-1.7B + LoRA
+**MS3:** Orchestrator = OpenRouter `qwen/qwen3.5-27b`, Hypothesis workers = OpenRouter `qwen/qwen3.5-9b` (no fine-tuned model in the loop per MS3 req f)
+**Fine-tuned adapter (MS1):** [Youssef-Malek/contractnli-vast-ai-qwen3-1.7b](https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b)
 
 ---
 
-- [Milestone 2 (current)](#milestone-2)
+- [Milestone 3 (current — `ms-3` branch)](#milestone-3)
+- [Milestone 2](#milestone-2)
 - [Milestone 1 results](#milestone-1)
+
+---
+
+## Milestone 3
+
+Agentic NDA review with audit-logged tool calls. The orchestrator chooses between three tools (`retrieve`, `lookup_hypothesis`, `run_full_analysis`) per turn; the heavy `run_full_analysis` is gated by an approval prompt. Every tool invocation is logged into a v3 RunTrace.
+
+**Status:** M1's slice (orchestrator + tools + audit infrastructure) has landed. M2/M3/M4/M5 are coding their slices in parallel against the M1 foundations. See `docs/MILESTONE3_PLAN.md` for requirements and `docs/MILESTONE3_WORKSPLIT.md` for the 5-member split.
+
+### Environment
+
+Same `genai-ms2` conda env as MS2. MS3 additionally requires an OpenRouter API key.
+
+```bash
+conda activate genai-ms2
+cp .env.example .env
+# edit .env and set OPENROUTER_API_KEY=sk-or-v1-...
+```
+
+### Run the M1 demo (interactive REPL)
+
+`scripts/demo_m1.py` exercises the orchestrator + tool dispatch + approval gate + audit logging end-to-end. M2's pipeline (`run_full_analysis`) is stubbed so the demo runs today; the rest is real.
+
+```bash
+# Default — NDA 0 from data/test.json, real RAG + real orchestrator, stubbed pipeline
+python scripts/demo_m1.py --idx 0
+
+# Developer mode — show the orchestrator's <think> reasoning inline
+python scripts/demo_m1.py --idx 0 --dev
+
+# No FAISS indexes built yet? Stub the retrievers
+python scripts/demo_m1.py --idx 0 --no-rag
+
+# Skip the run_full_analysis Y/n prompt (used by M5's batch eval)
+python scripts/demo_m1.py --idx 0 --auto-approve
+
+# One-shot — single prompt, no REPL
+python scripts/demo_m1.py --prompt "what does this NDA say about consultants?" --dev
+```
+
+**CLI flags:**
+
+| Flag             | Default          | Description |
+| ---------------- | ---------------- | ----------- |
+| `--contract`     | `data/test.json` | ContractNLI JSON path |
+| `--idx`          | `0`              | Zero-based document index |
+| `--dev`          | off              | Stream `<think>` reasoning inline |
+| `--auto-approve` | off              | Skip the `run_full_analysis` Y/n prompt |
+| `--no-rag`       | off              | Stub retrievers instead of using FAISS / networkx |
+| `--prompt`       | _(optional)_     | One-shot mode — single prompt, no REPL |
+
+**Slash commands** (inside the REPL):
+
+| Command       | Effect |
+| ------------- | ------ |
+| `/dev`        | Switch to developer mode (show `<think>`) |
+| `/user`       | Hide `<think>` reasoning |
+| `/vector-rag` | Use FAISS vector retrieval |
+| `/graph-rag`  | Use networkx GraphRAG |
+| `/analyze`    | Force a `run_full_analysis` call (still goes through approval) |
+| `/reset`      | Clear conversation history |
+| `/audit`      | Print all recorded tool calls so far |
+| `/exit`       | Quit (writes session RunTrace) |
+
+### Outputs
+
+```
+runs_ms3/
+├── session_<contract_id>_<ISO8601>.json    one per REPL session (overwritten each turn)
+└── runtrace_doc_<contract_id>.json         one per run_full_analysis invocation
+```
+
+Both validate against `schemas/runtrace_schema.json` v3.0-ms3. The schema uses `oneOf` on a `runtrace_type` discriminator (`contract_analysis` vs `conversation_session`).
+
+### Architecture (M1 slice — what's live on `ms-3`)
+
+```
+User prompt
+    │
+    ├─ Orchestrator (qwen/qwen3.5-27b, OpenRouter SSE)
+    │      streams: <think> reasoning · content · tool_calls
+    │
+    ├─ Tool dispatch via src/tools.py
+    │      retrieve(query, mode, top_k, hypothesis_id?, label_filter?)
+    │             → src/rag_vector.py / src/rag_graph.py
+    │      lookup_hypothesis(h_id)
+    │             → session.cached_traces
+    │      run_full_analysis(contract_id, retrieval_mode)
+    │             → ApprovalGate.request()  (Claude-Code-style Y/n)
+    │             → M2's pipeline (stubbed in demo)
+    │
+    ├─ Every call wrapped by RunTraceRecorder (src/runtrace_recorder.py)
+    │      → ToolCallRecord {agent_id, name, arguments, output, count, started_at, duration_ms}
+    │
+    └─ Written to runs_ms3/ via atomic writers (src/runtrace.py)
+```
+
+### MS3 file map
+
+| File | Purpose |
+| ---- | ------- |
+| `src/orchestrator.py` | Qwen3.5-27B + SSE + function-calling loop |
+| `src/tools.py` | Three tool handlers + `TOOL_SCHEMAS` + `ToolContext` |
+| `src/approval.py` | `ApprovalGate` + console/auto prompts |
+| `src/bootstrap.py` | `setup_runtime()` — one-call wiring for demo + agent.py |
+| `src/runtrace_recorder.py` | ContextVar-bound recorder + `@recorded_tool` |
+| `src/runtrace.py` | RunTrace v3 builders + atomic writers |
+| `src/types.py` | TypedDicts — extended with MS3 types |
+| `schemas/runtrace_schema.json` | v3.0-ms3 schema (oneOf on `runtrace_type`) |
+| `scripts/demo_m1.py` | Interactive REPL exercising the M1 slice |
+| `docs/MILESTONE3_PLAN.md` | MS3 requirements |
+| `docs/MILESTONE3_WORKSPLIT.md` | 5-member split + integration cheatsheet |
+
+### MS3 hard constraints
+
+| Constraint           | Detail |
+| -------------------- | ------ |
+| Inference backend    | OpenRouter only |
+| No fine-tuned model  | MS3 req (f) |
+| Retrieval corpus     | `data/train.json` only — never index `data/test.json` |
+| Evidence grounding   | RAG = reasoning aid; evidence must come from the analyzed contract |
+| Tool-call audit      | Every agent's every tool invocation logged via `src/runtrace_recorder` |
+| Heavy tool gate      | `run_full_analysis` requires user approval (skipped via `--auto-approve`) |
+| Worker concurrency   | `N_PARALLEL_AGENTS = 5` (in `src/loaders/_constants.py`) |
+| Session ID           | `<contract_id>_<ISO8601>` (colons stripped for filesystem safety) |
+| Streaming            | OpenRouter SSE for the orchestrator |
 
 ---
 

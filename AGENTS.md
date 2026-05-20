@@ -8,8 +8,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ContractLens is a multi-agent NDA review system built for ContractNLI. It classifies each of 17 fixed hypotheses (H01–H17) against an input NDA contract, producing a schema-valid RunTrace with labels, evidence spans, confidence scores, and playbook-driven risk assessments. The conversation agent lets users ask free-form questions about a contract with RAG-augmented answers.
 
-**Dataset:** ContractNLI — 423 train NDAs (32,359 spans), 123 test NDAs.  
-**Model family:** Qwen3 only. Orchestrator is Qwen3-4B, NLI core is fine-tuned Qwen3-1.7B + LoRA.
+**Dataset:** ContractNLI — 423 train NDAs (32,359 spans), 123 test NDAs.
+
+**Model family:** Qwen only.
+
+| Milestone | Orchestrator | NLI core / workers |
+| --- | --- | --- |
+| MS1/MS2 | local `Qwen3-4B` (or OpenRouter `qwen/qwen3-4b`) | fine-tuned `Qwen3-1.7B + LoRA` |
+| MS3 | OpenRouter `qwen/qwen3.5-27b` | OpenRouter `qwen/qwen3.5-9b` (17 hypothesis workers, no fine-tuned model per MS3 req f) |
+
+**Current milestone:** MS3 — agentic orchestrator with function-calling tools, audit-logged RunTrace v3, per-session conversation + per-contract analysis flavours. Branch: `ms-3`. See `docs/MILESTONE3_PLAN.md` (requirements) and `docs/MILESTONE3_WORKSPLIT.md` (5-member work split + integration cheatsheet).
 
 ---
 
@@ -36,28 +44,45 @@ All commands below assume `conda activate genai-ms2` and `cd contract-lens/` (re
 
 ```
 contract-lens/
-├── agent.py                    main CLI entry point
+├── agent.py                    MS2 conversation-agent CLI (M4 will rewrite for MS3)
 ├── playbook.yaml               deterministic rule layer
 ├── requirements.txt
 │
 ├── src/                        core library — always import from here
-│   ├── constants.py
+│   ├── constants.py            NDA_TO_H, LABEL_MAP, HYPOTHESES, SYSTEM_PROMPT
 │   ├── preprocessor.py
-│   ├── types.py
-│   ├── model_loader.py
-│   ├── rag_vector.py
-│   ├── rag_graph.py
-│   ├── conversation_agent.py
-│   └── loaders/
+│   ├── types.py                ★ MS3-extended — TypedDicts every module imports
+│   ├── model_loader.py         legacy MS1/MS2 loader shim
+│   ├── rag_vector.py           FAISS vector retrieval (MS2)
+│   ├── rag_graph.py            networkx GraphRAG retrieval (MS2)
+│   ├── conversation_agent.py   MS2 conversation agent (kept; may fold into orchestrator)
+│   │
+│   ├── orchestrator.py         ★ MS3 — Qwen3.5-27B + SSE streaming + tool-call loop (M1)
+│   ├── tools.py                ★ MS3 — retrieve / lookup_hypothesis / run_full_analysis (M1)
+│   ├── approval.py             ★ MS3 — ApprovalGate for run_full_analysis (M1)
+│   ├── bootstrap.py            ★ MS3 — setup_runtime() one-call wiring (M1)
+│   ├── runtrace.py             ★ MS3 — RunTrace v3 builders + atomic writers (M1)
+│   ├── runtrace_recorder.py    ★ MS3 — ContextVar-bound recorder (M1)
+│   │
+│   ├── dispatcher.py           ▢ MS3 — 17 HypothesisTasks + per-task RAG prefetch (M2)
+│   ├── hypothesis_agent.py     ▢ MS3 — async 9B worker (M2)
+│   ├── run_full_analysis.py    ▢ MS3 — dispatcher → workers → aggregator (M2)
+│   ├── aggregator.py           ▢ MS3 — validation + playbook + metrics (M3)
+│   ├── playbook_loader.py      ▢ MS3 — load playbook.yaml unedited (M3)
+│   ├── tui.py                  ▢ MS3 — slash commands + rendering (M4)
+│   ├── session.py              ▢ MS3 — SessionState (M4)
+│   └── loaders/                MS2 — _constants.py updated for MS3 model IDs
 │
 ├── pipeline/                   numbered ML pipeline steps
 │   ├── 01_preprocess.py        build SFT .jsonl from train.json
 │   ├── 02_finetune.sh          QLoRA training command
 │   ├── 03_build_index.py       build FAISS + graph indexes
 │   ├── 05_eval_runtrace.py     MS1 batch evaluation
-│   └── 05b_debug_single.py     MS1 single-contract debug
+│   ├── 05b_debug_single.py     MS1 single-contract debug
+│   └── 06_eval_ms3.py          ▢ MS3 batch — 123 NDAs → runs_ms3/ (M5)
 │
 ├── scripts/                    operational utilities
+│   ├── demo_m1.py              ★ MS3 — interactive REPL demo of M1's slice
 │   ├── download_models.py      pre-download all models
 │   ├── merge_adapter.py        merge LoRA + MLX conversion
 │   ├── quick_infer.py          single-contract two-pass inference
@@ -75,17 +100,24 @@ contract-lens/
 │   └── indexes/                gitignored — rebuild locally
 │
 ├── runs/                       123 RunTrace JSONs (MS1 output)
+├── runs_ms3/                   ★ MS3 — per-contract + per-session RunTraces v3
 ├── RunTrace.json               all 123 merged (MS1 output)
-├── evaluation.csv              aggregate metrics (MS1 output)
+├── evaluation.csv              aggregate metrics (MS1; MS3 columns appended by M5)
 │
 ├── schemas/
+│   ├── playbook_schema.json
+│   └── runtrace_schema.json    ★ bumped to v3.0-ms3 (oneOf on runtrace_type)
 ├── architecture/
 ├── notebooks/
 │   └── training_notebook.ipynb
 └── docs/
     ├── CONTRIBUTIONS.md
-    └── MILESTONE2_PLAN.md
+    ├── MILESTONE2_PLAN.md
+    ├── MILESTONE3_PLAN.md         ★ MS3 requirements
+    └── MILESTONE3_WORKSPLIT.md    ★ MS3 5-member work split + integration cheatsheet
 ```
+
+Legend: ★ landed on `ms-3` · ▢ targeted for MS3, owner shown
 
 ---
 
@@ -117,7 +149,26 @@ python pipeline/03_build_index.py --mode all       # both
 
 Outputs go to `data/indexes/` (gitignored — rebuild locally from `data/train.json`).
 
-### Run the conversation agent
+### Run the MS3 demo (M1 slice — orchestrator + tools + audit chain)
+
+`scripts/demo_m1.py` is an interactive REPL that exercises the orchestrator, the three function-calling tools, the approval gate, and the audit chain end-to-end. Requires `OPENROUTER_API_KEY` in `.env` (see `.env.example`).
+
+```bash
+# Real RAG + real orchestrator, stubbed run_full_analysis pipeline (M2 not landed yet)
+python scripts/demo_m1.py --idx 0 --dev
+
+# No FAISS indexes built? Use stub retrievers
+python scripts/demo_m1.py --idx 0 --auto-approve --no-rag
+
+# One-shot — no REPL, just run a single prompt and exit
+python scripts/demo_m1.py --prompt "what does this NDA say about consultants?" --dev
+```
+
+CLI flags: `--contract data/test.json` · `--idx N` · `--dev` (show `<think>`) · `--auto-approve` (skip the run_full_analysis Y/n prompt — used by M5's eval) · `--no-rag` (stub retrievers) · `--prompt ...` (one-shot).
+
+Slash commands inside the REPL: `/dev` `/user` `/vector-rag` `/graph-rag` `/analyze` `/reset` `/audit` `/exit`. `/audit` dumps every recorded tool call so far; `/exit` writes the session RunTrace to `runs_ms3/session_<session_id>.json`.
+
+### Run the conversation agent (MS2)
 
 ```bash
 python agent.py --contract data/test.json --idx 0 \
@@ -192,14 +243,21 @@ python scripts/merge_adapter.py --convert     # merge + MLX 4-bit conversion
 
 ### Milestone scope
 
-| Component                                 | Status            | Notes                                                    |
-| ----------------------------------------- | ----------------- | -------------------------------------------------------- |
-| NLI Core (fine-tuned inference)           | **implemented**   | `scripts/quick_infer.py`, `pipeline/05_eval_runtrace.py` |
-| Vector RAG                                | **implemented**   | `src/rag_vector.py`                                      |
-| GraphRAG                                  | **implemented**   | `src/rag_graph.py`                                       |
-| Conversation Agent + CLI                  | **implemented**   | `src/conversation_agent.py`, `agent.py`                  |
-| Orchestrator (JSON tool-calling)          | **architectural** | Target: MS3                                              |
-| Dispatcher + Hypothesis Pool + Aggregator | **architectural** | Target: MS3                                              |
+| Component                                          | Status            | Notes                                                          |
+| -------------------------------------------------- | ----------------- | -------------------------------------------------------------- |
+| NLI Core (fine-tuned inference, MS1/MS2)           | **implemented**   | `scripts/quick_infer.py`, `pipeline/05_eval_runtrace.py`       |
+| Vector RAG                                         | **implemented**   | `src/rag_vector.py`                                            |
+| GraphRAG                                           | **implemented**   | `src/rag_graph.py`                                             |
+| MS2 conversation agent + CLI                       | **implemented**   | `src/conversation_agent.py`, `agent.py`                        |
+| MS3 RunTrace v3 schema + writers                   | **implemented**   | `schemas/runtrace_schema.json`, `src/runtrace.py` (M1)         |
+| MS3 tool-call recorder (audit chain)               | **implemented**   | `src/runtrace_recorder.py` (M1)                                |
+| MS3 orchestrator (Qwen3.5-27B, SSE, tool dispatch) | **implemented**   | `src/orchestrator.py` (M1)                                     |
+| MS3 tools (retrieve / lookup / run_full_analysis)  | **implemented**   | `src/tools.py` + `src/approval.py` (M1)                        |
+| MS3 demo runner (interactive REPL)                 | **implemented**   | `scripts/demo_m1.py`                                           |
+| MS3 dispatcher + hypothesis workers                | **architectural** | `src/dispatcher.py`, `src/hypothesis_agent.py` — owner M2      |
+| MS3 aggregator + playbook validation               | **architectural** | `src/aggregator.py`, `src/playbook_loader.py` — owner M3       |
+| MS3 TUI + REPL rewrite                             | **architectural** | `src/tui.py`, `src/session.py`, `agent.py` rewrite — owner M4  |
+| MS3 batch evaluation                               | **architectural** | `pipeline/06_eval_ms3.py` — owner M5                           |
 
 ### Data flow (MS2 conversation agent)
 
@@ -231,6 +289,155 @@ Contract → build_chunks() → numbered spans
                        Input:  NLI results + contract
                        Output: {H01…H17: {confidence, quote}}
 ```
+
+### Data flow (MS3 agentic system — M1 slice)
+
+```
+User prompt
+    │
+    ├─ Orchestrator.run_turn()  (Qwen3.5-27B on OpenRouter, SSE streaming)
+    │      ├─ system prompt + conversation history + [CONTRACT] block
+    │      ├─ delta.reasoning  → "think" event
+    │      ├─ delta.content    → "content" event
+    │      └─ delta.tool_calls → reassemble, dispatch
+    │
+    ├─ Tool dispatch (TOOL_HANDLERS in src/tools.py)
+    │      ├─ retrieve(query, mode, top_k, hypothesis_id?, label_filter?)
+    │      │      → src/rag_vector.py OR src/rag_graph.py
+    │      ├─ lookup_hypothesis(h_id)
+    │      │      → ctx.session.cached_traces[h_id]
+    │      └─ run_full_analysis(contract_id, retrieval_mode)
+    │             ├─ ApprovalGate.request()  → Y/n on stderr
+    │             ├─ append ApprovalEvent to session
+    │             └─ await ctx.pipeline()    → M2's src/run_full_analysis.py
+    │
+    ├─ Every tool call wrapped by RunTraceRecorder (ContextVar-bound)
+    │      → ToolCallRecord {agent_id, name, arguments, output, count, started_at, duration_ms}
+    │
+    └─ On /exit: write_session_runtrace() → runs_ms3/session_<session_id>.json
+       After run_full_analysis: write_contract_runtrace() → runs_ms3/runtrace_doc_<id>.json
+```
+
+---
+
+## MS3 Audit Chain (Tool-Call Recorder)
+
+MS3 req (h): *every agent's every tool invocation must appear in the RunTrace*. This is enforced by a single cross-cutting recorder in `src/runtrace_recorder.py`.
+
+**Two usage patterns** — pick one per tool site, never log calls by hand:
+
+```python
+# 1. Context-manager form (inline tool call)
+from src.runtrace_recorder import record_tool_call
+
+with record_tool_call("retrieve", {"query": q, "mode": "vector"}, agent_id="H06") as call:
+    result = rag_vector.retrieve(q, top_k=5)
+    call.set_output(result)
+
+# 2. Decorator form (you own the handler)
+from src.runtrace_recorder import recorded_tool
+
+@recorded_tool("get_span")
+def get_span(idx, *, agent_id="orchestrator", contract):
+    return contract["chunks"][idx]["text"]
+```
+
+`agent_id` is `"orchestrator"` for M1/M4 calls, `"H01"`…`"H17"` for M2's hypothesis workers (one per agent so the audit can attribute every call to a specific worker).
+
+**Lifecycle (M4 owns this at REPL boot):**
+
+```python
+from src.runtrace_recorder import RunTraceRecorder, set_active_recorder
+recorder = RunTraceRecorder()
+set_active_recorder(recorder)   # ContextVar — all async tasks inherit it
+```
+
+`asyncio.gather`-fanned workers automatically see the same recorder because the binding lives in `contextvars.ContextVar`. No need to thread it through every layer.
+
+`recorder.snapshot()` returns a list of `ToolCallRecord` dicts ready to serialize into a RunTrace. The schema requires `count` (per-`(agent_id, name)` ordinal) — the recorder assigns this; callers never set it.
+
+**Convenience wrapper for the demo / agent.py:**
+
+```python
+from src.bootstrap import setup_runtime
+
+recorder = setup_runtime(
+    session=session,                 # any object satisfying SessionLike
+    pipeline=run_full_analysis,      # M2's async entry function
+    approval_gate=gate.request,      # ApprovalGate.request bound method
+    use_real_rag=True,               # False to stub retrievers
+)
+```
+
+This binds the recorder + `ToolContext` in one call. Both the demo runner and (eventually) M4's `agent.py` use this exact path.
+
+---
+
+## RunTrace v3 (`schemas/runtrace_schema.json`)
+
+The MS3 schema uses `oneOf` on a `runtrace_type` discriminator. Both flavours share `schema_version: "3.0-ms3"` and `additionalProperties: false` so M5's validator catches field drift.
+
+| Flavour | When | File | Required fields |
+| --- | --- | --- | --- |
+| `contract_analysis` | one per `run_full_analysis` invocation | `runs_ms3/runtrace_doc_<contract_id>.json` | `run`, `contract`, `retrieval_mode`, `playbook`, `hypothesis_traces[17]`, `metrics`, `tool_calls`, `approval_events` |
+| `conversation_session` | one per REPL session | `runs_ms3/session_<session_id>.json` | `session_id`, `contract_id`, `started_at`, `retrieval_mode`, `conversation_history`, `tool_calls` |
+
+**Writers** in `src/runtrace.py` — atomic (`tempfile` + `os.replace`). Nobody else opens these files directly.
+
+```python
+from src.runtrace import (
+    build_contract_runtrace, write_contract_runtrace,    # M3 calls these
+    build_session_runtrace, write_session_runtrace,      # M4 calls these
+    make_session_id, utc_now_iso,                        # helpers
+)
+
+session_id = make_session_id(contract_id)   # "<contract_id>_<ISO8601>" with ':' stripped
+write_session_runtrace(build_session_runtrace(
+    session_id=session_id, contract_id=contract_id, retrieval_mode="vector",
+    started_at=session.started_at,
+    conversation_history=session.history,
+    tool_calls=recorder.snapshot(),
+    approval_events=session.approval_events,
+    retrieval_mode_switches=session.mode_switches,
+    referenced_contract_runtraces=session.referenced_runtraces,
+))
+```
+
+`HypothesisTrace` v3 adds optional fields: `validation_failures`, per-trace `tool_calls`, `latency_ms`, `started_at`, `ended_at`. M2 returns a partial trace; M3's aggregator fills validation fields. Both shapes type-check (`TypedDict total=False`).
+
+**Approval events** are recorded separately from tool calls. The `ApprovalEvent` shape:
+
+```python
+{
+  "tool": "run_full_analysis",
+  "arguments": {"contract_id": "doc_001", "retrieval_mode": "vector"},
+  "approved": true, "approved_by": "user",
+  "timestamp": "2026-05-20T12:34:56.789Z"
+}
+```
+
+`src/approval.py` ships `ApprovalGate` (auto-approve mode for M5's `--eval`, `prompt_fn` for custom UIs), `console_prompt` (Claude-Code-style Y/n), and `auto_approve_prompt`.
+
+---
+
+## MS3 Hard Constraints (carried from `docs/MILESTONE3_PLAN.md` §7)
+
+| Constraint           | Detail                                                                   |
+| -------------------- | ------------------------------------------------------------------------ |
+| Same model family    | Qwen only                                                                |
+| No fine-tuned model  | Forbidden by MS3 req (f) — adapter kept for MS1 reproduction only        |
+| Inference backend    | OpenRouter only                                                          |
+| Retrieval corpus     | `data/train.json` only — never index `data/test.json`                    |
+| Evidence grounding   | RAG = reasoning aid; cited evidence must come from the analyzed contract |
+| Playbook             | Used unedited                                                            |
+| Tool-call audit      | Every agent's every tool invocation logged via `src/runtrace_recorder`   |
+| Test split           | Same 123 NDAs as MS1                                                     |
+| Heavy tool gate      | `run_full_analysis` requires explicit user approval (skipped in `--eval`) |
+| Worker concurrency   | `N_PARALLEL_AGENTS = 5` (env-tunable, in `src/loaders/_constants.py`)    |
+| Aggregator policy    | Flag failures (`validation_failures: [...]`); no auto-retry              |
+| RAG selection        | One branch active per session — toggle via `/vector-rag` ⇄ `/graph-rag`  |
+| Session ID           | `<contract_id>_<ISO8601-timestamp>` (colons stripped for filesystem)     |
+| Streaming            | OpenRouter SSE for orchestrator response                                 |
 
 ---
 
@@ -426,16 +633,30 @@ The full contract is re-injected into every user turn so the model has grounding
 
 ---
 
-## Outstanding Work (MS3 targets)
+## Outstanding Work (MS3)
 
-These components are **designed in `architecture/architecture.yaml` but not yet coded**:
+**Landed on `ms-3` (M1's slice):**
 
-- Orchestrator Agent — Qwen3-4B with JSON function-call tool dispatch
-- `src/dispatcher.py` — pure-Python fan-out that builds 17 `HypothesisTask` dicts and pre-fetches per-hypothesis RAG context
-- Hypothesis worker pool — `N_PHYSICAL_AGENTS` workers (env var, default 2) share the loaded Qwen3-1.7B object; workers queue against a single GPU/NPU stream
-- Aggregator — pure-Python, validates schema, computes metrics, writes RunTrace JSON
+- `src/types.py` MS3 extensions — `ToolCallRecord`, `ApprovalEvent`, `RetrievalModeSwitchEvent`, `ValidationFailure`, `ConversationTurn`, `ContractAnalysisRunTrace`, `ConversationSessionRunTrace`; `HypothesisTrace` v3 optional fields.
+- `src/runtrace_recorder.py` — ContextVar-bound recorder + `@recorded_tool` + `record_tool_call` ctx manager.
+- `src/runtrace.py` — atomic builders + writers for both RunTrace flavours.
+- `schemas/runtrace_schema.json` v3.0-ms3 — oneOf discriminator on `runtrace_type`.
+- `src/orchestrator.py` — Qwen3.5-27B on OpenRouter, SSE streaming, OpenAI-style function-calling loop (with tool-call delta reassembly), 8-iteration cap.
+- `src/tools.py` — three handlers + `TOOL_SCHEMAS` + `ToolContext` + `set_tool_context()`.
+- `src/approval.py` — `ApprovalGate`, console + auto prompts.
+- `src/bootstrap.py` — `setup_runtime()` one-call wiring.
+- `scripts/demo_m1.py` — interactive REPL exercising the full audit chain.
 
-The tool schemas for the orchestrator (JSON function-calling format: `run_nli_core`, `retrieve`, `dispatch_hypothesis_tasks`, `run_hypothesis_workers`, `aggregate_results`, `answer_conversationally`) are fully specified in `architecture/architecture.yaml` → `orchestrator_tools`.
+**Remaining (other members):**
+
+- **M2** — `src/dispatcher.py`, `src/hypothesis_agent.py`, `src/run_full_analysis.py`. Exposes `async def run_full_analysis(contract_id, retrieval_mode) -> dict` which M1's tool handler awaits.
+- **M3** — `src/aggregator.py`, `src/playbook_loader.py`. Reads `playbook.yaml` unedited, validates groundedness + quote integrity, attaches `validation_failures`, writes contract RunTrace via M1's writer.
+- **M4** — `agent.py` rewrite, `src/tui.py`, `src/session.py`. Sets the active recorder at boot, wires `ApprovalGate.prompt_fn` to the TUI's input queue, persists `conversation_history.json` for back-compat.
+- **M5** — `pipeline/06_eval_ms3.py`, combined `evaluation.csv`, `runs_ms3.zip`, `docs/CONTRIBUTIONS.md`.
+
+See `docs/MILESTONE3_WORKSPLIT.md` for the full split and the **Integration Cheatsheet** section (copy-pasteable recorder usage, writer call patterns, wire-format JSON, Don'ts list).
+
+**Legacy MS3 architecture notes:** `architecture/architecture.yaml` predates the MS3 resolved decisions — tool schemas there (`run_nli_core`, `dispatch_hypothesis_tasks`, etc.) are superseded by the three-tool surface in `src/tools.py` per MS3 §2.4.
 
 ---
 
