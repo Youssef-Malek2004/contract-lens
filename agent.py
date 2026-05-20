@@ -18,9 +18,11 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
 try:
     from dotenv import load_dotenv
@@ -97,7 +99,25 @@ def _persist_session(session: SessionState, recorder, ended: bool = False) -> Pa
         retrieval_mode_switches=session.mode_switches,
         referenced_contract_runtraces=session.contract_runtraces,
     )
+    # Backward-compat with MS2: mirror conversation history to a flat JSON file.
+    _write_conversation_history(session)
     return write_session_runtrace(rt)
+
+
+def _write_conversation_history(session: SessionState) -> None:
+    path = Path("conversation_history.json")
+    turns = [{"role": t["role"], "content": t["content"]} for t in session.conversation_history]
+    fd, tmp = tempfile.mkstemp(prefix="conv_hist.", dir=".")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(turns, fh, indent=2, ensure_ascii=False)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except FileNotFoundError:
+            pass
+        raise
 
 
 # ── One turn ─────────────────────────────────────────────────────────────────
@@ -124,6 +144,7 @@ async def _one_turn(
     answer_parts: list[str] = []
     content_started = False
     reasoning_active = False
+    _last_tool_args: dict | None = None
 
     try:
         async for ev in orch.run_turn(
@@ -162,7 +183,8 @@ async def _one_turn(
                 if reasoning_active:
                     sys.stdout.write("\n")
                     reasoning_active = False
-                args_repr = json.dumps(ev.tool_arguments or {}, ensure_ascii=False)
+                _last_tool_args = ev.tool_arguments or {}
+                args_repr = json.dumps(_last_tool_args, ensure_ascii=False)
                 if len(args_repr) > 120:
                     args_repr = args_repr[:117] + "..."
                 sys.stdout.write("\n" + _c(f"  ⤷ tool   {ev.tool_name}({args_repr})", "\033[36m") + "\n")
@@ -172,6 +194,15 @@ async def _one_turn(
                 summary = _summarize(ev.tool_output)
                 sys.stdout.write(_c(f"  ⤶ result {ev.tool_name} → {summary}", "\033[2;36m") + "\n")
                 sys.stdout.flush()
+                # Dev mode: full raw JSON payload (plan §2.9)
+                if session.dev_mode and _last_tool_args is not None:
+                    tui.render_tool_call_json(ev.tool_name, _last_tool_args, ev.tool_output, 0.0)
+                    _last_tool_args = None
+                # Track the contract RunTrace produced by run_full_analysis.
+                if ev.tool_name == "run_full_analysis" and isinstance(ev.tool_output, dict):
+                    runtrace_path = ev.tool_output.get("runtrace_path")
+                    if runtrace_path:
+                        session.add_contract_runtrace_ref(str(runtrace_path))
 
             elif ev.kind == "turn_complete":
                 if reasoning_active and session.dev_mode:
