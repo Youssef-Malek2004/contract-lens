@@ -20,6 +20,7 @@ Important boundary:
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import os
 import re
@@ -29,12 +30,14 @@ import urllib.request
 from dataclasses import dataclass
 from typing import Any, Iterable, Optional
 
-from src.constants import HYPOTHESES, LABEL_TO_STATUS
+from src.aggregator import AggregationResult, aggregate_traces
+from src.constants import HYPOTHESES, LABEL_MAP, LABEL_TO_STATUS, NDA_TO_H
 # Keep these local to avoid importing the full model-loader package when the
 # dispatcher is used in lightweight/test environments.
 N_PARALLEL_AGENTS = 5
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_BASE_MODEL_ID = "qwen/qwen3.5-9b"
+from src.playbook_loader import PlaybookError, load_playbook
 from src.runtrace import (
     build_contract_runtrace,
     utc_now_iso,
@@ -87,6 +90,28 @@ class FullAnalysisDispatcher:
         self.contract_id = f"doc_{contract.get('id', 'unknown')}"
         self.numbered_spans = _numbered_contract_spans(contract)
 
+    def _contract_envelope(self) -> dict:
+        """Schema-compliant Contract object (additionalProperties: false)."""
+        chunks = []
+        for span in self.numbered_spans:
+            start = int(span.get("start") or 0)
+            end = int(span.get("end") or len(self.contract_text))
+            chunks.append({
+                "chunk_id": f"chunk_{span.get('span_id', 0)}",
+                "text": str(span.get("text") or ""),
+                "span": {"char_start": max(0, start), "char_end": max(0, end)},
+            })
+        envelope: dict = {
+            "contract_id": self.contract_id,
+            "source_type": "txt",
+            "hash_sha256": hashlib.sha256(self.contract_text.encode("utf-8")).hexdigest(),
+            "chunks": chunks,
+        }
+        file_name = self.contract.get("file_name")
+        if file_name:
+            envelope["source_name"] = str(file_name)
+        return envelope
+
     async def run_full_analysis(self, contract_id: str | None = None, retrieval_mode: str = "vector") -> dict:
         """
         Entry point used by src.tools.run_full_analysis.
@@ -107,21 +132,22 @@ class FullAnalysisDispatcher:
         traces.sort(key=lambda t: t.get("hypothesis_id", ""))
 
         elapsed_ms = round((time.perf_counter() - wall_start) * 1000, 2)
-        metrics = _compute_metrics(traces, elapsed_ms)
+
+        aggregation = _aggregate(traces)
+        traces = aggregation.traces
+        playbook_envelope = aggregation.playbook_envelope
+
+        gold_labels = _gold_labels(self.contract)
+        metrics = _compute_metrics(traces, elapsed_ms, gold_labels=gold_labels)
+
         recorder = get_active_recorder()
         tool_calls = recorder.snapshot() if recorder else []
 
         runtrace = build_contract_runtrace(
             run_id=f"full_analysis_{self.contract_id}_{int(time.time())}",
-            contract={
-                "contract_id": self.contract_id,
-                "source_id": self.contract.get("id"),
-                "file_name": self.contract.get("file_name"),
-                "span_count": len(self.contract.get("spans") or []),
-                "text_chars": len(self.contract_text),
-            },
+            contract=self._contract_envelope(),
             retrieval_mode=retrieval_mode,
-            playbook={"hypotheses": HYPOTHESES, "labels": sorted(LABELS)},
+            playbook=playbook_envelope,
             hypothesis_traces=traces,
             metrics=metrics,
             started_at=started_at,
@@ -129,13 +155,16 @@ class FullAnalysisDispatcher:
             tool_calls=tool_calls,
             parameters={
                 "dispatcher": "17_parallel_hypothesis_agents",
-                "model": self.config.model_id,
+                "orchestrator_model": self.config.model_id,
+                "hypothesis_model": self.config.model_id,
+                "n_parallel_agents": self.config.concurrency,
+                "temperature": self.config.temperature,
                 "top_k_per_hypothesis": self.config.top_k,
-                "concurrency": self.config.concurrency,
+                "risk_summary": aggregation.risk_metrics,
             },
             retrieval_context={
-                "external_memory": "retrieved per hypothesis and hidden from final evidence",
-                "contract_evidence": "numbered spans from analyzed contract only",
+                "external_memory": [],
+                "contract_evidence": [],
             },
             session_id=self.session_id,
         )
@@ -182,11 +211,13 @@ class FullAnalysisDispatcher:
                 retrieved=retrieved,
                 started_at=started,
                 latency_ms=round((time.perf_counter() - t0) * 1000, 2),
-                model_id=self.config.model_id,
+                rag_query=query,
+                rag_mode=retrieval_mode,
             )
             return trace
         except Exception as exc:
             latency_ms = round((time.perf_counter() - t0) * 1000, 2)
+            fallback_query = _build_retrieval_query(h_id, hypothesis, self.contract_text)
             return _error_trace(
                 h_id=h_id,
                 hypothesis=hypothesis,
@@ -194,7 +225,8 @@ class FullAnalysisDispatcher:
                 retrieved=retrieved,
                 started_at=started,
                 latency_ms=latency_ms,
-                model_id=self.config.model_id,
+                rag_query=fallback_query,
+                rag_mode=retrieval_mode,
             )
 
     def _call_openrouter(self, messages: list[dict]) -> str:
@@ -521,7 +553,8 @@ def _trace_from_prediction(
     retrieved: list[RetrievedSpan],
     started_at: str,
     latency_ms: float,
-    model_id: str,
+    rag_query: str,
+    rag_mode: str,
 ) -> HypothesisTrace:
     label = str(prediction.get("label") or "NOT_MENTIONED").upper().strip()
     if label not in LABELS:
@@ -563,6 +596,7 @@ def _trace_from_prediction(
 
     return {
         "hypothesis_id": h_id,
+        "hypothesis_text": hypothesis,
         "label": label,
         "confidence": confidence,
         "evidence_spans": evidence_ids,
@@ -570,14 +604,15 @@ def _trace_from_prediction(
         "groundedness_check": grounded,
         "quote_integrity_check": quote_ok,
         "playbook_result": {
-            "status": LABEL_TO_STATUS.get(label, "missing"),
-            "reason": str(prediction.get("reason") or "")[:500],
+            "severity": "MEDIUM",
+            "action": "CLARIFY",
+            "rationale": str(prediction.get("reason") or "Awaiting playbook enrichment.")[:500],
         },
         "agent_metadata": {
             "agent_id": h_id,
-            "model": model_id,
-            "hypothesis": hypothesis,
-            "external_examples_seen": len(retrieved),
+            "rag_query": rag_query[:2000],
+            "rag_hits": len(retrieved),
+            "rag_mode": rag_mode,
         },
         "validation_failures": failures,
         "tool_calls": [],
@@ -594,22 +629,28 @@ def _error_trace(
     retrieved: list[RetrievedSpan],
     started_at: str,
     latency_ms: float,
-    model_id: str,
+    rag_query: str,
+    rag_mode: str,
 ) -> HypothesisTrace:
     return {
         "hypothesis_id": h_id,
+        "hypothesis_text": hypothesis,
         "label": "NOT_MENTIONED",
         "confidence": 0.0,
         "evidence_spans": [],
         "verbatim_quote": None,
         "groundedness_check": False,
         "quote_integrity_check": True,
-        "playbook_result": {"status": "error", "reason": str(error)[:500]},
+        "playbook_result": {
+            "severity": "MEDIUM",
+            "action": "CLARIFY",
+            "rationale": f"Worker error: {error}"[:500],
+        },
         "agent_metadata": {
             "agent_id": h_id,
-            "model": model_id,
-            "hypothesis": hypothesis,
-            "external_examples_seen": len(retrieved),
+            "rag_query": rag_query[:2000],
+            "rag_hits": len(retrieved),
+            "rag_mode": rag_mode,
         },
         "validation_failures": [{"validator": "schema", "message": str(error)[:500], "related_hypothesis_id": h_id}],
         "tool_calls": [],
@@ -643,18 +684,97 @@ def _clamp_float(value: Any) -> float:
     return round(max(0.0, min(1.0, x)), 4)
 
 
-def _compute_metrics(traces: list[HypothesisTrace], elapsed_ms: float) -> dict:
-    total = len(traces)
-    grounded = sum(1 for t in traces if t.get("groundedness_check"))
-    quote_ok = sum(1 for t in traces if t.get("quote_integrity_check"))
-    by_label: dict[str, int] = {label: 0 for label in sorted(LABELS)}
+def _aggregate(traces: list[HypothesisTrace]) -> AggregationResult:
+    """
+    Run M3's playbook enrichment over the raw worker traces. Falls back to a
+    passthrough envelope if playbook.yaml can't be loaded so a missing file
+    never breaks the whole analysis.
+    """
+    try:
+        playbook = load_playbook()
+    except (PlaybookError, FileNotFoundError, OSError) as exc:
+        return AggregationResult(
+            traces=traces,
+            playbook_envelope={
+                "playbook_id": "unknown",
+                "version": "0",
+                "applied": False,
+                "error": str(exc),
+                "hypotheses": HYPOTHESES,
+                "labels": sorted(LABELS),
+            },
+            risk_metrics={},
+        )
+    return aggregate_traces(traces, playbook)
+
+
+def _gold_labels(contract: dict) -> dict[str, str]:
+    """
+    Extract ContractNLI gold labels per hypothesis if the document carries
+    them. Returns {H_id: ENTAILED|CONTRADICTED|NOT_MENTIONED}; empty dict if
+    annotations aren't available (e.g. user-supplied contract).
+    """
+    annotation_sets = contract.get("annotation_sets") or []
+    if not annotation_sets:
+        return {}
+    annotations = (annotation_sets[0] or {}).get("annotations") or {}
+    gold: dict[str, str] = {}
+    for nda_key, payload in annotations.items():
+        h_id = NDA_TO_H.get(nda_key)
+        if not h_id:
+            continue
+        choice = (payload or {}).get("choice") if isinstance(payload, dict) else None
+        label = LABEL_MAP.get(str(choice)) if choice else None
+        if label:
+            gold[h_id] = label
+    return gold
+
+
+def _compute_metrics(
+    traces: list[HypothesisTrace],
+    elapsed_ms: float,
+    *,
+    gold_labels: dict[str, str],
+) -> dict:
+    """
+    Schema-compliant Metrics block. label_counts always emits the three
+    label keys (zero-filled). correct_count/contract_accuracy are computed
+    against gold_labels when available; otherwise they're zero.
+    """
+    total = max(len(traces), 1)
+    label_counts = {"ENTAILED": 0, "CONTRADICTED": 0, "NOT_MENTIONED": 0}
+    grounded = 0
+    quote_ok = 0
+    compliant = 0
+    correct = 0
+    confusion: dict[str, int] = {}
+
     for t in traces:
-        by_label[str(t.get("label"))] = by_label.get(str(t.get("label")), 0) + 1
+        label = str(t.get("label") or "NOT_MENTIONED")
+        if label in label_counts:
+            label_counts[label] += 1
+        g = bool(t.get("groundedness_check"))
+        q = bool(t.get("quote_integrity_check"))
+        grounded += int(g)
+        quote_ok += int(q)
+        compliant += int(g and q)
+        h_id = str(t.get("hypothesis_id") or "")
+        gold = gold_labels.get(h_id)
+        if gold:
+            if gold == label:
+                correct += 1
+            key = f"{gold}->{label}"
+            confusion[key] = confusion.get(key, 0) + 1
+
     return {
-        "hypothesis_count": total,
-        "elapsed_ms": elapsed_ms,
-        "avg_latency_ms": round(sum(float(t.get("latency_ms", 0.0)) for t in traces) / max(total, 1), 2),
-        "groundedness_pass_rate": round(grounded / max(total, 1), 4),
-        "quote_integrity_pass_rate": round(quote_ok / max(total, 1), 4),
-        "labels": by_label,
+        "hypothesis_count": 17,
+        "correct_count": correct,
+        "compliant_count": compliant,
+        "quote_integrity_count": quote_ok,
+        "contract_accuracy": round(correct / total, 4) if gold_labels else 0.0,
+        "groundedness_rate": round(grounded / total, 4),
+        "quote_integrity_rate": round(quote_ok / total, 4),
+        "contract_latency_ms": round(elapsed_ms, 2),
+        "label_counts": label_counts,
+        "confusion_counts": confusion,
     }
