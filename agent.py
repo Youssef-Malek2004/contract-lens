@@ -38,6 +38,7 @@ from src.runtrace import (
     utc_now_iso,
     write_session_runtrace,
 )
+from src.dispatcher import make_pipeline
 from src.session import SessionState
 from src.tui import TUI
 
@@ -392,9 +393,10 @@ def main() -> None:
     gate = ApprovalGate(auto_approve=args.auto_approve)
 
     # Wire tool context + recorder via bootstrap helper.
+    analysis_pipeline = make_pipeline(contract=doc, session_id=session.session_id)
     recorder = setup_runtime(
         session=session,
-        pipeline=None,           # M2's run_full_analysis — wired once M2 lands
+        pipeline=analysis_pipeline,           # M2's run_full_analysis — wired once M2 lands
         approval_gate=gate.request,
         use_real_rag=not args.no_rag,
     )

@@ -148,6 +148,7 @@ def lookup_hypothesis(
 async def run_full_analysis(
     contract_id: str,
     retrieval_mode: Optional[str] = None,
+    contract_override: Optional[dict] = None,
     *,
     agent_id: str = "orchestrator",
 ) -> dict:
@@ -167,7 +168,11 @@ async def run_full_analysis(
     """
     ctx = get_tool_context()
     mode = retrieval_mode or ctx.session.retrieval_mode
-    arguments = {"contract_id": contract_id, "retrieval_mode": mode}
+    arguments = {
+    "contract_id": contract_id,
+    "retrieval_mode": mode,
+    "has_contract_override": contract_override is not None,
+}
 
     with record_tool_call("run_full_analysis", arguments, agent_id=agent_id) as call:
         approved = True
@@ -193,7 +198,7 @@ async def run_full_analysis(
         if ctx.pipeline is None:
             raise RuntimeError("No pipeline bound on the tool context")
 
-        result = await _maybe_await(ctx.pipeline(contract_id, mode))
+        result = await _maybe_await(ctx.pipeline(contract_id, mode, contract_override=contract_override))
 
         # Stash hypothesis traces so subsequent lookup_hypothesis calls hit cache.
         for trace in (result or {}).get("hypothesis_traces", []) or []:
