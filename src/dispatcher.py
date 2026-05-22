@@ -29,18 +29,14 @@ import urllib.request
 from dataclasses import dataclass
 from typing import Any, Iterable, Optional
 
+from src.aggregator import finalize_contract_analysis
 from src.constants import HYPOTHESES, LABEL_TO_STATUS
 # Keep these local to avoid importing the full model-loader package when the
 # dispatcher is used in lightweight/test environments.
 N_PARALLEL_AGENTS = 5
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OPENROUTER_BASE_MODEL_ID = "qwen/qwen3.5-9b"
-from src.runtrace import (
-    build_contract_runtrace,
-    utc_now_iso,
-    write_contract_runtrace,
-)
-from src.runtrace_recorder import get_active_recorder
+from src.runtrace import utc_now_iso
 from src.tools import retrieve
 from src.types import HypothesisTrace, RetrievedSpan
 
@@ -107,49 +103,25 @@ class FullAnalysisDispatcher:
         traces.sort(key=lambda t: t.get("hypothesis_id", ""))
 
         elapsed_ms = round((time.perf_counter() - wall_start) * 1000, 2)
-        metrics = _compute_metrics(traces, elapsed_ms)
-        recorder = get_active_recorder()
-        tool_calls = recorder.snapshot() if recorder else []
-
-        runtrace = build_contract_runtrace(
-            run_id=f"full_analysis_{self.contract_id}_{int(time.time())}",
-            contract={
-                "contract_id": self.contract_id,
-                "source_id": self.contract.get("id"),
-                "file_name": self.contract.get("file_name"),
-                "span_count": len(self.contract.get("spans") or []),
-                "text_chars": len(self.contract_text),
-            },
+        result = finalize_contract_analysis(
+            contract=self.contract,
             retrieval_mode=retrieval_mode,
-            playbook={"hypotheses": HYPOTHESES, "labels": sorted(LABELS)},
             hypothesis_traces=traces,
-            metrics=metrics,
             started_at=started_at,
             ended_at=utc_now_iso(),
-            tool_calls=tool_calls,
+            session_id=self.session_id,
             parameters={
                 "dispatcher": "17_parallel_hypothesis_agents",
                 "model": self.config.model_id,
                 "top_k_per_hypothesis": self.config.top_k,
                 "concurrency": self.config.concurrency,
+                "dispatcher_elapsed_ms": elapsed_ms,
             },
-            retrieval_context={
-                "external_memory": "retrieved per hypothesis and hidden from final evidence",
-                "contract_evidence": "numbered spans from analyzed contract only",
-            },
-            session_id=self.session_id,
         )
-        path = write_contract_runtrace(runtrace)
-
         return {
-            "status": "completed",
-            "contract_id": self.contract_id,
+            **result,
             "requested_contract_id": contract_id,
-            "retrieval_mode": retrieval_mode,
             "model": self.config.model_id,
-            "hypothesis_traces": traces,
-            "metrics": metrics,
-            "runtrace_path": str(path),
         }
 
     async def _run_one_hypothesis(self, h_id: str, hypothesis: str, retrieval_mode: str) -> HypothesisTrace:
