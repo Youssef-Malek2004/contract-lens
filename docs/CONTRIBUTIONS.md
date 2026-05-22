@@ -1,4 +1,19 @@
-# Contributions — ContractNLI Milestone 1
+# Contributions - ContractNLI
+
+## Milestone 3 Contributions
+
+| Member | MS3 Role | Contribution |
+|---|---|---|
+| Youssef Malek (55-24816) | M1 - Orchestrator, tools, audit infrastructure | Implemented the OpenRouter orchestrator, function-calling tools, approval gate, RunTrace v3 writers/schema, and cross-agent tool-call recorder. |
+| Ahmed Hatim Backar (55-24857) | M2 - Analysis pipeline, LLM side | Implemented dispatcher fan-out, 17 hypothesis workers, OpenRouter 9B calls, worker tool use, and the `run_full_analysis` orchestration entry point. |
+| David George Atef (55-26933) | M3 - Analysis pipeline, validation side | Implemented playbook loading, hypothesis validation, playbook result attachment, contract metrics, and per-contract RunTrace writing. |
+| Mostafa Ashraf Ezzat (55-5414) | M4 - CLI, TUI, session state | Implemented the MS3 REPL, slash commands, session state, approval prompt rendering, conversation RunTrace snapshots, and interactive/one-shot CLI modes. |
+| Daniel Ashraf Ekdawi (55-1598) | M5 - Evaluation and packaging | Implemented the headless 123-contract MS3 evaluation runner, MS1/MS3 combined `evaluation.csv`, per-hypothesis detail CSV, and `runs_ms3.zip` packaging. |
+| All | Integration and QA | Integrated the agentic pipeline end to end, verified RunTrace auditability, and prepared the final submission artifacts. |
+
+---
+
+# Contributions - ContractNLI Milestone 1
 
 ## Group Members
 

@@ -1,0 +1,3412 @@
+{
+  "schema_version": "3.0-ms3",
+  "runtrace_type": "contract_analysis",
+  "run": {
+    "run_id": "ms3_doc_8_2026-05-21T233529727Z",
+    "started_at": "2026-05-21T23:35:29.727Z",
+    "ended_at": "2026-05-21T23:35:49.975Z",
+    "framework": "agentic_pipeline",
+    "parameters": {
+      "hypothesis_model": "qwen/qwen3.5-9b",
+      "n_parallel_agents": 5,
+      "temperature": 0.0,
+      "dispatcher": "17_parallel_hypothesis_agents",
+      "model": "qwen/qwen3.5-9b",
+      "top_k_per_hypothesis": 5,
+      "concurrency": 5,
+      "dispatcher_elapsed_ms": 20247.96
+    }
+  },
+  "contract": {
+    "contract_id": "doc_8",
+    "source_type": "txt",
+    "source_name": "1588052992CCTV%20Non%20Disclosure%20Agreement.pdf",
+    "language": "en",
+    "hash_sha256": "b7be9d327f4970636b1850818bc3573451e216d85b01ad2c6db55c493ca6015b",
+    "chunks": [
+      {
+        "chunk_id": "chunk_000",
+        "text": "Non-Disclosure",
+        "span": {
+          "char_start": 0,
+          "char_end": 15
+        }
+      },
+      {
+        "chunk_id": "chunk_001",
+        "text": "Agreement",
+        "span": {
+          "char_start": 15,
+          "char_end": 24
+        }
+      },
+      {
+        "chunk_id": "chunk_002",
+        "text": "This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\".",
+        "span": {
+          "char_start": 25,
+          "char_end": 287
+        }
+      },
+      {
+        "chunk_id": "chunk_003",
+        "text": "WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and",
+        "span": {
+          "char_start": 288,
+          "char_end": 653
+        }
+      },
+      {
+        "chunk_id": "chunk_004",
+        "text": "WHEREAS",
+        "span": {
+          "char_start": 654,
+          "char_end": 662
+        }
+      },
+      {
+        "chunk_id": "chunk_005",
+        "text": "the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\");",
+        "span": {
+          "char_start": 662,
+          "char_end": 937
+        }
+      },
+      {
+        "chunk_id": "chunk_006",
+        "text": "NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows:",
+        "span": {
+          "char_start": 938,
+          "char_end": 1084
+        }
+      },
+      {
+        "chunk_id": "chunk_007",
+        "text": "1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to the Confidential Information as identified and reduced in writing or provided verbally or in any other way not reduced in writing at the time of such disclosure of the information.",
+        "span": {
+          "char_start": 1085,
+          "char_end": 1378
+        }
+      },
+      {
+        "chunk_id": "chunk_008",
+        "text": "2. Confidentiality:",
+        "span": {
+          "char_start": 1379,
+          "char_end": 1398
+        }
+      },
+      {
+        "chunk_id": "chunk_009",
+        "text": "2.1",
+        "span": {
+          "char_start": 1399,
+          "char_end": 1403
+        }
+      },
+      {
+        "chunk_id": "chunk_010",
+        "text": "No Use: Recipient agrees not to use the Confidential Information in any way or under any circumstances share the same, in writing or through any other means, with any Third Party.",
+        "span": {
+          "char_start": 1403,
+          "char_end": 1582
+        }
+      },
+      {
+        "chunk_id": "chunk_011",
+        "text": "2.2 No Unauthorized Disclosure: Recipient agrees to use its best efforts to prevent and protect the Confidential Information, or any part thereof, from disclosure to any person(s) or entity (ies), even if authorized or directed under any law, without the express permission of the Discloser.",
+        "span": {
+          "char_start": 1583,
+          "char_end": 1875
+        }
+      },
+      {
+        "chunk_id": "chunk_012",
+        "text": "Discloser, notwithstanding, shall have the right to deny such disclosure of the Confidential Information being detrimental to the security interests of the Discloser and/or its",
+        "span": {
+          "char_start": 1875,
+          "char_end": 2051
+        }
+      },
+      {
+        "chunk_id": "chunk_013",
+        "text": "2.3 Protection of Secrecy: Recipient agrees to take all steps necessary to protect the secrecy of the Confidential Information, and to prevent the Confidential Information from failing into the public domain or into the possession of unauthorized person(s) and/or entity(ies).",
+        "span": {
+          "char_start": 2052,
+          "char_end": 2328
+        }
+      },
+      {
+        "chunk_id": "chunk_014",
+        "text": "2.4 Recipient agrees that the layout plan of the structural design of the Premises, whether in in physical or electronic form, shall always be in the custody of the Discloser.",
+        "span": {
+          "char_start": 2329,
+          "char_end": 2505
+        }
+      },
+      {
+        "chunk_id": "chunk_015",
+        "text": "However, the Recipient shall have the access to the layout plan for the purpose of carrying out the contract for installation of CCTV System.",
+        "span": {
+          "char_start": 2505,
+          "char_end": 2646
+        }
+      },
+      {
+        "chunk_id": "chunk_016",
+        "text": "3. Notices:",
+        "span": {
+          "char_start": 2647,
+          "char_end": 2659
+        }
+      },
+      {
+        "chunk_id": "chunk_017",
+        "text": "All notices hereunder shall be given by letter, addressed as follows:",
+        "span": {
+          "char_start": 2659,
+          "char_end": 2728
+        }
+      },
+      {
+        "chunk_id": "chunk_018",
+        "text": "4. Term and Termination.",
+        "span": {
+          "char_start": 2729,
+          "char_end": 2754
+        }
+      },
+      {
+        "chunk_id": "chunk_019",
+        "text": "The term of this Agreement shall commence on the [Name of the Mission/Post] [Name of the Company]",
+        "span": {
+          "char_start": 2754,
+          "char_end": 2851
+        }
+      },
+      {
+        "chunk_id": "chunk_020",
+        "text": "[Address] [Address]",
+        "span": {
+          "char_start": 2852,
+          "char_end": 2871
+        }
+      },
+      {
+        "chunk_id": "chunk_021",
+        "text": "Attention [Insert Name] Attention:[Insert Name]",
+        "span": {
+          "char_start": 2872,
+          "char_end": 2919
+        }
+      },
+      {
+        "chunk_id": "chunk_022",
+        "text": "Title:[Insert Designation]",
+        "span": {
+          "char_start": 2920,
+          "char_end": 2947
+        }
+      },
+      {
+        "chunk_id": "chunk_023",
+        "text": "E- Title: [Insert Designation] E-",
+        "span": {
+          "char_start": 2947,
+          "char_end": 2980
+        }
+      },
+      {
+        "chunk_id": "chunk_024",
+        "text": "mail:[Insert E-mail] mail:[Insert E-mail]",
+        "span": {
+          "char_start": 2981,
+          "char_end": 3022
+        }
+      },
+      {
+        "chunk_id": "chunk_025",
+        "text": "Telephone:[Insert Number] Telephone: [Insert",
+        "span": {
+          "char_start": 3023,
+          "char_end": 3067
+        }
+      },
+      {
+        "chunk_id": "chunk_026",
+        "text": "Fax:[Insert Number] Number] Fax:",
+        "span": {
+          "char_start": 3068,
+          "char_end": 3101
+        }
+      },
+      {
+        "chunk_id": "chunk_027",
+        "text": "[Insert Number]",
+        "span": {
+          "char_start": 3101,
+          "char_end": 3116
+        }
+      },
+      {
+        "chunk_id": "chunk_028",
+        "text": "Effective Date",
+        "span": {
+          "char_start": 3117,
+          "char_end": 3132
+        }
+      },
+      {
+        "chunk_id": "chunk_029",
+        "text": "i.e. the date of signing the Agreement for the Purpose and continue for such a period until and unless the Discloser terminates the Agreement or the Premises is relocated or vacated or abandoned, whichever is earlier.",
+        "span": {
+          "char_start": 3132,
+          "char_end": 3349
+        }
+      },
+      {
+        "chunk_id": "chunk_030",
+        "text": "5. Breach.",
+        "span": {
+          "char_start": 3350,
+          "char_end": 3361
+        }
+      },
+      {
+        "chunk_id": "chunk_031",
+        "text": "The Recipient acknowledges that disclosure or use of Confidential Information in violation of this Agreement could cause irreparable harm to Discloser including loss of lives and limbs of the persons and damage to the property, for which monetary damages may be difficult to ascertain or turn to be meaningless.",
+        "span": {
+          "char_start": 3361,
+          "char_end": 3673
+        }
+      },
+      {
+        "chunk_id": "chunk_032",
+        "text": "The Recipient therefore agrees that Discloser will have the right, in addition to its other rights and remedies, to seek injunctive relief for violations of this Agreement.",
+        "span": {
+          "char_start": 3673,
+          "char_end": 3845
+        }
+      },
+      {
+        "chunk_id": "chunk_033",
+        "text": "6. In case the Discloser suspects any violation of this Agreement, upon reasonable notice, it shall be binding for the Recipient to allow the Discloser to carry out an Audit by itself or by an authorized representative.",
+        "span": {
+          "char_start": 3846,
+          "char_end": 4066
+        }
+      },
+      {
+        "chunk_id": "chunk_034",
+        "text": "In such a situation, the Recipient shall cooperate with the Discloser.",
+        "span": {
+          "char_start": 4066,
+          "char_end": 4137
+        }
+      },
+      {
+        "chunk_id": "chunk_035",
+        "text": "The onus to rebut the suspicion shall lie on the Recipient",
+        "span": {
+          "char_start": 4137,
+          "char_end": 4195
+        }
+      },
+      {
+        "chunk_id": "chunk_036",
+        "text": "7. Any dispute or difference arising out of or in connection with this Non- Discloser Agreement shall be setteled amicably by the Parties through mutual negotiations.",
+        "span": {
+          "char_start": 4196,
+          "char_end": 4363
+        }
+      },
+      {
+        "chunk_id": "chunk_037",
+        "text": "Any unsettled dispute or difference shall be referred to Arbitration by a Sole Arbitrator.",
+        "span": {
+          "char_start": 4363,
+          "char_end": 4454
+        }
+      },
+      {
+        "chunk_id": "chunk_038",
+        "text": "The Arbitration shall be conducted in accordance with the rules and procedure of UNCITRAL in force on the date of Agreement.",
+        "span": {
+          "char_start": 4454,
+          "char_end": 4579
+        }
+      },
+      {
+        "chunk_id": "chunk_039",
+        "text": "Arbitration proceedings shall be held in India and will be conducted in English.",
+        "span": {
+          "char_start": 4579,
+          "char_end": 4660
+        }
+      },
+      {
+        "chunk_id": "chunk_040",
+        "text": "The decision of Arbitral Tribunal shall be final and binding on all Parties.",
+        "span": {
+          "char_start": 4660,
+          "char_end": 4737
+        }
+      },
+      {
+        "chunk_id": "chunk_041",
+        "text": "Cost of Arbitrtaion shall be borne by Parties themselves unless and otherwise ordered by the Tribunal.",
+        "span": {
+          "char_start": 4737,
+          "char_end": 4839
+        }
+      },
+      {
+        "chunk_id": "chunk_042",
+        "text": "8. This Agreement shall be governed by and construed in accordance with the laws in force in India.",
+        "span": {
+          "char_start": 4840,
+          "char_end": 4939
+        }
+      },
+      {
+        "chunk_id": "chunk_043",
+        "text": "9. Miscellaneous.",
+        "span": {
+          "char_start": 4940,
+          "char_end": 4957
+        }
+      },
+      {
+        "chunk_id": "chunk_044",
+        "text": "a) Except in the event of an amalgamation or merger with or takeover by a third party of their business, neither Party may assign or transfer its rights or obligations in this Agreement without the prior written consent of the other.",
+        "span": {
+          "char_start": 4958,
+          "char_end": 5191
+        }
+      },
+      {
+        "chunk_id": "chunk_045",
+        "text": "b) The Parties do not intend that any agency or partnership relationship be created by them by this Agreement.",
+        "span": {
+          "char_start": 5192,
+          "char_end": 5302
+        }
+      },
+      {
+        "chunk_id": "chunk_046",
+        "text": "c) All additions or modifications to this Agreement must be made in writing and signed by an authorized representative of each Party.",
+        "span": {
+          "char_start": 5303,
+          "char_end": 5436
+        }
+      },
+      {
+        "chunk_id": "chunk_047",
+        "text": "ACCEPTED AND AGREED",
+        "span": {
+          "char_start": 5437,
+          "char_end": 5456
+        }
+      },
+      {
+        "chunk_id": "chunk_048",
+        "text": "[Name of the Mission/Post]",
+        "span": {
+          "char_start": 5457,
+          "char_end": 5484
+        }
+      },
+      {
+        "chunk_id": "chunk_049",
+        "text": "[Name of the Company]",
+        "span": {
+          "char_start": 5484,
+          "char_end": 5505
+        }
+      },
+      {
+        "chunk_id": "chunk_050",
+        "text": "[Address] [Address]",
+        "span": {
+          "char_start": 5506,
+          "char_end": 5525
+        }
+      },
+      {
+        "chunk_id": "chunk_051",
+        "text": "Attention: [Insert Name]",
+        "span": {
+          "char_start": 5526,
+          "char_end": 5550
+        }
+      },
+      {
+        "chunk_id": "chunk_052",
+        "text": "Attention: [Insert Name]",
+        "span": {
+          "char_start": 5551,
+          "char_end": 5575
+        }
+      },
+      {
+        "chunk_id": "chunk_053",
+        "text": "Title: [Insert Designation]",
+        "span": {
+          "char_start": 5576,
+          "char_end": 5603
+        }
+      },
+      {
+        "chunk_id": "chunk_054",
+        "text": "Title: [Insert Designation]",
+        "span": {
+          "char_start": 5604,
+          "char_end": 5631
+        }
+      },
+      {
+        "chunk_id": "chunk_055",
+        "text": "E-mail:[Insert E-mail]",
+        "span": {
+          "char_start": 5632,
+          "char_end": 5654
+        }
+      },
+      {
+        "chunk_id": "chunk_056",
+        "text": "E-mail:[Insert E-mail]",
+        "span": {
+          "char_start": 5655,
+          "char_end": 5677
+        }
+      },
+      {
+        "chunk_id": "chunk_057",
+        "text": "Telephone:[Insert Number]",
+        "span": {
+          "char_start": 5678,
+          "char_end": 5703
+        }
+      },
+      {
+        "chunk_id": "chunk_058",
+        "text": "Telephone:[Insert Number]",
+        "span": {
+          "char_start": 5704,
+          "char_end": 5729
+        }
+      },
+      {
+        "chunk_id": "chunk_059",
+        "text": "Fax: [Insert Number]",
+        "span": {
+          "char_start": 5730,
+          "char_end": 5750
+        }
+      }
+    ]
+  },
+  "retrieval_mode": "graph",
+  "retrieval_context": {
+    "external_memory": [],
+    "contract_evidence": [
+      {
+        "chunk_id": "chunk_003",
+        "quote": "WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 288,
+          "char_end": 653
+        }
+      },
+      {
+        "chunk_id": "chunk_007",
+        "quote": "1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to the Confidential Information as identified and reduced in writing or provided verbally or in any other way not reduced in writing at the time of such disclosure of the information.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 1085,
+          "char_end": 1378
+        }
+      },
+      {
+        "chunk_id": "chunk_010",
+        "quote": "No Use: Recipient agrees not to use the Confidential Information in any way or under any circumstances share the same, in writing or through any other means, with any Third Party.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 1403,
+          "char_end": 1582
+        }
+      }
+    ]
+  },
+  "playbook": {
+    "playbook_id": "contractnli_nda_minimal",
+    "version": "1.1",
+    "ruleset_hash": "c090bc43c85103ea5ef695ba794d4f3d6626876abdfe8c09f75a16dc9f7c233c",
+    "rule_params": {
+      "source": "ContractNLI fixed hypothesis set (17 items)",
+      "checks": 17
+    }
+  },
+  "hypothesis_traces": [
+    {
+      "hypothesis_id": "H01",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Explicit identification: The NDA does not clearly impose an express identification/marking requirement. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H01",
+        "rag_query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H01",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H01",
+            "label_filter": null,
+            "agent_id": "H01"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:29.728Z",
+          "duration_ms": 4.682,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+              "doc_id": "96",
+              "span_idx": 9,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+              "doc_id": "96",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+              "doc_id": "101",
+              "span_idx": 41,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+              "doc_id": "105",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4246.97,
+      "started_at": "2026-05-21T23:35:29.727Z",
+      "ended_at": "2026-05-21T23:35:33.974Z",
+      "hypothesis_text": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    {
+      "hypothesis_id": "H02",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        3
+      ],
+      "verbatim_quote": "information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Technical-only scope: The NDA does not limit Confidential Information to technical information only (it appears broader). Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H02",
+        "rag_query": "H02: Confidential Information shall only include technical information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H02",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H02",
+            "label_filter": null,
+            "agent_id": "H02"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:29.733Z",
+          "duration_ms": 4.92,
+          "output": [
+            {
+              "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+              "doc_id": "86",
+              "span_idx": 55,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+              "doc_id": "88",
+              "span_idx": 8,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+              "doc_id": "91",
+              "span_idx": 11,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+              "doc_id": "91",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4141.82,
+      "started_at": "2026-05-21T23:35:29.733Z",
+      "ended_at": "2026-05-21T23:35:33.875Z",
+      "hypothesis_text": "Confidential Information shall only include technical information."
+    },
+    {
+      "hypothesis_id": "H03",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        7
+      ],
+      "verbatim_quote": "Discloser agrees to let the Recipient have the access to the Confidential Information as identified and reduced in writing or provided verbally or in any other way not reduced in writing",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Verbal information included: The NDA permits Confidential Information to include oral/verbal disclosures (typically subject to conditions). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H03",
+        "rag_query": "H03: Confidential Information may include verbally conveyed information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H03",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H03",
+            "label_filter": null,
+            "agent_id": "H03"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:29.739Z",
+          "duration_ms": 4.497,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "“Confidential Information” under this Agreement consists of:",
+              "doc_id": "87",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+              "doc_id": "87",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+              "doc_id": "92",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 2879.71,
+      "started_at": "2026-05-21T23:35:29.739Z",
+      "ended_at": "2026-05-21T23:35:32.619Z",
+      "hypothesis_text": "Confidential Information may include verbally conveyed information."
+    },
+    {
+      "hypothesis_id": "H04",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "Purpose limitation: The NDA does not clearly restrict use of Confidential Information to the stated purpose(s). Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H04",
+        "rag_query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H04",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H04",
+            "label_filter": null,
+            "agent_id": "H04"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:29.745Z",
+          "duration_ms": 4.76,
+          "output": [
+            {
+              "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+              "doc_id": "34",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+              "doc_id": "86",
+              "span_idx": 62,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each Participating",
+              "doc_id": "87",
+              "span_idx": 16,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Entity agrees",
+              "doc_id": "87",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+              "doc_id": "87",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 2495.84,
+      "started_at": "2026-05-21T23:35:29.745Z",
+      "ended_at": "2026-05-21T23:35:32.241Z",
+      "hypothesis_text": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    {
+      "hypothesis_id": "H05",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Disclosure to employees: The NDA does not clearly address whether employees may receive Confidential Information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H05",
+        "rag_query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H05",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H05",
+            "label_filter": null,
+            "agent_id": "H05"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:29.750Z",
+          "duration_ms": 6.101,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+              "doc_id": "34",
+              "span_idx": 25,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+              "doc_id": "87",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+              "doc_id": "88",
+              "span_idx": 21,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3491.51,
+      "started_at": "2026-05-21T23:35:29.750Z",
+      "ended_at": "2026-05-21T23:35:33.242Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some of Receiving Party's employees."
+    },
+    {
+      "hypothesis_id": "H06",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        10
+      ],
+      "verbatim_quote": "Recipient agrees not to use the Confidential Information in any way or under any circumstances share the same, in writing or through any other means, with any Third Party.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "NEGOTIATE",
+        "rationale": "Disclosure to third parties / representatives: The NDA appears to prohibit disclosure to third parties/representatives, which is typically addressed via a controlled 'representatives' carve-out. Severity HIGH; action NEGOTIATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H06",
+        "rag_query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H06",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H06",
+            "label_filter": null,
+            "agent_id": "H06"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:32.241Z",
+          "duration_ms": 4.471,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+              "doc_id": "89",
+              "span_idx": 63,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+              "doc_id": "89",
+              "span_idx": 174,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+              "doc_id": "92",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 9620.28,
+      "started_at": "2026-05-21T23:35:32.241Z",
+      "ended_at": "2026-05-21T23:35:41.861Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    {
+      "hypothesis_id": "H07",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.95,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Notice for compelled disclosure: The NDA does not clearly require notice in the event of compelled disclosure. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H07",
+        "rag_query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H07",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H07",
+            "label_filter": null,
+            "agent_id": "H07"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:32.619Z",
+          "duration_ms": 2.841,
+          "output": [
+            {
+              "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+              "doc_id": "34",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+              "doc_id": "86",
+              "span_idx": 82,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+              "doc_id": "87",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+              "doc_id": "87",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+              "doc_id": "87",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3230.51,
+      "started_at": "2026-05-21T23:35:32.619Z",
+      "ended_at": "2026-05-21T23:35:35.850Z",
+      "hypothesis_text": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information."
+    },
+    {
+      "hypothesis_id": "H08",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Confidentiality of the agreement/existence: The NDA does not clearly address confidentiality of the agreement’s existence or negotiation. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H08",
+        "rag_query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H08",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H08",
+            "label_filter": null,
+            "agent_id": "H08"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:33.242Z",
+          "duration_ms": 1.82,
+          "output": [
+            {
+              "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+              "doc_id": "34",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+              "doc_id": "88",
+              "span_idx": 18,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+              "doc_id": "92",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+              "doc_id": "94",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+              "doc_id": "95",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 9611.67,
+      "started_at": "2026-05-21T23:35:33.242Z",
+      "ended_at": "2026-05-21T23:35:42.854Z",
+      "hypothesis_text": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+    },
+    {
+      "hypothesis_id": "H09",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "No reverse engineering: The NDA does not clearly address reverse engineering restrictions. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H09",
+        "rag_query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H09",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H09",
+            "label_filter": null,
+            "agent_id": "H09"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:33.875Z",
+          "duration_ms": 0.763,
+          "output": [
+            {
+              "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+              "doc_id": "91",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+              "doc_id": "96",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+              "doc_id": "101",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+              "doc_id": "111",
+              "span_idx": 27,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 8842.33,
+      "started_at": "2026-05-21T23:35:33.875Z",
+      "ended_at": "2026-05-21T23:35:42.717Z",
+      "hypothesis_text": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information."
+    },
+    {
+      "hypothesis_id": "H10",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Independent development permitted: The NDA does not clearly address independent development of similar information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H10",
+        "rag_query": "H10: Receiving Party may independently develop information similar to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H10",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H10",
+            "label_filter": null,
+            "agent_id": "H10"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:33.975Z",
+          "duration_ms": 5.118,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+              "doc_id": "34",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information shall not include any information that:",
+              "doc_id": "88",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+              "doc_id": "88",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+              "doc_id": "91",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4006.01,
+      "started_at": "2026-05-21T23:35:33.974Z",
+      "ended_at": "2026-05-21T23:35:37.980Z",
+      "hypothesis_text": "Receiving Party may independently develop information similar to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H11",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Third-party acquisition permitted: The NDA does not clearly address third-party acquisition of similar information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H11",
+        "rag_query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H11",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H11",
+            "label_filter": null,
+            "agent_id": "H11"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:35.850Z",
+          "duration_ms": 4.463,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+              "doc_id": "34",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information does not include:",
+              "doc_id": "86",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "> information received from a third party who was free to disclose such information.",
+              "doc_id": "86",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+              "doc_id": "87",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 2090.42,
+      "started_at": "2026-05-21T23:35:35.850Z",
+      "ended_at": "2026-05-21T23:35:37.940Z",
+      "hypothesis_text": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    {
+      "hypothesis_id": "H12",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        7
+      ],
+      "verbatim_quote": "Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to the Confidential Information",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "No rights / no license: The NDA appears to grant rights or license-like permissions regarding Confidential Information, which may be a policy conflict. Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H12",
+        "rag_query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H12",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H12",
+            "label_filter": null,
+            "agent_id": "H12"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:37.940Z",
+          "duration_ms": 3.995,
+          "output": [
+            {
+              "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+              "doc_id": "34",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+              "doc_id": "86",
+              "span_idx": 85,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+              "doc_id": "87",
+              "span_idx": 60,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+              "doc_id": "88",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+              "doc_id": "88",
+              "span_idx": 29,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5351.92,
+      "started_at": "2026-05-21T23:35:37.940Z",
+      "ended_at": "2026-05-21T23:35:43.292Z",
+      "hypothesis_text": "Agreement shall not grant Receiving Party any right to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H13",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.95,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "Return or destruction on termination: The NDA does not clearly require return or destruction of Confidential Information upon termination. Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H13",
+        "rag_query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H13",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H13",
+            "label_filter": null,
+            "agent_id": "H13"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:37.981Z",
+          "duration_ms": 2.126,
+          "output": [
+            {
+              "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+              "doc_id": "34",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+              "doc_id": "34",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+              "doc_id": "87",
+              "span_idx": 48,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Except as provided in paragraph",
+              "doc_id": "89",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4379.81,
+      "started_at": "2026-05-21T23:35:37.980Z",
+      "ended_at": "2026-05-21T23:35:42.360Z",
+      "hypothesis_text": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H14",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Copying permitted in some circumstances: The NDA does not clearly address whether copying Confidential Information is permitted under controlled circumstances. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H14",
+        "rag_query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H14",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H14",
+            "label_filter": null,
+            "agent_id": "H14"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:41.861Z",
+          "duration_ms": 2.037,
+          "output": [
+            {
+              "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+              "doc_id": "34",
+              "span_idx": 36,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+              "doc_id": "101",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+              "doc_id": "103",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+              "doc_id": "104",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 8113.6,
+      "started_at": "2026-05-21T23:35:41.861Z",
+      "ended_at": "2026-05-21T23:35:49.975Z",
+      "hypothesis_text": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    {
+      "hypothesis_id": "H15",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Non-solicitation: The NDA does not include a clear non-solicitation restriction; this is often optional depending on the engagement. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H15",
+        "rag_query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H15",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H15",
+            "label_filter": null,
+            "agent_id": "H15"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:42.361Z",
+          "duration_ms": 1.62,
+          "output": [
+            {
+              "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+              "doc_id": "91",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+              "doc_id": "91",
+              "span_idx": 42,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+              "doc_id": "100",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+              "doc_id": "118",
+              "span_idx": 78,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+              "doc_id": "133",
+              "span_idx": 73,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3308.79,
+      "started_at": "2026-05-21T23:35:42.360Z",
+      "ended_at": "2026-05-21T23:35:45.669Z",
+      "hypothesis_text": "Receiving Party shall not solicit some of Disclosing Party's representatives."
+    },
+    {
+      "hypothesis_id": "H16",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "Survival of obligations: The NDA does not clearly state that confidentiality or related obligations survive termination. Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H16",
+        "rag_query": "H16: Some obligations of Agreement may survive termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H16",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H16",
+            "label_filter": null,
+            "agent_id": "H16"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:42.718Z",
+          "duration_ms": 3.5,
+          "output": [
+            {
+              "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+              "doc_id": "34",
+              "span_idx": 45,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+              "doc_id": "86",
+              "span_idx": 88,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+              "doc_id": "87",
+              "span_idx": 46,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+              "doc_id": "89",
+              "span_idx": 109,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4677.76,
+      "started_at": "2026-05-21T23:35:42.717Z",
+      "ended_at": "2026-05-21T23:35:47.395Z",
+      "hypothesis_text": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H17",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Retention after return/destruction: The NDA does not clearly address whether any retention is permitted after return/destruction (e.g., backups or legal compliance). Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H17",
+        "rag_query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H17",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H17",
+            "label_filter": null,
+            "agent_id": "H17"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:35:42.854Z",
+          "duration_ms": 3.836,
+          "output": [
+            {
+              "text": "At Organiser’s first request, Mentor shall:",
+              "doc_id": "86",
+              "span_idx": 72,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+              "doc_id": "86",
+              "span_idx": 76,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+              "doc_id": "86",
+              "span_idx": 77,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+              "doc_id": "88",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+              "doc_id": "92",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4914.8,
+      "started_at": "2026-05-21T23:35:42.854Z",
+      "ended_at": "2026-05-21T23:35:47.769Z",
+      "hypothesis_text": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+    }
+  ],
+  "metrics": {
+    "hypothesis_count": 17,
+    "correct_count": 0,
+    "compliant_count": 17,
+    "quote_integrity_count": 17,
+    "contract_accuracy": 0.0,
+    "groundedness_rate": 1.0,
+    "quote_integrity_rate": 1.0,
+    "contract_latency_ms": 85403.75,
+    "label_counts": {
+      "ENTAILED": 1,
+      "CONTRADICTED": 3,
+      "NOT_MENTIONED": 13
+    }
+  },
+  "run_validations": [
+    {
+      "validator_id": "hypothesis_count_check",
+      "status": "PASS",
+      "message": "Expected 17 hypothesis traces, got 17."
+    },
+    {
+      "validator_id": "trace_validation_failures",
+      "status": "PASS",
+      "message": "0 non-fatal validation failure(s) recorded."
+    }
+  ],
+  "conversation_history": [],
+  "tool_calls": [
+    {
+      "agent_id": "H01",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H01",
+        "label_filter": null,
+        "agent_id": "H01"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:29.728Z",
+      "duration_ms": 4.682,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+          "doc_id": "96",
+          "span_idx": 9,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+          "doc_id": "96",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+          "doc_id": "101",
+          "span_idx": 41,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+          "doc_id": "105",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H02",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H02",
+        "label_filter": null,
+        "agent_id": "H02"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:29.733Z",
+      "duration_ms": 4.92,
+      "output": [
+        {
+          "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+          "doc_id": "86",
+          "span_idx": 55,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+          "doc_id": "88",
+          "span_idx": 8,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+          "doc_id": "91",
+          "span_idx": 11,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+          "doc_id": "91",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H03",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H03",
+        "label_filter": null,
+        "agent_id": "H03"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:29.739Z",
+      "duration_ms": 4.497,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "“Confidential Information” under this Agreement consists of:",
+          "doc_id": "87",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+          "doc_id": "87",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+          "doc_id": "92",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H04",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H04",
+        "label_filter": null,
+        "agent_id": "H04"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:29.745Z",
+      "duration_ms": 4.76,
+      "output": [
+        {
+          "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+          "doc_id": "34",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+          "doc_id": "86",
+          "span_idx": 62,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each Participating",
+          "doc_id": "87",
+          "span_idx": 16,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Entity agrees",
+          "doc_id": "87",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+          "doc_id": "87",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H05",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H05",
+        "label_filter": null,
+        "agent_id": "H05"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:29.750Z",
+      "duration_ms": 6.101,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+          "doc_id": "34",
+          "span_idx": 25,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+          "doc_id": "87",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+          "doc_id": "88",
+          "span_idx": 21,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H06",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H06",
+        "label_filter": null,
+        "agent_id": "H06"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:32.241Z",
+      "duration_ms": 4.471,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+          "doc_id": "89",
+          "span_idx": 63,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+          "doc_id": "89",
+          "span_idx": 174,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+          "doc_id": "92",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H07",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H07",
+        "label_filter": null,
+        "agent_id": "H07"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:32.619Z",
+      "duration_ms": 2.841,
+      "output": [
+        {
+          "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+          "doc_id": "34",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+          "doc_id": "86",
+          "span_idx": 82,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+          "doc_id": "87",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+          "doc_id": "87",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+          "doc_id": "87",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H08",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H08",
+        "label_filter": null,
+        "agent_id": "H08"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:33.242Z",
+      "duration_ms": 1.82,
+      "output": [
+        {
+          "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+          "doc_id": "34",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+          "doc_id": "88",
+          "span_idx": 18,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+          "doc_id": "92",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+          "doc_id": "94",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+          "doc_id": "95",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H09",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H09",
+        "label_filter": null,
+        "agent_id": "H09"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:33.875Z",
+      "duration_ms": 0.763,
+      "output": [
+        {
+          "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+          "doc_id": "91",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+          "doc_id": "96",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+          "doc_id": "101",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+          "doc_id": "111",
+          "span_idx": 27,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H10",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H10",
+        "label_filter": null,
+        "agent_id": "H10"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:33.975Z",
+      "duration_ms": 5.118,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+          "doc_id": "34",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information shall not include any information that:",
+          "doc_id": "88",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+          "doc_id": "88",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+          "doc_id": "91",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H11",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H11",
+        "label_filter": null,
+        "agent_id": "H11"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:35.850Z",
+      "duration_ms": 4.463,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+          "doc_id": "34",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information does not include:",
+          "doc_id": "86",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "> information received from a third party who was free to disclose such information.",
+          "doc_id": "86",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+          "doc_id": "87",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H12",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H12",
+        "label_filter": null,
+        "agent_id": "H12"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:37.940Z",
+      "duration_ms": 3.995,
+      "output": [
+        {
+          "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+          "doc_id": "34",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+          "doc_id": "86",
+          "span_idx": 85,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+          "doc_id": "87",
+          "span_idx": 60,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+          "doc_id": "88",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+          "doc_id": "88",
+          "span_idx": 29,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H13",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H13",
+        "label_filter": null,
+        "agent_id": "H13"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:37.981Z",
+      "duration_ms": 2.126,
+      "output": [
+        {
+          "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+          "doc_id": "34",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+          "doc_id": "34",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+          "doc_id": "87",
+          "span_idx": 48,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Except as provided in paragraph",
+          "doc_id": "89",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H14",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H14",
+        "label_filter": null,
+        "agent_id": "H14"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:41.861Z",
+      "duration_ms": 2.037,
+      "output": [
+        {
+          "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+          "doc_id": "34",
+          "span_idx": 36,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+          "doc_id": "101",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+          "doc_id": "103",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+          "doc_id": "104",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H15",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H15",
+        "label_filter": null,
+        "agent_id": "H15"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:42.361Z",
+      "duration_ms": 1.62,
+      "output": [
+        {
+          "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+          "doc_id": "91",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+          "doc_id": "91",
+          "span_idx": 42,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+          "doc_id": "100",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+          "doc_id": "118",
+          "span_idx": 78,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+          "doc_id": "133",
+          "span_idx": 73,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H16",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H16",
+        "label_filter": null,
+        "agent_id": "H16"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:42.718Z",
+      "duration_ms": 3.5,
+      "output": [
+        {
+          "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+          "doc_id": "34",
+          "span_idx": 45,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+          "doc_id": "86",
+          "span_idx": 88,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+          "doc_id": "87",
+          "span_idx": 46,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+          "doc_id": "89",
+          "span_idx": 109,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H17",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: Non-Disclosure Agreement This Agreement is entered into this ……..(Date) day of ………….(Month), .......... (Year) between (Name of the Mission) (hereinafter called as \"Discloser\") and (Name of the Company with Address) (hereinafter called as \"Recipient\"), collectively \"Party\" or \"Parties\". WHEREAS the Discloser possesses certain information relating to the security set-up, security architecture, lay-out, security processes and procedures, designs, drawings, software and hardware configuration, computer programs, algorithms, services, customers etc that is confidential and proprietary in nature (hereinafter called as \"Confidential Information\"); and WHEREAS the Recipient is bound to get to know about the Confidential Information in pursuant to the terms of the Agreement for the purpose of supply, installation, testing and commissioning of a CCTV System (hereinafter called as \"Purpose\") in the (hereinafter called as \"Premises\"); NOW THEREFORE, in consideration for the mutual undertakings of the Discloser and the Recipient under this Agreement, the Parties agree as follows: 1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to th",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H17",
+        "label_filter": null,
+        "agent_id": "H17"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:35:42.854Z",
+      "duration_ms": 3.836,
+      "output": [
+        {
+          "text": "At Organiser’s first request, Mentor shall:",
+          "doc_id": "86",
+          "span_idx": 72,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+          "doc_id": "86",
+          "span_idx": 76,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+          "doc_id": "86",
+          "span_idx": 77,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+          "doc_id": "88",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+          "doc_id": "92",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    }
+  ],
+  "approval_events": []
+}
