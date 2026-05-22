@@ -1,0 +1,3586 @@
+{
+  "schema_version": "3.0-ms3",
+  "runtrace_type": "contract_analysis",
+  "run": {
+    "run_id": "ms3_doc_228_2026-05-22T000310817Z",
+    "started_at": "2026-05-22T00:03:10.817Z",
+    "ended_at": "2026-05-22T00:03:32.669Z",
+    "framework": "agentic_pipeline",
+    "parameters": {
+      "hypothesis_model": "qwen/qwen3.5-9b",
+      "n_parallel_agents": 5,
+      "temperature": 0.0,
+      "dispatcher": "17_parallel_hypothesis_agents",
+      "model": "qwen/qwen3.5-9b",
+      "top_k_per_hypothesis": 5,
+      "concurrency": 5,
+      "dispatcher_elapsed_ms": 21852.13
+    }
+  },
+  "contract": {
+    "contract_id": "doc_228",
+    "source_type": "txt",
+    "source_name": "NDA_V3.pdf",
+    "language": "en",
+    "hash_sha256": "1993139fcaac023dfd47000db31d57f8761d69e364f4d932010479839893e8da",
+    "chunks": [
+      {
+        "chunk_id": "chunk_000",
+        "text": "NON DISCLOSURE AGREEMENT",
+        "span": {
+          "char_start": 0,
+          "char_end": 24
+        }
+      },
+      {
+        "chunk_id": "chunk_001",
+        "text": "This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following",
+        "span": {
+          "char_start": 25,
+          "char_end": 361
+        }
+      },
+      {
+        "chunk_id": "chunk_002",
+        "text": "L’Air Liquide",
+        "span": {
+          "char_start": 362,
+          "char_end": 375
+        }
+      },
+      {
+        "chunk_id": "chunk_003",
+        "text": "Federal Institute for Materials Research and Testing",
+        "span": {
+          "char_start": 376,
+          "char_end": 428
+        }
+      },
+      {
+        "chunk_id": "chunk_004",
+        "text": "BMW",
+        "span": {
+          "char_start": 429,
+          "char_end": 433
+        }
+      },
+      {
+        "chunk_id": "chunk_005",
+        "text": "Forschung und Technik GmbH",
+        "span": {
+          "char_start": 433,
+          "char_end": 459
+        }
+      },
+      {
+        "chunk_id": "chunk_006",
+        "text": "Building Research Establishment Ltd",
+        "span": {
+          "char_start": 460,
+          "char_end": 495
+        }
+      },
+      {
+        "chunk_id": "chunk_007",
+        "text": "Commissariat à l’Energie Atomique",
+        "span": {
+          "char_start": 496,
+          "char_end": 529
+        }
+      },
+      {
+        "chunk_id": "chunk_008",
+        "text": "Det Norske Veritas AS",
+        "span": {
+          "char_start": 530,
+          "char_end": 551
+        }
+      },
+      {
+        "chunk_id": "chunk_009",
+        "text": "Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V.",
+        "span": {
+          "char_start": 552,
+          "char_end": 621
+        }
+      },
+      {
+        "chunk_id": "chunk_010",
+        "text": "Forschungszentrum",
+        "span": {
+          "char_start": 622,
+          "char_end": 640
+        }
+      },
+      {
+        "chunk_id": "chunk_011",
+        "text": "Juelich GmbH",
+        "span": {
+          "char_start": 640,
+          "char_end": 652
+        }
+      },
+      {
+        "chunk_id": "chunk_012",
+        "text": "GexCon AS",
+        "span": {
+          "char_start": 653,
+          "char_end": 662
+        }
+      },
+      {
+        "chunk_id": "chunk_013",
+        "text": "The United Kingdom’s Health and Safety Laboratory",
+        "span": {
+          "char_start": 663,
+          "char_end": 712
+        }
+      },
+      {
+        "chunk_id": "chunk_014",
+        "text": "Foundation INASMET",
+        "span": {
+          "char_start": 713,
+          "char_end": 731
+        }
+      },
+      {
+        "chunk_id": "chunk_015",
+        "text": "Institut National de l’Environnement industriel et des RISques",
+        "span": {
+          "char_start": 732,
+          "char_end": 794
+        }
+      },
+      {
+        "chunk_id": "chunk_016",
+        "text": "Instituto Superior Technico",
+        "span": {
+          "char_start": 795,
+          "char_end": 822
+        }
+      },
+      {
+        "chunk_id": "chunk_017",
+        "text": "European Commission - Joint Research Centre - Institute for Energy",
+        "span": {
+          "char_start": 823,
+          "char_end": 889
+        }
+      },
+      {
+        "chunk_id": "chunk_018",
+        "text": "National Center for Scientific Research Demokritos",
+        "span": {
+          "char_start": 890,
+          "char_end": 940
+        }
+      },
+      {
+        "chunk_id": "chunk_019",
+        "text": "Norsk Hydro ASA",
+        "span": {
+          "char_start": 941,
+          "char_end": 956
+        }
+      },
+      {
+        "chunk_id": "chunk_020",
+        "text": "Risø National Laboratory",
+        "span": {
+          "char_start": 957,
+          "char_end": 981
+        }
+      },
+      {
+        "chunk_id": "chunk_021",
+        "text": "TNO",
+        "span": {
+          "char_start": 982,
+          "char_end": 985
+        }
+      },
+      {
+        "chunk_id": "chunk_022",
+        "text": "University of Calgary",
+        "span": {
+          "char_start": 986,
+          "char_end": 1007
+        }
+      },
+      {
+        "chunk_id": "chunk_023",
+        "text": "University of Pisa",
+        "span": {
+          "char_start": 1008,
+          "char_end": 1026
+        }
+      },
+      {
+        "chunk_id": "chunk_024",
+        "text": "Universidad Politécnica de Madrid",
+        "span": {
+          "char_start": 1027,
+          "char_end": 1060
+        }
+      },
+      {
+        "chunk_id": "chunk_025",
+        "text": "University of Ulster",
+        "span": {
+          "char_start": 1061,
+          "char_end": 1081
+        }
+      },
+      {
+        "chunk_id": "chunk_026",
+        "text": "VOLVO",
+        "span": {
+          "char_start": 1082,
+          "char_end": 1088
+        }
+      },
+      {
+        "chunk_id": "chunk_027",
+        "text": "Technology Corporation",
+        "span": {
+          "char_start": 1088,
+          "char_end": 1110
+        }
+      },
+      {
+        "chunk_id": "chunk_028",
+        "text": "Warsaw University of Technology",
+        "span": {
+          "char_start": 1111,
+          "char_end": 1142
+        }
+      },
+      {
+        "chunk_id": "chunk_029",
+        "text": "and",
+        "span": {
+          "char_start": 1143,
+          "char_end": 1146
+        }
+      },
+      {
+        "chunk_id": "chunk_030",
+        "text": "Mr./Mrs. …",
+        "span": {
+          "char_start": 1147,
+          "char_end": 1157
+        }
+      },
+      {
+        "chunk_id": "chunk_031",
+        "text": "(hereinafter referred to as \"Mr./Mrs. …\")",
+        "span": {
+          "char_start": 1158,
+          "char_end": 1199
+        }
+      },
+      {
+        "chunk_id": "chunk_032",
+        "text": "WHEREAS, Forschungszentrum is Coordinator of the Network of Excellence \"Safety of Hydrogen as an Energy Carrier\" (HySafe), a project in the Sixth Research and Technological Development Framework Programme of the European Community.",
+        "span": {
+          "char_start": 1200,
+          "char_end": 1431
+        }
+      },
+      {
+        "chunk_id": "chunk_033",
+        "text": "WHEREAS, according to Section 5.2.3.8 of the Consortium Agreement concluded between all participants in HySafe, an Advisory Council can be constituted, which consists of distinguished scientists from organisations, companies and universities outside the Network as well as representatives from industry and authorities.",
+        "span": {
+          "char_start": 1432,
+          "char_end": 1752
+        }
+      },
+      {
+        "chunk_id": "chunk_034",
+        "text": "It advises the Network and makes recommendations on all important matters of substance (e.g. scientific, industry and end user evaluations).",
+        "span": {
+          "char_start": 1752,
+          "char_end": 1892
+        }
+      },
+      {
+        "chunk_id": "chunk_035",
+        "text": "WHEREAS, Mr./Mrs. … is appointed as a member of the Advisory Council.",
+        "span": {
+          "char_start": 1893,
+          "char_end": 1962
+        }
+      },
+      {
+        "chunk_id": "chunk_036",
+        "text": "WHEREAS, each participant in HySafe may provide own confidential information related to HySafe to the Advisory Council, all such information to be considered as the “Confidential Information”, and whereupon the parties hereto wish to record the terms and conditions upon which this information will be disclosed.",
+        "span": {
+          "char_start": 1963,
+          "char_end": 2275
+        }
+      },
+      {
+        "chunk_id": "chunk_037",
+        "text": "THEREFORE",
+        "span": {
+          "char_start": 2276,
+          "char_end": 2286
+        }
+      },
+      {
+        "chunk_id": "chunk_038",
+        "text": "it is hereby agreed as follows:",
+        "span": {
+          "char_start": 2286,
+          "char_end": 2317
+        }
+      },
+      {
+        "chunk_id": "chunk_039",
+        "text": "1",
+        "span": {
+          "char_start": 2318,
+          "char_end": 2320
+        }
+      },
+      {
+        "chunk_id": "chunk_040",
+        "text": "In this agreement:",
+        "span": {
+          "char_start": 2320,
+          "char_end": 2338
+        }
+      },
+      {
+        "chunk_id": "chunk_042",
+        "text": "“Disclosing Party” shall mean any participant in HySafe.",
+        "span": {
+          "char_start": 2340,
+          "char_end": 2396
+        }
+      },
+      {
+        "chunk_id": "chunk_043",
+        "text": "“Recipient” shall mean Mr./Mrs. ….",
+        "span": {
+          "char_start": 2397,
+          "char_end": 2431
+        }
+      },
+      {
+        "chunk_id": "chunk_045",
+        "text": "2 Recipient shall hold the Confidential Information in strict confidence and shall take all reasonable and prudent precautions to prevent the Confidential Information from reaching third parties.",
+        "span": {
+          "char_start": 2433,
+          "char_end": 2629
+        }
+      },
+      {
+        "chunk_id": "chunk_046",
+        "text": "Recipient shall use the Confidential Information exclusively for HySafe purposes, especially to advice the Governing Board of HySafe.",
+        "span": {
+          "char_start": 2629,
+          "char_end": 2762
+        }
+      },
+      {
+        "chunk_id": "chunk_047",
+        "text": "3 Recipient's obligations under this agreement shall not apply to any information which Recipient can document beyond any reasonable doubt was available to the public or known to or developed by the Recipient prior to the date first above written.",
+        "span": {
+          "char_start": 2763,
+          "char_end": 3011
+        }
+      },
+      {
+        "chunk_id": "chunk_048",
+        "text": "These obligations shall cease as to any information which Recipient can document thereafter became or becomes available to the public, otherwise than as a result of disclosure by Recipient or was or is disclosed to Recipient by a party unrelated to Recipient, that does not have a nondisclosure obligation with respect to it.",
+        "span": {
+          "char_start": 3011,
+          "char_end": 3337
+        }
+      },
+      {
+        "chunk_id": "chunk_049",
+        "text": "Moreover, Recipient's obligations under this agreement shall not apply to Confidential Information Recipient has a legal obligation to disclose to public authorities under law, regulation or lawful administrative decision.",
+        "span": {
+          "char_start": 3337,
+          "char_end": 3559
+        }
+      },
+      {
+        "chunk_id": "chunk_050",
+        "text": "4",
+        "span": {
+          "char_start": 3560,
+          "char_end": 3562
+        }
+      },
+      {
+        "chunk_id": "chunk_051",
+        "text": "At any time, upon the respective Disclosing Party's request, Recipient shall promptly deliver to the respective Disclosing Party the Confidential Information and all materials relating to or involving Confidential Information (whether prepared by the respective Disclosing Party or otherwise), and will not retain any copies, extracts or other reproductions in whole or in part regarding the Confidential Information.",
+        "span": {
+          "char_start": 3562,
+          "char_end": 3980
+        }
+      },
+      {
+        "chunk_id": "chunk_052",
+        "text": "The delivery of such material shall not relieve Recipient of its obligation of confidentiality or other obligations hereunder.",
+        "span": {
+          "char_start": 3980,
+          "char_end": 4106
+        }
+      },
+      {
+        "chunk_id": "chunk_053",
+        "text": "5",
+        "span": {
+          "char_start": 4107,
+          "char_end": 4109
+        }
+      },
+      {
+        "chunk_id": "chunk_054",
+        "text": "Nothing in this agreement shall be construed as granting Recipient any rights of any kinds in the Confidential Information, by license or otherwise.",
+        "span": {
+          "char_start": 4109,
+          "char_end": 4257
+        }
+      },
+      {
+        "chunk_id": "chunk_055",
+        "text": "6",
+        "span": {
+          "char_start": 4258,
+          "char_end": 4260
+        }
+      },
+      {
+        "chunk_id": "chunk_056",
+        "text": "This agreement shall be governed by the laws of Belgium.",
+        "span": {
+          "char_start": 4260,
+          "char_end": 4317
+        }
+      },
+      {
+        "chunk_id": "chunk_057",
+        "text": "All disputes or differences arising in connection with this agreement which cannot be settled amicably shall be finally settled by arbitration in Brussels under the Rules of Arbitration of the International Chamber of Commerce by one or more arbitrators to be appointed under the terms of those rules.",
+        "span": {
+          "char_start": 4317,
+          "char_end": 4619
+        }
+      },
+      {
+        "chunk_id": "chunk_058",
+        "text": "In any arbitration in which there are three arbitrators, the chairman shall be of juridical education.",
+        "span": {
+          "char_start": 4619,
+          "char_end": 4722
+        }
+      },
+      {
+        "chunk_id": "chunk_059",
+        "text": "It shall be conducted in English.",
+        "span": {
+          "char_start": 4722,
+          "char_end": 4755
+        }
+      },
+      {
+        "chunk_id": "chunk_060",
+        "text": "The award of the arbitration will be final and binding upon the parties concerned.",
+        "span": {
+          "char_start": 4756,
+          "char_end": 4838
+        }
+      },
+      {
+        "chunk_id": "chunk_061",
+        "text": "The parties concerned may instead elect to resolve by mediation a dispute or difference arising in connection with this agreement which cannot be settled amicably.",
+        "span": {
+          "char_start": 4839,
+          "char_end": 5002
+        }
+      },
+      {
+        "chunk_id": "chunk_062",
+        "text": "7 Any Disclosing",
+        "span": {
+          "char_start": 5003,
+          "char_end": 5020
+        }
+      },
+      {
+        "chunk_id": "chunk_063",
+        "text": "Party may act individually in relation to the Recipient under this Non Disclosure Agreement.",
+        "span": {
+          "char_start": 5020,
+          "char_end": 5112
+        }
+      },
+      {
+        "chunk_id": "chunk_064",
+        "text": "8",
+        "span": {
+          "char_start": 5113,
+          "char_end": 5115
+        }
+      },
+      {
+        "chunk_id": "chunk_065",
+        "text": "This agreement shall come into force after signature of both parties hereto on the Effective Date and shall expire on February 28,",
+        "span": {
+          "char_start": 5115,
+          "char_end": 5246
+        }
+      },
+      {
+        "chunk_id": "chunk_066",
+        "text": "2009. The obligations pursuant to Article 2 shall remain valid for the Recipient even after the end of this agreement for a period of five (5) years thereafter.",
+        "span": {
+          "char_start": 5246,
+          "char_end": 5406
+        }
+      },
+      {
+        "chunk_id": "chunk_067",
+        "text": "IN WITNESS WHEREOF, the parties hereto have executed this agreement",
+        "span": {
+          "char_start": 5407,
+          "char_end": 5474
+        }
+      },
+      {
+        "chunk_id": "chunk_068",
+        "text": "Forschungszentrum",
+        "span": {
+          "char_start": 5475,
+          "char_end": 5493
+        }
+      },
+      {
+        "chunk_id": "chunk_069",
+        "text": "Karlsruhe GmbH",
+        "span": {
+          "char_start": 5493,
+          "char_end": 5507
+        }
+      },
+      {
+        "chunk_id": "chunk_070",
+        "text": "_____________________________________",
+        "span": {
+          "char_start": 5508,
+          "char_end": 5545
+        }
+      },
+      {
+        "chunk_id": "chunk_071",
+        "text": "Heinz-Jürgen FABER Oliver WITTEK",
+        "span": {
+          "char_start": 5546,
+          "char_end": 5578
+        }
+      },
+      {
+        "chunk_id": "chunk_072",
+        "text": "Central Legal and Insurance Department",
+        "span": {
+          "char_start": 5579,
+          "char_end": 5617
+        }
+      },
+      {
+        "chunk_id": "chunk_073",
+        "text": "Mr./Mrs. …",
+        "span": {
+          "char_start": 5618,
+          "char_end": 5628
+        }
+      },
+      {
+        "chunk_id": "chunk_074",
+        "text": "____________________________",
+        "span": {
+          "char_start": 5629,
+          "char_end": 5657
+        }
+      },
+      {
+        "chunk_id": "chunk_075",
+        "text": "The employer of Mr./Mrs. … hereby confirms that he has taken note of this Non Disclosure Agreement and acknowledges that Confidential Information disclosed to Mr./Mrs. … shall not be used for any internal purposes.",
+        "span": {
+          "char_start": 5658,
+          "char_end": 5872
+        }
+      },
+      {
+        "chunk_id": "chunk_076",
+        "text": "[Company Name]",
+        "span": {
+          "char_start": 5873,
+          "char_end": 5887
+        }
+      },
+      {
+        "chunk_id": "chunk_077",
+        "text": "____________________________",
+        "span": {
+          "char_start": 5888,
+          "char_end": 5916
+        }
+      },
+      {
+        "chunk_id": "chunk_078",
+        "text": "_____________________________",
+        "span": {
+          "char_start": 5917,
+          "char_end": 5946
+        }
+      }
+    ]
+  },
+  "retrieval_mode": "graph",
+  "retrieval_context": {
+    "external_memory": [],
+    "contract_evidence": [
+      {
+        "chunk_id": "chunk_036",
+        "quote": "WHEREAS, each participant in HySafe may provide own confidential information related to HySafe to the Advisory Council, all such information to be considered as the “Confidential Information”, and whereupon the parties hereto wish to record the terms and conditions upon which this information will be disclosed.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 1963,
+          "char_end": 2275
+        }
+      },
+      {
+        "chunk_id": "chunk_046",
+        "quote": "Recipient shall use the Confidential Information exclusively for HySafe purposes, especially to advice the Governing Board of HySafe.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 2629,
+          "char_end": 2762
+        }
+      },
+      {
+        "chunk_id": "chunk_045",
+        "quote": "2 Recipient shall hold the Confidential Information in strict confidence and shall take all reasonable and prudent precautions to prevent the Confidential Information from reaching third parties.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 2433,
+          "char_end": 2629
+        }
+      },
+      {
+        "chunk_id": "chunk_054",
+        "quote": "Nothing in this agreement shall be construed as granting Recipient any rights of any kinds in the Confidential Information, by license or otherwise.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 4109,
+          "char_end": 4257
+        }
+      },
+      {
+        "chunk_id": "chunk_051",
+        "quote": "At any time, upon the respective Disclosing Party's request, Recipient shall promptly deliver to the respective Disclosing Party the Confidential Information and all materials relating to or involving Confidential Information (whether prepared by the respective Disclosing Party or otherwise), and will not retain any copies, extracts or other reproductions in whole or in part regarding the Confidential Information.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 3562,
+          "char_end": 3980
+        }
+      },
+      {
+        "chunk_id": "chunk_066",
+        "quote": "2009. The obligations pursuant to Article 2 shall remain valid for the Recipient even after the end of this agreement for a period of five (5) years thereafter.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 5246,
+          "char_end": 5406
+        }
+      }
+    ]
+  },
+  "playbook": {
+    "playbook_id": "contractnli_nda_minimal",
+    "version": "1.1",
+    "ruleset_hash": "c090bc43c85103ea5ef695ba794d4f3d6626876abdfe8c09f75a16dc9f7c233c",
+    "rule_params": {
+      "source": "ContractNLI fixed hypothesis set (17 items)",
+      "checks": 17
+    }
+  },
+  "hypothesis_traces": [
+    {
+      "hypothesis_id": "H01",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.95,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Explicit identification: The NDA does not clearly impose an express identification/marking requirement. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H01",
+        "rag_query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H01",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H01",
+            "label_filter": null,
+            "agent_id": "H01"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:10.817Z",
+          "duration_ms": 2.25,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+              "doc_id": "96",
+              "span_idx": 9,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+              "doc_id": "96",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+              "doc_id": "101",
+              "span_idx": 41,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+              "doc_id": "105",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 13588.64,
+      "started_at": "2026-05-22T00:03:10.817Z",
+      "ended_at": "2026-05-22T00:03:24.406Z",
+      "hypothesis_text": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    {
+      "hypothesis_id": "H02",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        36
+      ],
+      "verbatim_quote": "each participant in HySafe may provide own confidential information related to HySafe to the Advisory Council, all such information to be considered as the “Confidential Information”",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Technical-only scope: The NDA does not limit Confidential Information to technical information only (it appears broader). Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H02",
+        "rag_query": "H02: Confidential Information shall only include technical information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H02",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H02",
+            "label_filter": null,
+            "agent_id": "H02"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:10.820Z",
+          "duration_ms": 4.971,
+          "output": [
+            {
+              "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+              "doc_id": "86",
+              "span_idx": 55,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+              "doc_id": "88",
+              "span_idx": 8,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+              "doc_id": "91",
+              "span_idx": 11,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+              "doc_id": "91",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3497.37,
+      "started_at": "2026-05-22T00:03:10.820Z",
+      "ended_at": "2026-05-22T00:03:14.317Z",
+      "hypothesis_text": "Confidential Information shall only include technical information."
+    },
+    {
+      "hypothesis_id": "H03",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Verbal information included: The NDA does not clearly address whether orally conveyed information is treated as Confidential Information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H03",
+        "rag_query": "H03: Confidential Information may include verbally conveyed information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H03",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H03",
+            "label_filter": null,
+            "agent_id": "H03"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:10.826Z",
+          "duration_ms": 2.229,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "“Confidential Information” under this Agreement consists of:",
+              "doc_id": "87",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+              "doc_id": "87",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+              "doc_id": "92",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 13462.04,
+      "started_at": "2026-05-22T00:03:10.825Z",
+      "ended_at": "2026-05-22T00:03:24.288Z",
+      "hypothesis_text": "Confidential Information may include verbally conveyed information."
+    },
+    {
+      "hypothesis_id": "H04",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        46
+      ],
+      "verbatim_quote": "Recipient shall use the Confidential Information exclusively for HySafe purposes, especially to advice the Governing Board of HySafe.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Purpose limitation: The NDA restricts use of Confidential Information to the stated purpose(s) only. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H04",
+        "rag_query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H04",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H04",
+            "label_filter": null,
+            "agent_id": "H04"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:10.828Z",
+          "duration_ms": 2.8,
+          "output": [
+            {
+              "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+              "doc_id": "34",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+              "doc_id": "86",
+              "span_idx": 62,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each Participating",
+              "doc_id": "87",
+              "span_idx": 16,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Entity agrees",
+              "doc_id": "87",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+              "doc_id": "87",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4807.93,
+      "started_at": "2026-05-22T00:03:10.828Z",
+      "ended_at": "2026-05-22T00:03:15.636Z",
+      "hypothesis_text": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    {
+      "hypothesis_id": "H05",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Disclosure to employees: The NDA does not clearly address whether employees may receive Confidential Information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H05",
+        "rag_query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H05",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H05",
+            "label_filter": null,
+            "agent_id": "H05"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:10.832Z",
+          "duration_ms": 2.796,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+              "doc_id": "34",
+              "span_idx": 25,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+              "doc_id": "87",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+              "doc_id": "88",
+              "span_idx": 21,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4836.76,
+      "started_at": "2026-05-22T00:03:10.832Z",
+      "ended_at": "2026-05-22T00:03:15.668Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some of Receiving Party's employees."
+    },
+    {
+      "hypothesis_id": "H06",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        45
+      ],
+      "verbatim_quote": "Recipient shall hold the Confidential Information in strict confidence and shall take all reasonable and prudent precautions to prevent the Confidential Information from reaching third parties.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "NEGOTIATE",
+        "rationale": "Disclosure to third parties / representatives: The NDA appears to prohibit disclosure to third parties/representatives, which is typically addressed via a controlled 'representatives' carve-out. Severity HIGH; action NEGOTIATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H06",
+        "rag_query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H06",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H06",
+            "label_filter": null,
+            "agent_id": "H06"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:14.318Z",
+          "duration_ms": 7.133,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+              "doc_id": "89",
+              "span_idx": 63,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+              "doc_id": "89",
+              "span_idx": 174,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+              "doc_id": "92",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 10827.81,
+      "started_at": "2026-05-22T00:03:14.317Z",
+      "ended_at": "2026-05-22T00:03:25.145Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    {
+      "hypothesis_id": "H07",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.95,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Notice for compelled disclosure: The NDA does not clearly require notice in the event of compelled disclosure. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H07",
+        "rag_query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H07",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H07",
+            "label_filter": null,
+            "agent_id": "H07"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:15.636Z",
+          "duration_ms": 2.843,
+          "output": [
+            {
+              "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+              "doc_id": "34",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+              "doc_id": "86",
+              "span_idx": 82,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+              "doc_id": "87",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+              "doc_id": "87",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+              "doc_id": "87",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3436.77,
+      "started_at": "2026-05-22T00:03:15.636Z",
+      "ended_at": "2026-05-22T00:03:19.073Z",
+      "hypothesis_text": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information."
+    },
+    {
+      "hypothesis_id": "H08",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Confidentiality of the agreement/existence: The NDA does not clearly address confidentiality of the agreement’s existence or negotiation. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H08",
+        "rag_query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H08",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H08",
+            "label_filter": null,
+            "agent_id": "H08"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:15.669Z",
+          "duration_ms": 2.011,
+          "output": [
+            {
+              "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+              "doc_id": "34",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+              "doc_id": "88",
+              "span_idx": 18,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+              "doc_id": "92",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+              "doc_id": "94",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+              "doc_id": "95",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3218.24,
+      "started_at": "2026-05-22T00:03:15.668Z",
+      "ended_at": "2026-05-22T00:03:18.887Z",
+      "hypothesis_text": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+    },
+    {
+      "hypothesis_id": "H09",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "No reverse engineering: The NDA does not clearly address reverse engineering restrictions. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H09",
+        "rag_query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H09",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H09",
+            "label_filter": null,
+            "agent_id": "H09"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:18.887Z",
+          "duration_ms": 0.697,
+          "output": [
+            {
+              "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+              "doc_id": "91",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+              "doc_id": "96",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+              "doc_id": "101",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+              "doc_id": "111",
+              "span_idx": 27,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5281.79,
+      "started_at": "2026-05-22T00:03:18.887Z",
+      "ended_at": "2026-05-22T00:03:24.169Z",
+      "hypothesis_text": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information."
+    },
+    {
+      "hypothesis_id": "H10",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Independent development permitted: The NDA does not clearly address independent development of similar information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H10",
+        "rag_query": "H10: Receiving Party may independently develop information similar to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H10",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H10",
+            "label_filter": null,
+            "agent_id": "H10"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:19.073Z",
+          "duration_ms": 3.387,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+              "doc_id": "34",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information shall not include any information that:",
+              "doc_id": "88",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+              "doc_id": "88",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+              "doc_id": "91",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7160.64,
+      "started_at": "2026-05-22T00:03:19.073Z",
+      "ended_at": "2026-05-22T00:03:26.234Z",
+      "hypothesis_text": "Receiving Party may independently develop information similar to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H11",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Third-party acquisition permitted: The NDA does not clearly address third-party acquisition of similar information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H11",
+        "rag_query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H11",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H11",
+            "label_filter": null,
+            "agent_id": "H11"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:24.169Z",
+          "duration_ms": 3.571,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+              "doc_id": "34",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information does not include:",
+              "doc_id": "86",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "> information received from a third party who was free to disclose such information.",
+              "doc_id": "86",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+              "doc_id": "87",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5921.97,
+      "started_at": "2026-05-22T00:03:24.169Z",
+      "ended_at": "2026-05-22T00:03:30.091Z",
+      "hypothesis_text": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    {
+      "hypothesis_id": "H12",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        54
+      ],
+      "verbatim_quote": "Nothing in this agreement shall be construed as granting Recipient any rights of any kinds in the Confidential Information, by license or otherwise.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "No rights / no license: The NDA includes a no-rights/no-license position regarding Confidential Information. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H12",
+        "rag_query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H12",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H12",
+            "label_filter": null,
+            "agent_id": "H12"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:24.288Z",
+          "duration_ms": 4.144,
+          "output": [
+            {
+              "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+              "doc_id": "34",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+              "doc_id": "86",
+              "span_idx": 85,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+              "doc_id": "87",
+              "span_idx": 60,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+              "doc_id": "88",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+              "doc_id": "88",
+              "span_idx": 29,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 2977.06,
+      "started_at": "2026-05-22T00:03:24.288Z",
+      "ended_at": "2026-05-22T00:03:27.265Z",
+      "hypothesis_text": "Agreement shall not grant Receiving Party any right to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H13",
+      "label": "ENTAILED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        51
+      ],
+      "verbatim_quote": "At any time, upon the respective Disclosing Party's request, Recipient shall promptly deliver to the respective Disclosing Party the Confidential Information and all materials relating to or involving Confidential Information (whether prepared by the respective Disclosing Party or otherwise), and will not retain any copies, extracts or other reproductions in whole or in part regarding the Confidential Information.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Return or destruction on termination: The NDA requires return or destruction of Confidential Information upon termination (often with limited archival exceptions). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H13",
+        "rag_query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H13",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H13",
+            "label_filter": null,
+            "agent_id": "H13"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:24.406Z",
+          "duration_ms": 1.97,
+          "output": [
+            {
+              "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+              "doc_id": "34",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+              "doc_id": "34",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+              "doc_id": "87",
+              "span_idx": 48,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Except as provided in paragraph",
+              "doc_id": "89",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7829.94,
+      "started_at": "2026-05-22T00:03:24.406Z",
+      "ended_at": "2026-05-22T00:03:32.236Z",
+      "hypothesis_text": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H14",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        51
+      ],
+      "verbatim_quote": "will not retain any copies, extracts or other reproductions in whole or in part regarding the Confidential Information.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Copying permitted in some circumstances: The NDA appears to prohibit copying Confidential Information, which may require negotiation for operational practicality. Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H14",
+        "rag_query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H14",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H14",
+            "label_filter": null,
+            "agent_id": "H14"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:25.145Z",
+          "duration_ms": 1.343,
+          "output": [
+            {
+              "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+              "doc_id": "34",
+              "span_idx": 36,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+              "doc_id": "101",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+              "doc_id": "103",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+              "doc_id": "104",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5120.16,
+      "started_at": "2026-05-22T00:03:25.145Z",
+      "ended_at": "2026-05-22T00:03:30.266Z",
+      "hypothesis_text": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    {
+      "hypothesis_id": "H15",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Non-solicitation: The NDA does not include a clear non-solicitation restriction; this is often optional depending on the engagement. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H15",
+        "rag_query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H15",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H15",
+            "label_filter": null,
+            "agent_id": "H15"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:26.234Z",
+          "duration_ms": 0.979,
+          "output": [
+            {
+              "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+              "doc_id": "91",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+              "doc_id": "91",
+              "span_idx": 42,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+              "doc_id": "100",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+              "doc_id": "118",
+              "span_idx": 78,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+              "doc_id": "133",
+              "span_idx": 73,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3235.36,
+      "started_at": "2026-05-22T00:03:26.234Z",
+      "ended_at": "2026-05-22T00:03:29.469Z",
+      "hypothesis_text": "Receiving Party shall not solicit some of Disclosing Party's representatives."
+    },
+    {
+      "hypothesis_id": "H16",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        66
+      ],
+      "verbatim_quote": "The obligations pursuant to Article 2 shall remain valid for the Recipient even after the end of this agreement for a period of five (5) years thereafter.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Survival of obligations: The NDA indicates that certain obligations survive termination (commonly confidentiality and related duties). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H16",
+        "rag_query": "H16: Some obligations of Agreement may survive termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H16",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H16",
+            "label_filter": null,
+            "agent_id": "H16"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:27.265Z",
+          "duration_ms": 3.396,
+          "output": [
+            {
+              "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+              "doc_id": "34",
+              "span_idx": 45,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+              "doc_id": "86",
+              "span_idx": 88,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+              "doc_id": "87",
+              "span_idx": 46,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+              "doc_id": "89",
+              "span_idx": 109,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5034.58,
+      "started_at": "2026-05-22T00:03:27.265Z",
+      "ended_at": "2026-05-22T00:03:32.299Z",
+      "hypothesis_text": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H17",
+      "label": "CONTRADICTED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        51
+      ],
+      "verbatim_quote": "will not retain any copies, extracts or other reproductions in whole or in part regarding the Confidential Information.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Retention after return/destruction: The NDA appears to prohibit retention after return/destruction; this may be acceptable, but confirm operational and compliance constraints. Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H17",
+        "rag_query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H17",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H17",
+            "label_filter": null,
+            "agent_id": "H17"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:03:29.469Z",
+          "duration_ms": 3.04,
+          "output": [
+            {
+              "text": "At Organiser’s first request, Mentor shall:",
+              "doc_id": "86",
+              "span_idx": 72,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+              "doc_id": "86",
+              "span_idx": 76,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+              "doc_id": "86",
+              "span_idx": 77,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+              "doc_id": "88",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+              "doc_id": "92",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3199.35,
+      "started_at": "2026-05-22T00:03:29.469Z",
+      "ended_at": "2026-05-22T00:03:32.669Z",
+      "hypothesis_text": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+    }
+  ],
+  "metrics": {
+    "hypothesis_count": 17,
+    "correct_count": 0,
+    "compliant_count": 17,
+    "quote_integrity_count": 17,
+    "contract_accuracy": 0.0,
+    "groundedness_rate": 1.0,
+    "quote_integrity_rate": 1.0,
+    "contract_latency_ms": 103436.41,
+    "label_counts": {
+      "ENTAILED": 4,
+      "CONTRADICTED": 4,
+      "NOT_MENTIONED": 9
+    }
+  },
+  "run_validations": [
+    {
+      "validator_id": "hypothesis_count_check",
+      "status": "PASS",
+      "message": "Expected 17 hypothesis traces, got 17."
+    },
+    {
+      "validator_id": "trace_validation_failures",
+      "status": "PASS",
+      "message": "0 non-fatal validation failure(s) recorded."
+    }
+  ],
+  "conversation_history": [],
+  "tool_calls": [
+    {
+      "agent_id": "H01",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H01",
+        "label_filter": null,
+        "agent_id": "H01"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:10.817Z",
+      "duration_ms": 2.25,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+          "doc_id": "96",
+          "span_idx": 9,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+          "doc_id": "96",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+          "doc_id": "101",
+          "span_idx": 41,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+          "doc_id": "105",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H02",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H02",
+        "label_filter": null,
+        "agent_id": "H02"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:10.820Z",
+      "duration_ms": 4.971,
+      "output": [
+        {
+          "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+          "doc_id": "86",
+          "span_idx": 55,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+          "doc_id": "88",
+          "span_idx": 8,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+          "doc_id": "91",
+          "span_idx": 11,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+          "doc_id": "91",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H03",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H03",
+        "label_filter": null,
+        "agent_id": "H03"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:10.826Z",
+      "duration_ms": 2.229,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "“Confidential Information” under this Agreement consists of:",
+          "doc_id": "87",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+          "doc_id": "87",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+          "doc_id": "92",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H04",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H04",
+        "label_filter": null,
+        "agent_id": "H04"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:10.828Z",
+      "duration_ms": 2.8,
+      "output": [
+        {
+          "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+          "doc_id": "34",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+          "doc_id": "86",
+          "span_idx": 62,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each Participating",
+          "doc_id": "87",
+          "span_idx": 16,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Entity agrees",
+          "doc_id": "87",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+          "doc_id": "87",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H05",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H05",
+        "label_filter": null,
+        "agent_id": "H05"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:10.832Z",
+      "duration_ms": 2.796,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+          "doc_id": "34",
+          "span_idx": 25,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+          "doc_id": "87",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+          "doc_id": "88",
+          "span_idx": 21,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H06",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H06",
+        "label_filter": null,
+        "agent_id": "H06"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:14.318Z",
+      "duration_ms": 7.133,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+          "doc_id": "89",
+          "span_idx": 63,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+          "doc_id": "89",
+          "span_idx": 174,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+          "doc_id": "92",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H07",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H07",
+        "label_filter": null,
+        "agent_id": "H07"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:15.636Z",
+      "duration_ms": 2.843,
+      "output": [
+        {
+          "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+          "doc_id": "34",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+          "doc_id": "86",
+          "span_idx": 82,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+          "doc_id": "87",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+          "doc_id": "87",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+          "doc_id": "87",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H08",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H08",
+        "label_filter": null,
+        "agent_id": "H08"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:15.669Z",
+      "duration_ms": 2.011,
+      "output": [
+        {
+          "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+          "doc_id": "34",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+          "doc_id": "88",
+          "span_idx": 18,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+          "doc_id": "92",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+          "doc_id": "94",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+          "doc_id": "95",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H09",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H09",
+        "label_filter": null,
+        "agent_id": "H09"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:18.887Z",
+      "duration_ms": 0.697,
+      "output": [
+        {
+          "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+          "doc_id": "91",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+          "doc_id": "96",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+          "doc_id": "101",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+          "doc_id": "111",
+          "span_idx": 27,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H10",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H10",
+        "label_filter": null,
+        "agent_id": "H10"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:19.073Z",
+      "duration_ms": 3.387,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+          "doc_id": "34",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information shall not include any information that:",
+          "doc_id": "88",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+          "doc_id": "88",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+          "doc_id": "91",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H11",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H11",
+        "label_filter": null,
+        "agent_id": "H11"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:24.169Z",
+      "duration_ms": 3.571,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+          "doc_id": "34",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information does not include:",
+          "doc_id": "86",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "> information received from a third party who was free to disclose such information.",
+          "doc_id": "86",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+          "doc_id": "87",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H12",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H12",
+        "label_filter": null,
+        "agent_id": "H12"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:24.288Z",
+      "duration_ms": 4.144,
+      "output": [
+        {
+          "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+          "doc_id": "34",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+          "doc_id": "86",
+          "span_idx": 85,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+          "doc_id": "87",
+          "span_idx": 60,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+          "doc_id": "88",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+          "doc_id": "88",
+          "span_idx": 29,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H13",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H13",
+        "label_filter": null,
+        "agent_id": "H13"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:24.406Z",
+      "duration_ms": 1.97,
+      "output": [
+        {
+          "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+          "doc_id": "34",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+          "doc_id": "34",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+          "doc_id": "87",
+          "span_idx": 48,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Except as provided in paragraph",
+          "doc_id": "89",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H14",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H14",
+        "label_filter": null,
+        "agent_id": "H14"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:25.145Z",
+      "duration_ms": 1.343,
+      "output": [
+        {
+          "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+          "doc_id": "34",
+          "span_idx": 36,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+          "doc_id": "101",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+          "doc_id": "103",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+          "doc_id": "104",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H15",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H15",
+        "label_filter": null,
+        "agent_id": "H15"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:26.234Z",
+      "duration_ms": 0.979,
+      "output": [
+        {
+          "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+          "doc_id": "91",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+          "doc_id": "91",
+          "span_idx": 42,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+          "doc_id": "100",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+          "doc_id": "118",
+          "span_idx": 78,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+          "doc_id": "133",
+          "span_idx": 73,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H16",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H16",
+        "label_filter": null,
+        "agent_id": "H16"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:27.265Z",
+      "duration_ms": 3.396,
+      "output": [
+        {
+          "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+          "doc_id": "34",
+          "span_idx": 45,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+          "doc_id": "86",
+          "span_idx": 88,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+          "doc_id": "87",
+          "span_idx": 46,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+          "doc_id": "89",
+          "span_idx": 109,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H17",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: NON DISCLOSURE AGREEMENT This NON DISCLOSURE AGREEMENT is entered into this __________ 2004 (\"Effective Date\") by Forschungszentrum Karlsruhe GmbH, Weberstraße 5, 76133 Karlsruhe, Federal Republic of Germany (hereinafter referred to as \"Forschungszentrum\") acting on its behalf and on behalf of the participants in the EU project HySafe, which are the following L’Air Liquide Federal Institute for Materials Research and Testing BMW Forschung und Technik GmbH Building Research Establishment Ltd Commissariat à l’Energie Atomique Det Norske Veritas AS Fraunhofer-Gesellschaft zur Foerderung der Angewandten Forschung e.V. Forschungszentrum Juelich GmbH GexCon AS The United Kingdom’s Health and Safety Laboratory Foundation INASMET Institut National de l’Environnement industriel et des RISques Instituto Superior Technico European Commission - Joint Research Centre - Institute for Energy National Center for Scientific Research Demokritos Norsk Hydro ASA Risø National Laboratory TNO University of Calgary University of Pisa Universidad Politécnica de Madrid University of Ulster VOLVO Technology Corporation Warsaw University of Technology and Mr./Mrs. … (hereinafter referred to as \"Mr./Mrs. …\")",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H17",
+        "label_filter": null,
+        "agent_id": "H17"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:03:29.469Z",
+      "duration_ms": 3.04,
+      "output": [
+        {
+          "text": "At Organiser’s first request, Mentor shall:",
+          "doc_id": "86",
+          "span_idx": 72,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+          "doc_id": "86",
+          "span_idx": 76,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+          "doc_id": "86",
+          "span_idx": 77,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+          "doc_id": "88",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+          "doc_id": "92",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    }
+  ],
+  "approval_events": []
+}

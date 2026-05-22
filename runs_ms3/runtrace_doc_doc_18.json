@@ -1,0 +1,3442 @@
+{
+  "schema_version": "3.0-ms3",
+  "runtrace_type": "contract_analysis",
+  "run": {
+    "run_id": "ms3_doc_18_2026-05-21T233620050Z",
+    "started_at": "2026-05-21T23:36:20.050Z",
+    "ended_at": "2026-05-21T23:36:40.704Z",
+    "framework": "agentic_pipeline",
+    "parameters": {
+      "hypothesis_model": "qwen/qwen3.5-9b",
+      "n_parallel_agents": 5,
+      "temperature": 0.0,
+      "dispatcher": "17_parallel_hypothesis_agents",
+      "model": "qwen/qwen3.5-9b",
+      "top_k_per_hypothesis": 5,
+      "concurrency": 5,
+      "dispatcher_elapsed_ms": 20653.84
+    }
+  },
+  "contract": {
+    "contract_id": "doc_18",
+    "source_type": "txt",
+    "source_name": "41629_1.pdf",
+    "language": "en",
+    "hash_sha256": "dcee155e28657d374afc5763d374c835a52888a51fca54f958b16197174b9d20",
+    "chunks": [
+      {
+        "chunk_id": "chunk_000",
+        "text": "Suite 25 Northwich Business Centre",
+        "span": {
+          "char_start": 0,
+          "char_end": 34
+        }
+      },
+      {
+        "chunk_id": "chunk_001",
+        "text": "Meadow Street",
+        "span": {
+          "char_start": 35,
+          "char_end": 48
+        }
+      },
+      {
+        "chunk_id": "chunk_002",
+        "text": "Northwich",
+        "span": {
+          "char_start": 49,
+          "char_end": 58
+        }
+      },
+      {
+        "chunk_id": "chunk_003",
+        "text": "Cheshire CW9 5BF",
+        "span": {
+          "char_start": 59,
+          "char_end": 75
+        }
+      },
+      {
+        "chunk_id": "chunk_004",
+        "text": "Tel: 0845 466 4648",
+        "span": {
+          "char_start": 76,
+          "char_end": 94
+        }
+      },
+      {
+        "chunk_id": "chunk_005",
+        "text": "Fax: 01606 810 567",
+        "span": {
+          "char_start": 95,
+          "char_end": 113
+        }
+      },
+      {
+        "chunk_id": "chunk_006",
+        "text": "Email: details@business-partnership.com",
+        "span": {
+          "char_start": 114,
+          "char_end": 153
+        }
+      },
+      {
+        "chunk_id": "chunk_007",
+        "text": "www.business-partnership.com",
+        "span": {
+          "char_start": 154,
+          "char_end": 182
+        }
+      },
+      {
+        "chunk_id": "chunk_008",
+        "text": "YOUR DETAILS (PLEASE USE CAPITALS)",
+        "span": {
+          "char_start": 183,
+          "char_end": 217
+        }
+      },
+      {
+        "chunk_id": "chunk_009",
+        "text": "Title ……….",
+        "span": {
+          "char_start": 218,
+          "char_end": 229
+        }
+      },
+      {
+        "chunk_id": "chunk_010",
+        "text": "First Name ………..…..………………….…..",
+        "span": {
+          "char_start": 229,
+          "char_end": 260
+        }
+      },
+      {
+        "chunk_id": "chunk_011",
+        "text": "Last Name …….……………………….………….….....",
+        "span": {
+          "char_start": 260,
+          "char_end": 294
+        }
+      },
+      {
+        "chunk_id": "chunk_012",
+        "text": "Address…………………………………..…….………………………………………...…….…………………....………..",
+        "span": {
+          "char_start": 295,
+          "char_end": 357
+        }
+      },
+      {
+        "chunk_id": "chunk_013",
+        "text": "………………………………………………………………………………………………………………..........................",
+        "span": {
+          "char_start": 358,
+          "char_end": 426
+        }
+      },
+      {
+        "chunk_id": "chunk_014",
+        "text": "Post Code …………….……….",
+        "span": {
+          "char_start": 427,
+          "char_end": 448
+        }
+      },
+      {
+        "chunk_id": "chunk_015",
+        "text": "Email ………………………………………….……………………………………....….",
+        "span": {
+          "char_start": 448,
+          "char_end": 491
+        }
+      },
+      {
+        "chunk_id": "chunk_016",
+        "text": "Tel …………………………………….……………",
+        "span": {
+          "char_start": 492,
+          "char_end": 517
+        }
+      },
+      {
+        "chunk_id": "chunk_017",
+        "text": "Mobile ………….………………….…………………………..",
+        "span": {
+          "char_start": 517,
+          "char_end": 549
+        }
+      },
+      {
+        "chunk_id": "chunk_018",
+        "text": "Company Name ………………………………………………..………….……………………………………..................",
+        "span": {
+          "char_start": 550,
+          "char_end": 620
+        }
+      },
+      {
+        "chunk_id": "chunk_019",
+        "text": "Company Reg. No. …………...……………………………………………………………………………………………...",
+        "span": {
+          "char_start": 621,
+          "char_end": 683
+        }
+      },
+      {
+        "chunk_id": "chunk_020",
+        "text": "Businesses or area of interest ……………………………….……………………………………………………………..",
+        "span": {
+          "char_start": 684,
+          "char_end": 753
+        }
+      },
+      {
+        "chunk_id": "chunk_021",
+        "text": "NON-DISCLOSURE AGREEMENT",
+        "span": {
+          "char_start": 754,
+          "char_end": 778
+        }
+      },
+      {
+        "chunk_id": "chunk_022",
+        "text": "I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential.",
+        "span": {
+          "char_start": 779,
+          "char_end": 935
+        }
+      },
+      {
+        "chunk_id": "chunk_023",
+        "text": "I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to any clients of The Business Partnership business or affairs disclosed whether in writing, orally or by any other means.",
+        "span": {
+          "char_start": 935,
+          "char_end": 1318
+        }
+      },
+      {
+        "chunk_id": "chunk_024",
+        "text": "I agree that in respect of the Confidential Information received from The Business Partnership I will:",
+        "span": {
+          "char_start": 1318,
+          "char_end": 1420
+        }
+      },
+      {
+        "chunk_id": "chunk_025",
+        "text": "Treat it as confidential and make no copies thereof not disclose it to any third party without the prior written consent of The Business Partnership and use it solely for the purpose as agreed between parties",
+        "span": {
+          "char_start": 1421,
+          "char_end": 1629
+        }
+      },
+      {
+        "chunk_id": "chunk_026",
+        "text": "I further acknowledge that all documents and other material things embodying any of the Confidential Information which is received under this agreement shall remain the property of the supplying party (or other owner thereof) and I shall hold them as bailee for the supplying party, exercising reasonable care to keep them safe from access by unauthorised persons, and shall return them to the supplying party within one week of a written request from the supplying party.",
+        "span": {
+          "char_start": 1630,
+          "char_end": 2102
+        }
+      },
+      {
+        "chunk_id": "chunk_027",
+        "text": "I will not attempt to contact the employees, customers, creditors, suppliers or landlords of any client of The Business Partnership at any time.",
+        "span": {
+          "char_start": 2103,
+          "char_end": 2248
+        }
+      },
+      {
+        "chunk_id": "chunk_028",
+        "text": "I will not use the confidential information to seek to obtain any commercial advantage over any client of The Business Partnership.",
+        "span": {
+          "char_start": 2248,
+          "char_end": 2379
+        }
+      },
+      {
+        "chunk_id": "chunk_029",
+        "text": "I acknowledge that this Agreement shall remain in force in perpetuity.",
+        "span": {
+          "char_start": 2380,
+          "char_end": 2451
+        }
+      },
+      {
+        "chunk_id": "chunk_030",
+        "text": "The laws of England and Wales shall govern this Agreement.",
+        "span": {
+          "char_start": 2451,
+          "char_end": 2510
+        }
+      },
+      {
+        "chunk_id": "chunk_031",
+        "text": "I confirm that I have funds or access to funds to enter negotiations for the business for which I have expressed an interest I confirm that no contact will be made with the vendor",
+        "span": {
+          "char_start": 2510,
+          "char_end": 2689
+        }
+      },
+      {
+        "chunk_id": "chunk_032",
+        "text": "or company direct.",
+        "span": {
+          "char_start": 2690,
+          "char_end": 2708
+        }
+      },
+      {
+        "chunk_id": "chunk_033",
+        "text": "TERMS AND CONDITIONS",
+        "span": {
+          "char_start": 2709,
+          "char_end": 2729
+        }
+      },
+      {
+        "chunk_id": "chunk_034",
+        "text": "The Sales Particulars you will receive, and any subsequent commercial information relating to this business, are supplied on the strict understanding that it should be kept confidential and must not be copied or supplied to a third party without the consent of The Business Partnership (TBP).",
+        "span": {
+          "char_start": 2730,
+          "char_end": 3022
+        }
+      },
+      {
+        "chunk_id": "chunk_035",
+        "text": "All recipients the Sales Particulars and any other details irrevocably agree:-",
+        "span": {
+          "char_start": 3023,
+          "char_end": 3101
+        }
+      },
+      {
+        "chunk_id": "chunk_036",
+        "text": "1. To treat all information contained herein, and as may subsequently be supplied, with complete confidentiality.",
+        "span": {
+          "char_start": 3102,
+          "char_end": 3215
+        }
+      },
+      {
+        "chunk_id": "chunk_037",
+        "text": "2. To make no approach directly to the Owner or the Business and or Property either personally, by telephone, or in writing without the consent of TBP.",
+        "span": {
+          "char_start": 3216,
+          "char_end": 3367
+        }
+      },
+      {
+        "chunk_id": "chunk_038",
+        "text": "3. To visit the Owner and/or the Business or Property only and strictly by prior appointment to be made and confirmed through the Office of TBP.",
+        "span": {
+          "char_start": 3368,
+          "char_end": 3512
+        }
+      },
+      {
+        "chunk_id": "chunk_039",
+        "text": "4. To make no approach to the Staff of the business or discuss the proposed sale with any staff member without the consent of the Owners.",
+        "span": {
+          "char_start": 3513,
+          "char_end": 3650
+        }
+      },
+      {
+        "chunk_id": "chunk_040",
+        "text": "5. To request and obtain any and all information required, including any financial information, solely through the Offices of TBP.",
+        "span": {
+          "char_start": 3651,
+          "char_end": 3781
+        }
+      },
+      {
+        "chunk_id": "chunk_041",
+        "text": "6. To submit any offer for the purchase of the Business and/or property directly through the Agents TBP and not directly to the Owner.",
+        "span": {
+          "char_start": 3782,
+          "char_end": 3916
+        }
+      },
+      {
+        "chunk_id": "chunk_042",
+        "text": "Once TBPs NDA and Terms and Conditions have been signed, further negotiations are subject to you agreeing:-",
+        "span": {
+          "char_start": 3917,
+          "char_end": 4024
+        }
+      },
+      {
+        "chunk_id": "chunk_043",
+        "text": "1. That in the event of agreeing to purchase the Business and/or Property will pay to TBP a deposit as a sign of good faith amounting to 5% of the purchase price but subject to a minimum of £5,000.",
+        "span": {
+          "char_start": 4025,
+          "char_end": 4223
+        }
+      },
+      {
+        "chunk_id": "chunk_044",
+        "text": "This deposit will be held by TBP in a Non-Interest Earning Client Account, and will be applied to the purchase price at the time of completion.",
+        "span": {
+          "char_start": 4223,
+          "char_end": 4367
+        }
+      },
+      {
+        "chunk_id": "chunk_045",
+        "text": "This deposit will be paid \"Subject to Contract\" and will be refundable (subject to clauses 2 and 3 below).",
+        "span": {
+          "char_start": 4367,
+          "char_end": 4473
+        }
+      },
+      {
+        "chunk_id": "chunk_046",
+        "text": "2. In the event that you withdraw from the purchase without good reason and where such reason is not connected to the purchase of the business, then the deposit will be used to cover our Clients reasonable legal costs (up to a maximum of £2,500), such costs being subject to VAT, up to the point of withdrawal.",
+        "span": {
+          "char_start": 4474,
+          "char_end": 4784
+        }
+      },
+      {
+        "chunk_id": "chunk_047",
+        "text": "3. That if you withdraw for any reason once Heads of Terms or Memorandum of Sale has been prepared and issued you will be charged an Agents Fee of £695.00 plus VAT.",
+        "span": {
+          "char_start": 4785,
+          "char_end": 4950
+        }
+      },
+      {
+        "chunk_id": "chunk_048",
+        "text": "The balance of the deposit shall be returned to you forthwith.",
+        "span": {
+          "char_start": 4950,
+          "char_end": 5013
+        }
+      },
+      {
+        "chunk_id": "chunk_049",
+        "text": "Should the sale of the business be withdrawn by the Vendor for any reason, the deposit monies will be returned to you in full.",
+        "span": {
+          "char_start": 5013,
+          "char_end": 5139
+        }
+      },
+      {
+        "chunk_id": "chunk_050",
+        "text": "4. That upon an offer being accepted on a Leasehold proposition you will agree to supply to TBP the names and addresses of appropriate referees including Bankers to whom TBP can apply for a reference in order to seek the Landlords consent for an assignment of the current Lease or issue of a new Lease.",
+        "span": {
+          "char_start": 5140,
+          "char_end": 5442
+        }
+      },
+      {
+        "chunk_id": "chunk_051",
+        "text": "Any information provided herein are for the general guidance of intended purchasers and tenants and do not form any part of an offer or contract.",
+        "span": {
+          "char_start": 5443,
+          "char_end": 5589
+        }
+      },
+      {
+        "chunk_id": "chunk_052",
+        "text": "All descriptions and any other details are given without responsibility on the part of TBP or their vendor client and any intending purchasers should not rely on them as statements or representations of fact.",
+        "span": {
+          "char_start": 5589,
+          "char_end": 5798
+        }
+      },
+      {
+        "chunk_id": "chunk_053",
+        "text": "All intending purchasers or tenants should satisfy themselves to the correctness of all any statements contained herein prior to making an offer by inspection or otherwise.",
+        "span": {
+          "char_start": 5798,
+          "char_end": 5971
+        }
+      },
+      {
+        "chunk_id": "chunk_054",
+        "text": "Neither TBP nor their employees make or give any warranty whatsoever in relation to the business and or the property described herein.",
+        "span": {
+          "char_start": 5971,
+          "char_end": 6105
+        }
+      },
+      {
+        "chunk_id": "chunk_055",
+        "text": "SIGNED……………………………………………….",
+        "span": {
+          "char_start": 6106,
+          "char_end": 6132
+        }
+      },
+      {
+        "chunk_id": "chunk_056",
+        "text": "PRINT NAME………………………………………………..",
+        "span": {
+          "char_start": 6132,
+          "char_end": 6162
+        }
+      },
+      {
+        "chunk_id": "chunk_057",
+        "text": "POSITION…………………………………………..",
+        "span": {
+          "char_start": 6163,
+          "char_end": 6190
+        }
+      },
+      {
+        "chunk_id": "chunk_058",
+        "text": "(Companies Only) DATE…………………………………",
+        "span": {
+          "char_start": 6190,
+          "char_end": 6224
+        }
+      }
+    ]
+  },
+  "retrieval_mode": "graph",
+  "retrieval_context": {
+    "external_memory": [],
+    "contract_evidence": [
+      {
+        "chunk_id": "chunk_023",
+        "quote": "I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to any clients of The Business Partnership business or affairs disclosed whether in writing, orally or by any other means.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 935,
+          "char_end": 1318
+        }
+      },
+      {
+        "chunk_id": "chunk_025",
+        "quote": "Treat it as confidential and make no copies thereof not disclose it to any third party without the prior written consent of The Business Partnership and use it solely for the purpose as agreed between parties",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 1421,
+          "char_end": 1629
+        }
+      },
+      {
+        "chunk_id": "chunk_027",
+        "quote": "I will not attempt to contact the employees, customers, creditors, suppliers or landlords of any client of The Business Partnership at any time.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 2103,
+          "char_end": 2248
+        }
+      },
+      {
+        "chunk_id": "chunk_037",
+        "quote": "2. To make no approach directly to the Owner or the Business and or Property either personally, by telephone, or in writing without the consent of TBP.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 3216,
+          "char_end": 3367
+        }
+      },
+      {
+        "chunk_id": "chunk_039",
+        "quote": "4. To make no approach to the Staff of the business or discuss the proposed sale with any staff member without the consent of the Owners.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 3513,
+          "char_end": 3650
+        }
+      },
+      {
+        "chunk_id": "chunk_029",
+        "quote": "I acknowledge that this Agreement shall remain in force in perpetuity.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 2380,
+          "char_end": 2451
+        }
+      }
+    ]
+  },
+  "playbook": {
+    "playbook_id": "contractnli_nda_minimal",
+    "version": "1.1",
+    "ruleset_hash": "c090bc43c85103ea5ef695ba794d4f3d6626876abdfe8c09f75a16dc9f7c233c",
+    "rule_params": {
+      "source": "ContractNLI fixed hypothesis set (17 items)",
+      "checks": 17
+    }
+  },
+  "hypothesis_traces": [
+    {
+      "hypothesis_id": "H01",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Explicit identification: The NDA does not clearly impose an express identification/marking requirement. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H01",
+        "rag_query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H01",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H01",
+            "label_filter": null,
+            "agent_id": "H01"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:20.051Z",
+          "duration_ms": 3.355,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+              "doc_id": "96",
+              "span_idx": 9,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+              "doc_id": "96",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+              "doc_id": "101",
+              "span_idx": 41,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+              "doc_id": "105",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4843.53,
+      "started_at": "2026-05-21T23:36:20.051Z",
+      "ended_at": "2026-05-21T23:36:24.894Z",
+      "hypothesis_text": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    {
+      "hypothesis_id": "H02",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        23
+      ],
+      "verbatim_quote": "Confidential Information shall mean any information or data relating to any clients of The Business Partnership business or affairs disclosed whether in writing, orally or by any other means.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Technical-only scope: The NDA does not limit Confidential Information to technical information only (it appears broader). Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H02",
+        "rag_query": "H02: Confidential Information shall only include technical information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H02",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H02",
+            "label_filter": null,
+            "agent_id": "H02"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:20.055Z",
+          "duration_ms": 5.449,
+          "output": [
+            {
+              "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+              "doc_id": "86",
+              "span_idx": 55,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+              "doc_id": "88",
+              "span_idx": 8,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+              "doc_id": "91",
+              "span_idx": 11,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+              "doc_id": "91",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7330.48,
+      "started_at": "2026-05-21T23:36:20.055Z",
+      "ended_at": "2026-05-21T23:36:27.386Z",
+      "hypothesis_text": "Confidential Information shall only include technical information."
+    },
+    {
+      "hypothesis_id": "H03",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        23
+      ],
+      "verbatim_quote": "Confidential Information shall mean any information or data relating to any clients of The Business Partnership business or affairs disclosed whether in writing, orally or by any other means.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Verbal information included: The NDA permits Confidential Information to include oral/verbal disclosures (typically subject to conditions). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H03",
+        "rag_query": "H03: Confidential Information may include verbally conveyed information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H03",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H03",
+            "label_filter": null,
+            "agent_id": "H03"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:20.062Z",
+          "duration_ms": 3.66,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "“Confidential Information” under this Agreement consists of:",
+              "doc_id": "87",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+              "doc_id": "87",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+              "doc_id": "92",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5374.31,
+      "started_at": "2026-05-21T23:36:20.062Z",
+      "ended_at": "2026-05-21T23:36:25.436Z",
+      "hypothesis_text": "Confidential Information may include verbally conveyed information."
+    },
+    {
+      "hypothesis_id": "H04",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        25
+      ],
+      "verbatim_quote": "use it solely for the purpose as agreed between parties",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Purpose limitation: The NDA restricts use of Confidential Information to the stated purpose(s) only. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H04",
+        "rag_query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H04",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H04",
+            "label_filter": null,
+            "agent_id": "H04"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:20.067Z",
+          "duration_ms": 4.287,
+          "output": [
+            {
+              "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+              "doc_id": "34",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+              "doc_id": "86",
+              "span_idx": 62,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each Participating",
+              "doc_id": "87",
+              "span_idx": 16,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Entity agrees",
+              "doc_id": "87",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+              "doc_id": "87",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5214.4,
+      "started_at": "2026-05-21T23:36:20.066Z",
+      "ended_at": "2026-05-21T23:36:25.281Z",
+      "hypothesis_text": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    {
+      "hypothesis_id": "H05",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Disclosure to employees: The NDA does not clearly address whether employees may receive Confidential Information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H05",
+        "rag_query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H05",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H05",
+            "label_filter": null,
+            "agent_id": "H05"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:20.072Z",
+          "duration_ms": 6.414,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+              "doc_id": "34",
+              "span_idx": 25,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+              "doc_id": "87",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+              "doc_id": "88",
+              "span_idx": 21,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 6842.22,
+      "started_at": "2026-05-21T23:36:20.071Z",
+      "ended_at": "2026-05-21T23:36:26.914Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some of Receiving Party's employees."
+    },
+    {
+      "hypothesis_id": "H06",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        25
+      ],
+      "verbatim_quote": "not disclose it to any third party without the prior written consent of The Business Partnership",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "NEGOTIATE",
+        "rationale": "Disclosure to third parties / representatives: The NDA appears to prohibit disclosure to third parties/representatives, which is typically addressed via a controlled 'representatives' carve-out. Severity HIGH; action NEGOTIATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H06",
+        "rag_query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H06",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H06",
+            "label_filter": null,
+            "agent_id": "H06"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:24.895Z",
+          "duration_ms": 10.007,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+              "doc_id": "89",
+              "span_idx": 63,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+              "doc_id": "89",
+              "span_idx": 174,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+              "doc_id": "92",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3603.21,
+      "started_at": "2026-05-21T23:36:24.894Z",
+      "ended_at": "2026-05-21T23:36:28.498Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    {
+      "hypothesis_id": "H07",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Notice for compelled disclosure: The NDA does not clearly require notice in the event of compelled disclosure. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H07",
+        "rag_query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H07",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H07",
+            "label_filter": null,
+            "agent_id": "H07"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:25.282Z",
+          "duration_ms": 6.386,
+          "output": [
+            {
+              "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+              "doc_id": "34",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+              "doc_id": "86",
+              "span_idx": 82,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+              "doc_id": "87",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+              "doc_id": "87",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+              "doc_id": "87",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5042.39,
+      "started_at": "2026-05-21T23:36:25.281Z",
+      "ended_at": "2026-05-21T23:36:30.324Z",
+      "hypothesis_text": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information."
+    },
+    {
+      "hypothesis_id": "H08",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Confidentiality of the agreement/existence: The NDA does not clearly address confidentiality of the agreement’s existence or negotiation. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H08",
+        "rag_query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H08",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H08",
+            "label_filter": null,
+            "agent_id": "H08"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:25.437Z",
+          "duration_ms": 4.891,
+          "output": [
+            {
+              "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+              "doc_id": "34",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+              "doc_id": "88",
+              "span_idx": 18,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+              "doc_id": "92",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+              "doc_id": "94",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+              "doc_id": "95",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4846.28,
+      "started_at": "2026-05-21T23:36:25.436Z",
+      "ended_at": "2026-05-21T23:36:30.283Z",
+      "hypothesis_text": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+    },
+    {
+      "hypothesis_id": "H09",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "No reverse engineering: The NDA does not clearly address reverse engineering restrictions. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H09",
+        "rag_query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H09",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H09",
+            "label_filter": null,
+            "agent_id": "H09"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:26.914Z",
+          "duration_ms": 0.64,
+          "output": [
+            {
+              "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+              "doc_id": "91",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+              "doc_id": "96",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+              "doc_id": "101",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+              "doc_id": "111",
+              "span_idx": 27,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 6731.95,
+      "started_at": "2026-05-21T23:36:26.914Z",
+      "ended_at": "2026-05-21T23:36:33.646Z",
+      "hypothesis_text": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information."
+    },
+    {
+      "hypothesis_id": "H10",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.95,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Independent development permitted: The NDA does not clearly address independent development of similar information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H10",
+        "rag_query": "H10: Receiving Party may independently develop information similar to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H10",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H10",
+            "label_filter": null,
+            "agent_id": "H10"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:27.386Z",
+          "duration_ms": 5.827,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+              "doc_id": "34",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information shall not include any information that:",
+              "doc_id": "88",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+              "doc_id": "88",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+              "doc_id": "91",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5156.56,
+      "started_at": "2026-05-21T23:36:27.386Z",
+      "ended_at": "2026-05-21T23:36:32.542Z",
+      "hypothesis_text": "Receiving Party may independently develop information similar to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H11",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Third-party acquisition permitted: The NDA does not clearly address third-party acquisition of similar information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H11",
+        "rag_query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H11",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H11",
+            "label_filter": null,
+            "agent_id": "H11"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:28.498Z",
+          "duration_ms": 5.635,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+              "doc_id": "34",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information does not include:",
+              "doc_id": "86",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "> information received from a third party who was free to disclose such information.",
+              "doc_id": "86",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+              "doc_id": "87",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4048.33,
+      "started_at": "2026-05-21T23:36:28.498Z",
+      "ended_at": "2026-05-21T23:36:32.546Z",
+      "hypothesis_text": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    {
+      "hypothesis_id": "H12",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "No rights / no license: The NDA does not clearly state that no rights/licenses are granted regarding Confidential Information. Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H12",
+        "rag_query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H12",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H12",
+            "label_filter": null,
+            "agent_id": "H12"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:30.283Z",
+          "duration_ms": 4.831,
+          "output": [
+            {
+              "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+              "doc_id": "34",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+              "doc_id": "86",
+              "span_idx": 85,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+              "doc_id": "87",
+              "span_idx": 60,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+              "doc_id": "88",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+              "doc_id": "88",
+              "span_idx": 29,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5473.27,
+      "started_at": "2026-05-21T23:36:30.283Z",
+      "ended_at": "2026-05-21T23:36:35.756Z",
+      "hypothesis_text": "Agreement shall not grant Receiving Party any right to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H13",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.95,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "Return or destruction on termination: The NDA does not clearly require return or destruction of Confidential Information upon termination. Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H13",
+        "rag_query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H13",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H13",
+            "label_filter": null,
+            "agent_id": "H13"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:30.324Z",
+          "duration_ms": 2.073,
+          "output": [
+            {
+              "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+              "doc_id": "34",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+              "doc_id": "34",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+              "doc_id": "87",
+              "span_idx": 48,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Except as provided in paragraph",
+              "doc_id": "89",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4690.18,
+      "started_at": "2026-05-21T23:36:30.324Z",
+      "ended_at": "2026-05-21T23:36:35.014Z",
+      "hypothesis_text": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H14",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        25
+      ],
+      "verbatim_quote": "make no copies thereof",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Copying permitted in some circumstances: The NDA appears to prohibit copying Confidential Information, which may require negotiation for operational practicality. Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H14",
+        "rag_query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H14",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H14",
+            "label_filter": null,
+            "agent_id": "H14"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:32.543Z",
+          "duration_ms": 2.518,
+          "output": [
+            {
+              "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+              "doc_id": "34",
+              "span_idx": 36,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+              "doc_id": "101",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+              "doc_id": "103",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+              "doc_id": "104",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4314.95,
+      "started_at": "2026-05-21T23:36:32.542Z",
+      "ended_at": "2026-05-21T23:36:36.857Z",
+      "hypothesis_text": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    {
+      "hypothesis_id": "H15",
+      "label": "ENTAILED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        27,
+        37,
+        39
+      ],
+      "verbatim_quote": "I will not attempt to contact the employees, customers, creditors, suppliers or landlords of any client of The Business Partnership at any time.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Non-solicitation: The NDA includes a non-solicitation restriction regarding the Disclosing Party’s representatives. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H15",
+        "rag_query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H15",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H15",
+            "label_filter": null,
+            "agent_id": "H15"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:32.546Z",
+          "duration_ms": 1.344,
+          "output": [
+            {
+              "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+              "doc_id": "91",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+              "doc_id": "91",
+              "span_idx": 42,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+              "doc_id": "100",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+              "doc_id": "118",
+              "span_idx": 78,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+              "doc_id": "133",
+              "span_idx": 73,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4269.66,
+      "started_at": "2026-05-21T23:36:32.546Z",
+      "ended_at": "2026-05-21T23:36:36.816Z",
+      "hypothesis_text": "Receiving Party shall not solicit some of Disclosing Party's representatives."
+    },
+    {
+      "hypothesis_id": "H16",
+      "label": "ENTAILED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        29
+      ],
+      "verbatim_quote": "I acknowledge that this Agreement shall remain in force in perpetuity.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Survival of obligations: The NDA indicates that certain obligations survive termination (commonly confidentiality and related duties). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H16",
+        "rag_query": "H16: Some obligations of Agreement may survive termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H16",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H16",
+            "label_filter": null,
+            "agent_id": "H16"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:33.646Z",
+          "duration_ms": 3.185,
+          "output": [
+            {
+              "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+              "doc_id": "34",
+              "span_idx": 45,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+              "doc_id": "86",
+              "span_idx": 88,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+              "doc_id": "87",
+              "span_idx": 46,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+              "doc_id": "89",
+              "span_idx": 109,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 3319.8,
+      "started_at": "2026-05-21T23:36:33.646Z",
+      "ended_at": "2026-05-21T23:36:36.966Z",
+      "hypothesis_text": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H17",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Retention after return/destruction: The NDA does not clearly address whether any retention is permitted after return/destruction (e.g., backups or legal compliance). Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H17",
+        "rag_query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H17",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H17",
+            "label_filter": null,
+            "agent_id": "H17"
+          },
+          "count": 1,
+          "started_at": "2026-05-21T23:36:35.014Z",
+          "duration_ms": 3.163,
+          "output": [
+            {
+              "text": "At Organiser’s first request, Mentor shall:",
+              "doc_id": "86",
+              "span_idx": 72,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+              "doc_id": "86",
+              "span_idx": 76,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+              "doc_id": "86",
+              "span_idx": 77,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+              "doc_id": "88",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+              "doc_id": "92",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5690.01,
+      "started_at": "2026-05-21T23:36:35.014Z",
+      "ended_at": "2026-05-21T23:36:40.704Z",
+      "hypothesis_text": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+    }
+  ],
+  "metrics": {
+    "hypothesis_count": 17,
+    "correct_count": 0,
+    "compliant_count": 17,
+    "quote_integrity_count": 17,
+    "contract_accuracy": 0.0,
+    "groundedness_rate": 1.0,
+    "quote_integrity_rate": 1.0,
+    "contract_latency_ms": 86791.53,
+    "label_counts": {
+      "ENTAILED": 4,
+      "CONTRADICTED": 3,
+      "NOT_MENTIONED": 10
+    }
+  },
+  "run_validations": [
+    {
+      "validator_id": "hypothesis_count_check",
+      "status": "PASS",
+      "message": "Expected 17 hypothesis traces, got 17."
+    },
+    {
+      "validator_id": "trace_validation_failures",
+      "status": "PASS",
+      "message": "0 non-fatal validation failure(s) recorded."
+    }
+  ],
+  "conversation_history": [],
+  "tool_calls": [
+    {
+      "agent_id": "H01",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H01",
+        "label_filter": null,
+        "agent_id": "H01"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:20.051Z",
+      "duration_ms": 3.355,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+          "doc_id": "96",
+          "span_idx": 9,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+          "doc_id": "96",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+          "doc_id": "101",
+          "span_idx": 41,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+          "doc_id": "105",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H02",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H02",
+        "label_filter": null,
+        "agent_id": "H02"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:20.055Z",
+      "duration_ms": 5.449,
+      "output": [
+        {
+          "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+          "doc_id": "86",
+          "span_idx": 55,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+          "doc_id": "88",
+          "span_idx": 8,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+          "doc_id": "91",
+          "span_idx": 11,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+          "doc_id": "91",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H03",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H03",
+        "label_filter": null,
+        "agent_id": "H03"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:20.062Z",
+      "duration_ms": 3.66,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "“Confidential Information” under this Agreement consists of:",
+          "doc_id": "87",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+          "doc_id": "87",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+          "doc_id": "92",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H04",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H04",
+        "label_filter": null,
+        "agent_id": "H04"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:20.067Z",
+      "duration_ms": 4.287,
+      "output": [
+        {
+          "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+          "doc_id": "34",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+          "doc_id": "86",
+          "span_idx": 62,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each Participating",
+          "doc_id": "87",
+          "span_idx": 16,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Entity agrees",
+          "doc_id": "87",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+          "doc_id": "87",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H05",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H05",
+        "label_filter": null,
+        "agent_id": "H05"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:20.072Z",
+      "duration_ms": 6.414,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+          "doc_id": "34",
+          "span_idx": 25,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+          "doc_id": "87",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+          "doc_id": "88",
+          "span_idx": 21,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H06",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H06",
+        "label_filter": null,
+        "agent_id": "H06"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:24.895Z",
+      "duration_ms": 10.007,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+          "doc_id": "89",
+          "span_idx": 63,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+          "doc_id": "89",
+          "span_idx": 174,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+          "doc_id": "92",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H07",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H07",
+        "label_filter": null,
+        "agent_id": "H07"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:25.282Z",
+      "duration_ms": 6.386,
+      "output": [
+        {
+          "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+          "doc_id": "34",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+          "doc_id": "86",
+          "span_idx": 82,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+          "doc_id": "87",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+          "doc_id": "87",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+          "doc_id": "87",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H08",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H08",
+        "label_filter": null,
+        "agent_id": "H08"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:25.437Z",
+      "duration_ms": 4.891,
+      "output": [
+        {
+          "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+          "doc_id": "34",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+          "doc_id": "88",
+          "span_idx": 18,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+          "doc_id": "92",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+          "doc_id": "94",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+          "doc_id": "95",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H09",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H09",
+        "label_filter": null,
+        "agent_id": "H09"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:26.914Z",
+      "duration_ms": 0.64,
+      "output": [
+        {
+          "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+          "doc_id": "91",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+          "doc_id": "96",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+          "doc_id": "101",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+          "doc_id": "111",
+          "span_idx": 27,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H10",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H10",
+        "label_filter": null,
+        "agent_id": "H10"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:27.386Z",
+      "duration_ms": 5.827,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+          "doc_id": "34",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information shall not include any information that:",
+          "doc_id": "88",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+          "doc_id": "88",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+          "doc_id": "91",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H11",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H11",
+        "label_filter": null,
+        "agent_id": "H11"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:28.498Z",
+      "duration_ms": 5.635,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+          "doc_id": "34",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information does not include:",
+          "doc_id": "86",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "> information received from a third party who was free to disclose such information.",
+          "doc_id": "86",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+          "doc_id": "87",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H12",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H12",
+        "label_filter": null,
+        "agent_id": "H12"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:30.283Z",
+      "duration_ms": 4.831,
+      "output": [
+        {
+          "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+          "doc_id": "34",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+          "doc_id": "86",
+          "span_idx": 85,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+          "doc_id": "87",
+          "span_idx": 60,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+          "doc_id": "88",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+          "doc_id": "88",
+          "span_idx": 29,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H13",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H13",
+        "label_filter": null,
+        "agent_id": "H13"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:30.324Z",
+      "duration_ms": 2.073,
+      "output": [
+        {
+          "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+          "doc_id": "34",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+          "doc_id": "34",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+          "doc_id": "87",
+          "span_idx": 48,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Except as provided in paragraph",
+          "doc_id": "89",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H14",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H14",
+        "label_filter": null,
+        "agent_id": "H14"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:32.543Z",
+      "duration_ms": 2.518,
+      "output": [
+        {
+          "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+          "doc_id": "34",
+          "span_idx": 36,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+          "doc_id": "101",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+          "doc_id": "103",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+          "doc_id": "104",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H15",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H15",
+        "label_filter": null,
+        "agent_id": "H15"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:32.546Z",
+      "duration_ms": 1.344,
+      "output": [
+        {
+          "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+          "doc_id": "91",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+          "doc_id": "91",
+          "span_idx": 42,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+          "doc_id": "100",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+          "doc_id": "118",
+          "span_idx": 78,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+          "doc_id": "133",
+          "span_idx": 73,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H16",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H16",
+        "label_filter": null,
+        "agent_id": "H16"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:33.646Z",
+      "duration_ms": 3.185,
+      "output": [
+        {
+          "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+          "doc_id": "34",
+          "span_idx": 45,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+          "doc_id": "86",
+          "span_idx": 88,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+          "doc_id": "87",
+          "span_idx": 46,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+          "doc_id": "89",
+          "span_idx": 109,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H17",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: Suite 25 Northwich Business Centre Meadow Street Northwich Cheshire CW9 5BF Tel: 0845 466 4648 Fax: 01606 810 567 Email: details@business-partnership.com www.business-partnership.com YOUR DETAILS (PLEASE USE CAPITALS) Title ………. First Name ………..…..………………….….. Last Name …….……………………….………….…..... Address…………………………………..…….………………………………………...…….…………………....……….. ……………………………………………………………………………………………………………….......................... Post Code …………….………. Email ………………………………………….……………………………………....…. Tel …………………………………….…………… Mobile ………….………………….………………………….. Company Name ………………………………………………..………….…………………………………….................. Company Reg. No. …………...……………………………………………………………………………………………... Businesses or area of interest ……………………………….…………………………………………………………….. NON-DISCLOSURE AGREEMENT I fully understand and agree that all information relating to any client of The Business Partnership and supplied to me will be kept strictly confidential. I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to an",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H17",
+        "label_filter": null,
+        "agent_id": "H17"
+      },
+      "count": 1,
+      "started_at": "2026-05-21T23:36:35.014Z",
+      "duration_ms": 3.163,
+      "output": [
+        {
+          "text": "At Organiser’s first request, Mentor shall:",
+          "doc_id": "86",
+          "span_idx": 72,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+          "doc_id": "86",
+          "span_idx": 76,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+          "doc_id": "86",
+          "span_idx": 77,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+          "doc_id": "88",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+          "doc_id": "92",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    }
+  ],
+  "approval_events": []
+}

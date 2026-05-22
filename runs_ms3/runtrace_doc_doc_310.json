@@ -1,0 +1,3352 @@
+{
+  "schema_version": "3.0-ms3",
+  "runtrace_type": "contract_analysis",
+  "run": {
+    "run_id": "ms3_doc_310_2026-05-22T000540655Z",
+    "started_at": "2026-05-22T00:05:40.655Z",
+    "ended_at": "2026-05-22T00:06:02.088Z",
+    "framework": "agentic_pipeline",
+    "parameters": {
+      "hypothesis_model": "qwen/qwen3.5-9b",
+      "n_parallel_agents": 5,
+      "temperature": 0.0,
+      "dispatcher": "17_parallel_hypothesis_agents",
+      "model": "qwen/qwen3.5-9b",
+      "top_k_per_hypothesis": 5,
+      "concurrency": 5,
+      "dispatcher_elapsed_ms": 21432.93
+    }
+  },
+  "contract": {
+    "contract_id": "doc_310",
+    "source_type": "txt",
+    "source_name": "non-disclosure-agreement-template.pdf",
+    "language": "en",
+    "hash_sha256": "2d44bbaa1cefbdcbda3d4cf3ceb56cc4478a97283732d6768096a7d590627237",
+    "chunks": [
+      {
+        "chunk_id": "chunk_000",
+        "text": "NON-DISCLOSURE AGREEMENT",
+        "span": {
+          "char_start": 0,
+          "char_end": 24
+        }
+      },
+      {
+        "chunk_id": "chunk_001",
+        "text": "This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at",
+        "span": {
+          "char_start": 25,
+          "char_end": 192
+        }
+      },
+      {
+        "chunk_id": "chunk_002",
+        "text": "__________________",
+        "span": {
+          "char_start": 192,
+          "char_end": 211
+        }
+      },
+      {
+        "chunk_id": "chunk_003",
+        "text": "_________________________________________________",
+        "span": {
+          "char_start": 211,
+          "char_end": 261
+        }
+      },
+      {
+        "chunk_id": "chunk_004",
+        "text": "(the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework.",
+        "span": {
+          "char_start": 261,
+          "char_end": 433
+        }
+      },
+      {
+        "chunk_id": "chunk_005",
+        "text": "The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\").",
+        "span": {
+          "char_start": 433,
+          "char_end": 609
+        }
+      },
+      {
+        "chunk_id": "chunk_006",
+        "text": "1. Definition of Sensitive Information.",
+        "span": {
+          "char_start": 610,
+          "char_end": 650
+        }
+      },
+      {
+        "chunk_id": "chunk_007",
+        "text": "For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that",
+        "span": {
+          "char_start": 650,
+          "char_end": 752
+        }
+      },
+      {
+        "chunk_id": "chunk_008",
+        "text": " has or could have commercial value or other utility in the business in which Disclosing Party is engaged",
+        "span": {
+          "char_start": 753,
+          "char_end": 859
+        }
+      },
+      {
+        "chunk_id": "chunk_009",
+        "text": " might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised.",
+        "span": {
+          "char_start": 860,
+          "char_end": 1005
+        }
+      },
+      {
+        "chunk_id": "chunk_010",
+        "text": "If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG’s protective marking scheme.",
+        "span": {
+          "char_start": 1006,
+          "char_end": 1230
+        }
+      },
+      {
+        "chunk_id": "chunk_011",
+        "text": "If Sensitive Information is transmitted orally, the Disclosing Party shall promptly provide a writing indicating that such oral communication constituted Sensitive Information.",
+        "span": {
+          "char_start": 1230,
+          "char_end": 1406
+        }
+      },
+      {
+        "chunk_id": "chunk_012",
+        "text": "2. Exclusions from Sensitive Information.",
+        "span": {
+          "char_start": 1407,
+          "char_end": 1449
+        }
+      },
+      {
+        "chunk_id": "chunk_013",
+        "text": "Receiving Party's obligations under this Agreement do not extend to information that is:",
+        "span": {
+          "char_start": 1449,
+          "char_end": 1538
+        }
+      },
+      {
+        "chunk_id": "chunk_014",
+        "text": "(a) publicly known at the time of disclosure or subsequently becomes publicly known through no fault of the Receiving Party;",
+        "span": {
+          "char_start": 1538,
+          "char_end": 1663
+        }
+      },
+      {
+        "chunk_id": "chunk_015",
+        "text": "(b) discovered or created by the Receiving Party before disclosure by Disclosing Party;",
+        "span": {
+          "char_start": 1663,
+          "char_end": 1751
+        }
+      },
+      {
+        "chunk_id": "chunk_016",
+        "text": "(c) learned by the Receiving Party through legitimate means other than from the Disclosing Party or Disclosing Party's representatives;",
+        "span": {
+          "char_start": 1751,
+          "char_end": 1887
+        }
+      },
+      {
+        "chunk_id": "chunk_017",
+        "text": "(d) is disclosed by Receiving Party with Disclosing Party's prior written approval; or",
+        "span": {
+          "char_start": 1887,
+          "char_end": 1974
+        }
+      },
+      {
+        "chunk_id": "chunk_018",
+        "text": "(e) independently developed by the Receiving Party outside the scope of this agreement.",
+        "span": {
+          "char_start": 1974,
+          "char_end": 2061
+        }
+      },
+      {
+        "chunk_id": "chunk_019",
+        "text": "3. Obligations of Receiving Party.",
+        "span": {
+          "char_start": 2062,
+          "char_end": 2097
+        }
+      },
+      {
+        "chunk_id": "chunk_020",
+        "text": "Receiving Party shall hold and maintain the Sensitive Information in strictest confidence for the sole and exclusive benefit of the Disclosing Party.",
+        "span": {
+          "char_start": 2097,
+          "char_end": 2247
+        }
+      },
+      {
+        "chunk_id": "chunk_021",
+        "text": "Receiving Party shall carefully restrict access to Sensitive Information to employees, contractors and third parties as is reasonably required and shall require those persons to sign nondisclosure restrictions at least as protective as those in this Agreement.",
+        "span": {
+          "char_start": 2247,
+          "char_end": 2508
+        }
+      },
+      {
+        "chunk_id": "chunk_022",
+        "text": "Receiving Party shall put in place effective governance controls to monitor compliance and respond to (and report) any security breach incidents.",
+        "span": {
+          "char_start": 2508,
+          "char_end": 2654
+        }
+      },
+      {
+        "chunk_id": "chunk_023",
+        "text": "Receiving Party shall not, without prior written approval of Disclosing Party, use for Receiving Party's own benefit, publish, copy, or otherwise disclose to others, or permit the use by others for their benefit or to the detriment of Disclosing Party, any Sensitive Information.",
+        "span": {
+          "char_start": 2654,
+          "char_end": 2934
+        }
+      },
+      {
+        "chunk_id": "chunk_024",
+        "text": "Receiving Party shall return to Disclosing Party any and all records, notes, and other written, printed, or tangible materials in its possession pertaining to Sensitive Information within a reasonable time period if Disclosing Party requests it in writing.",
+        "span": {
+          "char_start": 2934,
+          "char_end": 3190
+        }
+      },
+      {
+        "chunk_id": "chunk_025",
+        "text": "4. Time Periods.",
+        "span": {
+          "char_start": 3191,
+          "char_end": 3208
+        }
+      },
+      {
+        "chunk_id": "chunk_026",
+        "text": "The non-disclosure provisions of this Agreement shall survive the termination of this Agreement and Receiving Party's duty to hold Sensitive Information in confidence shall remain in effect until the Sensitive Information no longer qualifies as a trade secret or otherwise needing protection until Disclosing Party sends Receiving Party written notice releasing Receiving Party from this Agreement, whichever occurs first.",
+        "span": {
+          "char_start": 3208,
+          "char_end": 3630
+        }
+      },
+      {
+        "chunk_id": "chunk_027",
+        "text": "5. Relationships.",
+        "span": {
+          "char_start": 3631,
+          "char_end": 3649
+        }
+      },
+      {
+        "chunk_id": "chunk_028",
+        "text": "Nothing contained in this Agreement shall be deemed to constitute either party a partner, joint venture or employee of the other party for any purpose.",
+        "span": {
+          "char_start": 3649,
+          "char_end": 3800
+        }
+      },
+      {
+        "chunk_id": "chunk_029",
+        "text": "6. Severability.",
+        "span": {
+          "char_start": 3801,
+          "char_end": 3818
+        }
+      },
+      {
+        "chunk_id": "chunk_030",
+        "text": "If a court finds any provision of this Agreement invalid or unenforceable, the remainder of this Agreement shall be interpreted so as best to effect the intent of the parties.",
+        "span": {
+          "char_start": 3818,
+          "char_end": 3993
+        }
+      },
+      {
+        "chunk_id": "chunk_031",
+        "text": "7. Integration.",
+        "span": {
+          "char_start": 3994,
+          "char_end": 4010
+        }
+      },
+      {
+        "chunk_id": "chunk_032",
+        "text": "This Agreement expresses the complete understanding of the parties with respect to the subject matter and supersedes all prior proposals, agreements, representations and understandings.",
+        "span": {
+          "char_start": 4010,
+          "char_end": 4196
+        }
+      },
+      {
+        "chunk_id": "chunk_033",
+        "text": "This Agreement may not be amended except in writing signed by both parties.",
+        "span": {
+          "char_start": 4196,
+          "char_end": 4271
+        }
+      },
+      {
+        "chunk_id": "chunk_034",
+        "text": "8. Waiver.",
+        "span": {
+          "char_start": 4272,
+          "char_end": 4283
+        }
+      },
+      {
+        "chunk_id": "chunk_035",
+        "text": "The failure to exercise any right provided in this Agreement shall not be a waiver of prior or subsequent rights.",
+        "span": {
+          "char_start": 4283,
+          "char_end": 4396
+        }
+      },
+      {
+        "chunk_id": "chunk_036",
+        "text": "This Agreement and each party's obligations shall be binding on the representatives, assigns and successors of such party.",
+        "span": {
+          "char_start": 4397,
+          "char_end": 4520
+        }
+      },
+      {
+        "chunk_id": "chunk_037",
+        "text": "Each party has signed this Agreement through its authorised representative.",
+        "span": {
+          "char_start": 4520,
+          "char_end": 4596
+        }
+      },
+      {
+        "chunk_id": "chunk_038",
+        "text": "__________________________________________________________________________",
+        "span": {
+          "char_start": 4596,
+          "char_end": 4671
+        }
+      },
+      {
+        "chunk_id": "chunk_039",
+        "text": "(Signature, on behalf of Disclosing Party)",
+        "span": {
+          "char_start": 4671,
+          "char_end": 4713
+        }
+      },
+      {
+        "chunk_id": "chunk_040",
+        "text": "Date:",
+        "span": {
+          "char_start": 4714,
+          "char_end": 4720
+        }
+      },
+      {
+        "chunk_id": "chunk_041",
+        "text": "_______________",
+        "span": {
+          "char_start": 4720,
+          "char_end": 4735
+        }
+      },
+      {
+        "chunk_id": "chunk_042",
+        "text": "__________________________________________________________________________",
+        "span": {
+          "char_start": 4736,
+          "char_end": 4811
+        }
+      },
+      {
+        "chunk_id": "chunk_043",
+        "text": "(Signature, on behalf of Receiving Party)",
+        "span": {
+          "char_start": 4811,
+          "char_end": 4852
+        }
+      }
+    ]
+  },
+  "retrieval_mode": "graph",
+  "retrieval_context": {
+    "external_memory": [],
+    "contract_evidence": [
+      {
+        "chunk_id": "chunk_007",
+        "quote": "For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 650,
+          "char_end": 752
+        }
+      },
+      {
+        "chunk_id": "chunk_008",
+        "quote": " has or could have commercial value or other utility in the business in which Disclosing Party is engaged",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 753,
+          "char_end": 859
+        }
+      },
+      {
+        "chunk_id": "chunk_009",
+        "quote": " might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 860,
+          "char_end": 1005
+        }
+      },
+      {
+        "chunk_id": "chunk_011",
+        "quote": "If Sensitive Information is transmitted orally, the Disclosing Party shall promptly provide a writing indicating that such oral communication constituted Sensitive Information.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 1230,
+          "char_end": 1406
+        }
+      },
+      {
+        "chunk_id": "chunk_021",
+        "quote": "Receiving Party shall carefully restrict access to Sensitive Information to employees, contractors and third parties as is reasonably required and shall require those persons to sign nondisclosure restrictions at least as protective as those in this Agreement.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 2247,
+          "char_end": 2508
+        }
+      },
+      {
+        "chunk_id": "chunk_018",
+        "quote": "(e) independently developed by the Receiving Party outside the scope of this agreement.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 1974,
+          "char_end": 2061
+        }
+      },
+      {
+        "chunk_id": "chunk_024",
+        "quote": "Receiving Party shall return to Disclosing Party any and all records, notes, and other written, printed, or tangible materials in its possession pertaining to Sensitive Information within a reasonable time period if Disclosing Party requests it in writing.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 2934,
+          "char_end": 3190
+        }
+      },
+      {
+        "chunk_id": "chunk_023",
+        "quote": "Receiving Party shall not, without prior written approval of Disclosing Party, use for Receiving Party's own benefit, publish, copy, or otherwise disclose to others, or permit the use by others for their benefit or to the detriment of Disclosing Party, any Sensitive Information.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 2654,
+          "char_end": 2934
+        }
+      },
+      {
+        "chunk_id": "chunk_026",
+        "quote": "The non-disclosure provisions of this Agreement shall survive the termination of this Agreement and Receiving Party's duty to hold Sensitive Information in confidence shall remain in effect until the Sensitive Information no longer qualifies as a trade secret or otherwise needing protection until Disclosing Party sends Receiving Party written notice releasing Receiving Party from this Agreement, whichever occurs first.",
+        "relevance_score": 1.0,
+        "evidence_source": "contract",
+        "span": {
+          "char_start": 3208,
+          "char_end": 3630
+        }
+      }
+    ]
+  },
+  "playbook": {
+    "playbook_id": "contractnli_nda_minimal",
+    "version": "1.1",
+    "ruleset_hash": "c090bc43c85103ea5ef695ba794d4f3d6626876abdfe8c09f75a16dc9f7c233c",
+    "rule_params": {
+      "source": "ContractNLI fixed hypothesis set (17 items)",
+      "checks": 17
+    }
+  },
+  "hypothesis_traces": [
+    {
+      "hypothesis_id": "H01",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Explicit identification: The NDA does not clearly impose an express identification/marking requirement. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H01",
+        "rag_query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H01",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H01",
+            "label_filter": null,
+            "agent_id": "H01"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:40.655Z",
+          "duration_ms": 2.365,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+              "doc_id": "96",
+              "span_idx": 9,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+              "doc_id": "96",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+              "doc_id": "101",
+              "span_idx": 41,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+              "doc_id": "105",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4034.05,
+      "started_at": "2026-05-22T00:05:40.655Z",
+      "ended_at": "2026-05-22T00:05:44.689Z",
+      "hypothesis_text": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    {
+      "hypothesis_id": "H02",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        7,
+        8,
+        9
+      ],
+      "verbatim_quote": "For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Technical-only scope: The NDA does not limit Confidential Information to technical information only (it appears broader). Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H02",
+        "rag_query": "H02: Confidential Information shall only include technical information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H02",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H02",
+            "label_filter": null,
+            "agent_id": "H02"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:40.658Z",
+          "duration_ms": 4.483,
+          "output": [
+            {
+              "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+              "doc_id": "86",
+              "span_idx": 55,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+              "doc_id": "88",
+              "span_idx": 8,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+              "doc_id": "91",
+              "span_idx": 11,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+              "doc_id": "91",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7939.05,
+      "started_at": "2026-05-22T00:05:40.658Z",
+      "ended_at": "2026-05-22T00:05:48.597Z",
+      "hypothesis_text": "Confidential Information shall only include technical information."
+    },
+    {
+      "hypothesis_id": "H03",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        11
+      ],
+      "verbatim_quote": "If Sensitive Information is transmitted orally, the Disclosing Party shall promptly provide a writing indicating that such oral communication constituted Sensitive Information.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Verbal information included: The NDA permits Confidential Information to include oral/verbal disclosures (typically subject to conditions). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H03",
+        "rag_query": "H03: Confidential Information may include verbally conveyed information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H03",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H03",
+            "label_filter": null,
+            "agent_id": "H03"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:40.664Z",
+          "duration_ms": 2.609,
+          "output": [
+            {
+              "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+              "doc_id": "34",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-1": "ENTAILED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "“Confidential Information” under this Agreement consists of:",
+              "doc_id": "87",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+              "doc_id": "87",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+              "doc_id": "91",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-2": "CONTRADICTED",
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+              "doc_id": "92",
+              "span_idx": 12,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-3": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7529.04,
+      "started_at": "2026-05-22T00:05:40.663Z",
+      "ended_at": "2026-05-22T00:05:48.193Z",
+      "hypothesis_text": "Confidential Information may include verbally conveyed information."
+    },
+    {
+      "hypothesis_id": "H04",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "Purpose limitation: The NDA does not clearly restrict use of Confidential Information to the stated purpose(s). Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H04",
+        "rag_query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H04",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H04",
+            "label_filter": null,
+            "agent_id": "H04"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:40.667Z",
+          "duration_ms": 3.362,
+          "output": [
+            {
+              "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+              "doc_id": "34",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+              "doc_id": "86",
+              "span_idx": 62,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each Participating",
+              "doc_id": "87",
+              "span_idx": 16,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Entity agrees",
+              "doc_id": "87",
+              "span_idx": 17,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "CONTRADICTED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+              "doc_id": "87",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4140.72,
+      "started_at": "2026-05-22T00:05:40.667Z",
+      "ended_at": "2026-05-22T00:05:44.808Z",
+      "hypothesis_text": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    {
+      "hypothesis_id": "H05",
+      "label": "ENTAILED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        21
+      ],
+      "verbatim_quote": "Receiving Party shall carefully restrict access to Sensitive Information to employees, contractors and third parties as is reasonably required",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Disclosure to employees: The NDA permits sharing Confidential Information with employees (typically on a need-to-know basis). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H05",
+        "rag_query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H05",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H05",
+            "label_filter": null,
+            "agent_id": "H05"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:40.671Z",
+          "duration_ms": 3.283,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+              "doc_id": "34",
+              "span_idx": 25,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+              "doc_id": "87",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+              "doc_id": "88",
+              "span_idx": 21,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7469.59,
+      "started_at": "2026-05-22T00:05:40.671Z",
+      "ended_at": "2026-05-22T00:05:48.140Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some of Receiving Party's employees."
+    },
+    {
+      "hypothesis_id": "H06",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "Disclosure to third parties / representatives: The NDA does not clearly address whether disclosure to third parties/representatives is permitted. Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H06",
+        "rag_query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H06",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H06",
+            "label_filter": null,
+            "agent_id": "H06"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:44.690Z",
+          "duration_ms": 4.497,
+          "output": [
+            {
+              "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+              "doc_id": "34",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+              "doc_id": "34",
+              "span_idx": 23,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+              "doc_id": "89",
+              "span_idx": 63,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-5": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+              "doc_id": "89",
+              "span_idx": 174,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+              "doc_id": "92",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-7": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5027.63,
+      "started_at": "2026-05-22T00:05:44.689Z",
+      "ended_at": "2026-05-22T00:05:49.717Z",
+      "hypothesis_text": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    {
+      "hypothesis_id": "H07",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Notice for compelled disclosure: The NDA does not clearly require notice in the event of compelled disclosure. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H07",
+        "rag_query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H07",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H07",
+            "label_filter": null,
+            "agent_id": "H07"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:44.808Z",
+          "duration_ms": 2.616,
+          "output": [
+            {
+              "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+              "doc_id": "34",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+              "doc_id": "86",
+              "span_idx": 82,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+              "doc_id": "87",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+              "doc_id": "87",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+              "doc_id": "87",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-8": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4930.08,
+      "started_at": "2026-05-22T00:05:44.808Z",
+      "ended_at": "2026-05-22T00:05:49.738Z",
+      "hypothesis_text": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information."
+    },
+    {
+      "hypothesis_id": "H08",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Confidentiality of the agreement/existence: The NDA does not clearly address confidentiality of the agreement’s existence or negotiation. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H08",
+        "rag_query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H08",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H08",
+            "label_filter": null,
+            "agent_id": "H08"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:48.140Z",
+          "duration_ms": 1.484,
+          "output": [
+            {
+              "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+              "doc_id": "34",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+              "doc_id": "88",
+              "span_idx": 18,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+              "doc_id": "92",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+              "doc_id": "94",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+              "doc_id": "95",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-10": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 6444.48,
+      "started_at": "2026-05-22T00:05:48.140Z",
+      "ended_at": "2026-05-22T00:05:54.585Z",
+      "hypothesis_text": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+    },
+    {
+      "hypothesis_id": "H09",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "No reverse engineering: The NDA does not clearly address reverse engineering restrictions. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H09",
+        "rag_query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H09",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H09",
+            "label_filter": null,
+            "agent_id": "H09"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:48.193Z",
+          "duration_ms": 0.471,
+          "output": [
+            {
+              "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+              "doc_id": "91",
+              "span_idx": 37,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+              "doc_id": "96",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+              "doc_id": "101",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+              "doc_id": "111",
+              "span_idx": 27,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-17": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 5861.21,
+      "started_at": "2026-05-22T00:05:48.193Z",
+      "ended_at": "2026-05-22T00:05:54.054Z",
+      "hypothesis_text": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information."
+    },
+    {
+      "hypothesis_id": "H10",
+      "label": "ENTAILED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        18
+      ],
+      "verbatim_quote": "independently developed by the Receiving Party outside the scope of this agreement",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "NEGOTIATE",
+        "rationale": "Independent development permitted: The NDA permits independent development of similar information; this may be acceptable but often requires careful scoping. Severity MEDIUM; action NEGOTIATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H10",
+        "rag_query": "H10: Receiving Party may independently develop information similar to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H10",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H10",
+            "label_filter": null,
+            "agent_id": "H10"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:48.598Z",
+          "duration_ms": 3.233,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+              "doc_id": "34",
+              "span_idx": 34,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information shall not include any information that:",
+              "doc_id": "88",
+              "span_idx": 10,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-8": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+              "doc_id": "88",
+              "span_idx": 14,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+              "doc_id": "91",
+              "span_idx": 24,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 6593.9,
+      "started_at": "2026-05-22T00:05:48.597Z",
+      "ended_at": "2026-05-22T00:05:55.191Z",
+      "hypothesis_text": "Receiving Party may independently develop information similar to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H11",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Third-party acquisition permitted: The NDA does not clearly address third-party acquisition of similar information. Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H11",
+        "rag_query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H11",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H11",
+            "label_filter": null,
+            "agent_id": "H11"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:49.717Z",
+          "duration_ms": 3.305,
+          "output": [
+            {
+              "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+              "doc_id": "34",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-12": "ENTAILED",
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+              "doc_id": "34",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Confidential Information does not include:",
+              "doc_id": "86",
+              "span_idx": 56,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "> information received from a third party who was free to disclose such information.",
+              "doc_id": "86",
+              "span_idx": 59,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+              "doc_id": "87",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-13": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 2694.29,
+      "started_at": "2026-05-22T00:05:49.717Z",
+      "ended_at": "2026-05-22T00:05:52.411Z",
+      "hypothesis_text": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    {
+      "hypothesis_id": "H12",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "CLARIFY",
+        "rationale": "No rights / no license: The NDA does not clearly state that no rights/licenses are granted regarding Confidential Information. Severity HIGH; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H12",
+        "rag_query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H12",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H12",
+            "label_filter": null,
+            "agent_id": "H12"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:49.738Z",
+          "duration_ms": 3.492,
+          "output": [
+            {
+              "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+              "doc_id": "34",
+              "span_idx": 38,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+              "doc_id": "86",
+              "span_idx": 85,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+              "doc_id": "87",
+              "span_idx": 60,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+              "doc_id": "88",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+              "doc_id": "88",
+              "span_idx": 29,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 6288.08,
+      "started_at": "2026-05-22T00:05:49.738Z",
+      "ended_at": "2026-05-22T00:05:56.026Z",
+      "hypothesis_text": "Agreement shall not grant Receiving Party any right to Confidential Information."
+    },
+    {
+      "hypothesis_id": "H13",
+      "label": "ENTAILED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        24
+      ],
+      "verbatim_quote": "Receiving Party shall return to Disclosing Party any and all records, notes, and other written, printed, or tangible materials in its possession pertaining to Sensitive Information within a reasonable time period if Disclosing Party requests it in writing.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Return or destruction on termination: The NDA requires return or destruction of Confidential Information upon termination (often with limited archival exceptions). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H13",
+        "rag_query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H13",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H13",
+            "label_filter": null,
+            "agent_id": "H13"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:52.412Z",
+          "duration_ms": 1.682,
+          "output": [
+            {
+              "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+              "doc_id": "34",
+              "span_idx": 39,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+              "doc_id": "34",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+              "doc_id": "87",
+              "span_idx": 48,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Except as provided in paragraph",
+              "doc_id": "89",
+              "span_idx": 31,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7399.34,
+      "started_at": "2026-05-22T00:05:52.411Z",
+      "ended_at": "2026-05-22T00:05:59.811Z",
+      "hypothesis_text": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H14",
+      "label": "CONTRADICTED",
+      "confidence": 0.95,
+      "evidence_spans": [
+        23
+      ],
+      "verbatim_quote": "Receiving Party shall not, without prior written approval of Disclosing Party, use for Receiving Party's own benefit, publish, copy, or otherwise disclose to others, or permit the use by others for their benefit or to the detriment of Disclosing Party, any Sensitive Information.",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "HIGH",
+        "action": "ESCALATE",
+        "rationale": "Copying permitted in some circumstances: The NDA appears to prohibit copying Confidential Information, which may require negotiation for operational practicality. Severity HIGH; action ESCALATE."
+      },
+      "agent_metadata": {
+        "agent_id": "H14",
+        "rag_query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H14",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H14",
+            "label_filter": null,
+            "agent_id": "H14"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:54.054Z",
+          "duration_ms": 1.36,
+          "output": [
+            {
+              "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+              "doc_id": "34",
+              "span_idx": 36,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+              "doc_id": "101",
+              "span_idx": 51,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-11": "ENTAILED",
+                "nda-19": "ENTAILED",
+                "nda-7": "CONTRADICTED",
+                "nda-17": "ENTAILED",
+                "nda-5": "ENTAILED",
+                "nda-4": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+              "doc_id": "101",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+              "doc_id": "103",
+              "span_idx": 19,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+              "doc_id": "104",
+              "span_idx": 20,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-15": "ENTAILED",
+                "nda-17": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7194.8,
+      "started_at": "2026-05-22T00:05:54.054Z",
+      "ended_at": "2026-05-22T00:06:01.249Z",
+      "hypothesis_text": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    {
+      "hypothesis_id": "H15",
+      "label": "NOT_MENTIONED",
+      "confidence": 1.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Non-solicitation: The NDA does not include a clear non-solicitation restriction; this is often optional depending on the engagement. Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H15",
+        "rag_query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H15",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H15",
+            "label_filter": null,
+            "agent_id": "H15"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:54.585Z",
+          "duration_ms": 0.95,
+          "output": [
+            {
+              "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+              "doc_id": "91",
+              "span_idx": 40,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+              "doc_id": "91",
+              "span_idx": 42,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+              "doc_id": "100",
+              "span_idx": 28,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+              "doc_id": "118",
+              "span_idx": 78,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+              "doc_id": "133",
+              "span_idx": 73,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-18": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 7502.97,
+      "started_at": "2026-05-22T00:05:54.585Z",
+      "ended_at": "2026-05-22T00:06:02.088Z",
+      "hypothesis_text": "Receiving Party shall not solicit some of Disclosing Party's representatives."
+    },
+    {
+      "hypothesis_id": "H16",
+      "label": "ENTAILED",
+      "confidence": 1.0,
+      "evidence_spans": [
+        26
+      ],
+      "verbatim_quote": "The non-disclosure provisions of this Agreement shall survive the termination of this Agreement",
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "LOW",
+        "action": "ACCEPT",
+        "rationale": "Survival of obligations: The NDA indicates that certain obligations survive termination (commonly confidentiality and related duties). Severity LOW; action ACCEPT."
+      },
+      "agent_metadata": {
+        "agent_id": "H16",
+        "rag_query": "H16: Some obligations of Agreement may survive termination of Agreement.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H16",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H16",
+            "label_filter": null,
+            "agent_id": "H16"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:55.192Z",
+          "duration_ms": 2.901,
+          "output": [
+            {
+              "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+              "doc_id": "34",
+              "span_idx": 45,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+              "doc_id": "86",
+              "span_idx": 88,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+              "doc_id": "87",
+              "span_idx": 46,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+              "doc_id": "89",
+              "span_idx": 30,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-16": "ENTAILED",
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+              "doc_id": "89",
+              "span_idx": 109,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-19": "ENTAILED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4767.45,
+      "started_at": "2026-05-22T00:05:55.191Z",
+      "ended_at": "2026-05-22T00:05:59.959Z",
+      "hypothesis_text": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    {
+      "hypothesis_id": "H17",
+      "label": "NOT_MENTIONED",
+      "confidence": 0.0,
+      "evidence_spans": [],
+      "verbatim_quote": null,
+      "groundedness_check": true,
+      "quote_integrity_check": true,
+      "playbook_result": {
+        "severity": "MEDIUM",
+        "action": "CLARIFY",
+        "rationale": "Retention after return/destruction: The NDA does not clearly address whether any retention is permitted after return/destruction (e.g., backups or legal compliance). Severity MEDIUM; action CLARIFY."
+      },
+      "agent_metadata": {
+        "agent_id": "H17",
+        "rag_query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+        "rag_hits": 5,
+        "rag_mode": "graph"
+      },
+      "validation_failures": [],
+      "tool_calls": [
+        {
+          "agent_id": "H17",
+          "name": "retrieve",
+          "arguments": {
+            "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+            "mode": "graph",
+            "top_k": 5,
+            "hypothesis_id": "H17",
+            "label_filter": null,
+            "agent_id": "H17"
+          },
+          "count": 1,
+          "started_at": "2026-05-22T00:05:56.026Z",
+          "duration_ms": 4.075,
+          "output": [
+            {
+              "text": "At Organiser’s first request, Mentor shall:",
+              "doc_id": "86",
+              "span_idx": 72,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+              "doc_id": "86",
+              "span_idx": 76,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+              "doc_id": "86",
+              "span_idx": 77,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+              "doc_id": "88",
+              "span_idx": 26,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            },
+            {
+              "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+              "doc_id": "92",
+              "span_idx": 54,
+              "score": 1.0,
+              "hypothesis_annotations": {
+                "nda-20": "CONTRADICTED"
+              },
+              "corpus_split": "train.json"
+            }
+          ]
+        }
+      ],
+      "latency_ms": 4273.93,
+      "started_at": "2026-05-22T00:05:56.026Z",
+      "ended_at": "2026-05-22T00:06:00.300Z",
+      "hypothesis_text": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+    }
+  ],
+  "metrics": {
+    "hypothesis_count": 17,
+    "correct_count": 0,
+    "compliant_count": 17,
+    "quote_integrity_count": 17,
+    "contract_accuracy": 0.0,
+    "groundedness_rate": 1.0,
+    "quote_integrity_rate": 1.0,
+    "contract_latency_ms": 100090.61,
+    "label_counts": {
+      "ENTAILED": 5,
+      "CONTRADICTED": 2,
+      "NOT_MENTIONED": 10
+    }
+  },
+  "run_validations": [
+    {
+      "validator_id": "hypothesis_count_check",
+      "status": "PASS",
+      "message": "Expected 17 hypothesis traces, got 17."
+    },
+    {
+      "validator_id": "trace_validation_failures",
+      "status": "PASS",
+      "message": "0 non-fatal validation failure(s) recorded."
+    }
+  ],
+  "conversation_history": [],
+  "tool_calls": [
+    {
+      "agent_id": "H01",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H01: All Confidential Information shall be expressly identified by the Disclosing Party.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H01",
+        "label_filter": null,
+        "agent_id": "H01"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:40.655Z",
+      "duration_ms": 2.365,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. For purposes hereunder, \"Confidential Information\" is defined as and includes the following: all inventions, know-how, discoveries and improvements, whether or not patentable, computer programmes, designs, drawings, specifications, reports, manuals, documents, memoranda, coordination sheets, and all other information of a technical nature, as well as business, planning, marketing and financial information relative to the Project, which are the property of the Transmitter, as hereinafter defined, who decide to disclose the proper and adequate Confidential Information and so indicates by an appropriate legend, marking, stamp or other positive written identification as hereinafter set forth.",
+          "doc_id": "96",
+          "span_idx": 9,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Any document containing Confidential Information disclosed by the Transmitter to the Recipient shall be so identified with the following notice by means of a rubber stamp and/or written or printed indication appropriately and apparently placed on the document: \"Confidential Information\" or “Confidential”.",
+          "doc_id": "96",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1 - As used in the Agreement the term \"Confidential Information\" shall mean any information or data whether of financial, commercial, technical, legal or whatever nature disclosed by the Disclosing Party to the Receiving Party under this Agreement, whether in writing or drawings, orally, in the form of samples, models, computer program or in any form whatsoever including information derivable by visual inspection, provided that such written information is clearly and conspicuously marked as proprietary or confidential and that such oral or visual information is designated as proprietary or confidential upon disclosure and confirmed by the Disclosing Party in writing within thirty (30) days from the date of disclosure, provided that such information shall be treated as Confidential Information by the Receiving Party during this thirty (30) day period.",
+          "doc_id": "101",
+          "span_idx": 41,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "When a writing contains Proprietary Information the writing will, prior to disclosure to the receiving Party, be marked by the disclosing Party with a suitable legend (such as \"Proprietary Information\") to indicate its Proprietary status.",
+          "doc_id": "105",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H02",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H02: Confidential Information shall only include technical information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H02",
+        "label_filter": null,
+        "agent_id": "H02"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:40.658Z",
+      "duration_ms": 4.483,
+      "output": [
+        {
+          "text": "“Confidential Information” means any Idea disclosed to Mentor, all data and information, know-how, business concepts, software, procedures, products, services, development projects, and programmes contained in such Idea and/or its description and any conclusions.",
+          "doc_id": "86",
+          "span_idx": 55,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information includes, without limitation, non-public information relating to released or unreleased Disclosing Party software products, the marketing or promotion of any Disclosing Party product, Disclosing Party’s business policies or practices, financial information, technical information, computer systems, infrastructure designs, data, analysis, compilations, studies or other documentation and information received from others that Disclosing Party is obligated to treat as confidential.",
+          "doc_id": "88",
+          "span_idx": 8,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Business plans, acquisition plans, expansion plans, business development plans;",
+          "doc_id": "91",
+          "span_idx": 11,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Financial information, personnel information, training information, management systems and recruitment strategies;",
+          "doc_id": "91",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H03",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H03: Confidential Information may include verbally conveyed information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H03",
+        "label_filter": null,
+        "agent_id": "H03"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:40.664Z",
+      "duration_ms": 2.609,
+      "output": [
+        {
+          "text": "1. “Confidential Information”, whenever used in this Agreement, shall mean any data, document, specification and other information or material, that is delivered or disclosed by UNHCR to the Recipient in any form whatsoever, whether orally, visually in writing or otherwise (including computerized form), and that, at the time of disclosure to the Recipient, is designated as confidential.",
+          "doc_id": "34",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-1": "ENTAILED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "“Confidential Information” under this Agreement consists of:",
+          "doc_id": "87",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) all observations of equipment (including computer screens) and oral disclosures related to the development of any Cyber Mutual Assistance Program or a specific request for or response to cyber mutual assistance, including the systems, operations, and activities of each Participating Entity, whether such observations or oral disclosures were made prior to or following the execution of this Agreement.",
+          "doc_id": "87",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. “Confidential Information” as used herein any and all confidential and/or proprietary information concerning the Originating Party’s business and such party’s trade secrets, proprietary data and business data, whether oral or written, tangible or intangible, which is disclosed to or learned by the Receiving Party in the course of the Discussions or otherwise while working with the Originating Party, and/or discovered, developed, conceived, originated, appreciably modified, or prepared in scope of Receiving Party’s relationship with the Originating Party, including but not limited to the following:",
+          "doc_id": "91",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-2": "CONTRADICTED",
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information means any information disclosed (whether before or after the date of this Agreement, in writing, verbally or otherwise and whether directly or indirectly) by or on behalf of the Disclosing Party or an Affiliate of the Disclosing Party to the Receiving Party in connection with the Purpose;",
+          "doc_id": "92",
+          "span_idx": 12,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-3": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H04",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H04: Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H04",
+        "label_filter": null,
+        "agent_id": "H04"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:40.667Z",
+      "duration_ms": 3.362,
+      "output": [
+        {
+          "text": "The Recipient shall use the Confidential Information solely for the purpose for which it was disclosed;",
+          "doc_id": "34",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Mentor shall not use any Confidential Information for any purpose except to review, assess and help develop the Participants´ Ideas.",
+          "doc_id": "86",
+          "span_idx": 62,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each Participating",
+          "doc_id": "87",
+          "span_idx": 16,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Entity agrees",
+          "doc_id": "87",
+          "span_idx": 17,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "CONTRADICTED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iii) to use such information only for the express purpose of developing and implementing a Cyber Mutual Assistance Program, including in connection with any request for or provision of cyber mutual assistance between Participating Entities.",
+          "doc_id": "87",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H05",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H05: Receiving Party may share some Confidential Information with some of Receiving Party's employees.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H05",
+        "label_filter": null,
+        "agent_id": "H05"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:40.671Z",
+      "duration_ms": 3.283,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2.2 any entity over which the Party exercises effective managerial control; or,",
+          "doc_id": "34",
+          "span_idx": 25,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the forgoing, a Participating Entity may use and internally share Confidential Information as deemed necessary to respond to an actual or threatened cyber emergency that places, or has the potential to place, the Participating Entity’s cyber systems at risk.",
+          "doc_id": "87",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Receiving Party agrees disclose Confidential Information only to those employees who need to know such information and certifies that such employees have previously agreed, either as a condition to employment or in order to obtain the Confidential Information, to be bound by terms and conditions substantially similar to those of this Agreement.",
+          "doc_id": "88",
+          "span_idx": 21,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H06",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H06: Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H06",
+        "label_filter": null,
+        "agent_id": "H06"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:44.690Z",
+      "duration_ms": 4.497,
+      "output": [
+        {
+          "text": "2.3 Provided that the Recipient has a written agreement with the following persons or entities requiring them to treat the Confidential Information in accordance with this Agreement, the Recipient may disclose the Confidential Information to:",
+          "doc_id": "34",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2.3.2 the Recipient’s employees, officials, representatives and agents who have a strict need to know the contents of the Confidential Information, and employees, officials, representatives and agents of any legal entity that it controls, controls it, or with which it is under common control, who have a similar need to know the contents of the Confidential Information, provided that, for these purposes a controlled legal entity means:",
+          "doc_id": "34",
+          "span_idx": 23,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "1. Only the Data Recipient’s employees and/or consultants required to use the Data to perform the functions of this Agreement that are set forth in Attachment B, and so designated by Data Recipient as “Authorized Users” in Attachment C to this Agreement, will be given access to the Data.",
+          "doc_id": "89",
+          "span_idx": 63,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-5": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "A. Nothing express or implied in this Agreement is intended to confer, nor shall anything herein confer, upon any person other than the Parties, any rights, remedies, obligations, or liabilities whatsoever.",
+          "doc_id": "89",
+          "span_idx": 174,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Each party may disclose the Confidential Information of the other party in the following circumstances:",
+          "doc_id": "92",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-7": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H07",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H07: Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H07",
+        "label_filter": null,
+        "agent_id": "H07"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:44.808Z",
+      "duration_ms": 2.616,
+      "output": [
+        {
+          "text": "The Recipient may disclose the Confidential Information to the extent required by law, provided that, subject to and without any waiver of the privileges and immunities of UNHCR, the Recipient will give UNHCR sufficient prior notice of a request for the disclosure of the Confidential Information in order to allow UNHCR to have a reasonable opportunity to take protective measures or such other action as may be appropriate before any such disclosure is made.",
+          "doc_id": "34",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "If Mentor is required by mandatory, non-appealable judicial or administrative process and/or order to disclose Confidential Information, then Mentor shall promptly notify Organiser and allow Organiser and the Participants reasonable time to oppose such process unless this is not admissible under a mandatory law, judicial or administrative order.",
+          "doc_id": "86",
+          "span_idx": 82,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) In the event that any governmental authority issues an order, subpoena, or other lawful process or a Participating Entity receives a discovery request in a civil proceeding (\"Legal Process\") requiring the disclosure of any Confidential Information, the Participating Entity receiving such Legal Process shall notify in writing the other Participating Entities within five (5) business days of receipt.",
+          "doc_id": "87",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon receipt of a Freedom of Information Act or public records disclosure request, such Participating Entity shall:",
+          "doc_id": "87",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) notify each Participating Entity or Participating Entities whose information is subject to such disclosure request immediately upon receipt of a request for public records that include all or part of the Confidential Information; and",
+          "doc_id": "87",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-8": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H08",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H08: Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H08",
+        "label_filter": null,
+        "agent_id": "H08"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:48.140Z",
+      "duration_ms": 1.484,
+      "output": [
+        {
+          "text": "11. The Recipient shall not advertise or otherwise make public the fact that it has a confidential relationship with UNHCR, nor shall the Recipient, in any manner whatsoever use the name, emblem, or official seal of the United Nations or UNHCR, or any abbreviation of the name of the United Nations or UNHCR in connection with its business or otherwise.",
+          "doc_id": "34",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The existence of any business negotiations, discussions, consultations, or agreements in progress between the parties shall not be released to any form of public media, unless agreed between the parties in writing.",
+          "doc_id": "88",
+          "span_idx": 18,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither party shall disclose the Purpose or the existence of this Agreement or reveal that discussions are taking place between the parties to another person without the prior written consent of the other party except to the extent that such disclosure is required by law, by a court of competent jurisdiction, by the rules of any stock exchange or by another appropriate regulatory body.",
+          "doc_id": "92",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "EFCA agrees to keep the existence and nature of this Agreement confidential and not to use the same or the name of the disclosing party (or of any company in the Group of Companies of which the disclosing party forms part) in any publicity, advertisement or other disclosure with regard to this Agreement without the prior written consent of the disclosing party.",
+          "doc_id": "94",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "6.3. Subject to 6.5, the Receiving Party agrees that it will not, during the existence of this Agreement disclose the Confidential Information to any Third Party for any reason or purpose whatsoever, without the prior written consent of the Disclosing Party and only to the extent of such consent, save in accordance with the provisions of this Agreement.",
+          "doc_id": "95",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-10": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H09",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H09: Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H09",
+        "label_filter": null,
+        "agent_id": "H09"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:48.193Z",
+      "duration_ms": 0.471,
+      "output": [
+        {
+          "text": "IV. NO REVERSE ENGINEERING; WORK PRODUCT: Receiving Party shall not reverse-engineer, analyze, attempt to duplicate or otherwise attempt to determine the design or method of compiling samples, prototypes or products of the Originating Party except pursuant to a mutually acceptable, written agreement executed by the parties.",
+          "doc_id": "91",
+          "span_idx": 37,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "9. The Recipient agrees not to use Confidential Information of the Transmitter or any part thereof, for its own design, development and manufacturing purposes or any other purpose.",
+          "doc_id": "96",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to reverse-compile, reverse-assemble or reverse-engineer Confidential Information or any part thereof, unless directed to do so by the disclosing Party as proven by appropriate documentation",
+          "doc_id": "101",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Neither Party shall, without the written approval of the other Party, publish, copy, or use the Confidential Information for their sole benefit.",
+          "doc_id": "111",
+          "span_idx": 27,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-17": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H10",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H10: Receiving Party may independently develop information similar to Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H10",
+        "label_filter": null,
+        "agent_id": "H10"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:48.598Z",
+      "duration_ms": 3.233,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) at any time is developed by the Recipient completely independently of any disclosures hereunder.",
+          "doc_id": "34",
+          "span_idx": 34,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information shall not include any information that:",
+          "doc_id": "88",
+          "span_idx": 10,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-8": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(iv) is independently developed by Receiving Party without access to the Disclosing Party’s information, or",
+          "doc_id": "88",
+          "span_idx": 14,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "13. “Confidential Information” shall not include information which, now or in the future, is available to the public (other than through improper disclosure by the Receiving Party); information rightly acquired from a third party without any obligation of confidentiality; information that is independently developed without the use of any Confidential Information; or information already known by Receiving Party prior to disclosure by Originating Party, as demonstrated by written evidence.",
+          "doc_id": "91",
+          "span_idx": 24,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H11",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H11: Receiving Party may acquire information similar to Confidential Information from a third party.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H11",
+        "label_filter": null,
+        "agent_id": "H11"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:49.717Z",
+      "duration_ms": 3.305,
+      "output": [
+        {
+          "text": "The Recipient shall not be precluded from disclosing the Confidential Information that is",
+          "doc_id": "34",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-12": "ENTAILED",
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(i) obtained by the Recipient without restriction from a third party who is not in breach of any obligation as to confidentiality to the owner of such Confidential Information or any other person, or",
+          "doc_id": "34",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Confidential Information does not include:",
+          "doc_id": "86",
+          "span_idx": 56,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "> information received from a third party who was free to disclose such information.",
+          "doc_id": "86",
+          "span_idx": 59,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding Sections 1 and 2, a Participating Entity shall not have breached any obligation under this Agreement if the Confidential Information is disclosed to a third party when the Confidential Information:",
+          "doc_id": "87",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-13": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H12",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H12: Agreement shall not grant Receiving Party any right to Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H12",
+        "label_filter": null,
+        "agent_id": "H12"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:49.738Z",
+      "duration_ms": 3.492,
+      "output": [
+        {
+          "text": "4. Nothing in this Agreement is to be construed as granting the Recipient, by implication or otherwise, any right whatsoever with respect to the Confidential Information or part thereof.",
+          "doc_id": "34",
+          "span_idx": 38,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Any and all proprietary rights, including but not limited to rights to and in inventions, patent rights, utility models, copyrights, trademarks and trade secrets, in and to any Confidential Information shall be and remain with the Participants respectively, and Mentor shall not have any right, license, title or interest in or to any Confidential Information, except the limited right to review, assess and help develop such Confidential Information in connection with the Copernicus Accelerator 2017.",
+          "doc_id": "86",
+          "span_idx": 85,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "This Agreement is not intended to create any right in or obligation of any Participating Entity or third party other than those expressly stated herein.",
+          "doc_id": "87",
+          "span_idx": 60,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "5. No Further Rights All Confidential Information is and shall remain the property of Disclosing Party.",
+          "doc_id": "88",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Nothing contained in this Agreement shall be construed to as granting or conferring any rights in the Confidential Information except as provided herein.",
+          "doc_id": "88",
+          "span_idx": 29,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H13",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H13: Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H13",
+        "label_filter": null,
+        "agent_id": "H13"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:52.412Z",
+      "duration_ms": 1.682,
+      "output": [
+        {
+          "text": "5. All Confidential Information in any form and any medium, including all copies thereof, disclosed to the Recipient shall be returned to UNHCR or destroyed:",
+          "doc_id": "34",
+          "span_idx": 39,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(a) if a business relationship is not entered into with UNHCR on or before the date which is three (3) months after the date both Parties have signed the Agreement; or",
+          "doc_id": "34",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon termination of this Agreement, all Confidential Information in the possession or control of a Participating Entity and its Representatives that received such information shall be returned to the Participating Entity that disclosed the information, including all copies of such information in any form whatsoever, unless otherwise instructed in writing by the Participating Entity that disclosed the information.",
+          "doc_id": "87",
+          "span_idx": 48,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Except as provided in paragraph",
+          "doc_id": "89",
+          "span_idx": 31,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H14",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H14: Receiving Party may create a copy of some Confidential Information in some circumstances.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H14",
+        "label_filter": null,
+        "agent_id": "H14"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:54.054Z",
+      "duration_ms": 1.36,
+      "output": [
+        {
+          "text": "The Recipient will not copy or reproduce the Confidential Information except as reasonably required for the purposes contemplated in this Agreement, and will ensure that any confidentiality or other proprietary rights notices on the Confidential Information are reproduced on all copies.",
+          "doc_id": "34",
+          "span_idx": 36,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "4 - The Receiving Party undertakes during the term of this Agreement and for a period of five (5) years after the date of its expiry or termination:",
+          "doc_id": "101",
+          "span_idx": 51,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-11": "ENTAILED",
+            "nda-19": "ENTAILED",
+            "nda-7": "CONTRADICTED",
+            "nda-17": "ENTAILED",
+            "nda-5": "ENTAILED",
+            "nda-4": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "- not to duplicate or otherwise reproduce Confidential Information except for such copies as the Receiving Party may require for the Purpose as aforesaid, provided that all copies shall contain the same proprietary and confidential notices and legends as appear on the original Confidential Information,",
+          "doc_id": "101",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the other party except the right to copy the Confidential Information disclosed by the other party solely for the Purpose.",
+          "doc_id": "103",
+          "span_idx": 19,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose.",
+          "doc_id": "104",
+          "span_idx": 20,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-15": "ENTAILED",
+            "nda-17": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H15",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H15: Receiving Party shall not solicit some of Disclosing Party's representatives.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H15",
+        "label_filter": null,
+        "agent_id": "H15"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:54.585Z",
+      "duration_ms": 0.95,
+      "output": [
+        {
+          "text": "V. NON-SOLICITATION OF EMPLOYEES AND/OR CONTRACTORS: Receiving Party recognizes and acknowledges that, while engaged in Discussions and/or while involved in a Business Relationship, such party will be in a position to utilize Originating Party’s goodwill and have access to and/or utilize Confidential Information of Originating Party that would enable Receiving Party to take advantage of that goodwill and/or Confidential Information to the detriment of the Originating Party, by attempting, for example, to recruit or solicit employees, and/or contractors of Originating Party.",
+          "doc_id": "91",
+          "span_idx": 40,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Therefore, in consideration of the mutual agreements made in this Agreement, during the course of the Business Relationship and for a period of 36 months after termination of the Business Relationship, Receiving Party agrees not to directly or indirectly communicate, solicit, induce, hire, recruit, take away, employ, endeavor to employ (on Receiving Party’s own behalf or on behalf of any other person or entity) or attempt to influence any employee or contractor in any way that may have the effect of causing the cessation or curtailment of their respective relationships with Originating Party.",
+          "doc_id": "91",
+          "span_idx": 42,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Buyer will not circumvent Seller and/or Broker by contacting any person or persons involved with the Business including, without limitation, landlords, employees, suppliers or customers.",
+          "doc_id": "100",
+          "span_idx": 28,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The Parties hereby confirm that neither they nor anyone on their behalf or anyone else has solicited in any way, and no document received or that will be received shall be deemed to be a solicitation.",
+          "doc_id": "118",
+          "span_idx": 78,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "In consideration of the experience, know-how, training and other vital organizational or market knowledge, which is to be acquired through working for the Owner, the Employee hereby promises that he/she will NOT, either during the employment or for a period of time of (insert number of years – usually up to two years) consecutive years (months) after termination of employment, directly or indirectly, for the sake of the Employee or for any third party, accept employment or in any other way, directly or indirectly, engage in business activities which are of direct competition to the Owner.",
+          "doc_id": "133",
+          "span_idx": 73,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-18": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H16",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H16: Some obligations of Agreement may survive termination of Agreement.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H16",
+        "label_filter": null,
+        "agent_id": "H16"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:55.192Z",
+      "duration_ms": 2.901,
+      "output": [
+        {
+          "text": "Either Party may terminate the working relationship contemplated by this Agreement by providing written notice to the other, provided, however, that the obligations and restrictions hereunder regarding the Confidential Information shall remain effective following any such termination or any other termination or expiration of this Agreement.",
+          "doc_id": "34",
+          "span_idx": 45,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Notwithstanding the termination of this Agreement, any Confidential Information must be kept confidential for as long as such Confidential Information is not publicly known unless it becomes part of the public domain through no wrongful act of Mentor.",
+          "doc_id": "86",
+          "span_idx": 88,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "The provisions of Sections 1, 2, 3, 4, 5 and 6 shall survive the termination of this Agreement for a period of ten (10) years.",
+          "doc_id": "87",
+          "span_idx": 46,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "2. Upon the termination of this Agreement for any reason, the confidentiality provisions set forth herein shall continue to apply to the Data shared with Data Recipient pursuant to this Agreement.",
+          "doc_id": "89",
+          "span_idx": 30,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-16": "ENTAILED",
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the Expiration of this Agreement, only the continued use of Data for the purposes set forth in Attachment B will cease.",
+          "doc_id": "89",
+          "span_idx": 109,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-19": "ENTAILED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    },
+    {
+      "agent_id": "H17",
+      "name": "retrieve",
+      "arguments": {
+        "query": "H17: Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.\nContract excerpt: NON-DISCLOSURE AGREEMENT This Nondisclosure Agreement (the \"Agreement\") is entered into by and between The National Archives, (the \"Disclosing Party\"), and _______________________, located at __________________ _________________________________________________ (the \"Receiving Party\"), for the purpose of preventing the unauthorised disclosure of Sensitive Information as defined below, in line with HMG’s Security Policy Framework. The parties agree to enter into a confidential relationship with respect to the disclosure of certain sensitive, proprietary or protected information (\"Sensitive Information\"). 1. Definition of Sensitive Information. For purposes of this Agreement, \"Sensitive Information\" shall include all information or material that  has or could have commercial value or other utility in the business in which Disclosing Party is engaged  might lead to the security of the Disclosing Party’s physical or information assets or the safety of its staff and customers being compromised. If Sensitive Information is in a physical or electronic form, the Disclosing Party shall label or stamp the materials with the words OFFICIAL-SENSITIVE, or some similar warning, in line with HMG",
+        "mode": "graph",
+        "top_k": 5,
+        "hypothesis_id": "H17",
+        "label_filter": null,
+        "agent_id": "H17"
+      },
+      "count": 1,
+      "started_at": "2026-05-22T00:05:56.026Z",
+      "duration_ms": 4.075,
+      "output": [
+        {
+          "text": "At Organiser’s first request, Mentor shall:",
+          "doc_id": "86",
+          "span_idx": 72,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(d) erase and/or destroy any Confidential Information contained in computer memory or data storage apparatus of, under control of or used by Mentor;",
+          "doc_id": "86",
+          "span_idx": 76,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "(e) remove the Confidential Information from any software or data base of, under control of/or used by Mentor that incorporates or uses the Confidential Information in whole or in part; and",
+          "doc_id": "86",
+          "span_idx": 77,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "Upon the request of the Disclosing Party, Receiving Party shall return all originals, copies, reproductions and summaries of Confidential Information at Disclosing Party’s request, or at Disclosing Party’s option, certify destruction of the same.",
+          "doc_id": "88",
+          "span_idx": 26,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        },
+        {
+          "text": "8.1 Each party undertakes within three business days of the receipt of a written request of the other party or on termination of this Agreement, at the option of the other party:",
+          "doc_id": "92",
+          "span_idx": 54,
+          "score": 1.0,
+          "hypothesis_annotations": {
+            "nda-20": "CONTRADICTED"
+          },
+          "corpus_split": "train.json"
+        }
+      ]
+    }
+  ],
+  "approval_events": []
+}
