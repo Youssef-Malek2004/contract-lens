@@ -21,6 +21,14 @@ Strong for a 1.7B model; the adapter is on the Hugging Face Hub: [`Youssef-Malek
 
 ---
 
+## Demo
+
+<video src="https://github.com/Youssef-Malek2004/Contract-Lens/raw/main/docs/contract-lens-preview.mp4" controls></video>
+
+> If the inline player doesn't load, [view the demo here](https://github.com/Youssef-Malek2004/Contract-Lens/raw/main/docs/contract-lens-preview.mp4).
+
+---
+
 ## Architecture
 
 ```mermaid
