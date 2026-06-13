@@ -1,475 +1,117 @@
 # ContractLens
 
-Multi-agent NDA review system built on ContractNLI. Classifies all 17 ContractNLI hypotheses (H01–H17) against an input NDA, produces schema-valid RunTrace output, and provides a RAG-augmented conversation agent for free-form contract Q&A.
+An **agentic NDA-review system** built on [ContractNLI](https://stanfordnlp.github.io/contract-nli/). Given a non-disclosure agreement, ContractLens evaluates all **17 ContractNLI hypotheses** (H01–H17 — "Can confidential information be shared with employees?", "Is reverse-engineering prohibited?", …), classifies each as *Entailed / Contradicted / Not-Mentioned* with **grounded evidence spans**, applies a deterministic risk **playbook**, and exposes a **conversational agent** for free-form Q&A over the contract — with **every tool call audit-logged** into a schema-valid RunTrace.
 
-**Dataset:** ContractNLI — 423 train NDAs (32,359 spans), 123 test NDAs
-**Model family:** Qwen only
-**MS1/MS2:** Orchestrator = Qwen3-4B (local / vllm-mlx / OpenRouter), NLI Core = fine-tuned Qwen3-1.7B + LoRA
-**MS3:** Orchestrator = OpenRouter `qwen/qwen3.5-27b`, Hypothesis workers = OpenRouter `qwen/qwen3.5-9b` (no fine-tuned model in the loop per MS3 req f)
-**Fine-tuned adapter (MS1):** [Youssef-Malek/contractnli-vast-ai-qwen3-1.7b](https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b)
+It pairs a **QLoRA fine-tuned Qwen3-1.7B** NLI core with an **agentic orchestrator** (function-calling, streaming) and a **dual RAG** retrieval layer (vector **and** graph), and it runs against three interchangeable inference backends: **in-process weights, local vLLM-MLX servers, or hosted OpenRouter**.
+
+> **Authorship.** A 5-person university project (ContractNLI, GUC). I built the **orchestrator** (OpenRouter function-calling + SSE streaming), the **function-calling tools layer**, the **approval gate**, and the **RunTrace v3 audit infrastructure** — plus, in the earlier phase, the data-preprocessing, SFT dataset construction, fine-tuning, and evaluation pipeline. Full per-member credits in [`docs/CONTRIBUTIONS.md`](docs/CONTRIBUTIONS.md). (Teammates' student IDs removed for privacy.)
 
 ---
 
-- [Milestone 3 (current — `ms-3` branch)](#milestone-3)
-- [Milestone 2](#milestone-2)
-- [Milestone 1 results](#milestone-1)
+## Results
+
+Fine-tuned NLI core (Qwen3-1.7B + QLoRA, rank 4) on the full ContractNLI test split — **123 contracts, 2,091 hypothesis instances**:
+
+| Metric | Value |
+|---|---|
+| **Label accuracy** | **0.8513** |
+| **Groundedness** (cited spans always in-range for Entailed/Contradicted) | **1.0000** |
+
+Strong for a 1.7B model; the adapter is on the Hugging Face Hub: [`Youssef-Malek/contractnli-vast-ai-qwen3-1.7b`](https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b).
 
 ---
 
-## Milestone 3
+## Architecture
 
-Agentic NDA review with audit-logged tool calls. The orchestrator chooses between three tools (`retrieve`, `lookup_hypothesis`, `run_full_analysis`) per turn; the heavy `run_full_analysis` is gated by an approval prompt. Every tool invocation is logged into a v3 RunTrace.
+```mermaid
+flowchart TB
+    User([User]) <-->|streamed tokens| TUI[TUI / REPL<br/>slash commands · approval prompts]
+    TUI <--> ORCH
 
-**Status:** M1's slice (orchestrator + tools + audit infrastructure) has landed. M2/M3/M4/M5 are coding their slices in parallel against the M1 foundations. See `docs/MILESTONE3_PLAN.md` for requirements and `docs/MILESTONE3_WORKSPLIT.md` for the 5-member split.
+    subgraph Agentic Core
+      ORCH[Orchestrator<br/>Qwen3.5-27B · function-calling · SSE stream]
+      ORCH -->|tool: retrieve| RAG
+      ORCH -->|tool: lookup_hypothesis| HY[Hypothesis lookup]
+      ORCH -->|tool: run_full_analysis<br/>approval-gated| DISP
+    end
 
-### Environment
+    subgraph Retrieval (dual RAG)
+      RAG{RAG backend}
+      RAG --- VEC[Vector RAG<br/>MiniLM + FAISS IndexFlatIP]
+      RAG --- GR[Graph RAG<br/>networkx KG · Span/Concept/Hypothesis nodes]
+    end
 
-Same `genai-ms2` conda env as MS2. MS3 additionally requires an OpenRouter API key.
+    subgraph Full Analysis
+      DISP[Dispatcher<br/>fan-out 17 hypothesis jobs] -->|asyncio.gather| W[17 hypothesis workers<br/>Qwen3.5-9B]
+      W --> AGG[Aggregator<br/>playbook severity/action · risk metrics]
+    end
 
-```bash
-conda activate genai-ms2
-cp .env.example .env
-# edit .env and set OPENROUTER_API_KEY=sk-or-v1-...
+    ORCH & RAG & DISP & W -.every tool call.-> REC[(RunTrace v3<br/>audit log)]
+    AGG --> RT[Per-contract RunTrace]
+
+    subgraph Inference backends (swappable)
+      LOCAL[local: in-process weights]
+      VLLM[vllm-mlx: 3 servers :8001/2/3]
+      OR[openrouter: hosted API]
+    end
 ```
 
-### Run the M1 demo (interactive REPL)
+### Highlights / intricacies
 
-`scripts/demo_m1.py` exercises the orchestrator + tool dispatch + approval gate + audit logging end-to-end. M2's pipeline (`run_full_analysis`) is stubbed so the demo runs today; the rest is real.
+- **Swappable inference backend via a loader factory.** `get_loader(mode)` returns one of three loaders behind a single `ModelHandle` interface:
+  - `local` — weights loaded into process memory (transformers).
+  - `vllm` — three independent **vLLM-MLX** servers (`:8001` Orchestrator `Qwen3-4B-4bit`, `:8002` the merged + MLX-converted fine-tuned NLI 1.7B, `:8003` base `Qwen3-1.7B-4bit`); only tokenizers (~10 MB) are local, and each load **health-checks** that the server is reachable *and* serving the expected model ID.
+  - `openrouter` — hosted inference (Qwen 3.5-27B orchestrator, 9B workers).
+- **Streaming function-calling orchestrator.** The orchestrator streams Server-Sent Events surfaced as an `AsyncIterator` the TUI renders token-by-token — distinct event kinds for `think` (reasoning), `content`, `tool_call`, `tool_result`, and `turn_complete`. Tool outputs are reinjected as `role=tool` messages and the model re-streams until it returns content-only, capped by `MAX_TOOL_ITERS` to prevent runaway loops.
+- **Approval-gated heavy tool.** `run_full_analysis` is expensive, so the orchestrator must pass through a human **approval gate** before it fires.
+- **Fan-out analysis with leakage control.** The dispatcher fans out **17 hypothesis jobs** (`asyncio.gather`), each sending the contract + one hypothesis + RAG background examples to a Qwen3.5-9B worker. Crucially, workers are **never told a RAG system exists** — retrieved spans are framed only as optional "background examples," and final evidence is **forced to come solely from the analyzed contract** (no train-corpus leakage into citations).
+- **Dual RAG.** A FAISS vector index (MiniLM `all-MiniLM-L6-v2`, `IndexFlatIP`) over training spans, *and* a hand-built networkx **knowledge graph** (`SpanNode`/`ConceptNode`/`HypothesisNode` with `CONTAINS`/`CITED_FOR`/`INVOLVES` edges and ~19 legal concepts + synonym lists) supporting hypothesis-targeted or free-text retrieval.
+- **Cross-cutting audit (`RunTrace`).** A `runtrace_recorder` exposes both a context-manager and a decorator so **every tool call by every agent** is logged automatically into a v3 RunTrace — the system produces a complete, schema-valid audit chain per contract.
+- **Deterministic playbook.** The aggregator maps each hypothesis result to severity / action / rationale via `playbook.yaml`, adds evidence-required validation failures the worker missed, and computes risk metrics across all 17 — keeping LLM judgment and deterministic policy cleanly separated.
+
+---
+
+## Repository layout
+
+| Path | What's there |
+|---|---|
+| `src/orchestrator.py` | Streaming function-calling orchestrator (OpenRouter) |
+| `src/tools.py` | The 3 tools + `ToolContext` DI (ContextVar-bound) |
+| `src/dispatcher.py` · `src/aggregator.py` | 17-way fan-out analysis + playbook enrichment |
+| `src/rag_vector.py` · `src/rag_graph.py` | Vector (FAISS) and Graph (networkx) RAG |
+| `src/runtrace_recorder.py` · `src/runtrace.py` | Cross-cutting audit logging + v3 schema |
+| `src/conversation_agent.py` · `src/tui.py` · `src/session.py` | Conversational agent, REPL, session state |
+| `src/loaders/` | `local`, `vllm`, `openrouter` loaders behind one interface |
+| `pipeline/` | Preprocess → fine-tune → build indexes → evaluate |
+| `architecture/` | Architecture spec (`architecture.yaml`) + report |
+| `playbook.yaml` · `schemas/` | Deterministic risk playbook + JSON schemas |
+
+---
+
+## Quick start
 
 ```bash
-# Default — NDA 0 from data/test.json, real RAG + real orchestrator, stubbed pipeline
+cp .env.example .env        # set OPENROUTER_API_KEY=sk-or-v1-...
+pip install -r requirements.txt
+
+# Interactive agentic REPL over a sample NDA (real RAG + orchestrator)
 python scripts/demo_m1.py --idx 0
-
-# Developer mode — show the orchestrator's <think> reasoning inline
-python scripts/demo_m1.py --idx 0 --dev
-
-# No FAISS indexes built yet? Stub the retrievers
-python scripts/demo_m1.py --idx 0 --no-rag
-
-# Skip the run_full_analysis Y/n prompt (used by M5's batch eval)
-python scripts/demo_m1.py --idx 0 --auto-approve
-
-# One-shot — single prompt, no REPL
-python scripts/demo_m1.py --prompt "what does this NDA say about consultants?" --dev
+python scripts/demo_m1.py --idx 0 --dev          # stream the orchestrator's <think>
+python scripts/demo_m1.py --prompt "what does this NDA say about consultants?"
 ```
 
-**CLI flags:**
-
-| Flag             | Default          | Description |
-| ---------------- | ---------------- | ----------- |
-| `--contract`     | `data/test.json` | ContractNLI JSON path |
-| `--idx`          | `0`              | Zero-based document index |
-| `--dev`          | off              | Stream `<think>` reasoning inline |
-| `--auto-approve` | off              | Skip the `run_full_analysis` Y/n prompt |
-| `--no-rag`       | off              | Stub retrievers instead of using FAISS / networkx |
-| `--prompt`       | _(optional)_     | One-shot mode — single prompt, no REPL |
-
-**Slash commands** (inside the REPL):
-
-| Command       | Effect |
-| ------------- | ------ |
-| `/dev`        | Switch to developer mode (show `<think>`) |
-| `/user`       | Hide `<think>` reasoning |
-| `/vector-rag` | Use FAISS vector retrieval |
-| `/graph-rag`  | Use networkx GraphRAG |
-| `/analyze`    | Force a `run_full_analysis` call (still goes through approval) |
-| `/reset`      | Clear conversation history |
-| `/audit`      | Print all recorded tool calls so far |
-| `/exit`       | Quit (writes session RunTrace) |
-
-### Outputs
-
-```
-runs_ms3/
-├── session_<contract_id>_<ISO8601>.json    one per REPL session (overwritten each turn)
-└── runtrace_doc_<contract_id>.json         one per run_full_analysis invocation
-```
-
-Both validate against `schemas/runtrace_schema.json` v3.0-ms3. The schema uses `oneOf` on a `runtrace_type` discriminator (`contract_analysis` vs `conversation_session`).
-
-### Architecture (M1 slice — what's live on `ms-3`)
-
-```
-User prompt
-    │
-    ├─ Orchestrator (qwen/qwen3.5-27b, OpenRouter SSE)
-    │      streams: <think> reasoning · content · tool_calls
-    │
-    ├─ Tool dispatch via src/tools.py
-    │      retrieve(query, mode, top_k, hypothesis_id?, label_filter?)
-    │             → src/rag_vector.py / src/rag_graph.py
-    │      lookup_hypothesis(h_id)
-    │             → session.cached_traces
-    │      run_full_analysis(contract_id, retrieval_mode)
-    │             → ApprovalGate.request()  (Claude-Code-style Y/n)
-    │             → M2's pipeline (stubbed in demo)
-    │
-    ├─ Every call wrapped by RunTraceRecorder (src/runtrace_recorder.py)
-    │      → ToolCallRecord {agent_id, name, arguments, output, count, started_at, duration_ms}
-    │
-    └─ Written to runs_ms3/ via atomic writers (src/runtrace.py)
-```
-
-### MS3 file map
-
-| File | Purpose |
-| ---- | ------- |
-| `src/orchestrator.py` | Qwen3.5-27B + SSE + function-calling loop |
-| `src/tools.py` | Three tool handlers + `TOOL_SCHEMAS` + `ToolContext` |
-| `src/approval.py` | `ApprovalGate` + console/auto prompts |
-| `src/bootstrap.py` | `setup_runtime()` — one-call wiring for demo + agent.py |
-| `src/runtrace_recorder.py` | ContextVar-bound recorder + `@recorded_tool` |
-| `src/runtrace.py` | RunTrace v3 builders + atomic writers |
-| `src/types.py` | TypedDicts — extended with MS3 types |
-| `schemas/runtrace_schema.json` | v3.0-ms3 schema (oneOf on `runtrace_type`) |
-| `scripts/demo_m1.py` | Interactive REPL exercising the M1 slice |
-| `docs/MILESTONE3_PLAN.md` | MS3 requirements |
-| `docs/MILESTONE3_WORKSPLIT.md` | 5-member split + integration cheatsheet |
-
-### MS3 hard constraints
-
-| Constraint           | Detail |
-| -------------------- | ------ |
-| Inference backend    | OpenRouter only |
-| No fine-tuned model  | MS3 req (f) |
-| Retrieval corpus     | `data/train.json` only — never index `data/test.json` |
-| Evidence grounding   | RAG = reasoning aid; evidence must come from the analyzed contract |
-| Tool-call audit      | Every agent's every tool invocation logged via `src/runtrace_recorder` |
-| Heavy tool gate      | `run_full_analysis` requires user approval (skipped via `--auto-approve`) |
-| Worker concurrency   | `N_PARALLEL_AGENTS = 5` (in `src/loaders/_constants.py`) |
-| Session ID           | `<contract_id>_<ISO8601>` (colons stripped for filesystem safety) |
-| Streaming            | OpenRouter SSE for the orchestrator |
+Backends are selected at load time — default `openrouter` (hosted), or run fully locally with the vLLM-MLX servers (see [`ServeLM`](https://github.com/Youssef-Malek2004/ServeLM) and the loader docstrings).
 
 ---
 
-## Milestone 2
+## Tech Stack
 
-### Environment Setup
+**Models:** Qwen3 (1.7B fine-tuned NLI core, 4B orchestrator local / 27B + 9B hosted) ·
+**Fine-tuning:** QLoRA (Unsloth), MLX conversion ·
+**Serving:** vLLM-MLX, OpenRouter, Hugging Face Transformers ·
+**RAG:** FAISS, SentenceTransformers (MiniLM), NetworkX ·
+**Runtime:** Python `asyncio`, SSE streaming, ContextVar DI
 
-> **Use the `genai-ms2` conda env.** Python 3.9 cannot install `transformers` from source — Qwen3 support requires the latest HEAD.
+## License
 
-```bash
-# Create once
-conda create -n genai-ms2 python=3.11 -y
-conda activate genai-ms2
-
-# transformers must come from source — install it first
-pip install torch torchvision torchaudio
-pip install "git+https://github.com/huggingface/transformers.git"
-pip install accelerate peft sentence-transformers \
-            faiss-cpu networkx scikit-learn numpy huggingface_hub \
-            safetensors tokenizers tqdm pyyaml ipykernel python-dotenv
-
-# Optional: register the Jupyter kernel
-python -m ipykernel install --user --name genai-ms2 --display-name "genai-ms2"
-```
-
-All commands below assume `conda activate genai-ms2` and working directory = repo root (`contract-lens/`).
-
----
-
-### Download Models
-
-Run once from the terminal — **not** via `conda run` (subprocess stdout buffering hides progress bars):
-
-```bash
-python scripts/download_models.py
-```
-
-| Model                                          | Size    | Purpose                           |
-| ---------------------------------------------- | ------- | --------------------------------- |
-| `Qwen/Qwen3-4B`                                | ~8 GB   | Orchestrator + Conversation Agent |
-| `Qwen/Qwen3-1.7B`                              | ~3.5 GB | NLI Core base + Hypothesis Agents |
-| `Youssef-Malek/contractnli-vast-ai-qwen3-1.7b` | ~100 MB | Fine-tuned LoRA adapter           |
-| `sentence-transformers/all-MiniLM-L6-v2`       | ~90 MB  | Vector RAG embeddings             |
-
-All downloads go to `~/.cache/huggingface/` — every script finds them automatically.
-
----
-
-### Verify Setup
-
-```bash
-python tests/test_model_loader.py
-```
-
-Runs three live-streaming tests: Orchestrator (Qwen3-4B, thinking ON), base model (adapter OFF, thinking ON), NLI Core (adapter ON, thinking OFF). All three must print `PASS`.
-
----
-
-### Build RAG Indexes
-
-Required before using the conversation agent. Outputs go to `data/indexes/` (gitignored — rebuild locally from `data/train.json`).
-
-```bash
-python pipeline/03_build_index.py --mode vector    # FAISS index, ~5 min
-python pipeline/03_build_index.py --mode graph     # networkx graph, ~3 min
-python pipeline/03_build_index.py --mode all       # both at once
-```
-
----
-
-### Run the Conversation Agent
-
-Ask free-form questions about any NDA in the test set:
-
-```bash
-# Vector RAG backend (default — local Qwen3-4B)
-python agent.py --contract data/test.json --idx 0 \
-                --retrieval vector \
-                --prompt "Does this NDA allow sharing with consultants?"
-
-# Graph RAG backend
-python agent.py --contract data/test.json --idx 0 \
-                --retrieval graph \
-                --prompt "What are the termination obligations?"
-
-# vllm-mlx backend — local server instead of in-process weights (Apple Silicon)
-python agent.py --contract data/test.json --idx 0 \
-                --retrieval vector \
-                --prompt "What restrictions apply to sublicensing?" \
-                --backend vllm
-
-# OpenRouter backend — hosted inference; requires OPENROUTER_API_KEY in .env
-python agent.py --contract data/test.json --idx 0 \
-                --retrieval vector \
-                --prompt "What restrictions apply to sublicensing?" \
-                --backend openrouter
-```
-
-Conversation history persists in `conversation_history.json` between runs. History auto-resets when `--idx` changes.
-
-**Arguments:**
-
-| Flag          | Default          | Description                                                              |
-| ------------- | ---------------- | ------------------------------------------------------------------------ |
-| `--contract`  | `data/test.json` | Path to ContractNLI JSON file                                            |
-| `--idx`       | `0`              | Zero-based document index within the file                                |
-| `--retrieval` | `vector`         | RAG backend: `vector` or `graph`                                         |
-| `--prompt`    | _(required)_     | Natural language question                                                |
-| `--backend`   | `local`          | Orchestrator backend: `local`, `vllm`, or `openrouter`                   |
-| `--remote`    | off              | Deprecated alias for `--backend vllm`                                    |
-
-### OpenRouter backend
-
-`--backend openrouter` routes orchestrator inference to OpenRouter's OpenAI-compatible API. RAG retrieval still runs locally. NLI is **not** available on this backend — the fine-tuned contractnli adapter is local-only.
-
-Copy `.env.example` to `.env` and add your key:
-
-```bash
-cp .env.example .env
-# then edit .env and set OPENROUTER_API_KEY=sk-or-v1-...
-```
-
-Defaults for orchestrator / base model IDs live in `src/loaders/_constants.py` (`OPENROUTER_ORCHESTRATOR_ID`, `OPENROUTER_BASE_MODEL_ID`). Override per-call:
-
-```python
-from src.loaders import get_loader
-m = get_loader("openrouter", orchestrator_model_id="qwen/qwen3-32b").load_orchestrator()
-```
-
----
-
-### Run Single-Contract NLI Inference
-
-Two-pass inference on one contract (no unsloth required — plain transformers):
-
-```bash
-python scripts/quick_infer.py                          # first val doc
-python scripts/quick_infer.py --idx 3                  # 4th val doc
-python scripts/quick_infer.py --data data/train.json --idx 0
-```
-
-Pass 1: NLI Core (adapter ON, thinking OFF) — predicts label + evidence spans for all 17 hypotheses.  
-Pass 2: Base model (adapter OFF, thinking ON) — confidence score + verbatim quote.  
-Prints a results table against gold labels.
-
----
-
-### vllm-mlx Remote Mode (Apple Silicon only)
-
-The `--remote` flag routes Qwen3-4B calls to a local vllm-mlx server. The NLI/PEFT path is always local (LoRA adapters cannot be toggled in a pre-quantized vllm-mlx model).
-
-```bash
-# Start the server (from ServeLM/ — serves mlx-community/Qwen3-4b-4bit, port 8001)
-../serving-local-models/serve-qwen3.sh
-
-# Test all three endpoints (requires servers on ports 8001, 8002, 8003)
-python tests/test_vllm_endpoints.py
-```
-
-To merge the NLI adapter into a standalone model for vllm-mlx serving:
-
-```bash
-python scripts/merge_adapter.py               # merge only
-python scripts/merge_adapter.py --convert     # merge + MLX 4-bit conversion
-```
-
-Outputs go to `merged-nli-1.7b/` and `mlx-nli-1.7b-4bit/` (gitignored).
-
----
-
-### Architecture Diagram
-
-```bash
-conda install -c conda-forge graphviz python-graphviz -y
-python architecture/generate_diagram.py       # → architecture/architecture.pdf
-```
-
-LaTeX report:
-
-```bash
-cd architecture && pdflatex report.tex        # → architecture/report.pdf
-```
-
----
-
-## Repo Structure
-
-```
-contract-lens/
-│
-├── agent.py                    ← CLI entry point for the conversation agent
-├── playbook.yaml               ← deterministic rule layer (17 hypothesis checks)
-├── requirements.txt
-│
-├── src/                        ← core library (import from here)
-│   ├── constants.py            NDA_TO_H, LABEL_MAP, HYPOTHESES, SYSTEM_PROMPT
-│   ├── preprocessor.py         build_chunks(), build_prompt(), build_answer()
-│   ├── types.py                RetrievedSpan, HypothesisTask, HypothesisTrace
-│   ├── model_loader.py         get_device(), load_orchestrator(), load_nli_model()
-│   ├── rag_vector.py           FAISS vector retrieval
-│   ├── rag_graph.py            networkx GraphRAG retrieval
-│   ├── conversation_agent.py   ConversationAgent class
-│   └── loaders/                LocalLoader, VllmLoader, OpenRouterLoader
-│
-├── pipeline/                   ← numbered ML pipeline steps (run from repo root)
-│   ├── 01_preprocess.py        build SFT dataset from train.json → .jsonl
-│   ├── 02_finetune.sh          QLoRA fine-tuning command (wraps mlx_lm.lora)
-│   ├── 03_build_index.py       build vector + graph RAG indexes
-│   ├── 05_eval_runtrace.py     batch inference → runs/ + evaluation.csv (MS1)
-│   └── 05b_debug_single.py     single-contract debug tool (MS1)
-│
-├── scripts/                    ← operational utilities
-│   ├── download_models.py      pre-download all models to HF cache
-│   ├── merge_adapter.py        merge LoRA adapter + MLX conversion
-│   ├── quick_infer.py          single-contract two-pass NLI inference
-│   ├── setup_models.sh         server-side model setup
-│   └── stop_servers.sh         stop all vllm-mlx servers
-│
-├── tests/                      ← test suite (run from repo root)
-│   ├── test_model_loader.py    smoke-test all three models with streaming
-│   ├── test_indexes.py         RAG index correctness tests
-│   └── test_vllm_endpoints.py  unit tests for the three vllm-mlx endpoints
-│
-├── data/                       ← source data
-│   ├── train.json              423 NDAs · 32,359 spans (RAG index source only)
-│   ├── test.json               123 NDAs (evaluation only — never index this)
-│   ├── runtrace_ms1_schema.json MS1 RunTrace schema reference
-│   └── indexes/                gitignored — rebuild with pipeline/03_build_index.py
-│
-├── runs/                       ← per-contract RunTrace JSONs (123 files, MS1 output)
-├── RunTrace.json               all 123 RunTraces as a single JSON array (MS1)
-├── evaluation.csv              aggregate evaluation metrics (MS1)
-│
-├── schemas/
-│   ├── playbook_schema.json
-│   └── runtrace_schema.json
-│
-├── architecture/
-│   ├── architecture.yaml       living system spec
-│   ├── architecture.pdf        rendered diagram
-│   ├── generate_diagram.py
-│   ├── report.tex              LaTeX source
-│   └── report.pdf
-│
-├── notebooks/
-│   └── training_notebook.ipynb annotated QLoRA training notebook
-│
-└── docs/
-    ├── CONTRIBUTIONS.md        group member contributions
-    └── MILESTONE2_PLAN.md      work split + interfaces + deadlines
-```
-
----
-
-## Hard Constraints
-
-| Constraint           | Detail                                                                       |
-| -------------------- | ---------------------------------------------------------------------------- |
-| Model family         | Qwen3 only — orchestrator Qwen3-4B, NLI core fine-tuned Qwen3-1.7B           |
-| Thinking policy      | Fine-tuned NLI Core: `enable_thinking=False`. All other calls: `True`        |
-| Evidence grounding   | RAG = reasoning aid only — evidence must come from the analyzed contract     |
-| Retrieval corpus     | `data/train.json` only — **never index `data/test.json`**                    |
-| One retrieval branch | `--retrieval vector` OR `--retrieval graph`, not both per run                |
-| History              | `conversation_history.json` persists between runs; resets on contract change |
-
----
-
----
-
-## Milestone 1
-
-### Model
-
-|                    |                                                                                                                     |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| Base model         | `unsloth/Qwen3-1.7B-bnb-4bit`                                                                                       |
-| Adapter method     | QLoRA (rank 4, all attention + MLP layers)                                                                          |
-| Fine-tuned weights | [Youssef-Malek/contractnli-vast-ai-qwen3-1.7b](https://huggingface.co/Youssef-Malek/contractnli-vast-ai-qwen3-1.7b) |
-| Training           | 1269 steps · 8192 context · 1.28 hrs on RTX 5090                                                                    |
-
-### Evaluation Results
-
-| Metric                    | Value  |
-| ------------------------- | ------ |
-| Label Accuracy            | 0.8513 |
-| Groundedness              | 1.0000 |
-| Quote Integrity Pass Rate | 0.5768 |
-| Avg Latency (ms)          | 14106  |
-
-Evaluated on the full ContractNLI test split (123 contracts, 2091 hypothesis instances).
-
-### Reproducing the Evaluation
-
-**1. Environment**
-
-```bash
-pip install "unsloth[cu128-torch260]" --upgrade
-pip install trl scikit-learn pyyaml
-```
-
-**2. Required files** (place in working directory)
-
-```
-test.jsonl        # generated by pipeline/01_preprocess.py from data/test.json
-```
-
-**3. Run**
-
-```bash
-python pipeline/05_eval_runtrace.py
-```
-
-Two inference passes per contract:
-
-- **Pass 1** — NLI classification (label + evidence span indices for all 17 hypotheses)
-- **Pass 2** — Confidence + verbatim quote elicitation
-
-Outputs: `runs/runtrace_doc_NNN.json` per contract + `evaluation.csv`
-
-**4. Debug a single contract**
-
-```bash
-python pipeline/05b_debug_single.py --idx 0    # full model output, both passes
-```
-
-### Results Analysis
-
-**Label accuracy 85.1%** on 2,091 hypothesis instances is a strong baseline for a 1.7B model trained on 381 examples.
-
-**Groundedness 1.000**: The model always cites valid evidence spans for ENTAILED/CONTRADICTED predictions — all cited span indices are within range.
-
-**Quote integrity 0.577**: In Pass 2 the model tends to reproduce hypothesis text rather than copy a verbatim contract excerpt. This is a direct consequence of `enable_thinking=False` training — the model lacks a reasoning phase to ground its outputs in specific contract language.
-
-**Next iteration**: A knowledge-distillation pipeline (`06_generate_traces.py`) generates step-by-step `<think>` blocks from `qwen3-32b` for all training documents. Retraining with `enable_thinking=True` and LoRA rank 8 is expected to push label accuracy above 90% and significantly improve quote integrity.
+University coursework — shared for portfolio/reference. See [`docs/CONTRIBUTIONS.md`](docs/CONTRIBUTIONS.md) for per-member credits.
