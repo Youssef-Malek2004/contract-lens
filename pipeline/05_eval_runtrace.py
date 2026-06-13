@@ -37,7 +37,7 @@ from unsloth import FastLanguageModel
 MODEL         = "Youssef-Malek/contractnli-vast-ai-qwen3-1.7b"
 TEST_JSONL    = "./test.jsonl"       # chat-formatted examples (prompt + gold)
 TEST_JSON     = "./test.json"        # original ContractNLI test split
-PLAYBOOK_PATH = "./playbook.yaml"
+PLAYBOOK_PATH = "schemas/playbook_schema.json"
 RUNS_DIR      = Path("./runs")
 OUTPUT_CSV    = "./evaluation.csv"
 
@@ -303,7 +303,7 @@ def parse_second_pass(raw: str, pred_map: dict) -> dict[str, dict]:
 
 def load_playbook(path: str) -> dict:
     with open(path) as f:
-        return yaml.safe_load(f)
+        return json.load(f)
 
 
 def apply_playbook(playbook: dict, hyp_id: str, label: str) -> dict:

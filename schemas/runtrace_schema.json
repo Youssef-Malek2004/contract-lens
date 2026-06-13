@@ -1,0 +1,427 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/contractlens-ms3-runtrace.schema.json",
+  "title": "ContractLens MS3 RunTrace Schema (Agentic NDA Review, v3.0-ms3)",
+  "description": "Milestone 3 runtrace schema. Two flavours share one envelope: contract_analysis (one per run_full_analysis) and conversation_session (one per REPL session). Both include tool_calls and approval_events per MS3 requirements (h) and §2.2.",
+  "oneOf": [
+    { "$ref": "#/$defs/ContractAnalysisRunTrace" },
+    { "$ref": "#/$defs/ConversationSessionRunTrace" }
+  ],
+  "$defs": {
+    "ContractAnalysisRunTrace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "runtrace_type",
+        "run",
+        "contract",
+        "retrieval_mode",
+        "playbook",
+        "hypothesis_traces",
+        "metrics",
+        "tool_calls",
+        "approval_events"
+      ],
+      "properties": {
+        "schema_version": { "const": "3.0-ms3" },
+        "runtrace_type":  { "const": "contract_analysis" },
+        "session_id":     { "type": "string", "minLength": 1 },
+        "run": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["run_id", "started_at", "ended_at", "framework", "parameters"],
+          "properties": {
+            "run_id":     { "type": "string", "minLength": 8 },
+            "started_at": { "type": "string", "format": "date-time" },
+            "ended_at":   { "type": "string", "format": "date-time" },
+            "framework":  { "type": "string", "enum": ["agentic_pipeline"] },
+            "deterministic": { "type": "boolean" },
+            "parameters": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "orchestrator_model": { "type": "string" },
+                "hypothesis_model":   { "type": "string" },
+                "n_parallel_agents":  { "type": "integer", "minimum": 1 },
+                "temperature":        { "type": "number", "minimum": 0 },
+                "seed":               { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        },
+        "contract": { "$ref": "#/$defs/Contract" },
+        "playbook": { "$ref": "#/$defs/Playbook" },
+        "retrieval_mode": { "$ref": "#/$defs/RetrievalMode" },
+        "retrieval_context": { "$ref": "#/$defs/RetrievalContext" },
+        "hypothesis_traces": {
+          "type": "array",
+          "minItems": 17,
+          "maxItems": 17,
+          "items": { "$ref": "#/$defs/HypothesisTrace" }
+        },
+        "metrics":              { "$ref": "#/$defs/Metrics" },
+        "run_validations":      { "type": "array", "items": { "$ref": "#/$defs/ValidationResult" } },
+        "conversation_history": { "type": "array", "items": { "$ref": "#/$defs/ConversationTurn" } },
+        "tool_calls":           { "type": "array", "items": { "$ref": "#/$defs/ToolCallRecord" } },
+        "approval_events":      { "type": "array", "items": { "$ref": "#/$defs/ApprovalEvent" } }
+      }
+    },
+
+    "ConversationSessionRunTrace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "runtrace_type",
+        "session_id",
+        "contract_id",
+        "started_at",
+        "retrieval_mode",
+        "conversation_history",
+        "tool_calls"
+      ],
+      "properties": {
+        "schema_version": { "const": "3.0-ms3" },
+        "runtrace_type":  { "const": "conversation_session" },
+        "session_id": {
+          "type": "string",
+          "description": "Format: <contract_id>_<ISO8601> (colons stripped for filesystem safety).",
+          "minLength": 1
+        },
+        "contract_id":            { "type": "string", "minLength": 1 },
+        "started_at":             { "type": "string", "format": "date-time" },
+        "ended_at":                { "type": "string", "format": "date-time" },
+        "retrieval_mode":         { "$ref": "#/$defs/RetrievalMode" },
+        "retrieval_mode_switches": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RetrievalModeSwitchEvent" }
+        },
+        "conversation_history":   { "type": "array", "items": { "$ref": "#/$defs/ConversationTurn" } },
+        "tool_calls":             { "type": "array", "items": { "$ref": "#/$defs/ToolCallRecord" } },
+        "approval_events":        { "type": "array", "items": { "$ref": "#/$defs/ApprovalEvent" } },
+        "referenced_contract_runtraces": {
+          "type": "array",
+          "description": "Filenames of contract-analysis RunTraces produced during this session.",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+
+    "ToolCallRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_id", "name", "arguments", "count", "started_at", "duration_ms"],
+      "properties": {
+        "agent_id": {
+          "type": "string",
+          "description": "'orchestrator' or 'H01'..'H17'.",
+          "pattern": "^(orchestrator|H(0[1-9]|1[0-7]))$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Tool name, e.g. 'retrieve', 'lookup_hypothesis', 'run_full_analysis', 'get_span'."
+        },
+        "arguments":   { "type": "object", "additionalProperties": true },
+        "output":      { },
+        "count":       { "type": "integer", "minimum": 1 },
+        "started_at":  { "type": "string", "format": "date-time" },
+        "duration_ms": { "type": "number", "minimum": 0 },
+        "error":       { "type": "string" }
+      }
+    },
+
+    "ApprovalEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "approved", "approved_by", "timestamp"],
+      "properties": {
+        "tool":        { "type": "string", "minLength": 1 },
+        "arguments":   { "type": "object", "additionalProperties": true },
+        "approved":    { "type": "boolean" },
+        "approved_by": { "type": "string", "enum": ["user"] },
+        "timestamp":   { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "RetrievalModeSwitchEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_mode", "to_mode", "timestamp"],
+      "properties": {
+        "from_mode": { "$ref": "#/$defs/RetrievalMode" },
+        "to_mode":   { "$ref": "#/$defs/RetrievalMode" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "RetrievalMode": {
+      "type": "string",
+      "enum": ["vector", "graph"]
+    },
+
+    "Contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_id", "source_type", "hash_sha256", "chunks"],
+      "properties": {
+        "contract_id": { "type": "string", "minLength": 1 },
+        "source_type": { "type": "string", "enum": ["txt", "pdf", "docx", "unknown"] },
+        "source_name": { "type": "string" },
+        "language":    { "type": "string", "default": "en" },
+        "hash_sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "chunks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["chunk_id", "text", "span"],
+            "properties": {
+              "chunk_id": { "type": "string" },
+              "text":     { "type": "string" },
+              "span": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["char_start", "char_end"],
+                "properties": {
+                  "char_start": { "type": "integer", "minimum": 0 },
+                  "char_end":   { "type": "integer", "minimum": 0 }
+                }
+              },
+              "page":         { "type": "integer", "minimum": 1 },
+              "section_path": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "Playbook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["playbook_id", "version", "ruleset_hash"],
+      "properties": {
+        "playbook_id":  { "type": "string" },
+        "version":      { "type": "string" },
+        "ruleset_hash": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "rule_params":  { "type": "object", "additionalProperties": true }
+      }
+    },
+
+    "RetrievalContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["external_memory", "contract_evidence"],
+      "properties": {
+        "external_memory": {
+          "type": "array",
+          "description": "Retrieved examples from data/train.json only. Reasoning aid — never cited as legal evidence.",
+          "items": { "$ref": "#/$defs/RetrievedSpan" }
+        },
+        "contract_evidence": {
+          "type": "array",
+          "description": "Evidence snippets from the analyzed contract only.",
+          "items": { "$ref": "#/$defs/ContractEvidenceItem" }
+        }
+      }
+    },
+
+    "HypothesisTrace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hypothesis_id",
+        "label",
+        "confidence",
+        "evidence_spans",
+        "verbatim_quote",
+        "groundedness_check",
+        "quote_integrity_check",
+        "playbook_result",
+        "agent_metadata"
+      ],
+      "properties": {
+        "hypothesis_id":        { "type": "string", "pattern": "^H(0[1-9]|1[0-7])$" },
+        "hypothesis_text":      { "type": "string" },
+        "gold_label":           { "type": "string", "enum": ["ENTAILED", "CONTRADICTED", "NOT_MENTIONED"] },
+        "label":                { "type": "string", "enum": ["ENTAILED", "CONTRADICTED", "NOT_MENTIONED"] },
+        "confidence":           { "type": "number", "minimum": 0, "maximum": 1 },
+        "evidence_spans":       { "type": "array", "items": { "type": "integer", "minimum": 0 } },
+        "verbatim_quote":       { "type": ["string", "null"] },
+        "groundedness_check":   { "type": "boolean" },
+        "quote_integrity_check":{ "type": "boolean" },
+        "playbook_result":      { "$ref": "#/$defs/PlaybookResult" },
+        "agent_metadata":       { "$ref": "#/$defs/AgentMetadata" },
+
+        "validation_failures":  {
+          "type": "array",
+          "description": "Non-fatal flags raised by M3's aggregator (no auto-retry).",
+          "items": { "$ref": "#/$defs/ValidationFailure" }
+        },
+        "tool_calls": {
+          "type": "array",
+          "description": "Tool invocations made by this hypothesis worker. Also duplicated into the run-level tool_calls.",
+          "items": { "$ref": "#/$defs/ToolCallRecord" }
+        },
+        "latency_ms": { "type": "number", "minimum": 0 },
+        "started_at": { "type": "string", "format": "date-time" },
+        "ended_at":   { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "AgentMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_id", "rag_query", "rag_hits", "rag_mode"],
+      "properties": {
+        "agent_id":  { "type": "string", "pattern": "^H(0[1-9]|1[0-7])$" },
+        "rag_query": { "type": "string", "minLength": 1 },
+        "rag_hits":  { "type": "integer", "minimum": 0 },
+        "rag_mode":  { "$ref": "#/$defs/RetrievalMode" }
+      }
+    },
+
+    "PlaybookResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["severity", "action", "rationale"],
+      "properties": {
+        "severity":  { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH"] },
+        "action":    { "type": "string", "enum": ["ACCEPT", "CLARIFY", "ESCALATE", "NEGOTIATE"] },
+        "rationale": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "Metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hypothesis_count",
+        "correct_count",
+        "compliant_count",
+        "quote_integrity_count",
+        "contract_accuracy",
+        "groundedness_rate",
+        "quote_integrity_rate",
+        "contract_latency_ms",
+        "label_counts"
+      ],
+      "properties": {
+        "hypothesis_count":      { "type": "integer", "const": 17 },
+        "correct_count":         { "type": "integer", "minimum": 0, "maximum": 17 },
+        "compliant_count":       { "type": "integer", "minimum": 0, "maximum": 17 },
+        "quote_integrity_count": { "type": "integer", "minimum": 0, "maximum": 17 },
+        "contract_accuracy":     { "type": "number",  "minimum": 0, "maximum": 1 },
+        "groundedness_rate":     { "type": "number",  "minimum": 0, "maximum": 1 },
+        "quote_integrity_rate":  { "type": "number",  "minimum": 0, "maximum": 1 },
+        "contract_latency_ms":   { "type": "number",  "minimum": 0 },
+        "label_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ENTAILED", "CONTRADICTED", "NOT_MENTIONED"],
+          "properties": {
+            "ENTAILED":      { "type": "integer", "minimum": 0, "maximum": 17 },
+            "CONTRADICTED":  { "type": "integer", "minimum": 0, "maximum": 17 },
+            "NOT_MENTIONED": { "type": "integer", "minimum": 0, "maximum": 17 }
+          }
+        },
+        "confusion_counts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+
+    "ValidationResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validator_id", "status", "message"],
+      "properties": {
+        "validator_id":         { "type": "string" },
+        "status":               { "type": "string", "enum": ["PASS", "FAIL", "WARN"] },
+        "message":              { "type": "string" },
+        "related_hypothesis_id":{ "type": "string" },
+        "related_chunk_ids":    { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "ValidationFailure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validator", "message"],
+      "properties": {
+        "validator":             { "type": "string", "enum": ["groundedness_check", "quote_integrity_check", "schema"] },
+        "message":               { "type": "string", "minLength": 1 },
+        "related_hypothesis_id": { "type": "string" }
+      }
+    },
+
+    "ConversationTurn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "content", "timestamp"],
+      "properties": {
+        "role":      { "type": "string", "enum": ["user", "assistant", "system"] },
+        "content":   { "type": "string", "minLength": 1 },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "citations": { "type": "array", "items": { "type": "object", "additionalProperties": true } }
+      }
+    },
+
+    "RetrievedSpan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "doc_id", "span_idx", "score", "hypothesis_annotations", "corpus_split"],
+      "properties": {
+        "text":     { "type": "string", "minLength": 1 },
+        "doc_id":   { "type": "string", "minLength": 1 },
+        "span_idx": { "type": "integer", "minimum": 0 },
+        "score":    { "type": "number" },
+        "corpus_split": {
+          "type": "string",
+          "const": "train.json",
+          "description": "External memory must be retrieved from data/train.json only."
+        },
+        "hypothesis_annotations": {
+          "type": "object",
+          "additionalProperties": false,
+          "propertyNames": { "pattern": "^H(0[1-9]|1[0-7])$" },
+          "patternProperties": {
+            "^H(0[1-9]|1[0-7])$": {
+              "type": "string",
+              "enum": ["ENTAILED", "CONTRADICTED", "NOT_MENTIONED"]
+            }
+          }
+        }
+      }
+    },
+
+    "ContractEvidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chunk_id", "quote", "relevance_score", "evidence_source"],
+      "properties": {
+        "chunk_id":        { "type": "string", "minLength": 1 },
+        "quote":           { "type": "string", "minLength": 1 },
+        "relevance_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "evidence_source": {
+          "type": "string",
+          "const": "contract",
+          "description": "Final evidence must be grounded in the analyzed contract."
+        },
+        "span": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "char_start": { "type": "integer", "minimum": 0 },
+            "char_end":   { "type": "integer", "minimum": 0 }
+          }
+        },
+        "page":         { "type": "integer", "minimum": 1 },
+        "section_path": { "type": "string" }
+      }
+    }
+  }
+}
