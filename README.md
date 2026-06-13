@@ -1,5 +1,18 @@
 # ContractLens
 
+<!-- BADGES -->
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch"/>
+  <img src="https://img.shields.io/badge/🤗%20Transformers-FFD21E?style=flat-square" alt="🤗 Transformers"/>
+  <img src="https://img.shields.io/badge/Qwen3--1.7B-615CED?style=flat-square" alt="Qwen3-1.7B"/>
+  <img src="https://img.shields.io/badge/QLoRA-FF6F00?style=flat-square" alt="QLoRA"/>
+  <img src="https://img.shields.io/badge/FAISS-0467DF?style=flat-square" alt="FAISS"/>
+  <img src="https://img.shields.io/badge/OpenRouter-6566F1?style=flat-square" alt="OpenRouter"/>
+  <img src="https://img.shields.io/badge/vLLM-30A14E?style=flat-square" alt="vLLM"/>
+</p>
+
+
 An **agentic NDA-review system** built on [ContractNLI](https://stanfordnlp.github.io/contract-nli/). Given a non-disclosure agreement, ContractLens evaluates all **17 ContractNLI hypotheses** (H01–H17 — "Can confidential information be shared with employees?", "Is reverse-engineering prohibited?", …), classifies each as *Entailed / Contradicted / Not-Mentioned* with **grounded evidence spans**, applies a deterministic risk **playbook**, and exposes a **conversational agent** for free-form Q&A over the contract — with **every tool call audit-logged** into a schema-valid RunTrace.
 
 It pairs a **QLoRA fine-tuned Qwen3-1.7B** NLI core with an **agentic orchestrator** (function-calling, streaming) and a **dual RAG** retrieval layer (vector **and** graph), and it runs against three interchangeable inference backends: **in-process weights, local vLLM-MLX servers, or hosted OpenRouter**.
