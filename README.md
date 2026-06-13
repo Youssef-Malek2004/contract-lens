@@ -23,9 +23,9 @@ Strong for a 1.7B model; the adapter is on the Hugging Face Hub: [`Youssef-Malek
 
 ## Demo
 
-[![ContractLens demo — agentic NDA review with an approval-gated 17-hypothesis RunTrace](docs/demo-poster.jpg)](https://github.com/Youssef-Malek2004/Contract-Lens/blob/main/docs/contract-lens-preview.mp4)
+![ContractLens — agentic NDA review: conversation agent, approval gate, and a 17-hypothesis RunTrace](docs/contract-lens-demo.gif)
 
-▶ **[Watch the 3.5-min demo](https://github.com/Youssef-Malek2004/Contract-Lens/blob/main/docs/contract-lens-preview.mp4)** — the conversation agent, the human approval gate, and a full 17-hypothesis analysis with audit-logged RunTrace.
+*30-second highlight — the conversation agent, the human approval gate, and `run_full_analysis` kicking off. ⬇ [Download the full 3.5-min demo](https://github.com/Youssef-Malek2004/Contract-Lens/raw/main/docs/contract-lens-preview.mp4) (MP4).*
 
 ---
 
