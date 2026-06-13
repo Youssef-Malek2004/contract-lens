@@ -28,20 +28,20 @@ flowchart TB
     User([User]) <-->|streamed tokens| TUI[TUI / REPL<br/>slash commands · approval prompts]
     TUI <--> ORCH
 
-    subgraph Agentic Core
+    subgraph "Agentic Core"
       ORCH[Orchestrator<br/>Qwen3.5-27B · function-calling · SSE stream]
       ORCH -->|tool: retrieve| RAG
       ORCH -->|tool: lookup_hypothesis| HY[Hypothesis lookup]
-      ORCH -->|tool: run_full_analysis<br/>approval-gated| DISP
+      ORCH -->|run_full_analysis · gated| DISP
     end
 
-    subgraph Retrieval (dual RAG)
+    subgraph "Retrieval (dual RAG)"
       RAG{RAG backend}
       RAG --- VEC[Vector RAG<br/>MiniLM + FAISS IndexFlatIP]
       RAG --- GR[Graph RAG<br/>networkx KG · Span/Concept/Hypothesis nodes]
     end
 
-    subgraph Full Analysis
+    subgraph "Full Analysis"
       DISP[Dispatcher<br/>fan-out 17 hypothesis jobs] -->|asyncio.gather| W[17 hypothesis workers<br/>Qwen3.5-9B]
       W --> AGG[Aggregator<br/>playbook severity/action · risk metrics]
     end
@@ -49,7 +49,7 @@ flowchart TB
     ORCH & RAG & DISP & W -.every tool call.-> REC[(RunTrace v3<br/>audit log)]
     AGG --> RT[Per-contract RunTrace]
 
-    subgraph Inference backends (swappable)
+    subgraph "Inference backends (swappable)"
       LOCAL[local: in-process weights]
       VLLM[vllm-mlx: 3 servers :8001/2/3]
       OR[openrouter: hosted API]
